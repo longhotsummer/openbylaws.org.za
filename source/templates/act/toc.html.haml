@@ -1,0 +1,8 @@
+%ol
+  %li
+    %a{href: act_url(act)} Introductory text
+  = partial 'toc_container', locals: {act: act, items: act.body.elements}
+
+  - if act.schedules
+    %li.schedules
+      %a{href: act_url(act, "schedules/")} Schedules

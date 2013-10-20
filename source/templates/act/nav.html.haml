@@ -1,0 +1,15 @@
+%nav
+  .hidden-phone.pull-right
+    %a.btn(href="javascript:window.print();")
+      %i.icon-print
+      Print
+
+  %ul.nav.nav-tabs
+    %li{class: tab == 'toc' ? 'active' : ''}
+      %a{href: act_url(act, 'contents/')} Table of Contents
+
+    %li{class: tab == 'content' ? 'active' : ''}
+      %a{href: act_url(act)} Content
+
+    %li{class: tab == 'resources' ? 'active' : ''}
+      %a{href: act_url(act, "resources/")} More Resources

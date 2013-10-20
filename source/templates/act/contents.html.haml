@@ -1,0 +1,13 @@
+- content_for :title do
+  = act.short_title
+
+%header
+  = partial 'header', locals: {act: act}
+  = partial 'breadcrumbs', locals: {act: act, trail: []}
+= partial 'nav', locals: {act: act, tab: 'toc'}
+
+#content
+  .row-fluid
+    .span12
+      %article.toc
+        = partial 'toc', locals: {act: act}

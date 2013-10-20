@@ -1,0 +1,146 @@
+@import 'html5bootstrap';
+@import 'act';
+@import 'toc';
+
+body {
+  font-size: 14px;
+}
+
+.navbar-inner {
+  border-radius: 0px;
+}
+
+.navbar {
+  margin-bottom: 0px;
+}
+
+#header {
+  a.brand {
+    color: white;
+  }
+}
+
+#footer {
+  background-color: #eee;
+  border-top: 1px solid #ccc;
+  padding: 10px 20px;
+
+  color: #777;
+
+  h5 {
+    text-transform: uppercase;
+  }
+
+  a[rel="license"] > img {
+    float: right;
+    width: 88px;
+    margin: 0px 0px 10px 10px;
+  }
+  a[rel="license"] + p {
+    line-height: 1.2em;
+  }
+}
+
+#main {
+  margin-bottom: 40px;
+
+  header {
+    background-color: #eee;
+    padding: 5px 20px;
+    border-bottom: 1px solid #ccc;
+
+    h1 {
+      margin-top: 0px;
+      font-size: 24.5px;
+    }
+
+    #breadcrumbs li {
+      padding-left: 0px;
+    }
+  }
+
+  nav {
+    margin-top: 10px;
+  }
+
+  article.static {
+    margin-top: 20px;
+  }
+}
+
+#content {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.downloads {
+  .download {
+    margin-bottom: 30px;
+    border-bottom: 1px solid #ccc;
+  }
+}
+
+.popover.term-definition {
+  max-width: 400px;
+
+  .an-term {
+    color: inherit;
+  }
+}
+
+.panel {
+  background: whitesmoke;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+
+  h3 {
+    margin-top: 0px;
+  }
+}
+
+@media (max-width: 568px) {
+  /* phones */
+  .an-container {
+    padding-left: 0px;
+    border-left-width: 0px;
+  }
+
+  aside.toc {
+    display: none;
+  }
+
+  header, #footer {
+    margin-left: -20px;
+    margin-right: -20px;
+  }
+
+  #content {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+}
+
+@media print {
+  nav, .navbar .nav, #breadcrumbs, aside.toc {
+    display: none;
+  }
+
+  .navbar-inverse .navbar-inner {
+    border-width: 0px;
+  }
+
+  #header .brand:after {
+    content: " - openbylaws.org.za";
+  }
+
+  @page {
+      margin: 1.5cm 2.0cm;
+  }
+
+  .an-container {
+    padding-left: 0px;
+    border-left-width: 0px;
+  }
+
+}

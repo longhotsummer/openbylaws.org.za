@@ -1,0 +1,18 @@
+- content_for :title do
+  = act.short_title
+
+%header
+  = partial 'header', locals: {act: act}
+  = partial 'breadcrumbs', locals: {act: act, trail: breadcrumbs_for_fragment(fragment)}
+= partial 'nav', locals: {act: act, tab: 'content'}
+
+#content
+  .row-fluid
+    .span4
+      %aside.toc
+        = partial 'toc', locals: {act: act}
+    .span8
+      %article.an-container
+        = fragment_to_html(fragment)
+
+= partial 'definitions', locals: {act: act}

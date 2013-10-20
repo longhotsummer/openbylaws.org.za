@@ -1,0 +1,39 @@
+.toc {
+  padding-top: 20px;
+
+  ol {
+    list-style-type: none;
+    margin-left: 10px;
+  }
+
+  &> ol {
+    padding-left: 0px;
+    margin-left: 0px;
+  }
+
+  li {
+    line-height: 1.5em;
+  }
+
+  li.part {
+    margin-bottom: 20px;
+
+    &> a {
+      font-weight: bold;
+    }
+  }
+
+  li.chapter {
+    margin-bottom: 10px;
+
+    &> a {
+      font-weight: bold;
+    }
+  }
+
+  li.schedules {
+    &> a {
+      font-weight: bold;
+    }
+  }
+}

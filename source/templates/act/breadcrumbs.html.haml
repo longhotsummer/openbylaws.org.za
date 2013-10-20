@@ -1,0 +1,29 @@
+%ol.inline#breadcrumbs
+  - if act.is_a?(AkomaNtoso::ByLaw)
+    %li
+      %a(href="/za/by-law/") By-laws
+      &#9656;
+    %li
+      %a(href="/za/by-law/")&= data.geo.regions[act.region].name
+      &#9656;
+  - else
+    %li
+      %a(href="/za/act/") Acts
+      &#9656;
+
+  %li
+    - if trail.empty?
+      &= breadcrumb_heading(act)
+    - else
+      %a{href: act_url(act)}
+        &= breadcrumb_heading(act)
+      &#9656;
+
+  - trail.each_with_index do |item, i|
+    %li
+      - if i == trail.size-1
+        &= item.heading
+      - else
+        %a{href: act_url(act, item)}
+          &= item.heading
+        &#9656;

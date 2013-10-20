@@ -1,0 +1,56 @@
+- content_for :title do
+  = act.short_title
+  \- Resources
+
+%header
+  = partial 'header', locals: {act: act}
+  = partial 'breadcrumbs', locals: {act: act, trail: []}
+= partial 'nav', locals: {act: act, tab: 'resources'}
+
+#content
+  %section.downloads
+    .row-fluid
+      .span6
+        %h3 Download
+
+        .download
+          %h4 Akoma Ntoso XML
+          .pull-right
+            = partial 'support_download_button', locals: {file: act.support_files.akoma_ntoso_current}
+
+          %p
+            Download the current Akoma Ntoso XML version of the #{act.nature},
+            - if act.amended?
+              with amendments applied.
+            - else
+              as it was first enacted.
+
+          %p
+            #{link_to 'Akoma Ntoso', 'http://www.akomantoso.org/'} is an
+            XML format for legislative documents.
+
+        - if act.support_files.source_enacted
+          .download
+            %h4 Source Print PDF (as enacted)
+            .pull-right
+              = partial 'support_download_button', locals: {file: act.support_files.source_enacted}
+            %p
+              This is the source PDF version of the #{act.nature}, as it
+              was first enacted.
+
+        - if act.amended? and act.support_files.source_current
+          .download
+            %h4 Source Print PDF (as amended)
+            .pull-right
+              = partial 'support_download_button', locals: {file: act.support_files.source_current}
+            %p
+              This is the source PDF version of the #{act.nature}, with
+              amendments applied.
+
+      .span4.offset2
+        %h3&= data.geo.regions[act.region].name
+        %p
+          %a{href: data.geo.regions['cape-town']['bylaws-url']}
+            %img{src: data.geo.regions['cape-town'].logo, width: "160", height: "120"}
+        %p
+          = link_to 'City of Cape Town By-laws Website', data.geo.regions['cape-town']['bylaws-url']

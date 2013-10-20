@@ -1,0 +1,32 @@
+---
+title: Search - Open By-laws South Africa
+---
+
+%article.static
+  %h2 Search By-laws
+
+  %form.form-inline#search(action="/search.html" method="get")
+    %input.input-xxlarge#query(type="text" name="q" autofocus="autofocus")
+    %button.btn.btn-primary(type="submit") Search
+
+  :javascript
+    (function() {
+      var q = decodeURIComponent(
+        (new RegExp('[?|&]q=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20')
+      )||null;
+
+      document.getElementById('query').value = q;
+    })();
+
+    (function() {
+      var cx = '014063389205572312083:cqqxguowqj8';
+      var gcse = document.createElement('script');
+      gcse.type = 'text/javascript';
+      gcse.async = true;
+      gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+          '//www.google.com/cse/cse.js?cx=' + cx;
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(gcse, s);
+    })();
+  %gcse:searchresults-only#search-results(gname="search-results" linkTarget="_self")
+  
