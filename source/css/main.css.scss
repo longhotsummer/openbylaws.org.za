@@ -99,6 +99,14 @@ body {
   }
 }
 
+.action-panels {
+  .panel {
+    background: inherit;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
 @media (max-width: 568px) {
   /* phones */
   .an-container {

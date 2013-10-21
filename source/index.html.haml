@@ -22,112 +22,116 @@ title: Open By-laws South Africa
           = image_tag '/img/law-icon-lg.png'
 
   #content
-    %p.lead
-      We believe all our legislation should be freely available and easy to
-      read and share.
+    %p.lead.text-center
+      We believe all our legislation should be 
+      %strong freely available 
+      and
+      %strong easy to read
+      and
+      %strong share.
       #{link_to 'Find out more', "/about.html"}.
 
+    .action-panels
+      .row-fluid
+        .span4.panel
+          %h3.text-center
+            %i.icon-share.icon-3x
+          %h3.text-center Share
+
+          %ul.icons-ul
+            %li
+              %i.icon-li.icon-twitter
+              %a(href="https://twitter.com/OpenByLawsZA") @OpenByLawsZA
+          %ul.icons-ul
+            %li
+              %a(href="https://twitter.com/share" class="twitter-share-button" data-url="http://openbylaws.org.za" data-text="South Africa's by-laws freely available, online, easy to read and share" data-via="OpenByLawsZA") Tweet
+              :javascript
+                !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+
+        .span4.panel
+          %h3.text-center
+            %i.icon-comments.icon-3x
+          %h3.text-center Get Involved
+          %ul.icons-ul
+            %li
+              %i.icon-li.icon-envelope
+              #{link_to 'Join the mailing list', 'https://groups.google.com/forum/#!forum/openbylaws-za'}
+            %li
+              %i.icon-li.icon-github
+              #{link_to 'Help improve the website', 'https://github.com/longhotsummer/openbylaws.org.za'}
+
+        .span4.panel
+          %h3.text-center
+            %i.icon-beaker.icon-3x
+          %h3.text-center Build
+
+          #{link_to 'Download the by-laws', 'https://github.com/longhotsummer/za-by-laws'} and build
+          new tools to explore, share and understand them.
 
     .row-fluid
       .span8
-        .row-fluid
-          .span6.panel
-            %h3 Status
-            %p
-              We're just getting going and have focused on the by-laws for the
-              #{link_to 'City of Cape Town', '/za/by-law'}.
-              More localities will be added later.
+        .panel
+          %h3 Progress
+          %p
+            We're just getting started and have focused the
+            #{link_to 'City of Cape Town', '/za/by-law'}.
+            More localities will be added later.
 
-            %h5
-              Cape Town: #{link_to '16 by-laws completed', '/za/by-law/'}
-            .progress.progress-success
-              .bar(style='width: 48%')
+          %h5
+            Cape Town: #{link_to '16 by-laws completed', '/za/by-law/'}
+          .progress.progress-success
+            .bar(style='width: 48%')
 
+        .span6.hidden-phone
+          %a(class="twitter-timeline" href="https://twitter.com/search?q=http%3A%2F%2Fopenbylaws.org.za" data-widget-id="392364515645353984") Tweets about http://openbylaws.org.za
 
-          .span6.panel
-            %h3 Bulk Download
-            %p
-              The by-laws are available in XML format in bulk from the #{link_to 'za-by-laws GitHub repo', 'https://github.com/longhotsummer/za-by-laws'}.
-              We aim to make the HTML, PDF and plain-text formats available in bulk soon, too.
+      .span4
+        .panel
+          %h3 Updates
 
-            %p.text-center
-              %a.btn(href="https://github.com/longhotsummer/za-by-laws")
-                %i.icon-github
-                Browse on GitHub
-
-        .row-fluid
-          .span12.panel
-            .row-fluid
-              .span6
-                %h3 Stay in touch
-                %ul.icons-ul
-                  %li
-                    %i.icon-li.icon-twitter
-                    %a(href="https://twitter.com/OpenByLawsZA") @OpenByLawsZA
-                %ul.icons-ul
-                  %li
-                    %a(href="https://twitter.com/OpenByLawsZA" class="twitter-follow-button" data-show-count="false") Follow @OpenByLawsZA
-                  %li
-                    %a(href="https://twitter.com/share" class="twitter-share-button" data-url="http://openbylaws.org.za" data-text="South Africa's by-laws freely available, online, easy to read and share" data-via="OpenByLawsZA") Tweet
-                    :javascript
-                      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
-
-              .span6
-                %h3 Join our mailing list
-                %p
-                  We'll let you know when we update the site.
-                = form_tag('https://www.taskbox.co.za/obml', id: 'mailinglist', class: 'form-inline', 'data-remote' => 'true') do
-                  %input(type="email" name="email" placeholder="Join our mailing list")
-                  %input.btn(type="submit" value="Join")
-                %p.muted
-                  We value privacy and will never spam you or sell your email address.
-
-      .span4.panel
-        %h3 Updates
-
-        %dl
-          %dt
-            2013-10-15
-          %dd
-            %ul.unstyled
-              %li #{link_to 'By-Law Relating to Streets, Public Places and the Prevention of Noise Nuisances, 2007', '/za/by-law/cape-town/2007/streets-public-places-noise-nuisances/'}
-          %dt
-            2013-10-14
-          %dd
-            %ul.unstyled
-              %li #{link_to 'City of Cape Town: Events By-law', '/za/by-law/cape-town/2009/events/'}
-          %dt
-            2013-10-12
-          %dd
-            %ul.unstyled
-              %li All by-laws are now print-friendly
-              %li #{link_to 'Tariff By-law', '/za/by-law/cape-town/2007/tariff/'}
-          %dt
-            2013-10-11
-          %dd
-            %ul.unstyled
-              %li #{link_to 'City of Cape Town: Traffic By-law, 2011', '/za/by-law/cape-town/2011/traffic/'}
-          %dt
-            2013-10-10
-          %dd
-            %ul.unstyled
-              %li #{link_to 'Wastewater and Industrial Effluent By-law', '/za/by-law/cape-town/2006/wastewater-industrial-effluent/'}
-          %dt
-            2013-10-08
-          %dd
-            %ul.unstyled
-              %li #{link_to 'By-law Relating to the Managament and Administration of the City of Cape Town\'s Immovable Property', '/za/by-law/cape-town/2003/immovable-property/'}
-          %dt
-            2013-10-07
-          %dd
-            %ul.unstyled
-              %li #{link_to 'City of Cape Town: Air Quality Management By-law, 2010', '/za/by-law/cape-town/2010/air-quality-management/'}
-              %li #{link_to 'City of Cape Town: Electricity Supply By-law, 2010', '/za/by-law/cape-town/2010/electricity-supply/'}
-              %li #{link_to 'City of Cape Town: Graffiti By-law, 2010', '/za/by-law/cape-town/2010/graffiti/'}
-              %li #{link_to 'City of Cape Town: Liquor Trading Days and Hours By-law, 2010 as amended', '/za/by-law/cape-town/2010/liquor-trading-days-and-hours/'}
-              %li #{link_to 'City of Cape Town: Parking By-law, 2010', '/za/by-law/cape-town/2010/parking/'}
-              %li #{link_to 'City of Cape Town: Public Parks By-law, 2010', '/za/by-law/cape-town/2010/public-parks/'}
-              %li #{link_to 'City of Cape Town: Water By-law, 2010', '/za/by-law/cape-town/2010/water/'}
-              %li #{link_to 'City of Cape Town: 2010 FIFA World Cup By-law', '/za/by-law/cape-town/2008/2010-fifa-world-cup/'}
-              %li #{link_to 'City of Cape Town: Rates By-law', '/za/by-law/cape-town/2007/rates/'}
-              %li #{link_to 'City of Cape Town: Filming By-law', '/za/by-law/cape-town/2005/filming/'}
+          %dl
+            %dt
+              2013-10-15
+            %dd
+              %ul.unstyled
+                %li #{link_to 'By-Law Relating to Streets, Public Places and the Prevention of Noise Nuisances, 2007', '/za/by-law/cape-town/2007/streets-public-places-noise-nuisances/'}
+            %dt
+              2013-10-14
+            %dd
+              %ul.unstyled
+                %li #{link_to 'City of Cape Town: Events By-law', '/za/by-law/cape-town/2009/events/'}
+            %dt
+              2013-10-12
+            %dd
+              %ul.unstyled
+                %li All by-laws are now print-friendly
+                %li #{link_to 'Tariff By-law', '/za/by-law/cape-town/2007/tariff/'}
+            %dt
+              2013-10-11
+            %dd
+              %ul.unstyled
+                %li #{link_to 'City of Cape Town: Traffic By-law, 2011', '/za/by-law/cape-town/2011/traffic/'}
+            %dt
+              2013-10-10
+            %dd
+              %ul.unstyled
+                %li #{link_to 'Wastewater and Industrial Effluent By-law', '/za/by-law/cape-town/2006/wastewater-industrial-effluent/'}
+            %dt
+              2013-10-08
+            %dd
+              %ul.unstyled
+                %li #{link_to 'By-law Relating to the Managament and Administration of the City of Cape Town\'s Immovable Property', '/za/by-law/cape-town/2003/immovable-property/'}
+            %dt
+              2013-10-07
+            %dd
+              %ul.unstyled
+                %li #{link_to 'City of Cape Town: Air Quality Management By-law, 2010', '/za/by-law/cape-town/2010/air-quality-management/'}
+                %li #{link_to 'City of Cape Town: Electricity Supply By-law, 2010', '/za/by-law/cape-town/2010/electricity-supply/'}
+                %li #{link_to 'City of Cape Town: Graffiti By-law, 2010', '/za/by-law/cape-town/2010/graffiti/'}
+                %li #{link_to 'City of Cape Town: Liquor Trading Days and Hours By-law, 2010 as amended', '/za/by-law/cape-town/2010/liquor-trading-days-and-hours/'}
+                %li #{link_to 'City of Cape Town: Parking By-law, 2010', '/za/by-law/cape-town/2010/parking/'}
+                %li #{link_to 'City of Cape Town: Public Parks By-law, 2010', '/za/by-law/cape-town/2010/public-parks/'}
+                %li #{link_to 'City of Cape Town: Water By-law, 2010', '/za/by-law/cape-town/2010/water/'}
+                %li #{link_to 'City of Cape Town: 2010 FIFA World Cup By-law', '/za/by-law/cape-town/2008/2010-fifa-world-cup/'}
+                %li #{link_to 'City of Cape Town: Rates By-law', '/za/by-law/cape-town/2007/rates/'}
+                %li #{link_to 'City of Cape Town: Filming By-law', '/za/by-law/cape-town/2005/filming/'}
