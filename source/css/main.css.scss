@@ -119,6 +119,39 @@ footer.sponsors {
   }
 }
 
+#recent-blog-posts {
+  .date {
+    display: block;
+    float: left;
+
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+
+    background-color: #333;
+    color: white;
+
+    text-align: center;
+
+    .day, .month {
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .day {
+      font-size: 18px;
+    }
+  }
+  .content {
+    margin-left: 70px;
+
+    .more {
+      text-align: right;
+      display: block;
+    }
+  }
+}
+
 @media (max-width: 568px) {
   /* phones */
   .an-container {

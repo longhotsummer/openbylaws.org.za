@@ -16,13 +16,6 @@ $(function() {
     }
   });
 
-  // mailing list form
-  $('form#mailinglist').on('submit', function(event, xhr, status) {
-    $.post($(this).attr('action'), $(this).serializeArray());
-    $(this).replaceWith("<p>Thanks, we'll keep you posted.</p>");
-    return false;
-  });
-
   // search page
   $('form#search').on('submit', function() {
     var query = $('#query').val();
@@ -32,4 +25,30 @@ $(function() {
     // don't actually submit the form
     return false;
   });
+
+  // load recent blog posts
+  (function() {
+    var container = $('#recent-blog-posts');
+
+    if (container.length && tumblr_api_read) {
+      var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+      $.each(tumblr_api_read.posts, function(i, post) {
+        var li = $('#recent-blog-posts li.template').clone();
+
+        var date = new Date(post['unix-timestamp']*1000);
+
+        $('.day', li).text(date.getDate());
+        $('.month', li).text(months[date.getMonth()]);
+
+        $('h4', li).text(post['regular-title']);
+        $('p', li).text(post['regular-body'].slice(0, 200) + "...");
+        $('a', li).attr('href', post['url-with-slug']);
+
+        li.removeClass('hidden');
+        container.append(li);
+        console.log(post);
+      });
+    }
+  })();
 });
