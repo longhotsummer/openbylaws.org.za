@@ -47,7 +47,6 @@ $(function() {
 
         li.removeClass('hidden');
         container.append(li);
-        console.log(post);
       });
     }
   })();
