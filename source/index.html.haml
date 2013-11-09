@@ -34,39 +34,39 @@ title: Open By-laws South Africa
     .action-panels
       .row-fluid
         .span4.panel
-          %h3.text-center
-            %i.icon-share.icon-3x
-          %h3.text-center Share
+          %i.icon-share.icon-5x
+          .action
+            %h3 Share
 
-          %ul.icons-ul
-            %li
-              %i.icon-li.icon-twitter
-              %a(href="https://twitter.com/OpenByLawsZA") @OpenByLawsZA
-          %ul.icons-ul
-            %li
-              %a(href="https://twitter.com/share" class="twitter-share-button" data-url="http://openbylaws.org.za" data-text="South Africa's by-laws freely available, online, easy to read and share" data-via="OpenByLawsZA") Tweet
-              :javascript
-                !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
-
-        .span4.panel
-          %h3.text-center
-            %i.icon-comments.icon-3x
-          %h3.text-center Get Involved
-          %ul.icons-ul
-            %li
-              %i.icon-li.icon-envelope
-              #{link_to 'Join the mailing list', 'https://groups.google.com/forum/#!forum/openbylaws-za'}
-            %li
-              %i.icon-li.icon-github
-              #{link_to 'Help improve the website', 'https://github.com/longhotsummer/openbylaws.org.za'}
+            %ul.icons-ul
+              %li
+                %i.icon-li.icon-twitter
+                %a(href="https://twitter.com/OpenByLawsZA") @OpenByLawsZA
+            %ul.icons-ul
+              %li
+                %a(href="https://twitter.com/share" class="twitter-share-button" data-url="http://openbylaws.org.za" data-text="South Africa's by-laws freely available, online, easy to read and share" data-via="OpenByLawsZA") Tweet
+                :javascript
+                  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
 
         .span4.panel
-          %h3.text-center
-            %i.icon-beaker.icon-3x
-          %h3.text-center Build
+          %i.icon-comments.icon-5x
+          .action
+            %h3 Get Involved
+            %ul.icons-ul
+              %li
+                %i.icon-li.icon-envelope
+                #{link_to 'Join the mailing list', 'https://groups.google.com/forum/#!forum/openbylaws-za'}
+              %li
+                %i.icon-li.icon-github
+                #{link_to 'Help improve the website', 'https://github.com/longhotsummer/openbylaws.org.za'}
 
-          #{link_to 'Download the by-laws', 'https://github.com/longhotsummer/za-by-laws'} and build
-          new tools to explore, share and understand them.
+        .span4.panel
+          %i.icon-beaker.icon-5x
+          .action
+            %h3 Build
+
+            #{link_to 'Download the by-laws', 'https://github.com/longhotsummer/za-by-laws'} and build
+            new tools to explore, share and understand them.
 
     .row-fluid
       .span8

@@ -108,6 +108,14 @@ footer.sponsors {
     background: inherit;
     padding-left: 20px;
     padding-right: 20px;
+
+    &> i[class*="icon-"] {
+      float: left;
+    }
+  }
+
+  .action {
+    margin-left: 90px;
   }
 }
 
