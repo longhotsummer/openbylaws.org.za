@@ -35,7 +35,6 @@ $(function() {
 
       $.each(tumblr_api_read.posts, function(i, post) {
         var li = $('#recent-blog-posts li.template').clone();
-
         var date = new Date(post['unix-timestamp']*1000);
 
         $('.day', li).text(date.getDate());
@@ -46,6 +45,7 @@ $(function() {
         $('a', li).attr('href', post['url-with-slug']);
 
         li.removeClass('hidden');
+        li.removeClass('template');
         container.append(li);
       });
     }
