@@ -28,8 +28,7 @@ module AkomaNtoso
     # Source document for the original enacted version
     attr_accessor :source_enacted
 
-    # Source document for the current version (will match +source_enacted+)
-    # if this act hasn't been amended.
+    # Source document for the current version
     attr_accessor :source_current
 
     # Akoma Ntoso document for the current version of this act.
@@ -49,7 +48,6 @@ module AkomaNtoso
 
       files.source_enacted = SupportFile.find("#{basename}-source-enacted.pdf", act.url_path)
       files.source_current = SupportFile.find("#{basename}-source.pdf", act.url_path)
-      files.source_current = files.source_enacted unless files.source_current
 
       files
     end
