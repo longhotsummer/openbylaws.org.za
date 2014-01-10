@@ -14,16 +14,33 @@ title: South Africa By-laws
         %h3&= data.geo.regions[region].name
 
         - bylaws = bylaws_by_region[region]
-        - bylaws_by_year = bylaws.group_by { |a| a.year }
 
-        - for year in bylaws_by_year.keys.sort.reverse
-          %h4&= year
+        %table.table.table-condensed.table-hover
+          %thead
+            %tr
+              %th Title
+              %th First Published
+          %tbody
+            - for bylaw in bylaws.sort_by { |b| b.short_title }
+              %tr
+                %td
+                  %a{href: act_url(bylaw)}
+                    &= bylaw.short_title
+                %td&= bylaw.year
 
-          %ul
-            - for bylaw in bylaws_by_year[year].sort_by { |b| b.short_title }
-              %li
-                %a{href: act_url(bylaw)}
-                  &= bylaw.short_title
+        - if data.geo.regions[region].missing
+          %h4 Coming soon
+
+          %table.table.table-condensed.table-hover
+            %thead
+              %tr
+                %th Title
+                %th First Published
+            %tbody
+              - for bylaw in data.geo.regions[region].missing.sort_by { |b| b.title }
+                %tr
+                  %td&= bylaw.title
+                  %td&= bylaw.year
 
     .span3
       %h3 More resources
