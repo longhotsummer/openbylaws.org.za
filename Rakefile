@@ -17,7 +17,7 @@ task :pdfs do
     fname = File.basename(f)
 
     dir = File.join("build", "za", "by-law", File.dirname(f).split("/")[-2..-1])
-    g = fname.gsub(/-(source|enacted)/, '')
+    g = fname.gsub(/-(source|enacted|amendment)/, '')
     dir = File.join(dir, "/", g.split('.', 2)[0])
 
     cp f, File.join(dir, fname), verbose: true
