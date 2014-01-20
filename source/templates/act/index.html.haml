@@ -8,6 +8,8 @@ layout: 'act'
 %header
   = partial 'header', locals: {act: act}
   = partial 'breadcrumbs', locals: {act: act, trail: []}
+
+= partial 'notices', locals: {act: act}
 = partial 'nav', locals: {act: act, tab: 'content'}
 
 #content

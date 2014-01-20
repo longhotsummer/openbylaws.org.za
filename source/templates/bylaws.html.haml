@@ -22,6 +22,7 @@ title: South Africa By-laws
               %th First Published
           %tbody
             - for bylaw in bylaws.sort_by { |b| b.short_title }
+              - next if bylaw.repealed?
               %tr
                 %td
                   %a{href: act_url(bylaw)}
@@ -41,6 +42,23 @@ title: South Africa By-laws
                 %tr
                   %td&= bylaw.title
                   %td&= bylaw.year
+
+        %h4 Repealed
+        %table.table.table-condensed.table-hover
+          %thead
+            %tr
+              %th Title
+              %th First Published
+              %th Repealed
+          %tbody
+            - for bylaw in bylaws.sort_by { |b| b.short_title }
+              - next if not bylaw.repealed?
+              %tr
+                %td
+                  %a{href: act_url(bylaw)}
+                    &= bylaw.short_title
+                %td&= bylaw.year
+                %td&= bylaw.repealed_on.year
 
     .span3
       %h3 More resources

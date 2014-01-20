@@ -172,6 +172,37 @@ module AkomaNtoso
       @support_files ||= SupportFileCollection.for_act(self)
     end
 
+    # Has this by-law been repealed?
+    def repealed?
+      !!repealed_on
+    end
+
+    # The date on which this act was repealed, or nil if never repealed
+    def repealed_on
+      repeal_el = repeal
+      repeal_el ? Time.parse(repeal_el['date']) : nil
+    end
+
+    # The element representing the reference that caused the repeal of this
+    # act, or nil
+    def repealed_by
+      repeal_el = repeal
+      return nil unless repeal_el
+
+      source_id = repeal_el['source'].sub(/^#/, '')
+      @meta.at_xpath("./a:references/a:passiveRef[@id='#{source_id}']", a: AkomaNtoso::NS)
+    end
+
+    # The XML element representing the repeal of this act, or nil
+    def repeal
+      # <lifecycle source="#this">
+      #   <eventRef id="e1" date="2010-07-28" source="#original" type="generation"/>
+      #   <eventRef id="e2" date="2012-04-26" source="#amendment-1" type="amendment"/>
+      #   <eventRef id="e3" date="2014-01-17" source="#repeal" type="repeal"/>
+      # </lifecycle>
+      @meta.at_xpath('./a:lifecycle/a:eventRef[@type="repeal"]', a: AkomaNtoso::NS)
+    end
+
     def nature
       "act"
     end
