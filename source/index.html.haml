@@ -17,11 +17,68 @@ title: Open By-laws South Africa
           Freely available. Easy to read and share.
         %p
           %a.btn.btn-primary.btn-large(href='/za/by-law') Browse the By-laws
+        %p
+            
       .span4
         .hidden-phone
           = image_tag '/img/law-icon-lg.png'
 
-  #content
+  #content    
+    .row-fluid          
+      .span6
+        .panel
+          %h3 Updates
+          %dl
+            %dt
+              2014-03-28
+            %dd
+              %ul.unstyled
+                %li #{link_to 'City of Cape Town: Environmental Health By-law', '/za/by-law/cape-town/2003/environmental-health/'}
+          %dl
+            %dt
+              2014-03-17
+            %dd
+              %ul.unstyled
+                %li #{link_to 'City of Cape Town: Treated Effluent By-law', '/za/by-law/cape-town/2010/treated-effluent/'}
+          %dl
+            %dt
+              2014-03-10
+            %dd
+              %ul.unstyled
+                %li #{link_to 'City of Cape Town: Informal Trading By-law, 2009', '/za/by-law/cape-town/2009/informal-trading/'}
+          %dl
+            %dt
+              2014-03-03
+            %dd
+              %ul.unstyled
+                %li #{link_to 'City of Cape Town: Credit Control and Debt Collection By-law (incorporating 2012 Amendment), 2006', '/za/by-law/cape-town/2006/credit-control-debt-collection/'}        
+          %dl
+            %dt
+              2014-02-27
+            %dd
+              %ul.unstyled
+                %li #{link_to 'Stormwater Management By-law, 2005', '/za/by-law/cape-town/2005/stormwater-management/'}
+          %dl
+            %dt
+              2014-02-04
+            %dd
+              %ul.unstyled
+                %li #{link_to 'City of Cape Town: Cemeteries, Crematoria and Funeral Undertakers By-law, 2011', '/za/by-law/cape-town/2011/cemeteries-crematoria-funeral-undertakers/'}      
+
+      .span6
+        .panel
+          %h3 Progress
+          %p
+            We're just getting started and have focused on the
+            #{link_to 'City of Cape Town', '/za/by-law'}.
+            More localities will be added later.
+
+          %h5
+            Cape Town: #{link_to '34 of 36 by-laws completed', '/za/by-law/'}
+          .progress.progress-success
+            -# of 36 total
+            .bar(style='width: 94%')
+
     %p.lead.text-center
       We believe all our legislation should be 
       %strong freely available 
@@ -69,159 +126,16 @@ title: Open By-laws South Africa
             new tools to explore, share and understand them.
 
     .row-fluid
-      .span8
-        .panel
-          %h3 Progress
-          %p
-            We're just getting started and have focused on the
-            #{link_to 'City of Cape Town', '/za/by-law'}.
-            More localities will be added later.
-
-          %h5
-            Cape Town: #{link_to '33 of 36 by-laws completed', '/za/by-law/'}
-          .progress.progress-success
-            -# of 36 total
-            .bar(style='width: 92%')
-
+      .span12
         = partial 'latest_social'
 
-      .span4
-        .panel
-          %h3 Updates
-          %dl
-            %dt
-              2014-03-17
-            %dd
-              %ul.unstyled
-                %li #{link_to 'City of Cape Town: Treated Effluent By-law', '/za/by-law/cape-town/2010/treated-effluent/'}
-          %dl
-            %dt
-              2014-03-10
-            %dd
-              %ul.unstyled
-                %li #{link_to 'City of Cape Town: Informal Trading By-law, 2009', '/za/by-law/cape-town/2009/informal-trading/'}
-          %dl
-            %dt
-              2014-03-03
-            %dd
-              %ul.unstyled
-                %li #{link_to 'City of Cape Town: Credit Control and Debt Collection By-law (incorporating 2012 Amendment), 2006', '/za/by-law/cape-town/2006/credit-control-debt-collection/'}
-          %dl
-            %dt
-              2014-02-27
-            %dd
-              %ul.unstyled
-                %li #{link_to 'Stormwater Management By-law, 2005', '/za/by-law/cape-town/2005/stormwater-management/'}
-          %dl
-            %dt
-              2014-02-04
-            %dd
-              %ul.unstyled
-                %li #{link_to 'City of Cape Town: Cemeteries, Crematoria and Funeral Undertakers By-law, 2011', '/za/by-law/cape-town/2011/cemeteries-crematoria-funeral-undertakers/'}
+            
+    
+      
+    
+    
+      
 
-          %dl
-            %dt
-              2014-01-28
-            %dd
-              %ul.unstyled
-                %li #{link_to 'City of Cape Town: Animal By-law, 2010', '/za/by-law/cape-town/2011/animal'}
-
-          %dl
-            %dt
-              2014-01-20
-            %dd
-              %ul.unstyled
-                %li #{link_to 'Control of Undertakings that Sell Liquor to the public By-law, 2013', '/za/by-law/cape-town/2014/control-undertakings-liquor'}
-                %li Repealed #{link_to 'City of Cape Town: Liquor Trading Days and Hours By-law, 2010 as amended', '/za/by-law/cape-town/2010/liquor-trading-days-and-hours'}
-
-          %dl
-            %dt
-              2014-01-17
-            %dd
-              %ul.unstyled
-                %li #{link_to 'Community Fire Safety By-law', 'za/by-law/cape-town/2002/community-fire-safety/'}
-
-          %dl
-            %dt
-              2014-01-13
-            %dd
-              %ul.unstyled
-                %li #{link_to 'City of Cape Town: Integrated Waste Management By-law, 2009 as amended', '/za/by-law/cape-town/2009/integrated-waste-management/'}
-
-          %dl
-            %dt
-              2013-12-10
-            %dd
-              %ul.unstyled
-                %li #{link_to 'City of Cape Town: Problem Building By-law, 2010', '/za/by-law/cape-town/2010/problem-building/'}
-
-          %dl
-            %dt
-              2013-12-04
-            %dd
-              %ul.unstyled
-                %li #{link_to 'Cape Town Sub-Council By-law, 2003 as amended', '/za/by-law/cape-town/2003/sub-council/'}
-
-          %dl
-            %dt
-              2013-10-30
-            %dd
-              %ul.unstyled
-                %li #{link_to 'Water Services By-Law to Limit or Restrict the Use of Water', '/za/by-law/cape-town/2003/water-services/'}
-                %li #{link_to 'City of Cape Town: Special Rating Area By-law, 2012', 'za/by-law/cape-town/2012/special-rating-area/'}
-
-          %dl
-            %dt
-              2013-10-25
-            %dd
-              %ul.unstyled
-                %li Schedules for the #{link_to 'City of Cape Town: Liquor Trading Days and Hours By-law, 2010 as amended', '/za/by-law/cape-town/2010/liquor-trading-days-and-hours/'}
-          %dl
-            %dt
-              2013-10-15
-            %dd
-              %ul.unstyled
-                %li #{link_to 'By-Law Relating to Streets, Public Places and the Prevention of Noise Nuisances, 2007', '/za/by-law/cape-town/2007/streets-public-places-noise-nuisances/'}
-            %dt
-              2013-10-14
-            %dd
-              %ul.unstyled
-                %li #{link_to 'City of Cape Town: Events By-law', '/za/by-law/cape-town/2009/events/'}
-            %dt
-              2013-10-12
-            %dd
-              %ul.unstyled
-                %li All by-laws are now print-friendly
-                %li #{link_to 'Tariff By-law', '/za/by-law/cape-town/2007/tariff/'}
-            %dt
-              2013-10-11
-            %dd
-              %ul.unstyled
-                %li #{link_to 'City of Cape Town: Traffic By-law, 2011', '/za/by-law/cape-town/2011/traffic/'}
-            %dt
-              2013-10-10
-            %dd
-              %ul.unstyled
-                %li #{link_to 'Wastewater and Industrial Effluent By-law', '/za/by-law/cape-town/2006/wastewater-industrial-effluent/'}
-            %dt
-              2013-10-08
-            %dd
-              %ul.unstyled
-                %li #{link_to 'By-law Relating to the Managament and Administration of the City of Cape Town\'s Immovable Property', '/za/by-law/cape-town/2003/immovable-property/'}
-            %dt
-              2013-10-07
-            %dd
-              %ul.unstyled
-                %li #{link_to 'City of Cape Town: Air Quality Management By-law, 2010', '/za/by-law/cape-town/2010/air-quality-management/'}
-                %li #{link_to 'City of Cape Town: Electricity Supply By-law, 2010', '/za/by-law/cape-town/2010/electricity-supply/'}
-                %li #{link_to 'City of Cape Town: Graffiti By-law, 2010', '/za/by-law/cape-town/2010/graffiti/'}
-                %li #{link_to 'City of Cape Town: Liquor Trading Days and Hours By-law, 2010 as amended', '/za/by-law/cape-town/2010/liquor-trading-days-and-hours/'}
-                %li #{link_to 'City of Cape Town: Parking By-law, 2010', '/za/by-law/cape-town/2010/parking/'}
-                %li #{link_to 'City of Cape Town: Public Parks By-law, 2010', '/za/by-law/cape-town/2010/public-parks/'}
-                %li #{link_to 'City of Cape Town: Water By-law, 2010', '/za/by-law/cape-town/2010/water/'}
-                %li #{link_to 'City of Cape Town: 2010 FIFA World Cup By-law', '/za/by-law/cape-town/2008/2010-fifa-world-cup/'}
-                %li #{link_to 'City of Cape Town: Rates By-law', '/za/by-law/cape-town/2007/rates/'}
-                %li #{link_to 'City of Cape Town: Filming By-law', '/za/by-law/cape-town/2005/filming/'}
-
+  
 %footer.sponsors.text-center
   = partial 'partner_logos'
