@@ -33,11 +33,22 @@ class Nokogiri::XML::Node
   # Get a nodeset of child elements of this node which should show
   # up in the table of contents
   def toc_children
-    xpath('a:part | a:chapter | a:section', a: AkomaNtoso::NS)
+    if in_schedules?
+      # in schedules, we only care about chapters that have numbers in them, because we
+      # can't link to them otherwise
+      xpath('a:chapter[a:num]', a: AkomaNtoso::NS)
+    else
+      xpath('a:part | a:chapter | a:section', a: AkomaNtoso::NS)
+    end
   end
 
   # Does this element hold children for the table of contents?
   def toc_container?
     !toc_children.empty?
+  end
+
+  # Is this element part of a schedule document?
+  def in_schedules?
+    not ancestors('doc[name="schedules"]').empty?
   end
 end

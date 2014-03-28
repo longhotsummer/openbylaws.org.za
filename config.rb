@@ -55,6 +55,7 @@ def pages_for(act)
   # schedules
   if schedules = act.schedules
     proxy "#{path}/schedules/index.html", "/templates/act/fragment.html", :locals => { :act => act, fragment: schedules }, :ignore => true
+    subpages_for(act, act.schedules)
   end
 end
 

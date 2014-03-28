@@ -22,17 +22,19 @@ class ActHelpers < Middleman::Extension
     case child
     when nil
     when Nokogiri::XML::Node
+      chapter_name = child.in_schedules? ? 'schedule' : 'chapter'
+
       case child.name
       when "section"
         parts << "/section/#{child.num}/"
       when "part"
         # some parts are only unique within their chapter
-        parts << "/chapter/#{child.parent.num}" if child.parent.name == "chapter"
+        parts << "/#{chapter_name}/#{child.parent.num}" if child.parent.name == "chapter"
         parts << "/part/#{child.num}/"
       when "chapter"
         # some chapters are only unique within their parts
         parts << "/part/#{child.parent.num}" if child.parent.name == "part"
-        parts << "/chapter/#{child.num}/"
+        parts << "/#{chapter_name}/#{child.num}/"
       end
 
       # TODO: subsection
@@ -119,7 +121,10 @@ class ActHelpers < Middleman::Extension
     def toc_title(child)
       case child.name
       when "chapter"
-        "Chapter #{child.num} - #{child.heading}"
+        title = child.in_schedules? ? "Schedule" : "Chapter"
+        title << ' ' + child.num
+        title << ' - ' + child.heading if child.heading
+        title
       when "part"
         "Part #{child.num} - #{child.heading}"
       when "section"

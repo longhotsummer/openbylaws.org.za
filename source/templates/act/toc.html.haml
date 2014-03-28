@@ -6,3 +6,6 @@
   - if act.schedules
     %li.schedules
       %a{href: act_url(act, "schedules/")} Schedules
+      - if act.schedules.toc_container?
+        %ol
+          = partial 'toc_container', locals: {act: act, items: act.schedules.toc_children}
