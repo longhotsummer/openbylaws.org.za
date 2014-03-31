@@ -23,82 +23,81 @@ title: Open By-laws South Africa
         .hidden-phone
           = image_tag '/img/law-icon-lg.png'
 
-  #content
+  .row-fluid
+    .span6
+      .panel
+        %h3 Recently added
+        %ul.unstyled
+          %li #{link_to 'City of Cape Town: Environmental Health By-law', '/za/by-law/cape-town/2003/environmental-health/'}
+          %li #{link_to 'City of Cape Town: Treated Effluent By-law', '/za/by-law/cape-town/2010/treated-effluent/'}
+          %li #{link_to 'City of Cape Town: Informal Trading By-law, 2009', '/za/by-law/cape-town/2009/informal-trading/'}
+          %li #{link_to 'City of Cape Town: Credit Control and Debt Collection By-law (incorporating 2012 Amendment), 2006', '/za/by-law/cape-town/2006/credit-control-debt-collection/'}
+          %li #{link_to 'Stormwater Management By-law, 2005', '/za/by-law/cape-town/2005/stormwater-management/'}
+          %li #{link_to 'City of Cape Town: Cemeteries, Crematoria and Funeral Undertakers By-law, 2011', '/za/by-law/cape-town/2011/cemeteries-crematoria-funeral-undertakers/'}
+
+    .span6
+      .panel
+        %h3 Progress
+        %p
+          We're just getting started and have focused on the
+          #{link_to 'City of Cape Town', '/za/by-law'}.
+          More localities will be added later.
+
+        %h5
+          Cape Town: #{link_to '34 of 36 by-laws completed', '/za/by-law/'}
+        .progress.progress-success
+          -# of 36 total
+          .bar(style='width: 94%')
+
+  %p.lead.text-center
+    We believe all our legislation should be 
+    %strong freely available 
+    and
+    %strong easy to read
+    and
+    %strong share.
+    #{link_to 'Find out more', "/about.html"}.
+
+  .action-panels
     .row-fluid
-      .span6
-        .panel
-          %h3 Recently added
-          %ul.unstyled
-            %li #{link_to 'City of Cape Town: Environmental Health By-law', '/za/by-law/cape-town/2003/environmental-health/'}
-            %li #{link_to 'City of Cape Town: Treated Effluent By-law', '/za/by-law/cape-town/2010/treated-effluent/'}
-            %li #{link_to 'City of Cape Town: Informal Trading By-law, 2009', '/za/by-law/cape-town/2009/informal-trading/'}
-            %li #{link_to 'City of Cape Town: Credit Control and Debt Collection By-law (incorporating 2012 Amendment), 2006', '/za/by-law/cape-town/2006/credit-control-debt-collection/'}
-            %li #{link_to 'Stormwater Management By-law, 2005', '/za/by-law/cape-town/2005/stormwater-management/'}
-            %li #{link_to 'City of Cape Town: Cemeteries, Crematoria and Funeral Undertakers By-law, 2011', '/za/by-law/cape-town/2011/cemeteries-crematoria-funeral-undertakers/'}
+      .span4.panel
+        %i.icon-share.icon-5x
+        .action
+          %h3 Share
 
-      .span6
-        .panel
-          %h3 Progress
-          %p
-            We're just getting started and have focused on the
-            #{link_to 'City of Cape Town', '/za/by-law'}.
-            More localities will be added later.
+          %ul.icons-ul
+            %li
+              %i.icon-li.icon-twitter
+              %a(href="https://twitter.com/OpenByLawsZA") @OpenByLawsZA
+          %ul.icons-ul
+            %li
+              %a(href="https://twitter.com/share" class="twitter-share-button" data-url="http://openbylaws.org.za" data-text="South Africa's by-laws freely available, online, easy to read and share" data-via="OpenByLawsZA") Tweet
+              :javascript
+                !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
 
-          %h5
-            Cape Town: #{link_to '34 of 36 by-laws completed', '/za/by-law/'}
-          .progress.progress-success
-            -# of 36 total
-            .bar(style='width: 94%')
+      .span4.panel
+        %i.icon-comments.icon-5x
+        .action
+          %h3 Get Involved
+          %ul.icons-ul
+            %li
+              %i.icon-li.icon-envelope
+              #{link_to 'Join the mailing list', 'https://groups.google.com/forum/#!forum/openbylaws-za'}
+            %li
+              %i.icon-li.icon-github
+              #{link_to 'Help improve the website', 'https://github.com/longhotsummer/openbylaws.org.za'}
 
-    %p.lead.text-center
-      We believe all our legislation should be 
-      %strong freely available 
-      and
-      %strong easy to read
-      and
-      %strong share.
-      #{link_to 'Find out more', "/about.html"}.
+      .span4.panel
+        %i.icon-beaker.icon-5x
+        .action
+          %h3 Build
 
-    .action-panels
-      .row-fluid
-        .span4.panel
-          %i.icon-share.icon-5x
-          .action
-            %h3 Share
+          #{link_to 'Download the by-laws', 'https://github.com/longhotsummer/za-by-laws'} and build
+          new tools to explore, share and understand them.
 
-            %ul.icons-ul
-              %li
-                %i.icon-li.icon-twitter
-                %a(href="https://twitter.com/OpenByLawsZA") @OpenByLawsZA
-            %ul.icons-ul
-              %li
-                %a(href="https://twitter.com/share" class="twitter-share-button" data-url="http://openbylaws.org.za" data-text="South Africa's by-laws freely available, online, easy to read and share" data-via="OpenByLawsZA") Tweet
-                :javascript
-                  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
-
-        .span4.panel
-          %i.icon-comments.icon-5x
-          .action
-            %h3 Get Involved
-            %ul.icons-ul
-              %li
-                %i.icon-li.icon-envelope
-                #{link_to 'Join the mailing list', 'https://groups.google.com/forum/#!forum/openbylaws-za'}
-              %li
-                %i.icon-li.icon-github
-                #{link_to 'Help improve the website', 'https://github.com/longhotsummer/openbylaws.org.za'}
-
-        .span4.panel
-          %i.icon-beaker.icon-5x
-          .action
-            %h3 Build
-
-            #{link_to 'Download the by-laws', 'https://github.com/longhotsummer/za-by-laws'} and build
-            new tools to explore, share and understand them.
-
-    .row-fluid
-      .span12
-        = partial 'latest_social'
+  .row-fluid
+    .span12
+      = partial 'latest_social'
 
 %footer.sponsors.text-center
   = partial 'partner_logos'
