@@ -47,6 +47,25 @@ class Nokogiri::XML::Node
     !toc_children.empty?
   end
 
+  # Title for this element in the table of contents
+  def toc_title
+    case name
+    when "chapter"
+      title = in_schedules? ? "Schedule" : "Chapter"
+      title << ' ' + num
+      title << ' - ' + heading if heading
+      title
+    when "part"
+      "Part #{num} - #{heading}"
+    when "section"
+      if heading.empty?
+        "Section #{num}" 
+      else
+        "#{num}. #{heading}"
+      end
+    end        
+  end
+
   # Is this element part of a schedule document?
   def in_schedules?
     not ancestors('doc[name="schedules"]').empty?

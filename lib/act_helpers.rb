@@ -117,24 +117,6 @@ class ActHelpers < Middleman::Extension
 
       trail
     end
-
-    def toc_title(child)
-      case child.name
-      when "chapter"
-        title = child.in_schedules? ? "Schedule" : "Chapter"
-        title << ' ' + child.num
-        title << ' - ' + child.heading if child.heading
-        title
-      when "part"
-        "Part #{child.num} - #{child.heading}"
-      when "section"
-        if child.heading.empty?
-          "Section #{child.num}." 
-        else
-          "#{child.num}. #{child.heading}"
-        end
-      end        
-    end
   end
 end
 
