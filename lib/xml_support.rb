@@ -60,8 +60,10 @@ class Nokogiri::XML::Node
     when "section"
       if heading.empty?
         "Section #{num}" 
-      else
+      elsif num
         "#{num}. #{heading}"
+      else
+        heading
       end
     end        
   end

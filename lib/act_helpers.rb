@@ -23,18 +23,28 @@ class ActHelpers < Middleman::Extension
     when nil
     when Nokogiri::XML::Node
       chapter_name = child.in_schedules? ? 'schedule' : 'chapter'
+      num = child.num
+
+      # some sections don't have numbers :(
+      if !num
+        if child == act.definitions
+          num = 'definitions'
+        else
+          num = child.heading.downcase
+        end
+      end
 
       case child.name
       when "section"
-        parts << "/section/#{child.num}/"
+        parts << "/section/#{num}/"
       when "part"
         # some parts are only unique within their chapter
         parts << "/#{chapter_name}/#{child.parent.num}" if child.parent.name == "chapter"
-        parts << "/part/#{child.num}/"
+        parts << "/part/#{num}/"
       when "chapter"
         # some chapters are only unique within their parts
         parts << "/part/#{child.parent.num}" if child.parent.name == "part"
-        parts << "/#{chapter_name}/#{child.num}/"
+        parts << "/#{chapter_name}/#{num}/"
       end
 
       # TODO: subsection
