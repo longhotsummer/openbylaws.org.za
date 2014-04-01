@@ -108,7 +108,7 @@ class ActHelpers < Middleman::Extension
 
     def breadcrumbs_for_fragment(fragment)
       trail = []
-
+  
       if %(chapter part).include?(fragment.parent.name)
         trail << fragment.parent
       end
@@ -128,8 +128,16 @@ class ActHelpers < Middleman::Extension
       when "part"
         "Part #{child.num} - #{child.heading}"
       when "section"
-        "#{child.num}. #{child.heading}"
-      end
+        if child.heading.empty?
+          "Section " + child.num 
+        else
+          "#{child.num}. #{child.heading}"
+        end
+    end  
+
+      #when "section"
+      #  "#{child.num}. #{child.heading}"
+      #end
     end
   end
 end
