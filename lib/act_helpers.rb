@@ -131,13 +131,9 @@ class ActHelpers < Middleman::Extension
         if child.heading.empty?
           "Section #{child.num}." 
         else
-          "Section #{child.num}: #{child.heading}."
+          "#{child.num}. #{child.heading}"
         end
-    end  
-
-      #when "section"
-      #  "#{child.num}. #{child.heading}"
-      #end
+      end        
     end
   end
 end
