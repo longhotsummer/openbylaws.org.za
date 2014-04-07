@@ -58,7 +58,7 @@ class Nokogiri::XML::Node
     when "part"
       "Part #{num} - #{heading}"
     when "section"
-      if !heading
+      if not heading or heading.empty?
         "Section #{num}" 
       elsif num
         "#{num}. #{heading}"
