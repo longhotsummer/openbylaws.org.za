@@ -2,12 +2,14 @@ require 'nokogiri'
 
 require 'xml_support'
 require 'support_files'
+require 'lifecyle_event'
+
+require 'namespace'
 
 module AkomaNtoso
-  NS = "http://www.akomantoso.org/2.0"
-
   # Wraps an AkomaNtoso XML document describing an Act.
   class Act
+    include AkomaNtoso::Namespace
 
     # Allow us to jump from the XML document for an act to the
     # Act instance itself
@@ -93,6 +95,13 @@ module AkomaNtoso
     # Has this act been amended?
     def amended?
       @doc.at_xpath('/a:akomaNtoso/a:act', a: NS)['contains'] != 'originalVersion'
+    end
+
+    # a list of LifecycleEvent objects for amendment events, in date order
+    def amendment_events
+      @meta.xpath('./a:lifecycle/a:eventRef[@type="amendment"]', a: NS).map do |event|
+        LifecycleEvent.new(event)
+      end.sort_by { |e| e.date }
     end
 
     # Does this Act have parts?
