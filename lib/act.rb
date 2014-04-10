@@ -41,6 +41,16 @@ module AkomaNtoso
       @@acts[node.document]
     end
 
+    # Try to find an act who's FRBRuri matches this one,
+    # returning nil on failure
+    def self.from_uri(uri)
+      @@acts.each do |key, act|
+        return act if act.id_uri == uri
+      end
+
+      nil
+    end
+
     # Create a new instance
     def initialize
     end
