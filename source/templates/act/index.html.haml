@@ -33,8 +33,6 @@ layout: 'act'
               &= act.publication['number']
               on
               &= act.publication['date']
-
-
          
           - for amendment in act.amendment_events
             %h4.published
@@ -45,10 +43,7 @@ layout: 'act'
                 &= amendment.source['showAs']               
               on
               &= amendment.date  
-
-                        
-              
-              
+                    
         = act_to_html(act)
 
 = partial 'definitions', locals: {act: act}
