@@ -34,10 +34,21 @@ layout: 'act'
               on
               &= act.publication['date']
 
-          - for event in act.amendment_events
-            - amendment = AkomaNtoso::Act.from_uri(event.source['href'])
-            &= amendment
 
+         
+          - for amendment in act.amendment_events
+            %h4.published
+              Amended by
+              - if AkomaNtoso::Act.from_uri(amendment.source['href'])
+                %a{href: amendment.source['href']}&= amendment.source['showAs']
+              - else 
+                &= amendment.source['showAs']               
+              on
+              &= amendment.date  
+
+                        
+              
+              
         = act_to_html(act)
 
 = partial 'definitions', locals: {act: act}
