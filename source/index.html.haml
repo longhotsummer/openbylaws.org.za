@@ -20,8 +20,12 @@ title: Open By-laws South Africa
         %p
             
       .span4
-        .hidden-phone
-          = image_tag '/img/law-icon-lg.png'
+        %h2
+          Search The By-laws
+        %p  
+          %form(action="/search.html" method="get")
+            %input.search-query(type="text" name="q" class="input-large" placeholder="eg: animals")
+            
 
   .row-fluid
     .span6
@@ -38,16 +42,20 @@ title: Open By-laws South Africa
     .span6
       .panel
         %h3 Progress
+        .row-fluid
         %p
           We're just getting started and have focused on the
           #{link_to 'City of Cape Town', '/za/by-law'}.
-          More localities will be added later.
-
+          More localities will be added later 
         %h5
           Cape Town: #{link_to '34 of 36 by-laws completed', '/za/by-law/'}
         .progress.progress-success
           -# of 36 total
           .bar(style='width: 94%')
+      
+          
+            
+               
 
   %p.lead.text-center
     We believe all our legislation should be 
