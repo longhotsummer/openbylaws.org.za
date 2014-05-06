@@ -22,8 +22,8 @@
   - trail.each_with_index do |item, i|
     %li
       - if i == trail.size-1
-        &= item.heading
+        &= item.toc_title
       - else
         %a{href: act_url(act, item)}
-          &= item.heading
+          &= item.toc_title
         &#9656;
