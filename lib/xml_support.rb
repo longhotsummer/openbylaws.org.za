@@ -30,6 +30,9 @@ class Nokogiri::XML::Node
     xpath('./a:part', a: AkomaNtoso::NS)
   end
 
+  #def mainbody
+   # xpath('./a:mainBody', a: AkomaNtoso::NS)
+
   # Get a nodeset of child elements of this node which should show
   # up in the table of contents
   def toc_children
@@ -50,8 +53,10 @@ class Nokogiri::XML::Node
   # Title for this element in the table of contents
   def toc_title
     case name
+    when "mainBody"
+      "Schedules"
     when "chapter"
-      title = in_schedules? ? "Schedule" : "Chapter"
+      title = in_schedules? ? "Schedule" : "Chapter" 
       title << ' ' + num
       title << ' - ' + heading if heading
       title

@@ -20,10 +20,10 @@
       &#9656;
 
   - trail.each_with_index do |item, i|
-    %li
-      - if i == trail.size-1
-        &= item.toc_title
+    %li   
+      - if i == trail.size-1        
+        &= item.toc_title        
       - else
         %a{href: act_url(act, item)}
           &= item.toc_title
-        &#9656;
+      &#9656;
