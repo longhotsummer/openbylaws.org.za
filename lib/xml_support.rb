@@ -30,9 +30,6 @@ class Nokogiri::XML::Node
     xpath('./a:part', a: AkomaNtoso::NS)
   end
 
-  #def mainbody
-   # xpath('./a:mainBody', a: AkomaNtoso::NS)
-
   # Get a nodeset of child elements of this node which should show
   # up in the table of contents
   def toc_children
