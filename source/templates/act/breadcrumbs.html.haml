@@ -10,13 +10,13 @@
     %li
       %a(href="/za/act/") Acts
       &#9656;
-    %li
-      - if trail.empty?
+  %li
+    - if trail.empty?
+      &= breadcrumb_heading(act)  
+    - else
+      %a{href: act_url(act)}
         &= breadcrumb_heading(act)
-      - else
-        %a{href: act_url(act)}
-          &= breadcrumb_heading(act)
-        &#9656;
+      &#9656;    
 
   - trail.each_with_index do |item, i|
     %li   
