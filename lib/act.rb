@@ -138,7 +138,7 @@ module AkomaNtoso
     # The XML node representing the definitions section
     def definitions
       # try looking for the definition list
-      defn = @body.at_css('list#definitions')
+      defn = @body.at_css('#definitions')
       return defn.parent if defn
 
       # try looking for the heading
@@ -163,16 +163,7 @@ module AkomaNtoso
         # <TLCTerm id="term-affected_land" href="/ontology/term/this.eng.affected_land" showAs="affected land"/>
 
         # find the point with id 'def-term-foo'
-        defn = @body.at_xpath(".//a:point[@id='def-#{node['id']}']", a: NS)
-
-        # try find the def itself, then find the wrapping list > point node
-        unless defn
-          defn = @body.at_xpath(".//a:def[@refersTo='##{node['id']}']", a: NS)
-          while defn NSdefn.parent.name != 'list'
-            defn = defn.parent
-          end
-        end
-
+        defn = @body.at_xpath(".//*[@id='def-#{node['id']}']", a: NS)
         next unless defn
 
         terms[node['id']] = [node['showAs'], defn]
