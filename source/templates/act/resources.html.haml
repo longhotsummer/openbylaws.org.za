@@ -50,9 +50,10 @@
               amendments applied.
 
       .span4.offset2
-        %h3&= data.geo.regions[act.region].name
+        - region = data.geo.regions[act.region]
+        %h3&= region.name
         %p
-          %a{href: data.geo.regions['cape-town']['bylaws-url']}
-            %img{src: data.geo.regions['cape-town'].logo, width: "160", height: "120"}
+          %a{href: region['bylaws-url']}
+            %img{src: region.logo}
         %p
-          = link_to 'City of Cape Town By-laws Website', data.geo.regions['cape-town']['bylaws-url']
+          = link_to "#{region.name} By-laws Website", region['bylaws-url']
