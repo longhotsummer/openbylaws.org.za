@@ -56,4 +56,4 @@
           %a{href: region['bylaws-url']}
             %img{src: region.logo}
         %p
-          = link_to "#{region.name} By-laws Website", region['bylaws-url']
+          %a{href: region['bylaws-url']}&= "#{region.name} By-laws Website"
