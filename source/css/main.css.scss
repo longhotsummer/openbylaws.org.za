@@ -119,6 +119,17 @@ footer.sponsors {
   }
 }
 
+.regions {
+  .region {
+    li a {
+      display: block;
+      overflow-x: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
 #recent-blog-posts {
   .date {
     display: block;
