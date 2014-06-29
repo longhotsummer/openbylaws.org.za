@@ -9,59 +9,22 @@ title: South Africa By-laws
 #content
   .row-fluid
     .span9
-      - bylaws_by_region = bylaws.group_by { |a| a.region }
-      - for region in bylaws_by_region.keys.sort_by { |r| data.geo.regions[r].name }
-        %h3&= data.geo.regions[region].name
+      .row-fluid.regions
+        - for code, region in data.geo.regions.entries.sort_by { |c, r| r.name }
+          .region.span6
+            %a(href="/za/by-law/#{code}/")
+              %h3&= region.name
 
-        - bylaws = bylaws_by_region[region]
+            %h5 Recent updates
+            - region_bylaws = bylaws.select { |b| b.region == code }
+            %ul.unstyled
+              - for bylaw in region_bylaws.sort_by { |b| b.manifestation_date }.reverse[0..3]
+                %li
+                  %a{href: act_url(bylaw)}&= bylaw.short_title
 
-        %table.table.table-condensed.table-hover
-          %thead
-            %tr
-              %th Title
-              %th First Published
-          %tbody
-            - for bylaw in bylaws.sort_by { |b| b.short_title }
-              - next if bylaw.repealed?
-              %tr
-                %td
-                  %a{href: act_url(bylaw)}
-                    &= bylaw.short_title
-                %td&= bylaw.year
-
-        - if data.geo.regions[region].missing
-          %h4 Coming soon
-
-          %table.table.table-condensed.table-hover
-            %thead
-              %tr
-                %th Title
-                %th First Published
-            %tbody
-              - for bylaw in data.geo.regions[region].missing.sort_by { |b| b.title }
-                %tr
-                  %td&= bylaw.title
-                  %td&= bylaw.year
-
-        %h4 Repealed
-        %table.table.table-condensed.table-hover
-          %thead
-            %tr
-              %th Title
-              %th First Published
-              %th Repealed
-          %tbody
-            - for bylaw in bylaws.sort_by { |b| b.short_title }
-              - next if not bylaw.repealed?
-              %tr
-                %td
-                  %a{href: act_url(bylaw)}
-                    &= bylaw.short_title
-                %td&= bylaw.year
-                %td&= bylaw.repealed_on.year
 
     .span3
-      %h3 More resources
+      %h3 All By-laws
 
       %p
         %a.btn(href="https://github.com/longhotsummer/za-by-laws")
@@ -71,9 +34,3 @@ title: South Africa By-laws
         %a.btn(href="https://github.com/longhotsummer/za-by-laws/archive/master.zip")
           %i.icon-download
           Download ZIP
-
-      %p
-        %a{href: data.geo.regions['cape-town']['bylaws-url']}
-          %img{src: data.geo.regions['cape-town'].logo, width: "160", height: "120"}
-      %p
-        = link_to 'City of Cape Town By-laws Website', data.geo.regions['cape-town']['bylaws-url']

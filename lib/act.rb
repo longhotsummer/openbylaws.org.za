@@ -213,6 +213,11 @@ module AkomaNtoso
       @meta.at_xpath('./a:lifecycle/a:eventRef[@type="repeal"]', a: AkomaNtoso::NS)
     end
 
+    def manifestation_date
+      node = @meta.at_xpath('./a:identification/a:FRBRManifestation/a:FRBRDate[@name="Generation"]', a: AkomaNtoso::NS)
+      node && node['date']
+    end
+
     def nature
       "act"
     end
