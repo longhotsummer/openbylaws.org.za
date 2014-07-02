@@ -9,11 +9,11 @@
 = partial 'nav', locals: {act: act, tab: 'content'}
 
 #content
-  .row-fluid
-    .span4
+  .row
+    .col-sm-4
       %aside.toc
         = partial 'toc', locals: {act: act}
-    .span8
+    .col-sm-8
       %article.an-container
         = fragment_to_html(fragment)
 

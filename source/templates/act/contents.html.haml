@@ -9,7 +9,5 @@
 = partial 'nav', locals: {act: act, tab: 'toc'}
 
 #content
-  .row-fluid
-    .span12
-      %article.toc
-        = partial 'toc', locals: {act: act}
+  %article.toc
+    = partial 'toc', locals: {act: act}

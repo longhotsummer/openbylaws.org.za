@@ -10,8 +10,8 @@ layout: 'layout'
   %h1&= region.name
 
 #content
-  .row-fluid
-    .span9
+  .row
+    .col-sm-9
       %h3 By-laws
       %table.table.table-condensed.table-hover
         %thead
@@ -59,7 +59,7 @@ layout: 'layout'
                 %td&= bylaw.year
                 %td&= bylaw.repealed_on.year
 
-    .span3
+    .col-sm-3
       %h3 More resources
 
       %p
