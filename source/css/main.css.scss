@@ -21,7 +21,7 @@ body {
 #footer {
   background-color: #eee;
   border-top: 1px solid #ccc;
-  padding: 10px 20px;
+  padding: 10px 15px;
 
   color: #777;
 
@@ -47,7 +47,7 @@ body {
 }
 
 footer.sponsors {
-  padding: 10px 20px;
+  padding: 10px 15px;
 }
 
 #main {
@@ -55,7 +55,7 @@ footer.sponsors {
 
   header {
     background-color: #eee;
-    padding: 5px 20px;
+    padding: 5px 15px;
     border-bottom: 1px solid #ccc;
 
     h1 {
@@ -74,12 +74,9 @@ footer.sponsors {
 
   article.static {
     margin-top: 20px;
+    margin-left: 15px;
+    margin-right: 15px;
   }
-}
-
-#content {
-  margin-left: 20px;
-  margin-right: 20px;
 }
 
 .downloads {
@@ -97,26 +94,20 @@ footer.sponsors {
   }
 }
 
-.panel {
-  background: whitesmoke;
-  padding: 10px;
-  border-radius: 6px;
-  margin-bottom: 20px;
-
-  h3 {
-    margin-top: 0px;
-  }
-}
-
-.action-panels {
-  .panel {
+.action-blocks {
+  .action-block {
     background: inherit;
     padding-left: 20px;
     padding-right: 20px;
+    margin-bottom: 30px;
 
     &> i[class*="icon-"] {
       float: left;
     }
+  }
+
+  h3 {
+    margin-top: 0px;
   }
 
   .action {
@@ -126,17 +117,13 @@ footer.sponsors {
 
 .regions {
   .region {
-    margin-top: 20px;
+    margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 10px 10px;
 
     h3 {
       margin-top: 0px;
-    }
-
-    h5 {
-      _margin-bottom: 0px;
     }
 
     ul {
@@ -153,23 +140,17 @@ footer.sponsors {
 }
 
 .jumbotron {
-  padding: 10px 30px;
-
-  &.welcome {
-    padding-bottom: 30px;
-  }
-
   .lead {
     margin-bottom: 0px;
   }
-}
 
-#main-page {
-  .regions {
-    .region {
-      margin-top: 0px;
-      margin-bottom: 20px;
-    }
+  &.welcome {
+    padding: 10px 30px 30px;
+  }
+
+  &.belief {
+    padding: 10px 30px;
+    margin: 10px 0px 30px;
   }
 }
 

@@ -6,7 +6,7 @@ title: Open By-laws South Africa
   %meta(name="description"    content="South Africa's By-laws: online, freely available and easy to read and share.")
   %meta(name="og:description" content="South Africa's By-laws: online, freely available and easy to read and share.")
 
-%article.static#main-page
+%article#main-page
   .jumbotron.welcome
     .row
       .col-sm-8
@@ -24,7 +24,7 @@ title: Open By-laws South Africa
 
   = partial 'templates/region_list.html.haml', locals: {bylaws: all_bylaws}
 
-  .jumbotron
+  .jumbotron.belief
     %p.lead.text-center
       We believe all our legislation should be 
       %strong freely available 
@@ -34,9 +34,9 @@ title: Open By-laws South Africa
       %strong share.
       #{link_to 'Find out more', "/about.html"}.
 
-  .action-panels
+  .action-blocks
     .row
-      .col-sm-4.panel
+      .col-sm-4.action-block
         %i.icon-share.icon-5x
         .action
           %h3 Share
@@ -51,7 +51,7 @@ title: Open By-laws South Africa
               :javascript
                 !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
 
-      .col-sm-4.panel
+      .col-sm-4.action-block
         %i.icon-comments.icon-5x
         .action
           %h3 Get Involved
@@ -63,7 +63,7 @@ title: Open By-laws South Africa
               %i.icon-li.icon-github
               #{link_to 'Help improve the website', 'https://github.com/longhotsummer/openbylaws.org.za'}
 
-      .col-sm-4.panel
+      .col-sm-4.action-block
         %i.icon-beaker.icon-5x
         .action
           %h3 Build
