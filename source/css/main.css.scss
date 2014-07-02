@@ -148,8 +148,12 @@ footer.sponsors {
   }
 }
 
-.hero-unit {
+.jumbotron {
   padding: 10px 30px;
+
+  &.welcome {
+    padding-bottom: 30px;
+  }
 
   .lead {
     margin-bottom: 0px;
