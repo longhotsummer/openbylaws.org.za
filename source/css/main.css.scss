@@ -129,13 +129,17 @@ footer.sponsors {
     margin-top: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    padding: 0px 10px;
+    padding: 10px 10px;
 
     h3 {
       margin-top: 0px;
     }
 
     h5 {
+      _margin-bottom: 0px;
+    }
+
+    ul {
       margin-bottom: 0px;
     }
 
