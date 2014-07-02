@@ -14,6 +14,10 @@ class ActHelpers < Middleman::Extension
     @@xslt
   end
 
+  def self.all_bylaws
+    AkomaNtoso::ByLaw.discover("../za-by-laws/by-laws")
+  end
+
   # Generate a url for part an act, or a part
   # of an act (section, subsection, chapter, part, etc.)
   def self.act_url(act, child=nil, opts={})
@@ -126,6 +130,10 @@ class ActHelpers < Middleman::Extension
       trail << fragment
 
       trail
+    end
+
+    def all_bylaws
+      ActHelpers.all_bylaws
     end
   end
 end

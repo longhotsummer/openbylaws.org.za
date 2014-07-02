@@ -143,6 +143,23 @@ footer.sponsors {
   }
 }
 
+.hero-unit {
+  padding: 10px 30px;
+
+  .lead {
+    margin-bottom: 0px;
+  }
+}
+
+#main-page {
+  .regions {
+    .region {
+      margin-top: 0px;
+      margin-bottom: 20px;
+    }
+  }
+}
+
 #recent-blog-posts {
   .date {
     display: block;
