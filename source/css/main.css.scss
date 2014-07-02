@@ -3,10 +3,6 @@
 @import 'act';
 @import 'toc';
 
-body {
-  font-size: 14px;
-}
-
 .navbar {
   margin-bottom: 0px;
   border-radius: 0px;
@@ -151,6 +147,14 @@ footer.sponsors {
   &.belief {
     padding: 10px 30px;
     margin: 10px 0px 30px;
+  }
+}
+
+#bylaws-page {
+  .resources {
+    &>h1, &>h2, &>h3 {
+      margin-top: 0px;
+    }
   }
 }
 
