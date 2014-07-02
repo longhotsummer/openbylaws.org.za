@@ -5,9 +5,12 @@ title: Search - Open By-laws South Africa
 %article.static
   %h2 Search By-laws
 
-  %form.form-inline#search(action="/search.html" method="get")
-    %input.input-xxlarge#query(type="text" name="q" autofocus="autofocus")
-    %button.btn.btn-primary(type="submit") Search
+  %form#search(action="/search.html" method="get")
+    .form-group
+      .col-xs-8
+        %input.form-control#query(type="text" name="q" autofocus="autofocus")
+      .col-xs-4
+        %button.btn.btn-primary(type="submit") Search
 
   :javascript
     (function() {
