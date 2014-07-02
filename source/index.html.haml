@@ -6,7 +6,7 @@ title: Open By-laws South Africa
   %meta(name="description"    content="South Africa's By-laws: online, freely available and easy to read and share.")
   %meta(name="og:description" content="South Africa's By-laws: online, freely available and easy to read and share.")
 
-%article.static
+%article.static#main-page
   .hero-unit
     .row-fluid
       .span8
@@ -15,56 +15,24 @@ title: Open By-laws South Africa
 
         %p.lead
           Freely available. Easy to read and share.
-        %p
-          %a.btn.btn-primary.btn-large(href='/za/by-law') Browse the By-laws
-        %p
             
       .span4
         %h2
-          Search The By-laws
-        %p  
-          %form(action="/search.html" method="get")
-            %input.search-query(type="text" name="q" class="input-large" placeholder="eg: animals")
-            
+          Search the By-laws
+        %form(action="/search.html" method="get")
+          %input.search-query(type="text" name="q" class="input-large" placeholder="eg: animals")
 
-  .row-fluid
-    .span6
-      .panel
-        %h3 Recently added
-        %ul.unstyled
-          %li #{link_to 'By-law Relating to the Repeal of By-laws Adopted by Former Municipalities', '/za/by-law/cape-town/2007/repeal-of-by-laws-adopted-by-former-municipalities/'}
-          %li #{link_to 'City of Cape Town: Outdoor Advertising and Signage By-law', '/za/by-law/cape-town/2001/outdoor-advertising-signage/'}
-          %li #{link_to 'City of Cape Town: Environmental Health By-law, as amended', '/za/by-law/cape-town/2003/environmental-health/'}
-          %li #{link_to 'City of Cape Town: Treated Effluent By-law', '/za/by-law/cape-town/2010/treated-effluent/'}
-          %li #{link_to 'City of Cape Town: Informal Trading By-law, 2009', '/za/by-law/cape-town/2009/informal-trading/'}
-          %li #{link_to 'City of Cape Town: Credit Control and Debt Collection By-law, 2006, as amended', '/za/by-law/cape-town/2006/credit-control-debt-collection/'}
+  = partial 'templates/region_list.html.haml', locals: {bylaws: all_bylaws}
 
-    .span6
-      .panel
-        %h3 Progress
-        .row-fluid
-        %p
-          We're just getting started and have focused on the
-          #{link_to 'City of Cape Town', '/za/by-law'}.
-          More localities will be added later 
-        %h5
-          Cape Town: #{link_to '36 of 36 by-laws completed', '/za/by-law/'}
-        .progress.progress-success
-          -# of 36 total
-          .bar(style='width: 100%')
-      
-          
-            
-               
-
-  %p.lead.text-center
-    We believe all our legislation should be 
-    %strong freely available 
-    and
-    %strong easy to read
-    and
-    %strong share.
-    #{link_to 'Find out more', "/about.html"}.
+  .hero-unit
+    %p.lead.text-center
+      We believe all our legislation should be 
+      %strong freely available 
+      and
+      %strong easy to read
+      and
+      %strong share.
+      #{link_to 'Find out more', "/about.html"}.
 
   .action-panels
     .row-fluid

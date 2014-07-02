@@ -119,6 +119,47 @@ footer.sponsors {
   }
 }
 
+.regions {
+  .region {
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 0px 10px;
+
+    h3 {
+      margin-top: 0px;
+    }
+
+    h5 {
+      margin-bottom: 0px;
+    }
+
+    li a {
+      display: block;
+      overflow-x: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+.hero-unit {
+  padding: 10px 30px;
+
+  .lead {
+    margin-bottom: 0px;
+  }
+}
+
+#main-page {
+  .regions {
+    .region {
+      margin-top: 0px;
+      margin-bottom: 20px;
+    }
+  }
+}
+
 #recent-blog-posts {
   .date {
     display: block;

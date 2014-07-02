@@ -67,9 +67,16 @@ def subpages_for(act, node)
 end
 
 # By Laws
-bylaws = AkomaNtoso::ByLaw.discover("../za-by-laws/by-laws")
+bylaws = ActHelpers.all_bylaws
 bylaws.each { |bylaw| pages_for(bylaw) }
+
 proxy "/za/by-law/index.html", "/templates/bylaws.html", locals: {bylaws: bylaws}, ignore: true
+
+# region pages
+for code in bylaws.map(&:region).uniq
+  region_bylaws = bylaws.select { |b| b.region == code }.sort_by { |b| b.short_title }
+  proxy "/za/by-law/#{code}/index.html", "/templates/region.html", locals: {bylaws: region_bylaws, region: data.geo.regions[code]}, ignore: true
+end
 
 # Ignore templates
 ignore "/templates/**/*"

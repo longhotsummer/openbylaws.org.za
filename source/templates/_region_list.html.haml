@@ -1,0 +1,12 @@
+.row-fluid.regions
+  - for code, region in data.geo.regions.entries.sort_by { |c, r| r.name }
+    .region.span6
+      %a(href="/za/by-law/#{code}/")
+        %h3&= region.name
+
+      %h5 Recent updates
+      - region_bylaws = bylaws.select { |b| b.region == code }
+      %ul.unstyled
+        - for bylaw in region_bylaws.sort_by { |b| b.manifestation_date }.reverse[0..3]
+          %li
+            %a{href: act_url(bylaw)}&= bylaw.short_title

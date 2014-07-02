@@ -1,0 +1,78 @@
+---
+layout: 'layout'
+---
+
+- content_for :title do
+  &= region.name
+  By-laws
+
+%header
+  %h1&= region.name
+
+#content
+  .row-fluid
+    .span9
+      %h3 By-laws
+      %table.table.table-condensed.table-hover
+        %thead
+          %tr
+            %th Title
+            %th First Published
+        %tbody
+          - for bylaw in bylaws
+            - next if bylaw.repealed?
+            %tr
+              %td
+                %a{href: act_url(bylaw)}
+                  &= bylaw.short_title
+              %td&= bylaw.year
+
+      - if region.missing
+        %h4 Coming soon
+
+        %table.table.table-condensed.table-hover
+          %thead
+            %tr
+              %th Title
+              %th First Published
+          %tbody
+            - for bylaw in region.missing.sort_by { |b| b.title }
+              %tr
+                %td&= bylaw.title
+                %td&= bylaw.year
+
+      - repealed = bylaws.select { |b| b.repealed? }
+      - if not repealed.empty?
+        %h4 Repealed
+        %table.table.table-condensed.table-hover
+          %thead
+            %tr
+              %th Title
+              %th First Published
+              %th Repealed
+          %tbody
+            - for bylaw in repealed
+              %tr
+                %td
+                  %a{href: act_url(bylaw)}
+                    &= bylaw.short_title
+                %td&= bylaw.year
+                %td&= bylaw.repealed_on.year
+
+    .span3
+      %h3 More resources
+
+      %p
+        %a.btn(href="https://github.com/longhotsummer/za-by-laws")
+          %i.icon-github
+          Browse on GitHub
+      %p
+        %a.btn(href="https://github.com/longhotsummer/za-by-laws/archive/master.zip")
+          %i.icon-download
+          Download ZIP
+
+      %p
+        %a{href: region['bylaws-url']}
+          %img{src: region.logo}
+      %p
+        %a{href: region['bylaws-url']}&= "#{region.name} By-laws Website"
