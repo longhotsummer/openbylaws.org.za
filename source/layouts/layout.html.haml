@@ -14,7 +14,7 @@
     - if content_for?(:head)
       = yield_content(:head)
 
-    = stylesheet_link_tag '//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css', media: "screen, print"
+    = stylesheet_link_tag '//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css', media: "screen, print"
     = stylesheet_link_tag 'main.css', media: "screen, print"
   %body
     /[if lt IE 7]
@@ -68,7 +68,7 @@
                   %a(href="/za/by-law/") Browse the By-laws
                 %li
                   %a(href="https://github.com/longhotsummer/za-by-laws") By-laws on GitHub
-                  %i.icon-github
+                  %i.fa.fa-github
               %ul
                 %li
                   %a(href="/about.html#disclaimer") Disclaimer
@@ -85,7 +85,7 @@
               %ul
                 %li
                   %a(href="https://github.com/longhotsummer/openbylaws.org.za") Contribute on GitHub
-                  %i.icon-github
+                  %i.fa.fa-github
           .col-sm-6
             %h5 License
             %a(rel="license" href="http://creativecommons.org/licenses/by/2.5/za/deed.en_US")
