@@ -72,12 +72,12 @@ footer.sponsors {
   nav {
     margin-top: 10px;
   }
+}
 
-  article.static {
-    margin-top: 20px;
-    margin-left: 15px;
-    margin-right: 15px;
-  }
+article.static {
+  margin-top: 20px;
+  margin-left: 15px;
+  margin-right: 15px;
 }
 
 .downloads {
@@ -207,12 +207,12 @@ footer.sponsors {
     display: none;
   }
 
-  #header, #footer {
-    margin-left: -20px;
-    margin-right: -20px;
+  #header, header, #footer {
+    margin-left: -15px;
+    margin-right: -15px;
   }
 
-  #content {
+  article.static {
     margin-left: 0px;
     margin-right: 0px;
   }
@@ -227,12 +227,8 @@ footer.sponsors {
     border-width: 0px;
   }
 
-  #header .brand:after {
-    content: " - openbylaws.org.za";
-  }
-
   @page {
-      margin: 1.5cm 2.0cm;
+    margin: 1.5cm 2.0cm;
   }
 
   .an-container {
