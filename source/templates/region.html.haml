@@ -10,8 +10,8 @@ layout: 'layout'
   %h1&= region.name
 
 #content
-  .row-fluid
-    .span9
+  .row
+    .col-sm-9
       %h3 By-laws
       %table.table.table-condensed.table-hover
         %thead
@@ -59,16 +59,16 @@ layout: 'layout'
                 %td&= bylaw.year
                 %td&= bylaw.repealed_on.year
 
-    .span3
+    .col-sm-3
       %h3 More resources
 
       %p
-        %a.btn(href="https://github.com/longhotsummer/za-by-laws")
-          %i.icon-github
+        %a.btn.btn-default(href="https://github.com/longhotsummer/za-by-laws")
+          %i.fa.fa-github
           Browse on GitHub
       %p
-        %a.btn(href="https://github.com/longhotsummer/za-by-laws/archive/master.zip")
-          %i.icon-download
+        %a.btn.btn-default(href="https://github.com/longhotsummer/za-by-laws/archive/master.zip")
+          %i.fa.fa-download
           Download ZIP
 
       %p

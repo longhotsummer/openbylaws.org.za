@@ -6,25 +6,25 @@ title: Open By-laws South Africa
   %meta(name="description"    content="South Africa's By-laws: online, freely available and easy to read and share.")
   %meta(name="og:description" content="South Africa's By-laws: online, freely available and easy to read and share.")
 
-%article.static#main-page
-  .hero-unit
-    .row-fluid
-      .span8
+%article#main-page
+  .jumbotron.welcome
+    .row
+      .col-sm-8
         %h2
           South Africa's By-laws in HTML
 
         %p.lead
           Freely available. Easy to read and share.
             
-      .span4
-        %h2
+      .col-sm-4
+        %h3
           Search the By-laws
-        %form(action="/search.html" method="get")
-          %input.search-query(type="text" name="q" class="input-large" placeholder="eg: animals")
+        %form(action="/search.html" method="get" role="search")
+          %input.form-control(type="text" name="q" class="input-large" placeholder="eg: animals")
 
   = partial 'templates/region_list.html.haml', locals: {bylaws: all_bylaws}
 
-  .hero-unit
+  .jumbotron.belief
     %p.lead.text-center
       We believe all our legislation should be 
       %strong freely available 
@@ -34,46 +34,44 @@ title: Open By-laws South Africa
       %strong share.
       #{link_to 'Find out more', "/about.html"}.
 
-  .action-panels
-    .row-fluid
-      .span4.panel
-        %i.icon-share.icon-5x
+  .action-blocks
+    .row
+      .col-sm-4.action-block
+        %i.fa.fa-share-square-o.fa-5x
         .action
           %h3 Share
 
-          %ul.icons-ul
+          %ul.fa-ul
             %li
-              %i.icon-li.icon-twitter
+              %i.fa-li.fa.fa-twitter
               %a(href="https://twitter.com/OpenByLawsZA") @OpenByLawsZA
-          %ul.icons-ul
+          %ul.list-unstyled
             %li
               %a(href="https://twitter.com/share" class="twitter-share-button" data-url="http://openbylaws.org.za" data-text="South Africa's by-laws freely available, online, easy to read and share" data-via="OpenByLawsZA") Tweet
               :javascript
                 !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
 
-      .span4.panel
-        %i.icon-comments.icon-5x
+      .col-sm-4.action-block
+        %i.fa.fa-comments.fa-5x
         .action
           %h3 Get Involved
-          %ul.icons-ul
+          %ul.fa-ul
             %li
-              %i.icon-li.icon-envelope
+              %i.fa-li.fa.fa-envelope
               #{link_to 'Join the mailing list', 'https://groups.google.com/forum/#!forum/openbylaws-za'}
             %li
-              %i.icon-li.icon-github
+              %i.fa-li.fa.fa-github
               #{link_to 'Help improve the website', 'https://github.com/longhotsummer/openbylaws.org.za'}
 
-      .span4.panel
-        %i.icon-beaker.icon-5x
+      .col-sm-4.action-block
+        %i.fa.fa-flask.fa-5x
         .action
           %h3 Build
 
           #{link_to 'Download the by-laws', 'https://github.com/longhotsummer/za-by-laws'} and build
           new tools to explore, share and understand them.
 
-  .row-fluid
-    .span12
-      = partial 'latest_social'
+  = partial 'latest_social'
 
 %footer.sponsors.text-center
   = partial 'partner_logos'

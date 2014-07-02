@@ -6,19 +6,19 @@ title: South Africa By-laws
 %header
   %h1 By-laws
 
-#bylaws-page
-  .row-fluid
-    .span9
+%article.static#bylaws-page
+  .row
+    .col-sm-9
       = partial 'region_list.html.haml', locals: {bylaws: bylaws}
 
-    .span3
+    .col-sm-3.resources
       %h3 All By-laws
 
       %p
-        %a.btn(href="https://github.com/longhotsummer/za-by-laws")
-          %i.icon-github
+        %a.btn.btn-default(href="https://github.com/longhotsummer/za-by-laws")
+          %i.fa.fa-github
           Browse on GitHub
       %p
-        %a.btn(href="https://github.com/longhotsummer/za-by-laws/archive/master.zip")
-          %i.icon-download
+        %a.btn.btn-default(href="https://github.com/longhotsummer/za-by-laws/archive/master.zip")
+          %i.fa.fa-download
           Download ZIP

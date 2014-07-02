@@ -1,21 +1,16 @@
+@import 'bootstrap';
+@import 'bootstrap/theme';
 @import 'html5bootstrap';
 @import 'act';
 @import 'toc';
 
-body {
-  font-size: 14px;
-}
-
-.navbar-inner {
+.navbar {
+  margin-bottom: 0px;
   border-radius: 0px;
 }
 
-.navbar {
-  margin-bottom: 0px;
-}
-
 #header {
-  a.brand {
+  a.navbar-brand {
     color: white;
   }
 }
@@ -23,12 +18,19 @@ body {
 #footer {
   background-color: #eee;
   border-top: 1px solid #ccc;
-  padding: 10px 20px;
+  padding: 10px 15px;
 
   color: #777;
 
   h5 {
     text-transform: uppercase;
+  }
+
+  ul {
+    padding-left: 0px;
+    list-style: none;
+    li {
+    }
   }
 
   a[rel="license"] > img {
@@ -42,7 +44,7 @@ body {
 }
 
 footer.sponsors {
-  padding: 10px 20px;
+  padding: 10px 15px;
 }
 
 #main {
@@ -50,7 +52,7 @@ footer.sponsors {
 
   header {
     background-color: #eee;
-    padding: 5px 20px;
+    padding: 5px 15px;
     border-bottom: 1px solid #ccc;
 
     h1 {
@@ -58,23 +60,24 @@ footer.sponsors {
       font-size: 24.5px;
     }
 
-    #breadcrumbs li {
-      padding-left: 0px;
+    #breadcrumbs {
+      margin-left: 0px;
+
+      li {
+        padding-left: 0px;
+      }
     }
   }
 
   nav {
     margin-top: 10px;
   }
-
-  article.static {
-    margin-top: 20px;
-  }
 }
 
-#content {
-  margin-left: 20px;
-  margin-right: 20px;
+article.static {
+  margin-top: 20px;
+  margin-left: 15px;
+  margin-right: 15px;
 }
 
 .downloads {
@@ -92,26 +95,20 @@ footer.sponsors {
   }
 }
 
-.panel {
-  background: whitesmoke;
-  padding: 10px;
-  border-radius: 6px;
-  margin-bottom: 20px;
-
-  h3 {
-    margin-top: 0px;
-  }
-}
-
-.action-panels {
-  .panel {
+.action-blocks {
+  .action-block {
     background: inherit;
     padding-left: 20px;
     padding-right: 20px;
+    margin-bottom: 30px;
 
-    &> i[class*="icon-"] {
+    &> i[class*="fa-"] {
       float: left;
     }
+  }
+
+  h3 {
+    margin-top: 0px;
   }
 
   .action {
@@ -121,16 +118,16 @@ footer.sponsors {
 
 .regions {
   .region {
-    margin-top: 20px;
+    margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    padding: 0px 10px;
+    padding: 10px 10px;
 
     h3 {
       margin-top: 0px;
     }
 
-    h5 {
+    ul {
       margin-bottom: 0px;
     }
 
@@ -143,19 +140,25 @@ footer.sponsors {
   }
 }
 
-.hero-unit {
-  padding: 10px 30px;
-
+.jumbotron {
   .lead {
     margin-bottom: 0px;
   }
+
+  &.welcome {
+    padding: 10px 30px 30px;
+  }
+
+  &.belief {
+    padding: 10px 30px;
+    margin: 10px 0px 30px;
+  }
 }
 
-#main-page {
-  .regions {
-    .region {
+#bylaws-page {
+  .resources {
+    &>h1, &>h2, &>h3 {
       margin-top: 0px;
-      margin-bottom: 20px;
     }
   }
 }
@@ -165,8 +168,8 @@ footer.sponsors {
     display: block;
     float: left;
 
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
     padding: 10px;
 
     background-color: #333;
@@ -193,8 +196,8 @@ footer.sponsors {
   }
 }
 
-@media (max-width: 568px) {
-  /* phones */
+/* phones */
+@media (max-width: 768px) {
   .an-container {
     padding-left: 0px;
     border-left-width: 0px;
@@ -204,12 +207,12 @@ footer.sponsors {
     display: none;
   }
 
-  header, footer {
-    margin-left: -20px;
-    margin-right: -20px;
+  #header, header, #footer {
+    margin-left: -15px;
+    margin-right: -15px;
   }
 
-  #content {
+  article.static {
     margin-left: 0px;
     margin-right: 0px;
   }
@@ -224,12 +227,8 @@ footer.sponsors {
     border-width: 0px;
   }
 
-  #header .brand:after {
-    content: " - openbylaws.org.za";
-  }
-
   @page {
-      margin: 1.5cm 2.0cm;
+    margin: 1.5cm 2.0cm;
   }
 
   .an-container {
