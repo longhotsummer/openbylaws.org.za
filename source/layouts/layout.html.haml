@@ -14,7 +14,6 @@
     - if content_for?(:head)
       = yield_content(:head)
 
-    = stylesheet_link_tag '//netdna.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css', media: "screen, print"
     = stylesheet_link_tag '//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css', media: "screen, print"
     = stylesheet_link_tag 'main.css', media: "screen, print"
   %body
@@ -28,19 +27,21 @@
 
     .container
       %header#header
-        .navbar.navbar-inverse
-          .navbar-inner
-            %a.btn.btn-navbar(data-toggle="collapse" data-target=".nav-collapse")
-              %span.icon-bar
-              %span.icon-bar
-              %span.icon-bar
+        %nav.navbar.navbar-inverse(role="navigation")
+          .container-fluid
+            .navbar-header
+              %button.navbar-toggle(type="button" data-toggle="collapse" data-target=".navbar-collapse")
+                %span.sr-only Toggle navigation
+                %span.icon-bar
+                %span.icon-bar
+                %span.icon-bar
 
-            %a.brand(href='/')
-              .hidden-phone Open By-laws South Africa
-              .visible-phone Open By-laws ZA
+              %a.navbar-brand(href='/')
+                .hidden-xs Open By-laws South Africa
+                .visible-xs Open By-laws ZA
 
-            .nav-collapse.collapse
-              %ul.nav
+            .navbar-collapse.collapse
+              %ul.nav.navbar-nav
                 %li
                   %a(href="/za/by-law/") By-laws
                 %li
@@ -50,8 +51,8 @@
                 %li
                   %a(href="http://blog.openbylaws.org.za") Blog
 
-              %form.navbar-search.pull-right(action="/search.html" method="get")
-                %input.search-query(type="text" name="q" placeholder="Search")     
+              %form.navbar-form.navbar-right(action="/search.html" method="get" role="search")
+                %input.form-control(type="text" name="q" placeholder="Search")     
             
 
       %section#main
@@ -96,7 +97,7 @@
     = javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'
     :javascript
       window.jQuery || document.write('<script src="/js/vendor/jquery-1.10.2.min.js"><\/script>')
-    = javascript_include_tag '//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js'
+    = javascript_include_tag '//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'
     = javascript_include_tag '/js/main.js'
 
     - if environment == :build

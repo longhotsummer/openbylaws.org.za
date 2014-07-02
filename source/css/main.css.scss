@@ -1,4 +1,5 @@
 @import 'html5bootstrap';
+@import 'bootstrap';
 @import 'act';
 @import 'toc';
 
@@ -6,12 +7,9 @@ body {
   font-size: 14px;
 }
 
-.navbar-inner {
-  border-radius: 0px;
-}
-
 .navbar {
   margin-bottom: 0px;
+  border-radius: 0px;
 }
 
 #header {
