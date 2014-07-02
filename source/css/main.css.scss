@@ -60,7 +60,7 @@
       font-size: 24.5px;
     }
 
-    #breadcrumbs {
+    .breadcrumbs {
       margin-left: 0px;
 
       li {
@@ -219,7 +219,7 @@
 }
 
 @media print {
-  nav, .navbar .nav, #breadcrumbs, aside.toc {
+  nav, .navbar .nav, .breadcrumbs, aside.toc {
     display: none;
   }
 
