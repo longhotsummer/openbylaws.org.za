@@ -60,8 +60,12 @@ footer.sponsors {
       font-size: 24.5px;
     }
 
-    #breadcrumbs li {
-      padding-left: 0px;
+    #breadcrumbs {
+      margin-left: 0px;
+
+      li {
+        padding-left: 0px;
+      }
     }
   }
 
@@ -192,8 +196,8 @@ footer.sponsors {
   }
 }
 
+/* phones */
 @media (max-width: 768px) {
-  /* phones */
   .an-container {
     padding-left: 0px;
     border-left-width: 0px;
