@@ -29,6 +29,13 @@ body {
     text-transform: uppercase;
   }
 
+  ul {
+    padding-left: 0px;
+    list-style: none;
+    li {
+    }
+  }
+
   a[rel="license"] > img {
     float: right;
     width: 88px;
