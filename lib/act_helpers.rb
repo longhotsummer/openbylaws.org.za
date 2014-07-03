@@ -15,7 +15,7 @@ class ActHelpers < Middleman::Extension
   end
 
   def self.all_bylaws
-    AkomaNtoso::ByLaw.discover("../za-by-laws/by-laws")
+    @@bylaws ||= AkomaNtoso::ByLaw.discover("../za-by-laws/by-laws")
   end
 
   # Generate a url for part an act, or a part
