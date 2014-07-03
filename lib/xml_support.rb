@@ -50,8 +50,10 @@ class Nokogiri::XML::Node
   # Title for this element in the table of contents
   def toc_title
     case name
+    when "mainBody"
+      "Schedules"
     when "chapter"
-      title = in_schedules? ? "Schedule" : "Chapter"
+      title = in_schedules? ? "Schedule" : "Chapter" 
       title << ' ' + num
       title << ' - ' + heading if heading
       title

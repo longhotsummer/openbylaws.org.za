@@ -22,31 +22,35 @@ class ActHelpers < Middleman::Extension
     case child
     when nil
     when Nokogiri::XML::Node
-      chapter_name = child.in_schedules? ? 'schedule' : 'chapter'
-      num = child.num
+      if child == act.schedules
+        parts << "/schedules/"
+      else
+        chapter_name = child.in_schedules? ? 'schedule' : 'chapter'
+        num = child.num
 
-      # some sections don't have numbers :(
-      if !num
-        if child == act.definitions
-          num = 'definitions'
-        else
-          num = child.heading.downcase
+        # some sections don't have numbers :(
+        if !num
+          if child == act.definitions
+            num = 'definitions'
+          else
+            num = child.heading.downcase
+          end
+        end
+
+        case child.name
+        when "section"
+          parts << "/section/#{num}/"
+        when "part"
+          # some parts are only unique within their chapter
+          parts << "/#{chapter_name}/#{child.parent.num}" if child.parent.name == "chapter"
+          parts << "/part/#{num}/"
+        when "chapter"
+          # some chapters are only unique within their parts
+          parts << "/part/#{child.parent.num}" if child.parent.name == "part"
+          parts << "/#{chapter_name}/#{num}/"
         end
       end
-
-      case child.name
-      when "section"
-        parts << "/section/#{num}/"
-      when "part"
-        # some parts are only unique within their chapter
-        parts << "/#{chapter_name}/#{child.parent.num}" if child.parent.name == "chapter"
-        parts << "/part/#{num}/"
-      when "chapter"
-        # some chapters are only unique within their parts
-        parts << "/part/#{child.parent.num}" if child.parent.name == "part"
-        parts << "/#{chapter_name}/#{num}/"
-      end
-
+      
       # TODO: subsection
     when String
       parts << child
@@ -119,12 +123,16 @@ class ActHelpers < Middleman::Extension
     def breadcrumbs_for_fragment(fragment)
       trail = []
   
+      if fragment.in_schedules?
+        trail << act_for_node(fragment).schedules
+      end
+
       if %(chapter part).include?(fragment.parent.name)
-        trail << fragment.parent
+        trail << fragment.parent        
       end
 
       trail << fragment
-
+         
       trail
     end
   end
