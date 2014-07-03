@@ -8,7 +8,25 @@
     "johannesburg": {
       "name": "City of Johannesburg",
       "logo": "http://www.joburg.org.za/test_template/logo.gif",
-      "bylaws-url": "http://www.joburg.org.za/index.php?option=com_content&task=view&id=647&itemid=114"
+      "bylaws-url": "http://www.joburg.org.za/index.php?option=com_content&task=view&id=647&itemid=114",
+      "missing": [
+        {"year": "2009", "title": "2010 FIFA World Cup South Africa By-laws"},
+        {"year": "2004", "title": "Cemeteries and Crematoria By-laws"},
+        {"year": "2011", "title": "Waste Management By-laws"},
+        {"year": "2006", "title": "By-laws Relating to Dogs and Cats"},
+        {"year": "unknown", "title": "Standardisation of Electricity By-laws"},
+        {"year": "2004", "title": "Emergency Services By-laws"},
+        {"year": "2004", "title": "Emergency Services By-laws"},
+        {"year": "2004", "title": "Encroachment on Property By-laws"},
+        {"year": "2012", "title": "Informal Trading By-laws"},
+        {"year": "2004", "title": "Parking Grounds By-laws"},
+        {"year": "2004", "title": "Public Open Spaces By-laws"},
+        {"year": "2004", "title": "Culture and Recreation By-laws"},
+        {"year": "2004", "title": "Public Health By-laws"},
+        {"year": "2003", "title": "Public Road and Miscellaneous By-laws"},
+        {"year": "2008", "title": "Water Services By-laws"},
+        {"year": "2006", "title": "By-laws for the Protection of Wild Animals and Birds"}
+      ]
     }
   }
 }
