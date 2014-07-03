@@ -1,11 +1,13 @@
+---
+layout: 'bylaw'
+---
+
 - content_for :title do
   = act.short_title
 
-%header
-  = partial 'header', locals: {act: act}
+- content_for :breadcrumbs do
   = partial 'breadcrumbs', locals: {act: act, trail: breadcrumbs_for_fragment(fragment)}
 
-= partial 'notices', locals: {act: act}
 = partial 'nav', locals: {act: act, tab: 'content'}
 
 .row

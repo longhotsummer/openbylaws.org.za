@@ -1,15 +1,10 @@
 ---
-layout: 'act'
+layout: 'bylaw'
 ---
 
 - content_for :title do
   = act.short_title
 
-%header
-  = partial 'header', locals: {act: act}
-  = partial 'breadcrumbs', locals: {act: act, trail: []}
-
-= partial 'notices', locals: {act: act}
 = partial 'nav', locals: {act: act, tab: 'content'}
 
 .row

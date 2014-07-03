@@ -1,0 +1,8 @@
+= wrap_layout :layout do
+  %header
+    = partial 'header', locals: {act: act}
+    = yield_content :breadcrumbs
+
+  %article
+    = partial 'notices', locals: {act: act}
+    = yield
