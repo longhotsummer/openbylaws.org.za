@@ -7,6 +7,16 @@
   margin-top: 0px;
   border-left: 1px solid #ccc;
 
+  @media (max-width: 768px) {
+    padding-left: 0px;
+    border-left-width: 0px;
+  }
+
+  @media print {
+    padding-left: 0px;
+    border-left-width: 0px;
+  }
+
   text-align: justify;
   line-height: 1.5em;
 

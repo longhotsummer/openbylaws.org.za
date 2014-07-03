@@ -33,3 +33,13 @@
     }
   }
 }
+
+aside.toc {
+  @media (max-width: 768px) {
+    display: none;
+  }
+
+  @media print {
+    display: none;
+  }
+}
