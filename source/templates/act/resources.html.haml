@@ -1,12 +1,10 @@
-- content_for :title do
-  = act.short_title
-  \- Resources
+---
+layout: 'bylaw'
+---
 
-%header
-  = partial 'header', locals: {act: act}
-  = partial 'breadcrumbs', locals: {act: act, trail: []}
-    
-= partial 'notices', locals: {act: act, tab: 'resources'}
+- content_for :title do
+  #{h act.short_title} - Resources
+
 = partial 'nav', locals: {act: act, tab: 'resources'}
 
 .downloads
