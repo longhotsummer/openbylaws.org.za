@@ -43,11 +43,11 @@
   }
 }
 
-footer.sponsors {
+.sponsors {
   padding: 10px 15px;
 }
 
-#main {
+#main-content {
   margin-bottom: 40px;
 
   header {
@@ -72,12 +72,12 @@ footer.sponsors {
   nav {
     margin-top: 10px;
   }
-}
 
-article.static {
-  margin-top: 20px;
-  margin-left: 15px;
-  margin-right: 15px;
+  &> article {
+    margin-top: 20px;
+    margin-left: 15px;
+    margin-right: 15px;
+  }
 }
 
 .downloads {

@@ -8,6 +8,5 @@
 = partial 'notices', locals: {act: act}
 = partial 'nav', locals: {act: act, tab: 'toc'}
 
-#content
-  %article.toc
-    = partial 'toc', locals: {act: act}
+.toc
+  = partial 'toc', locals: {act: act}

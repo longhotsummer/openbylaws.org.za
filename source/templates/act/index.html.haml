@@ -12,38 +12,37 @@ layout: 'act'
 = partial 'notices', locals: {act: act}
 = partial 'nav', locals: {act: act, tab: 'content'}
 
-#content
-  .row
-    .col-sm-4
-      %aside.toc
-        = partial 'toc', locals: {act: act}
-    .col-sm-8
-      %article.an-container
-        .title
-          %h2&= act.short_title
-          - unless act.is_a? ::AkomaNtoso::ByLaw
-            %h3
-              Act #{act.num} of #{act.year}
+.row
+  .col-sm-4
+    %aside.toc
+      = partial 'toc', locals: {act: act}
+  .col-sm-8
+    %article.an-container
+      .title
+        %h2&= act.short_title
+        - unless act.is_a? ::AkomaNtoso::ByLaw
+          %h3
+            Act #{act.num} of #{act.year}
 
-          - if act.publication
-            %h4.published
-              Published in
-              &= act.publication['showAs']
-              no.
-              &= act.publication['number']
-              on
-              &= act.publication['date']
-         
-          - for amendment in act.amendment_events
-            %h4.published
-              Amended by
-              - if AkomaNtoso::Act.from_uri(amendment.source['href'])
-                %a{href: amendment.source['href']}&= amendment.source['showAs']
-              - else 
-                &= amendment.source['showAs']               
-              on
-              &= amendment.date  
-                    
-        = act_to_html(act)
+        - if act.publication
+          %h4.published
+            Published in
+            &= act.publication['showAs']
+            no.
+            &= act.publication['number']
+            on
+            &= act.publication['date']
+       
+        - for amendment in act.amendment_events
+          %h4.published
+            Amended by
+            - if AkomaNtoso::Act.from_uri(amendment.source['href'])
+              %a{href: amendment.source['href']}&= amendment.source['showAs']
+            - else 
+              &= amendment.source['showAs']               
+            on
+            &= amendment.date  
+                  
+      = act_to_html(act)
 
 = partial 'definitions', locals: {act: act}
