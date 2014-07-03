@@ -1,9 +1,8 @@
 = wrap_layout :layout do
-  .bylaw-page
-    %header
-      = partial 'header', locals: {act: act}
-      = yield_content :breadcrumbs
+  %header
+    = partial 'header', locals: {act: act}
+    = yield_content :breadcrumbs
 
+  %article
     = partial 'notices', locals: {act: act}
-
     = yield

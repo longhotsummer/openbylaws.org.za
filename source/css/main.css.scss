@@ -84,7 +84,9 @@
     margin-top: 10px;
   }
 
-  &> article {
+  &> article,
+  .bylaws-page
+  {
     margin-top: 20px;
 
     @media (min-width: 769px) {
@@ -167,6 +169,11 @@
     padding: 10px 30px;
     margin: 10px 0px 30px;
   }
+}
+
+nav.bylaw-nav {
+  margin-left: -15px;
+  margin-right: -15px;
 }
 
 #bylaws-page {
