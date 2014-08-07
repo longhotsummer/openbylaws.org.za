@@ -95,12 +95,15 @@ activate :act_helpers
 # Reload the browser automatically whenever files change
 # activate :livereload
 
-# Methods defined in the helpers block are available in templates
-# helpers do
-#   def some_helper
-#     "Helping"
-#   end
-# end
+helpers do
+  # Simple caching. Use this in a view to avoid re-generating
+  # expensive partials. Any array of hashable arguments can be used
+  # as a key. It is only used during the build phase, not during
+  # development.
+  def with_cache(*key, &block)
+    build? ? cache.fetch(*key, &block) : yield
+  end
+end
 
 set :css_dir, 'css'
 
