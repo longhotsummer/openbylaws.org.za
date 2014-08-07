@@ -16,7 +16,7 @@ module AkomaNtoso
     @@acts = {}
 
     attr_accessor :doc, :meta, :body, :num, :year, :id_uri
-    attr_accessor :filename
+    attr_accessor :filename, :mtime
 
     # Find all XML files in +path+ and return
     # a list of instances.
@@ -58,6 +58,7 @@ module AkomaNtoso
     # Load the XML from +filename+
     def file(filename)
       @filename = filename
+      @mtime = File::mtime(@filename)
 
       File.open(filename) { |f| parse(f) }
     end
