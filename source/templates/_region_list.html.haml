@@ -6,7 +6,7 @@
           %a(href="/za/by-law/#{code}/")
             %h3&= region.name
 
-          %h5 Recent updates
+          %h4 Recent updates
           - region_bylaws = bylaws.select { |b| b.region == code }
           %ul.list-unstyled
             - for bylaw in region_bylaws.sort_by { |b| b.mtime }.reverse[0..3]
