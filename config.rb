@@ -98,13 +98,9 @@ activate :act_helpers
 helpers do
   # Simple caching. Use this in a view to avoid re-generating
   # expensive partials. Any array of hashable arguments can be used
-  # as a key. It is only used during the build phase, not during
-  # development.
+  # as a key.
   def with_cache(*key, &block)
-    value = cache.fetch(*key) do
-      value = capture_html(&block)
-    end
-
+    value = cache.fetch(*key) { capture_html(&block) }
     concat_content(value)
   end
 end
