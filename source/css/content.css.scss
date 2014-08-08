@@ -1,0 +1,120 @@
+@import 'site';
+
+.sponsors {
+  padding: 10px 15px;
+}
+
+.action-blocks {
+  .action-block {
+    background: inherit;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 30px;
+
+    &> i[class*="fa-"] {
+      float: left;
+    }
+  }
+
+  h3 {
+    margin-top: 0px;
+  }
+
+  .action {
+    margin-left: 90px;
+  }
+}
+
+.regions {
+  margin-bottom: 10px;
+
+  .region {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px 10px;
+
+    h3 {
+      margin-top: 0px;
+    }
+
+    ul {
+      margin-bottom: 0px;
+    }
+
+    li a {
+      display: block;
+      overflow-x: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+.jumbotron {
+  .lead {
+    margin-bottom: 0px;
+  }
+
+  &.welcome {
+    padding: 10px 30px 30px;
+    border-radius: 0px 0px 5px 5px;
+  }
+
+  &.belief {
+    padding: 10px 30px;
+    margin: 0px 0px 30px;
+  }
+}
+
+form#subscribe {
+  background-color: #eeeeee;
+  padding: 10px 20px;
+  border-radius: 5px;
+  h3 {
+    margin-top: 0px
+  }
+}
+
+#recent-blog-posts {
+  .date {
+    display: block;
+    float: left;
+
+    width: 60px;
+    height: 60px;
+    padding: 10px;
+
+    background-color: #333;
+    color: white;
+
+    text-align: center;
+
+    .day, .month {
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .day {
+      font-size: 18px;
+    }
+  }
+  .content {
+    margin-left: 70px;
+
+    .more {
+      text-align: right;
+      display: block;
+    }
+  }
+}
+
+/* phones */
+@media (max-width: 768px) {
+  .jumbotron,
+  .jumbotron.belief {
+    margin-left: -15px;
+    margin-right: -15px;
+    border-radius: 0px;
+  }
+}
