@@ -101,7 +101,11 @@ helpers do
   # as a key. It is only used during the build phase, not during
   # development.
   def with_cache(*key, &block)
-    build? ? cache.fetch(*key, &block) : yield
+    value = cache.fetch(*key) do
+      value = capture_html(&block)
+    end
+
+    concat_content(value)
   end
 end
 
