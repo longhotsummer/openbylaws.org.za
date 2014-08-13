@@ -1,0 +1,27 @@
+---
+layout: false
+---
+<?xml version='1.0' encoding='utf-8' ?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Open By-laws South Africa</title>
+  <subtitle>South Africa's by-laws: freely available, easy to read and share</subtitle>
+  <id>http://openbylaws.org.za/</id>
+  <updated><%=h all_bylaws.map(&:mtime).max.utc.iso8601 %></updated>
+
+  <link href="http://openbylaws.org.za/atom.xml" rel="self"/>
+  <link href="http://openbylaws.org.za/"/>
+
+  <author>
+    <name>OpenBylaws.org.za</name>
+  </author>
+
+  <% for bylaw in all_bylaws %>
+    <entry>
+      <title><%=h bylaw.short_title %></title>
+      <link href="http://openbylaws.org.za<%=h act_url(bylaw) %>" />
+      <id>http://openbylaws.org.za<%=h act_url(bylaw)%></id>
+      <published><%=h Time.parse(bylaw.manifestation_date, Time.now.utc).utc.iso8601 %></published>
+      <updated><%=h bylaw.mtime.utc.iso8601 %></updated>
+    </entry>
+  <% end %>
+</feed>

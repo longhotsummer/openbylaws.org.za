@@ -215,7 +215,7 @@ module AkomaNtoso
     end
 
     def manifestation_date
-      node = @meta.at_xpath('./a:identification/a:FRBRManifestation/a:FRBRDate[@name="Generation"]', a: AkomaNtoso::NS)
+      node = @meta.at_xpath('./a:identification/a:FRBRManifestation/a:FRBRdate[@name="Generation"]', a: AkomaNtoso::NS)
       node && node['date']
     end
 
