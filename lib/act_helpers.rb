@@ -140,6 +140,13 @@ class ActHelpers < Middleman::Extension
       trail
     end
 
+    def publication_url(act)
+      if act.region == 'cape-town'
+        year = act.publication['date'].split('-')[0]
+        "http://www.westerncape.gov.za/general-publication/provincial-gazettes-#{year}"
+      end
+    end
+
     def all_bylaws
       ActHelpers.all_bylaws
     end

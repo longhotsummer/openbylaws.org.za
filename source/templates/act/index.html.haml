@@ -22,11 +22,20 @@ layout: 'bylaw'
         - if act.publication
           %h4.published
             Published in
-            &= act.publication['showAs']
-            no.
-            &= act.publication['number']
-            on
-            &= act.publication['date']
+            - url = publication_url(act)
+            - if url
+              %a{href: url}
+                &= act.publication['showAs']
+                no.
+                &= act.publication['number']
+                on
+                &= act.publication['date']
+            - else
+              &= act.publication['showAs']
+              no.
+              &= act.publication['number']
+              on
+              &= act.publication['date']
        
         - for amendment in act.amendment_events
           %h4.published
