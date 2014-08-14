@@ -29,6 +29,10 @@ module AkomaNtoso
         else
           @short_title = "(Unknown)"
         end
+
+        if amended? and not @short_title.end_with?("as amended")
+          @short_title = @short_title + " as amended"
+        end
       end
 
       @short_title
