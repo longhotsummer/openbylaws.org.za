@@ -107,7 +107,7 @@
 
   <!-- special HTML elements -->
   <xsl:template match="a:a | a:abbr | a:b | a:i | a:span | a:sub | a:sup | a:u">
-    <xsl:element name="sup">
+    <xsl:element name="{local-name()}">
       <xsl:copy-of select="@*" />
       <xsl:apply-templates />
     </xsl:element>
