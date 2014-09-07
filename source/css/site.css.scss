@@ -103,11 +103,35 @@
 }
 
 @media print {
+  @page {
+    margin: 2cm;
+  }
+
+  body, .container {
+    width: auto;
+  }
+
+  body {
+    margin: 2cm;
+  }
+
   nav, .navbar .nav {
     display: none;
   }
 
-  @page {
-    margin: 1.5cm 2.0cm;
+  #main-content {
+    header {
+      border-bottom: 0px;
+      text-align: center;
+
+      a {
+        text-decoration: none;
+      }
+
+      ol.breadcrumbs.region {
+        display: block;
+        text-align: center;
+      }
+    }
   }
 }
