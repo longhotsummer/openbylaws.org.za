@@ -115,6 +115,59 @@ module AkomaNtoso
       end.sort_by { |e| e.date }
     end
 
+    # Mark this act as being amended by another act, either +act+
+    # or the details in +opts+:
+    #
+    #   :uri: uri of the amending act
+    #   :title: title of the amending act
+    #   :date: date of the amendment
+    #
+    # It is assumed that there can be only one amendment event on a particular
+    # date. An existing amendment on this date is overwritten.
+    def amended_by!(act, opts={})
+      if act
+        opts[:uri] ||= act.id_uri
+        opts[:title] ||= act.short_title
+        opts[:date] ||= act.publication['date']
+      end
+
+      date = opts[:date]
+      source_id = "amendment-#{date}"
+
+      # assume we now hold a single version and not the original version
+      @doc.at_xpath('/a:akomaNtoso/a:act', a: NS)['contains'] = 'singleVersion'
+
+      # add the lifecycle event
+      lifecycle = @meta.at_xpath('./a:lifecycle', a: NS)
+      if not lifecycle
+        lifecycle = @doc.create_element('lifecycle', source: "#this")
+        @meta.at_xpath('./a:publication', a: NS).after(lifecycle)
+      end
+
+      event = lifecycle.at_xpath('./a:eventRef[@date="' + date + '"][@type="amendment"]', a: NS)
+      if event
+        # clear up old event
+        src = @doc.at_css(event['source'])
+        src.remove if src
+      else
+        # new event
+        event = @doc.create_element('eventRef', type: 'amendment')
+        lifecycle << event
+      end
+
+      event['date'] = date
+      event['id'] = "amendment-event-#{date}"
+      event['source'] = '#' + source_id
+
+      # add reference
+      ref = @doc.create_element('passiveRef',
+                                id: source_id,
+                                href: opts[:uri],
+                                showAs: opts[:title])
+
+      @meta.at_xpath('./a:references/a:TLCTerm', a: NS).before(ref)
+    end
+
     # Does this Act have parts?
     def parts?
       !parts.empty?
