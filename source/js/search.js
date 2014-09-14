@@ -13,9 +13,11 @@ ByLawSearch = function(args) {
         return;
       }
 
+      data.seconds = data.took / 1000.0;
+
       var template = '<li>' +
                        '<a href="{{ fields.frbr_uri }}">{{ fields.title }}</a>' +
-                       '{{ #snippet }}<p>... {{{ snippet }}} ...</p>{{ /snippet }}' +
+                       '{{ #snippet }}<p class="snippit">{{{ snippet }}} ...</p>{{ /snippet }}' +
                      '</li>';
 
       var items = $.map(data.hits.hits, function(bylaw) {
@@ -26,8 +28,11 @@ ByLawSearch = function(args) {
         return Mustache.render(template, bylaw);
       });
 
-      $container.empty();
-      $container.append('<ul id="results"/>').append(items);
+      var list = $('<ul class="search-results"/>').append(items);
+      $container
+        .empty()
+        .append(Mustache.render('<p class="search-results-summary">About {{ hits.total }} results ({{ seconds }} seconds)</p>', data))
+        .append(list);
     });
   };
 
@@ -47,6 +52,6 @@ ByLawSearch = function(args) {
 $(function() {
   var search = new ByLawSearch({
     form: 'form#search',
-    container: '#results',
+    container: '#search-results',
   });
 });

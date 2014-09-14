@@ -109,6 +109,29 @@ form#subscribe {
   }
 }
 
+form#search {
+  margin-bottom: 10px;
+}
+
+.search-results-summary {
+  color: #777;
+  margin-bottom: 15px;
+}
+
+ul.search-results {
+  padding-left: 0px;
+
+  li {
+    margin-bottom: 15px;
+    list-style: none;
+  }
+
+  mark {
+    background: none;
+    font-weight: bold;
+  }
+}
+
 /* phones */
 @media (max-width: 768px) {
   .jumbotron,
