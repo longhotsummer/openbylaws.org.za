@@ -1,6 +1,9 @@
-require 'nokogiri'
+require 'support_files'
 
 class ActHelpers < Middleman::Extension
+  @@bylaws = nil
+  @@support_files = {}
+
   def initialize(app, options_hash={}, &block)
     super
 
@@ -15,7 +18,16 @@ class ActHelpers < Middleman::Extension
   end
 
   def self.all_bylaws
-    @@bylaws ||= AkomaNtoso::ByLaw.discover("../za-by-laws/by-laws")
+    unless @@bylaws
+      @@bylaws = Slaw::DocumentCollection.new
+      @@bylaws.discover("../za-by-laws/by-laws", Slaw::ByLaw)
+    end
+
+    @@bylaws
+  end
+
+  def self.support_files_for(act)
+    @@support_files[act] ||= ::AkomaNtoso::SupportFileCollection.for_act(act)
   end
 
   # Generate a url for part an act, or a part
@@ -109,7 +121,7 @@ class ActHelpers < Middleman::Extension
     end
 
     def act_for_node(node)
-      ::AkomaNtoso::Act.from_node(node)
+      ::Slaw::Act.for_node(node)
     end
 
     def act_url(act, *args)
@@ -117,7 +129,7 @@ class ActHelpers < Middleman::Extension
     end
 
     def breadcrumb_heading(act)
-      if act.is_a? ::AkomaNtoso::ByLaw
+      if act.is_a? ::Slaw::ByLaw
         "By-law of #{act.year}"
       else
         "Act #{act.num} of #{act.year}"
@@ -149,6 +161,10 @@ class ActHelpers < Middleman::Extension
 
     def all_bylaws
       ActHelpers.all_bylaws
+    end
+
+    def support_files_for(act)
+      ActHelpers.support_files_for(act)
     end
   end
 end

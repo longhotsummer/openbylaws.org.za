@@ -1,6 +1,6 @@
 $:.unshift('lib')
 
-require 'by_law'
+require 'slaw'
 require 'act_helpers'
 
 ###

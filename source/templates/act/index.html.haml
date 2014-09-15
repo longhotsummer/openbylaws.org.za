@@ -15,9 +15,6 @@ layout: 'bylaw'
     %article.an-container
       .title
         %h2&= act.short_title
-        - unless act.is_a? ::AkomaNtoso::ByLaw
-          %h3
-            Act #{act.num} of #{act.year}
 
         - if act.publication
           %h4.published
@@ -40,7 +37,7 @@ layout: 'bylaw'
         - for amendment in act.amendment_events
           %h4.published
             Amended by
-            - if AkomaNtoso::Act.from_uri(amendment.source['href'])
+            - if all_bylaws.for_uri(amendment.source['href'])
               %a{href: amendment.source['href']}&= amendment.source['showAs']
             - else 
               &= amendment.source['showAs']               

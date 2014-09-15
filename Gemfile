@@ -3,6 +3,8 @@
 source 'http://rubygems.org'
 ruby '2.1.1'
 
+gem "slaw", "~>0.1"
+
 gem "middleman", "~>3.1"
 gem 'bootstrap-sass', '~> 3.2.0.0', require: false
 
@@ -17,6 +19,5 @@ platforms :mri_18 do
   gem "ruby18_source_location"
 end
 
-gem "nokogiri", "~> 1.6.0"
 gem "rake", "~> 10.1.0"
 gem 'middleman-s3_sync'
