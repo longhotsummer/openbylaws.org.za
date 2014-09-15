@@ -16,7 +16,8 @@ ByLawSearch = function(args) {
       data.seconds = data.took / 1000.0;
 
       var template = '<li>' +
-                       '<a href="{{ fields.frbr_uri }}">{{{ title }}}</a>' +
+                       '<a href="{{ fields.frbr_uri }}">{{{ title }}}</a> {{ #repealed }} <span class="label label-warning">repealed</span> {{ /repealed }}' +
+                       '<div class="info">{{ fields.region_name }}</div>' +
                        '{{ #snippet }}<p class="snippet">{{{ snippet }}} ...</p>{{ /snippet }}' +
                      '</li>';
 
@@ -31,6 +32,7 @@ ByLawSearch = function(args) {
 
         // highlighted (or regular) title
         bylaw.title = bylaw.highlight.title ? bylaw.highlight.title[0] : bylaw.fields.title;
+        bylaw.repealed = bylaw.fields.repealed[0];
 
         return Mustache.render(template, bylaw);
       });

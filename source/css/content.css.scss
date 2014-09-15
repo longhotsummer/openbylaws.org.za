@@ -131,6 +131,19 @@ ul.search-results {
     font-weight: bold;
     color: inherit;
   }
+
+  .info {
+    margin-left: 15px;
+  }
+
+  .snippet {
+    color: #777;
+    margin-left: 15px;
+
+    @media (min-width: 769px) {
+      width: 50%;
+    }
+  }
 }
 
 /* phones */
