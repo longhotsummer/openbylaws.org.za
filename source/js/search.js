@@ -16,14 +16,21 @@ ByLawSearch = function(args) {
       data.seconds = data.took / 1000.0;
 
       var template = '<li>' +
-                       '<a href="{{ fields.frbr_uri }}">{{ fields.title }}</a>' +
-                       '{{ #snippet }}<p class="snippit">{{{ snippet }}} ...</p>{{ /snippet }}' +
+                       '<a href="{{ fields.frbr_uri }}">{{{ title }}}</a>' +
+                       '{{ #snippet }}<p class="snippet">{{{ snippet }}} ...</p>{{ /snippet }}' +
                      '</li>';
 
       var items = $.map(data.hits.hits, function(bylaw) {
         if (bylaw.highlight.content) {
-          bylaw.snippet = bylaw.highlight.content.slice(0, 2).join(' ... ');
+          bylaw.snippet = bylaw.highlight.content
+            .slice(0, 2)
+            .join(' ... ')
+            .replace(/^\s*[;:",.-]/, '')  // trim leading punctuation
+            .trim();
         }
+
+        // highlighted (or regular) title
+        bylaw.title = bylaw.highlight.title ? bylaw.highlight.title[0] : bylaw.fields.title;
 
         return Mustache.render(template, bylaw);
       });
