@@ -6,15 +6,7 @@ class ActHelpers < Middleman::Extension
 
   def initialize(app, options_hash={}, &block)
     super
-
-    @@xslt = {
-      :fragment => Nokogiri::XSLT(File.open('xsl/fragment.xsl')),
-      :act => Nokogiri::XSLT(File.open('xsl/act.xsl')),
-    }
-  end
-
-  def self.xslt
-    @@xslt
+    @@renderer = Slaw::Render::HTMLRenderer.new
   end
 
   def self.all_bylaws
@@ -94,30 +86,13 @@ class ActHelpers < Middleman::Extension
     # Transfrom an element in an AkomaNtoso XML document
     # into a HTML by applying the XSLT to just the element
     # passed in.
-    #
-    # If +elem+ has an id, we use xpath to tell the XSLT which
-    # element to transform. Otherwise we copy the node into a new
-    # tree and apply the XSLT to that.
     def fragment_to_html(elem)
-      params = transform_params(elem)
-
-      if elem.id
-        params['root_elem'] = "//*[@id='#{elem.id}']"
-        ActHelpers.xslt[:fragment].transform(elem.document, params).to_s
-      else
-        # create a new document with just this element at the root
-        doc2 = Nokogiri::XML::Document.new
-        doc2.root = elem
-        params['root_elem'] = '*'
-
-        ActHelpers.xslt[:fragment].transform(doc2, params).to_s
-      end
+      @@renderer.render_node(elem, act_url(act_for_node(elem)))
     end
 
     # Transfrom an entire act into HTML
     def act_to_html(act)
-      params = transform_params(act.doc)
-      ActHelpers.xslt[:act].transform(act.doc, params).to_s
+      @@renderer.render(act.doc, act_url(act))
     end
 
     def act_for_node(node)
