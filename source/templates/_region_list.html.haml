@@ -1,6 +1,6 @@
 .regions
   .row
-    - for code, region in data.geo.regions.entries.sort_by { |c, r| r.name }
+    - for code, region in regions.entries.sort_by { |c, r| r.name }
       .col-sm-6
         .region
           %a(href="/za/by-law/#{code}/")
