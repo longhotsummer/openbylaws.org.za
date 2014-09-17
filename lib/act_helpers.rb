@@ -22,6 +22,10 @@ class ActHelpers < Middleman::Extension
     @@support_files[act] ||= ::AkomaNtoso::SupportFileCollection.for_act(act)
   end
 
+  def self.regions
+    @@regions ||= Hashie::Mash.new(File.open('../za-by-laws/regions/regions.json') { |f| JSON.load(f) }).regions
+  end
+
   # Generate a url for part an act, or a part
   # of an act (section, subsection, chapter, part, etc.)
   def self.act_url(act, child=nil, opts={})
@@ -140,6 +144,10 @@ class ActHelpers < Middleman::Extension
 
     def support_files_for(act)
       ActHelpers.support_files_for(act)
+    end
+
+    def regions
+      ActHelpers.regions
     end
   end
 end

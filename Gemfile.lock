@@ -38,6 +38,7 @@ GEM
     fssm (0.2.10)
     haml (4.0.5)
       tilt
+    hashie (3.3.1)
     hike (1.2.3)
     http_parser.rb (0.5.3)
     i18n (0.6.9)
@@ -134,6 +135,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass (~> 3.2.0.0)
+  hashie (~> 3.3.1)
   middleman (~> 3.1)
   middleman-livereload (~> 3.1)
   middleman-s3_sync
