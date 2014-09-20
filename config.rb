@@ -33,7 +33,7 @@ require 'act_helpers'
 # Proxy pages (http://middlemanapp.com/dynamic-pages/)
 
 def pages_for(act)
-  path = act.url_path.chomp('/')
+  path = act.id_uri.chomp('/')
 
   # full act
   proxy "#{path}/index.html", "/templates/act/index.html", :locals => { :act => act }, :ignore => true

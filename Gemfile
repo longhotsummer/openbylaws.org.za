@@ -3,7 +3,7 @@
 source 'http://rubygems.org'
 ruby '2.1.1'
 
-gem "slaw", "~>0.1"
+gem "slaw", "~>0.2.0"
 
 gem "middleman", "~>3.1"
 gem 'bootstrap-sass', '~> 3.2.0.0', require: false
