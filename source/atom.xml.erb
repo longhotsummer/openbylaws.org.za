@@ -17,7 +17,7 @@ layout: false
 
   <% for bylaw in all_bylaws %>
     <entry>
-      <title><%=h bylaw.short_title %></title>
+      <title><%=h bylaw.title %></title>
       <link href="http://openbylaws.org.za<%=h act_url(bylaw) %>" />
       <id>http://openbylaws.org.za<%=h act_url(bylaw)%></id>
       <published><%=h Time.parse(bylaw.manifestation_date, Time.now.utc).utc.iso8601 %></published>

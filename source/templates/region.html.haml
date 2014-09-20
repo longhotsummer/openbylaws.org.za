@@ -19,8 +19,7 @@
             - next if bylaw.repealed?
             %tr
               %td
-                %a{href: act_url(bylaw)}
-                  &= bylaw.short_title
+                %a{href: act_url(bylaw)}&= bylaw.title
               %td&= bylaw.year
 
       - if region.missing
@@ -50,8 +49,7 @@
             - for bylaw in repealed
               %tr
                 %td
-                  %a{href: act_url(bylaw)}
-                    &= bylaw.short_title
+                  %a{href: act_url(bylaw)}&= bylaw.title
                 %td&= bylaw.year
                 %td&= bylaw.repealed_on.year
 

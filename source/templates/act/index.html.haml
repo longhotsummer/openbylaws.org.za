@@ -3,7 +3,7 @@ layout: 'bylaw'
 ---
 
 - content_for :title do
-  = act.short_title
+  = act.title
 
 = partial 'nav', locals: {act: act, tab: 'content'}
 
@@ -14,7 +14,7 @@ layout: 'bylaw'
   .col-sm-8
     %article.an-container
       .title
-        %h2&= act.short_title
+        %h2&= act.title
 
         - if act.publication
           %h4.published

@@ -3,7 +3,7 @@ layout: 'bylaw'
 ---
 
 - content_for :title do
-  = act.short_title
+  = act.title
 
 - content_for :breadcrumbs do
   = partial 'breadcrumbs', locals: {act: act, trail: breadcrumbs_for_fragment(fragment)}
