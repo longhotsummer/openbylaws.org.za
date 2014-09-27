@@ -50,7 +50,7 @@ layout: 'bylaw'
 
 
     .col-sm-4.col-sm-offset-2
-      - region = data.geo.regions[act.region]
+      - region = regions[act.region]
       %h3&= region.name
       %p
         %a{href: region['bylaws-url']}

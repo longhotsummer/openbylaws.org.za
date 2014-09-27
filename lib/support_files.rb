@@ -44,10 +44,10 @@ module AkomaNtoso
       # build up the collection
       files = SupportFileCollection.new
 
-      files.akoma_ntoso_current = SupportFile.find(filename, act.url_path)
+      files.akoma_ntoso_current = SupportFile.find(filename, act.id_uri)
 
-      files.source_enacted = SupportFile.find("#{basename}-source-enacted.pdf", act.url_path)
-      files.source_current = SupportFile.find("#{basename}-source.pdf", act.url_path)
+      files.source_enacted = SupportFile.find("#{basename}-source-enacted.pdf", act.id_uri)
+      files.source_current = SupportFile.find("#{basename}-source.pdf", act.id_uri)
 
       files
     end
