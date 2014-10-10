@@ -1,4 +1,5 @@
 @import 'site';
+@import 'search';
 
 .sponsors {
   padding: 10px 15px;
@@ -105,43 +106,6 @@ form#subscribe {
     .more {
       text-align: right;
       display: block;
-    }
-  }
-}
-
-form#search {
-  margin-bottom: 10px;
-}
-
-.search-results-summary {
-  color: #777;
-  margin-bottom: 15px;
-}
-
-ul.search-results {
-  padding-left: 0px;
-
-  li {
-    margin-bottom: 15px;
-    list-style: none;
-  }
-
-  mark {
-    background: none;
-    font-weight: bold;
-    color: inherit;
-  }
-
-  .info {
-    margin-left: 15px;
-  }
-
-  .snippet {
-    color: #777;
-    margin-left: 15px;
-
-    @media (min-width: 769px) {
-      width: 50%;
     }
   }
 }

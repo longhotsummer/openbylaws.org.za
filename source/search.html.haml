@@ -3,19 +3,49 @@ title: Search - Open By-laws South Africa
 ---
 
 %article
-  %h2 Search By-laws
+  %h2 Search for By-laws
 
-  .clearfix
-    %form#search.form-horizontal(action="/search.html" method="get")
-      .form-group
-        .col-xs-8
-          %input.form-control#query(type="text" name="q" autofocus="autofocus")
-        .col-xs-4
-          %button.btn.btn-primary(type="submit") Search
+  .row
+    .col-sm-8
+      .clearfix
+        %form#search.form-horizontal(action="/search.html" method="get")
+          .input-group
+            %input.form-control#query(type="text" name="q" autofocus="autofocus" placeholder="What are you looking for?")
+            .input-group-btn
+              %button.btn.btn-primary(type="submit") Search
 
-  #search-results.clearfix
-    searching...
+      #search-waiting
+        Searching...
 
-  - content_for :footer do
-    = javascript_include_tag '/js/vendor/mustache.js'
-    = javascript_include_tag '/js/search.js'
+      #search-results
+
+      - content_for :footer do
+        -# the mustache template for search results
+        %script(id="search-result-tmpl" type="x-tmpl-mustache")
+          %p.search-results-summary
+            About {{ hits.total }} results ({{ seconds }} seconds)
+
+          {{^hits.total}}
+          %p
+            We couldn't find anything relating to
+            %em {{q}}
+          {{/hits.total}}
+
+          %ul.search-results
+            {{#hits.hits}}
+            %li
+              %a(href="{{ fields.frbr_uri }}") {{{ title }}}
+
+              {{#repealed}}
+              %span.label.label-warning repealed
+              {{/repealed}}
+
+              %div.info {{ fields.region_name }}
+
+              {{#snippet}}
+              .snippet ... {{{ snippet }}} ...
+              {{/snippet}}
+            {{/hits.hits}}
+
+        = javascript_include_tag '/js/vendor/mustache.js'
+        = javascript_include_tag '/js/search.js'

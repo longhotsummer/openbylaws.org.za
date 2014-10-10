@@ -1,66 +1,77 @@
-ByLawSearch = function(args) {
+ByLawSearch = function() {
   var self = this;
 
-  var $form = $(args.form);
-  var $container = $(args.container);
+  var $form = $('form#search');
+  var $results = $('#search-results');
+  var $waiting = $('#search-waiting');
+  var template = $('#search-result-tmpl').html();
+  Mustache.parse(template);
 
   self.search = function(q) {
-    $.getJSON('http://localhost:9393/search', {q: q}, function(data, textStatus, jqXHR) {
-      console.log(data);
+    $results.hide();
+    $waiting.show();
 
-      if (data.hits.total === 0) {
-        $container.html(Mustache.render("We couldn't find anything relating to <em>{{q}}</em>.", {q: q}));
-        return;
-      }
+    $.getJSON('http://localhost:9393/search', {q: q}, function(response, textStatus, jqXHR) {
+      console.log(response);
 
-      data.seconds = data.took / 1000.0;
-
-      var template = '<li>' +
-                       '<a href="{{ fields.frbr_uri }}">{{{ title }}}</a> {{ #repealed }} <span class="label label-warning">repealed</span> {{ /repealed }}' +
-                       '<div class="info">{{ fields.region_name }}</div>' +
-                       '{{ #snippet }}<p class="snippet">{{{ snippet }}} ...</p>{{ /snippet }}' +
-                     '</li>';
-
-      var items = $.map(data.hits.hits, function(bylaw) {
-        if (bylaw.highlight.content) {
-          bylaw.snippet = bylaw.highlight.content
+      response.q = q;
+      response.seconds = response.took / 1000.0;
+      response.hits.hits = $.map(response.hits.hits, function(result) {
+        if (result.highlight.content) {
+          result.snippet = result.highlight.content
             .slice(0, 2)
             .join(' ... ')
-            .replace(/^\s*[;:",.-]/, '')  // trim leading punctuation
+            .replace(/^\s*[;:",.()-]+/, '')  // trim leading punctuation
             .trim();
         }
 
         // highlighted (or regular) title
-        bylaw.title = bylaw.highlight.title ? bylaw.highlight.title[0] : bylaw.fields.title;
-        bylaw.repealed = bylaw.fields.repealed[0];
+        result.title = result.highlight.title ? result.highlight.title[0] : result.fields.title;
+        result.repealed = result.fields.repealed[0];
 
-        return Mustache.render(template, bylaw);
+        return result;
       });
 
-      var list = $('<ul class="search-results"/>').append(items);
-      $container
+      $results
         .empty()
-        .append(Mustache.render('<p class="search-results-summary">About {{ hits.total }} results ({{ seconds }} seconds)</p>', data))
-        .append(list);
+        .append(Mustache.render(template, response))
+        .show();
+
+      $waiting.hide();
     });
   };
 
-  // search term from uri
-  var q = decodeURIComponent(
-    (new RegExp('[?|&]q=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20')
-  )||null;
+  self.submitSearch = function(e) {
+    if (window.history.pushState) {
+      // don't reload the whole window
+      var q = $('input[name=q]', $form).val();
+      window.history.pushState(null, null, '?q=' + q);
+      self.search(q);
+      e.preventDefault();
+    }
+  };
 
-  if (q) {
-    $('input[name=q]', $form).val(q);
-    self.search(q);
-  }
+  // search term from uri
+  self.searchFromUri = function() {
+    var q = decodeURIComponent(
+      (new RegExp('[?|&]q=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20')
+    )||null;
+
+    if (q) {
+      $('input[name=q]', $form).val(q);
+      self.search(q);
+    }
+  };
+
+  $form.submit(self.submitSearch);
+  window.onpopstate = self.searchFromUri;
+
+  // kick off a search
+  self.searchFromUri();
 
   return self;
 };
 
 $(function() {
-  var search = new ByLawSearch({
-    form: 'form#search',
-    container: '#search-results',
-  });
+  var search = new ByLawSearch();
 });
