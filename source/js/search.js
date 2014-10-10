@@ -14,7 +14,7 @@ ByLawSearch = function() {
     $results.hide();
     $waiting.show();
 
-    $.getJSON('http://localhost:9393/search', {q: q}, function(response, textStatus, jqXHR) {
+    $.getJSON('http://steno.openbylaws.org.za/search', {q: q}, function(response, textStatus, jqXHR) {
       ladda.stop();
       console.log(response);
 
