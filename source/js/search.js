@@ -5,13 +5,17 @@ ByLawSearch = function() {
   var $results = $('#search-results');
   var $waiting = $('#search-waiting');
   var template = $('#search-result-tmpl').html();
+  var ladda = Ladda.create($('button[type=submit]', $form)[0]);
   Mustache.parse(template);
 
   self.search = function(q) {
+    ladda.start();
+
     $results.hide();
     $waiting.show();
 
     $.getJSON('http://localhost:9393/search', {q: q}, function(response, textStatus, jqXHR) {
+      ladda.stop();
       console.log(response);
 
       response.q = q;
