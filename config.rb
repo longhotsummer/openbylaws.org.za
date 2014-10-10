@@ -95,12 +95,15 @@ activate :act_helpers
 # Reload the browser automatically whenever files change
 # activate :livereload
 
+require 'lru_redux'
+$bylaw_cache = LruRedux::Cache.new(100)
 helpers do
   # Simple caching. Use this in a view to avoid re-generating
   # expensive partials. Any array of hashable arguments can be used
   # as a key.
+
   def with_cache(*key, &block)
-    value = cache.fetch(*key) { capture_html(&block) }
+    value = $bylaw_cache.getset(key) { capture_html(&block) }
     concat_content(value)
   end
 end

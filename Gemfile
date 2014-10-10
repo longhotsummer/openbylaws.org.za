@@ -8,6 +8,7 @@ gem "slaw", "~>0.3.0"
 gem "middleman", "~>3.1"
 gem 'bootstrap-sass', '~> 3.2.0.0', require: false
 gem 'hashie', '~> 3.3.1'
+gem 'lru_redux', '~> 0.8.1'
 
 # Live-reloading plugin
 gem "middleman-livereload", "~> 3.1"
