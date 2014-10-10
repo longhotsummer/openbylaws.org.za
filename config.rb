@@ -33,7 +33,7 @@ require 'act_helpers'
 # Proxy pages (http://middlemanapp.com/dynamic-pages/)
 
 def pages_for(act)
-  path = act.url_path.chomp('/')
+  path = act.id_uri.chomp('/')
 
   # full act
   proxy "#{path}/index.html", "/templates/act/index.html", :locals => { :act => act }, :ignore => true
@@ -74,7 +74,7 @@ proxy "/za/by-law/index.html", "/templates/bylaws.html", locals: {bylaws: bylaws
 
 # region pages
 for code in bylaws.map(&:region).uniq
-  region_bylaws = bylaws.select { |b| b.region == code }.sort_by { |b| b.short_title }
+  region_bylaws = bylaws.select { |b| b.region == code }.sort_by { |b| b.title }
   proxy "/za/by-law/#{code}/index.html", "/templates/region.html", locals: {bylaws: region_bylaws, region: ActHelpers.regions[code]}, ignore: true
 end
 

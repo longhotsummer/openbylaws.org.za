@@ -1,0 +1,52 @@
+form#search {
+  margin-bottom: 10px;
+}
+
+#search-waiting {
+  display: none;
+  margin-bottom: 15px;
+}
+
+.search-results-summary {
+  color: #777;
+  margin-bottom: 15px;
+}
+
+ul.search-results {
+  padding-left: 0px;
+
+  @media (max-width: 768px) {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 0px -8px;
+    padding: 0px 8px;
+  }
+
+  li {
+    list-style: none;
+    margin-bottom: 15px;
+
+    @media (max-width: 768px) {
+      margin: 0px -8px;
+      padding: 8px 8px;
+      border-bottom: 1px solid #ccc;
+    }
+  }
+
+  mark {
+    background: none;
+    font-weight: bold;
+    color: inherit;
+  }
+
+  .info {
+    color: #777;
+    @media (min-width: 769px) {
+      margin-left: 15px;
+    }
+  }
+
+  .snippet {
+    margin-left: 15px;
+  }
+}

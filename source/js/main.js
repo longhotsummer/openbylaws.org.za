@@ -16,16 +16,6 @@ $(function() {
     }
   });
 
-  // search page
-  $('form#search').on('submit', function() {
-    var query = $('#query').val();
-    var element = google.search.cse.element.getElement('search-results');
-    element.execute(query);
-
-    // don't actually submit the form
-    return false;
-  });
-
   // load recent blog posts
   (function() {
     var container = $('#recent-blog-posts');

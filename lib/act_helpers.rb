@@ -23,13 +23,13 @@ class ActHelpers < Middleman::Extension
   end
 
   def self.regions
-    @@regions ||= Hashie::Mash.new(File.open('../za-by-laws/regions/regions.json') { |f| JSON.load(f) })['regions']
+    @@regions ||= Hashie::Mash.new(File.open('../za-by-laws/regions/regions.json') { |f| JSON.load(f) })
   end
 
   # Generate a url for part an act, or a part
   # of an act (section, subsection, chapter, part, etc.)
   def self.act_url(act, child=nil, opts={})
-    parts = [act.url_path]
+    parts = [act.id_uri]
 
     case child
     when nil
