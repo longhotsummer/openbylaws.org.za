@@ -5,6 +5,8 @@ ruby '2.1.1'
 
 gem "slaw", "~>0.3.0"
 
+gem "rest_client"
+
 gem "middleman", "~>3.1"
 gem 'bootstrap-sass', '~> 3.2.0.0', require: false
 gem 'hashie', '~> 3.3.1'

@@ -70,6 +70,8 @@ end
 bylaws = ActHelpers.all_bylaws
 bylaws.each { |bylaw| pages_for(bylaw) }
 
+bylaws = IndigoDocumentCollection.new(IndigoBase::API_ENDPOINT + '/za-cpt')
+
 proxy "/za/by-law/index.html", "/templates/bylaws.html", locals: {bylaws: bylaws}, ignore: true
 
 # region pages
