@@ -1,6 +1,6 @@
 require 'forwardable'
 
-require 'rest_client'
+require 'rest-client'
 require 'hashie'
 
 class IndigoBase
@@ -38,7 +38,7 @@ class IndigoDocumentCollection < IndigoBase
   include Enumerable
 
   attr_accessor :documents
-  def_delegators :@documents, :size, :<<, :map, :[], :each
+  def_delegators :@documents, :size, :length, :<<, :map, :[], :each
 
   def initialize(endpoint)
     super(endpoint)

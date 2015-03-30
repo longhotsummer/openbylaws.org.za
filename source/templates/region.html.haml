@@ -15,7 +15,7 @@
             %th Title
             %th First Published
         %tbody
-          - for bylaw in bylaws
+          - for bylaw in bylaws.sort_by(&:title)
             - next if bylaw.repealed?
             %tr
               %td

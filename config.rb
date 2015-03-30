@@ -2,6 +2,7 @@ $:.unshift('lib')
 
 require 'slaw'
 require 'act_helpers'
+require 'indigo'
 
 ###
 # Compass
@@ -33,7 +34,7 @@ require 'act_helpers'
 # Proxy pages (http://middlemanapp.com/dynamic-pages/)
 
 def pages_for(act)
-  path = act.id_uri.chomp('/')
+  path = act.frbr_uri.chomp('/')
 
   # full act
   proxy "#{path}/index.html", "/templates/act/index.html", :locals => { :act => act }, :ignore => true
@@ -45,18 +46,18 @@ def pages_for(act)
   proxy "#{path}/resources/index.html", "/templates/act/resources.html", :locals => { :act => act }, :ignore => true
 
   # definitions, usually a duplicate of section 1
-  if defn = act.definitions
-    proxy "#{path}/definitions/index.html", "/templates/act/fragment.html", :locals => { :act => act, fragment: defn }, :ignore => true
-  end
+  #if defn = act.definitions
+  #  proxy "#{path}/definitions/index.html", "/templates/act/fragment.html", :locals => { :act => act, fragment: defn }, :ignore => true
+  #end
 
   # sections, chapters, parts, etc.
-  subpages_for(act, act.body)
+  #subpages_for(act, act.body)
 
   # schedules
-  if schedules = act.schedules
-    proxy "#{path}/schedules/index.html", "/templates/act/fragment.html", :locals => { :act => act, fragment: schedules }, :ignore => true
-    subpages_for(act, act.schedules)
-  end
+  #if schedules = act.schedules
+    #proxy "#{path}/schedules/index.html", "/templates/act/fragment.html", :locals => { :act => act, fragment: schedules }, :ignore => true
+    #subpages_for(act, act.schedules)
+  #end
 end
 
 def subpages_for(act, node)
@@ -67,17 +68,22 @@ def subpages_for(act, node)
 end
 
 # By Laws
-bylaws = ActHelpers.all_bylaws
-bylaws.each { |bylaw| pages_for(bylaw) }
+#bylaws = ActHelpers.all_bylaws
+#bylaws.each { |bylaw| pages_for(bylaw) }
 
-bylaws = IndigoDocumentCollection.new(IndigoBase::API_ENDPOINT + '/za-cpt')
+for locality in ['cpt']
+  bylaws = IndigoDocumentCollection.new(IndigoBase::API_ENDPOINT + '/za-' + locality)
+  puts "Got #{bylaws.length} by-laws for #{locality}"
 
-proxy "/za/by-law/index.html", "/templates/bylaws.html", locals: {bylaws: bylaws}, ignore: true
+  # XXX
+  #proxy "/za/by-law/index.html", "/templates/bylaws.html", locals: {bylaws: bylaws}, ignore: true
 
-# region pages
-for code in bylaws.map(&:region).uniq
-  region_bylaws = bylaws.select { |b| b.region == code }.sort_by { |b| b.title }
-  proxy "/za/by-law/#{code}/index.html", "/templates/region.html", locals: {bylaws: region_bylaws, region: ActHelpers.regions[code]}, ignore: true
+  # region pages
+  proxy "/za-#{locality}/index.html", "/templates/region.html", locals: {bylaws: bylaws, region: ActHelpers.regions[locality]}, ignore: true
+
+  for bylaw in bylaws
+    pages_for(bylaw)
+  end
 end
 
 # Ignore templates
