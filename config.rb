@@ -70,9 +70,8 @@ end
 # Load the bylaws!
 ActHelpers.load_bylaws
 
-# XXX
 # General by-laws landing page, show each region and their by-laws
-#proxy "/za/by-law/index.html", "/templates/bylaws.html", locals: {bylaws: bylaws}, ignore: true
+proxy "/by-laws/index.html", "/templates/bylaws.html", ignore: true
 
 # Load the by-laws for each region we care about and generate their URLs and pages
 for code, region in ActHelpers.regions

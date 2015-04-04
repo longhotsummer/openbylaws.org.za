@@ -33,6 +33,7 @@ end
 
 class IndigoDocument < IndigoComponent
   def toc
+    # Load the TOC remotely
     @toc ||= parse_toc(JSON.parse(@api['toc.json'].get())['toc'])
   end
 
