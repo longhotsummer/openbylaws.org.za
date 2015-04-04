@@ -51,7 +51,7 @@ def pages_for(act)
   #end
 
   # sections, chapters, parts, etc.
-  #subpages_for(act, act.body)
+  subpages_for(act, act.toc)
 
   # schedules
   #if schedules = act.schedules
@@ -60,28 +60,26 @@ def pages_for(act)
   #end
 end
 
-def subpages_for(act, node)
-  for child in node.toc_children
-    proxy ActHelpers.act_url(act, child) + "index.html", "/templates/act/fragment.html", :locals => { act: act, fragment: child }, :ignore => true
-    subpages_for(act, child) if child.toc_container?
+def subpages_for(act, children)
+  for child in children
+    proxy ActHelpers.act_url(act, child) + "/index.html", "/templates/act/fragment.html", :locals => { act: act, fragment: child }, :ignore => true
+    subpages_for(act, child.children) if child.children?
   end
 end
 
-# By Laws
-#bylaws = ActHelpers.all_bylaws
-#bylaws.each { |bylaw| pages_for(bylaw) }
+# Load the bylaws!
+ActHelpers.load_bylaws
 
-for locality in ['cpt']
-  bylaws = IndigoDocumentCollection.new(IndigoBase::API_ENDPOINT + '/za-' + locality)
-  puts "Got #{bylaws.length} by-laws for #{locality}"
+# XXX
+# General by-laws landing page, show each region and their by-laws
+#proxy "/za/by-law/index.html", "/templates/bylaws.html", locals: {bylaws: bylaws}, ignore: true
 
-  # XXX
-  #proxy "/za/by-law/index.html", "/templates/bylaws.html", locals: {bylaws: bylaws}, ignore: true
-
+# Load the by-laws for each region we care about and generate their URLs and pages
+for code, region in ActHelpers.regions
   # region pages
-  proxy "/za-#{locality}/index.html", "/templates/region.html", locals: {bylaws: bylaws, region: ActHelpers.regions[locality]}, ignore: true
+  proxy "/za-#{code}/index.html", "/templates/region.html", locals: {region: region}, ignore: true
 
-  for bylaw in bylaws
+  for bylaw in region.bylaws
     pages_for(bylaw)
   end
 end
@@ -111,7 +109,9 @@ helpers do
   # as a key.
 
   def with_cache(*key, &block)
-    value = $bylaw_cache.getset(key) { capture_html(&block) }
+    # XXX
+    #value = $bylaw_cache.getset(key) { capture_html(&block) }
+    value = capture_html(&block)
     concat_content(value)
   end
 end

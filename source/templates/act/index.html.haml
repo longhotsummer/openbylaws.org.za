@@ -16,7 +16,8 @@ layout: 'bylaw'
       .title
         %h2&= act.title
 
-        - if act.publication
+        -# XXX
+        - if false #act.publication
           %h4.published
             Published in
             - url = publication_url(act)
@@ -34,7 +35,8 @@ layout: 'bylaw'
               on
               &= act.publication['date']
        
-        - for amendment in act.amendment_events
+        -# XXX
+        - for amendment in [] #act.amendment_events
           %h4.published
             Amended by
             - if all_bylaws.for_uri(amendment.source['href'])
@@ -44,6 +46,6 @@ layout: 'bylaw'
             on
             &= amendment.date  
                   
-      = act_to_html(act)
+      = act.html
 
-= partial 'definitions', locals: {act: act}
+-# XXX = partial 'definitions', locals: {act: act}

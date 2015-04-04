@@ -4,7 +4,7 @@ require 'rest-client'
 require 'hashie'
 
 class IndigoBase
-  API_ENDPOINT = "http://bylaws-indigo.herokuapp.com/api"
+  API_ENDPOINT = ENV['INDIGO_API_URL'] || "http://bylaws-indigo.herokuapp.com/api"
 
   attr_accessor :api, :url
 
@@ -14,21 +14,38 @@ class IndigoBase
   end
 end
 
-class IndigoDocument < IndigoBase
-  attr_accessor :doc
+class IndigoComponent < IndigoBase
+  attr_accessor :info
 
-  def initialize(url, doc)
+  def initialize(url, info)
     super(url)
-    @info = Hashie::Mash.new(doc)
+    @info = Hashie::Mash.new(info)
   end
 
-  def toc
-    @toc ||= JSON.parse(@api['toc.json'].get())['toc']
+  def html
+    @api['.html'].get()
   end
 
   def method_missing(method, *args)
-    return @info.send(method, *args) if @info.respond_to?(method)
-    super
+    @info.send(method, *args)
+  end
+end
+
+class IndigoDocument < IndigoComponent
+  def toc
+    @toc ||= parse_toc(JSON.parse(@api['toc.json'].get())['toc'])
+  end
+
+  protected
+  def parse_toc(items)
+    items.map do |item|
+      item = IndigoComponent.new(item['url'], item)
+      if item.children
+        item.children = self.parse_toc(item.children)
+        item.children.each { |c| c.info.parent = item }
+      end
+      item
+    end
   end
 end
 

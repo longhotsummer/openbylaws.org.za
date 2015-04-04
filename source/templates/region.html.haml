@@ -15,7 +15,7 @@
             %th Title
             %th First Published
         %tbody
-          - for bylaw in bylaws.sort_by(&:title)
+          - for bylaw in region.bylaws.sort_by(&:title)
             - next if bylaw.repealed?
             %tr
               %td
@@ -36,7 +36,7 @@
                 %td&= bylaw.title
                 %td&= bylaw.year
 
-      - repealed = bylaws.select { |b| b.repealed? }
+      - repealed = region.bylaws.select { |b| b.repealed? }
       - if not repealed.empty?
         %h4 Repealed
         %table.table.table-condensed.table-hover

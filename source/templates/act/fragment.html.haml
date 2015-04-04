@@ -16,6 +16,6 @@ layout: 'bylaw'
       = partial 'toc', locals: {act: act}
   .col-sm-8
     %article.an-container
-      = fragment_to_html(fragment)
+      = fragment.html
 
-= partial 'definitions', locals: {act: act}
+-# = partial 'definitions', locals: {act: act}
