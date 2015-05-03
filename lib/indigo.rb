@@ -37,6 +37,10 @@ class IndigoDocument < IndigoComponent
     @toc ||= parse_toc(JSON.parse(@api['toc.json'].get())['toc'])
   end
 
+  def schedules
+    @toc.select { |t| t.component =~ /schedule/ }
+  end
+
   protected
   def parse_toc(items)
     items.map do |item|

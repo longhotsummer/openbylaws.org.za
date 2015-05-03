@@ -2,12 +2,10 @@
   %ol
     %li
       %a{href: act_url(act)} Introductory text
-    = partial 'toc_container', locals: {act: act, items: act.toc}
+    = partial 'toc_container', locals: {act: act, items: act.toc.reject { |t| t.component =~ /schedule/ }}
 
-    -# XXX
-    - if false #act.schedules
+    - if act.schedules
       %li.schedules
-        %a{href: act_url(act, "schedules/")} Schedules
-        - if act.schedules.toc_container?
-          %ol
-            = partial 'toc_container', locals: {act: act, items: act.schedules.toc_children}
+        %strong Schedules
+        %ol
+          = partial 'toc_container', locals: {act: act, items: act.schedules}

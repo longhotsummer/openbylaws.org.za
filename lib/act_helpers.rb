@@ -89,11 +89,17 @@ class ActHelpers < Middleman::Extension
         else
           item.heading
         end
+      when "part", "chapter"
+        "#{item.type.capitalize} #{item.num} - #{item.heading}"
       else
-        s = item.type.capitalize
-        s += " #{item.num}" if item.num
-        s += " - #{item.heading}" if item.heading
-        s
+        if item.heading? and !item.heading.empty?
+          item.heading
+        else
+          s = item.type.capitalize
+          s += " #{item.num}" if item.num
+          s += " - #{item.heading}" if item.heading
+          s
+        end
       end
     end
 
