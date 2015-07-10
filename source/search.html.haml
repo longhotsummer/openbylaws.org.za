@@ -4,9 +4,9 @@ title: Search - Open By-laws South Africa
 
 %article
   %h2 Search for By-laws
-
   .row
-    .col-sm-8
+
+    .col-md-10
       .clearfix
         %form#search.form-horizontal(action="/search.html" method="get")
           .input-group
@@ -23,6 +23,18 @@ title: Search - Open By-laws South Africa
       - content_for :footer do
         -# the mustache template for search results
         %script(id="search-result-tmpl" type="x-tmpl-mustache")
+
+          .clearfix
+            .list-group
+              .list-group-item.active All Cities
+              {{#aggregations.region_names.buckets}}
+              %a.list-group-item
+                {{key}}
+                %span
+                  .badge
+                    {{doc_count}}
+              {{/aggregations.region_names.buckets}}
+
           %p.search-results-summary
             About {{ hits.total }} results ({{ seconds }} seconds)
 

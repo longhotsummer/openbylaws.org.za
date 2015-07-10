@@ -78,4 +78,7 @@ ByLawSearch = function() {
 
 $(function() {
   var search = new ByLawSearch();
+  $('#search-results').on('click', '.list-group-item', function() {
+    var choice = this.value();
+  });
 });
