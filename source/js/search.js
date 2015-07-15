@@ -6,6 +6,7 @@ ByLawSearch = function() {
   var $waiting = $('#search-waiting');
   var template = $('#search-result-tmpl').html();
   var ladda = Ladda.create($('button[type=submit]', $form)[0]);
+  var $city = "";
   Mustache.parse(template);
 
   self.search = function(q) {
@@ -14,7 +15,7 @@ ByLawSearch = function() {
     $results.hide();
     $waiting.show();
 
-    $.getJSON('http://steno.openbylaws.org.za/search', {q: q}, function(response, textStatus, jqXHR) {
+    $.getJSON('http://steno.openbylaws.org.za/search', {q: q, region_name: self.city}, function(response, textStatus, jqXHR) {
       ladda.stop();
       console.log(response);
 
@@ -50,7 +51,7 @@ ByLawSearch = function() {
       // don't reload the whole window
       var q = $('input[name=q]', $form).val();
       window.history.pushState(null, null, '?q=' + q);
-      self.search(q);
+      self.search(q, city);
       e.preventDefault();
     }
   };
@@ -67,6 +68,23 @@ ByLawSearch = function() {
     }
   };
 
+  //active method
+  //$('div.a').on('focus', 'list-group-item', function() {
+   // $this = $(this);
+  //  $this.addClass('active').siblings().removeClass();
+  //});
+
+  $('#search-results').on('click', '.list-group-item', function(e) {
+    self.city = $(this).find("#city").text();
+    self.submitSearch(e);
+    $(this).focus();
+    console.log(city);
+  });
+
+  self.filterByRegion = function(region){
+    
+  };
+
   $form.submit(self.submitSearch);
   window.onpopstate = self.searchFromUri;
 
@@ -78,7 +96,5 @@ ByLawSearch = function() {
 
 $(function() {
   var search = new ByLawSearch();
-  $('#search-results').on('click', '.list-group-item', function() {
-    var choice = this.value();
-  });
-});
+}); 
+

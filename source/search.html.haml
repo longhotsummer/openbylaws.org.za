@@ -26,13 +26,12 @@ title: Search - Open By-laws South Africa
 
           .clearfix
             .list-group
-              .list-group-item.active All Cities
+              .list-group-item All Cities
               {{#aggregations.region_names.buckets}}
               %a.list-group-item
-                {{key}}
-                %span
-                  .badge
-                    {{doc_count}}
+                %span#city {{key}}
+                %span.badge
+                  {{doc_count}}
               {{/aggregations.region_names.buckets}}
 
           %p.search-results-summary
