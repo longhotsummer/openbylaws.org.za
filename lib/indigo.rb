@@ -24,8 +24,13 @@ end
 class IndigoComponent < IndigoBase
   attr_accessor :info
 
-  def initialize(url, info)
+  def initialize(url, info=nil)
     super(url)
+
+    if info.nil?
+      info = JSON.parse(@api['.json'].get())
+    end
+
     @info = Hashie::Mash.new(info)
   end
 
@@ -46,6 +51,24 @@ class IndigoDocument < IndigoComponent
 
   def schedules
     @toc.select { |t| t.component =~ /schedule/ }
+  end
+
+  def amended?
+    !amendments.empty?
+  end
+
+  def attachments
+    @attachments ||= JSON.parse(RestClient.get(attachments_url)).map do |a|
+      IndigoComponent.new(a['url'], a)
+    end
+  end
+
+  def source_enacted
+    attachments.find { |a| a.filename == 'source-enacted.pdf' }
+  end
+
+  def source_current
+    attachments.find { |a| a.filename == 'source.pdf' }
   end
 
   protected

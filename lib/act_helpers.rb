@@ -16,10 +16,6 @@ class ActHelpers < Middleman::Extension
     end
   end
 
-  def self.support_files_for(act)
-    @@support_files[act] ||= ::AkomaNtoso::SupportFileCollection.for_act(act)
-  end
-
   def self.regions
     @@regions ||= Hashie::Mash.new(File.open('regions.json') { |f| JSON.load(f) })
   end
@@ -112,10 +108,6 @@ class ActHelpers < Middleman::Extension
 
     def all_bylaws
       ActHelpers.all_bylaws
-    end
-
-    def support_files_for(act)
-      ActHelpers.support_files_for(act)
     end
 
     def regions

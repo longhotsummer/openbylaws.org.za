@@ -12,22 +12,20 @@ layout: 'bylaw'
     .col-sm-6
       %h3 Download
 
-      - support_files = support_files_for(act)
-
-      - if support_files.source_enacted
+      - if act.source_enacted
         .download
           %h4 Source PDF (as enacted)
           .pull-right
-            = partial 'support_download_button', locals: {file: support_files.source_enacted}
+            = partial 'support_download_button', locals: {file: act.source_enacted}
           %p
             This is the source PDF version of the #{act.nature}, as it
             was first enacted.
 
-      - if act.amended? and support_files.source_current
+      - if act.amended? and act.source_current
         .download
           %h4 Source PDF (as amended)
           .pull-right
-            = partial 'support_download_button', locals: {file: support_files.source_current}
+            = partial 'support_download_button', locals: {file: act.source_current}
           %p
             This is the source PDF version of the #{act.nature}, with
             amendments applied.
@@ -35,7 +33,9 @@ layout: 'bylaw'
       .download
         %h4 Akoma Ntoso XML
         .pull-right
-          = partial 'support_download_button', locals: {file: support_files.akoma_ntoso_current}
+          %a.btn.btn-default{href: act.url + ".xml"}
+            %i.fa.fa-download
+            Download Akoma Ntoso XML
 
         %p
           Download the current Akoma Ntoso XML version of the #{act.nature},
@@ -50,7 +50,7 @@ layout: 'bylaw'
 
 
     .col-sm-4.col-sm-offset-2
-      - region = regions[act.region]
+      - region = regions[act.locality]
       %h3&= region.name
       %p
         %a{href: region['bylaws-url']}
