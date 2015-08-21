@@ -21,7 +21,7 @@ class ActHelpers < Middleman::Extension
   end
 
   def self.regions
-    @@regions ||= Hashie::Mash.new(File.open('../za-by-laws/regions/regions.json') { |f| JSON.load(f) })
+    @@regions ||= Hashie::Mash.new(File.open('regions.json') { |f| JSON.load(f) })
   end
 
   # Generate a url for part an act, or a part
