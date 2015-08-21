@@ -1,7 +1,14 @@
 require 'forwardable'
 
 require 'rest-client'
+require 'restclient/components'
+require 'rack/cache'
 require 'hashie'
+
+RestClient.enable(Rack::Cache,
+                  verbose: true,
+                  metastore: 'file:_cache/meta', 
+                  entitystore: 'file:_cache/body')
 
 class IndigoBase
   API_ENDPOINT = ENV['INDIGO_API_URL'] || "http://bylaws-indigo.herokuapp.com/api"

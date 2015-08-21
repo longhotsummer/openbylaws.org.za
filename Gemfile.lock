@@ -17,6 +17,8 @@ GEM
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.1)
+    domain_name (0.5.24)
+      unf (>= 0.0.5, < 1.0.0)
     em-websocket (0.5.0)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.5.3)
@@ -40,6 +42,8 @@ GEM
       tilt
     hashie (3.3.1)
     hike (1.2.3)
+    http-cookie (1.0.2)
+      domain_name (~> 0.5)
     http_parser.rb (0.5.3)
     i18n (0.6.9)
     json (1.8.1)
@@ -100,6 +104,8 @@ GEM
     pmap (1.0.1)
     polyglot (0.3.5)
     rack (1.5.2)
+    rack-cache (1.2)
+      rack (>= 0.4)
     rack-livereload (0.3.15)
       rack
     rack-test (0.6.2)
@@ -110,9 +116,13 @@ GEM
       ffi (>= 0.5.0)
     rb-kqueue (0.2.2)
       ffi (>= 0.5.0)
-    rest-client (1.7.3)
+    rest-client (1.8.0)
+      http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
+    rest-client-components (1.4.0)
+      rack (>= 1.0.1)
+      rest-client (>= 1.6.0)
     ruby-progressbar (1.4.2)
     ruby18_source_location (0.2)
     sass (3.2.14)
@@ -152,8 +162,10 @@ DEPENDENCIES
   middleman (~> 3.1)
   middleman-livereload (~> 3.1)
   middleman-s3_sync
+  rack-cache (~> 1.2)
   rake (~> 10.1.0)
-  rest-client
+  rest-client (~> 1.8.0)
+  rest-client-components (~> 1.4.0)
   ruby18_source_location
   slaw (~> 0.3.0)
   wdm (~> 0.1.0)

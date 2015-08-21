@@ -5,7 +5,9 @@ ruby '2.1.1'
 
 gem "slaw", "~>0.3.0"
 
-gem "rest-client"
+gem 'rest-client', '~> 1.8.0'
+gem 'rest-client-components', '~> 1.4.0'
+gem 'rack-cache', '~> 1.2'
 
 gem "middleman", "~>3.1"
 gem 'bootstrap-sass', '~> 3.2.0.0', require: false
