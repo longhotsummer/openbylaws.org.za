@@ -1,6 +1,51 @@
 @import 'site';
-@import 'act';
 @import 'toc';
+
+.akoma-ntoso {
+  text-align: justify;
+  line-height: 1.5em;
+
+  @import 'akoma-ntoso';
+}
+
+.akoma-ntoso-container {
+  padding-left: 20px;
+  margin-top: 0px;
+  border-left: 1px solid #ccc;
+
+  @media (max-width: 768px) {
+    padding-left: 0px;
+    border-left-width: 0px;
+  }
+
+  @media print {
+    padding-left: 0px;
+    border-left-width: 0px;
+  }
+
+  .title {
+    text-align: center;
+    margin-bottom: 2em;
+
+    h2 {
+      font-size: 18px;
+    }
+  }
+
+  .published {
+    font-style: italic;
+  }
+
+  .popover-content .an-term {
+    border-bottom-width: 0px;
+  }
+
+  #definitions, .term-definition {
+    .an-subsection {
+      margin-left: 0px;
+    }
+  }
+}
 
 .downloads {
   .download {
