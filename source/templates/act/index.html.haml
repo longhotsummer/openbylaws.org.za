@@ -13,38 +13,39 @@ layout: 'bylaw'
       = partial 'toc', locals: {act: act}
   .col-sm-8
     %article.akoma-ntoso.akoma-ntoso-container
-      .title
+      .coverpage
         %h2&= act.title
 
-        -# XXX
-        - if false #act.publication
+        - if act.publication?
           %h4.published
             Published in
             - url = publication_url(act)
             - if url
               %a{href: url}
-                &= act.publication['showAs']
+                &= act.publication_name
                 no.
-                &= act.publication['number']
+                &= act.publication_number
                 on
-                &= act.publication['date']
+                &= act.publication_date
             - else
-              &= act.publication['showAs']
+              &= act.publication_name
               no.
-              &= act.publication['number']
+              &= act.publication_number
               on
-              &= act.publication['date']
+              &= act.publication_date
        
-        -# XXX
-        - for amendment in [] #act.amendment_events
-          %h4.published
-            Amended by
-            - if all_bylaws.for_uri(amendment.source['href'])
-              %a{href: amendment.source['href']}&= amendment.source['showAs']
-            - else 
-              &= amendment.source['showAs']               
-            on
-            &= amendment.date  
+        - unless act.amendments.empty?
+          %ol.amendment-list
+          - for amendment in act.amendments
+            %li.amendment
+              Amended by
+              %span.amending-title
+                - if amendment.amending_id
+                  %a{href: amendment.amending_uri}&= amendment.amending_title
+                - else
+                  &= amendment.amending_title
+              on
+              %span.date&= amendment.date
                   
       = act.html
 

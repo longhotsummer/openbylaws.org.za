@@ -35,7 +35,7 @@ class IndigoComponent < IndigoBase
   end
 
   def html
-    @api['.html'].get()
+    @api['.html'].get
   end
 
   # make some changes to the incoming hash
@@ -64,8 +64,16 @@ class IndigoDocument < IndigoComponent
     @toc ||= parse_toc(JSON.parse(@api['toc.json'].get())['toc'])
   end
 
+  def html
+    @api['.html'].get(params: {coverpage: 0})
+  end
+
   def schedules
     @toc.select { |t| t.component =~ /schedule/ }
+  end
+
+  def publication?
+    publication_name && publication_number && publication_date
   end
 
   def amended?
