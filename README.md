@@ -13,10 +13,8 @@ To setup a local development environment:
 1. clone this repo
 2. clone the [za-by-laws repo](https://github.com/longhotsummer/za-by-laws) repo alongside this one
 3. install dependencies: `bundle install`
-4. run the server: `middleman`
+4. run the server: `middleman --reload-paths lib`
 5. make your changes and submit a pull request
-
-TODO: If you make any changes to the code in `/lib` you will need to kill and restart the middleman server.
 
 # Deploying
 
