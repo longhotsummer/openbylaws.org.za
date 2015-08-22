@@ -8,7 +8,8 @@ require 'hashie'
 RestClient.enable(Rack::Cache,
                   verbose: true,
                   metastore: 'file:_cache/meta', 
-                  entitystore: 'file:_cache/body')
+                  entitystore: 'file:_cache/body',
+                  allow_reload: true)
 
 class IndigoBase
   API_ENDPOINT = ENV['INDIGO_API_URL'] || "http://indigo.openbylaws.org.za/api"
@@ -121,7 +122,7 @@ class IndigoDocumentCollection < IndigoBase
 
   def initialize(endpoint)
     super(endpoint)
-    response = JSON.parse(@api.get())
+    response = JSON.parse(@api.get(cache_control: 'no-cache'))
     @documents = response.map { |doc| IndigoDocument.new(doc['published_url'], doc) }
   end
 end
