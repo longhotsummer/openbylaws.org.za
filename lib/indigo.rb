@@ -5,11 +5,29 @@ require 'restclient/components'
 require 'rack/cache'
 require 'hashie'
 
+# We want to cache files locally to make development faster,
+# and it's convenient to use Rack::Cache to do this. However,
+# the Indigo API doesn't mark its content as cacheable, so
+# we jump in and fake that.
+class FakeCacheable
+  def initialize(app, options={})
+    @app = app
+    @secs = options[:seconds] || 86400
+  end
+
+  def call(env)
+    status, headers, body = @app.call(env)
+    headers['Cache-Control'] = "max-age=#{@secs}"
+    [status, headers, body]
+  end
+end
+
 RestClient.enable(Rack::Cache,
                   verbose: true,
                   metastore: 'file:_cache/meta', 
                   entitystore: 'file:_cache/body',
                   allow_reload: true)
+RestClient.enable(FakeCacheable)
 
 class IndigoBase
   API_ENDPOINT = ENV['INDIGO_API_URL'] || "http://indigo.openbylaws.org.za/api"
