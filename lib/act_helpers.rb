@@ -1,11 +1,6 @@
 class ActHelpers < Middleman::Extension
   @@bylaws = nil
 
-  def initialize(app, options_hash={}, &block)
-    super
-    @@renderer = Slaw::Render::HTMLRenderer.new
-  end
-
   def self.load_bylaws
     for code, region in self.regions.each_pair
       region.bylaws = IndigoDocumentCollection.new(IndigoBase::API_ENDPOINT + '/za-' + code)
@@ -43,22 +38,8 @@ class ActHelpers < Middleman::Extension
   end
 
   helpers do
-    def transform_params(node)
-      {
-        'base_url' => "'#{act_url(act_for_node(node))}'"
-      }
-    end
-
     def act_url(act, *args)
       ActHelpers.act_url(act, *args)
-    end
-
-    def breadcrumb_heading(act)
-      if act.is_a? ::Slaw::ByLaw
-        "By-law of #{act.year}"
-      else
-        "Act #{act.num} of #{act.year}"
-      end
     end
 
     def breadcrumbs_for_fragment(fragment)
