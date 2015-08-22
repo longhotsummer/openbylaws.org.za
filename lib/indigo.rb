@@ -31,11 +31,26 @@ class IndigoComponent < IndigoBase
       info = JSON.parse(@api['.json'].get())
     end
 
-    @info = Hashie::Mash.new(info)
+    @info = _transform(Hashie::Mash.new(info))
   end
 
   def html
     @api['.html'].get()
+  end
+
+  # make some changes to the incoming hash
+  def _transform(item)
+    case item
+    when Array
+      item.each { |e| _transform(e) }
+    when Hash
+      # dates into Date objects
+      if item.has_key? :date and item.date.is_a? String
+        item.date = Date.parse(item.date)
+      end
+
+      item.each_value { |e| _transform(e) }
+    end
   end
 
   def method_missing(method, *args)
@@ -55,6 +70,10 @@ class IndigoDocument < IndigoComponent
 
   def amended?
     !amendments.empty?
+  end
+
+  def repealed?
+    !repeal.nil?
   end
 
   def attachments

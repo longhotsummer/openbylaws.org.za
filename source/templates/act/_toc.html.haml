@@ -4,7 +4,7 @@
       %a{href: act_url(act)} Entire by-law
     = partial 'toc_container', locals: {act: act, items: act.toc.reject { |t| t.component =~ /schedule/ }}
 
-    - if act.schedules
+    - if act.schedules.present?
       %li.schedules
         %strong Schedules
         %ol
