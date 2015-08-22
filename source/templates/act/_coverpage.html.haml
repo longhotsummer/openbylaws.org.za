@@ -1,0 +1,33 @@
+.coverpage
+  %h2&= act.title
+
+  - if act.publication?
+    %h4.published
+      Published in
+      - url = publication_url(act)
+      - if url
+        %a{href: url}
+          &= act.publication_name
+          no.
+          &= act.publication_number
+          on
+          &= act.publication_date
+      - else
+        &= act.publication_name
+        no.
+        &= act.publication_number
+        on
+        &= act.publication_date
+ 
+  - unless act.amendments.empty?
+    %ol.amendment-list
+    - for amendment in act.amendments
+      %li.amendment
+        Amended by
+        %span.amending-title
+          - if amendment.amending_id
+            %a{href: amendment.amending_uri}&= amendment.amending_title
+          - else
+            &= amendment.amending_title
+        on
+        %span.date&= amendment.date
