@@ -1,8 +1,5 @@
-require 'support_files'
-
 class ActHelpers < Middleman::Extension
   @@bylaws = nil
-  @@support_files = {}
 
   def initialize(app, options_hash={}, &block)
     super
