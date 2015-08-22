@@ -14,7 +14,9 @@ To setup a local development environment:
 2. clone the [za-by-laws repo](https://github.com/longhotsummer/za-by-laws) repo alongside this one
 3. install dependencies: `bundle install`
 4. run the server: `middleman --reload-paths lib`
-5. make your changes and submit a pull request
+
+The website loads its data from [indigo.openbylaws.org.za](http://indigo.openbylaws.org.za) and caches
+the responses in `_cache` for efficiency.
 
 # Deploying
 

@@ -11,7 +11,7 @@ RestClient.enable(Rack::Cache,
                   entitystore: 'file:_cache/body')
 
 class IndigoBase
-  API_ENDPOINT = ENV['INDIGO_API_URL'] || "http://bylaws-indigo.herokuapp.com/api"
+  API_ENDPOINT = ENV['INDIGO_API_URL'] || "http://indigo.openbylaws.org.za/api"
 
   attr_accessor :api, :url
 
