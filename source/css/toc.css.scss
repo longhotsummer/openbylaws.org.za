@@ -1,5 +1,5 @@
 .toc {
-  padding-top: 20px;
+  margin-top: 20px;
 
   ol {
     list-style-type: none;
@@ -35,6 +35,8 @@
 }
 
 aside.toc {
+  border-right: 1px solid #ccc;
+
   @media (max-width: 768px) {
     display: none;
   }

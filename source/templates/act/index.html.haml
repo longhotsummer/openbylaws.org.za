@@ -5,21 +5,23 @@ layout: 'bylaw'
 - content_for :title do
   = act.title
 
-= partial 'nav', locals: {act: act, tab: 'content'}
+- if not act.stub
+  = partial 'nav', locals: {act: act, tab: 'content'}
 
-.row
-  .col-sm-4
-    %aside.toc
-      - if not act.stub
+  .row
+    .col-sm-4
+      %aside.toc
         = partial 'toc', locals: {act: act}
 
-  .col-sm-8
-    %article.akoma-ntoso.akoma-ntoso-container
-      = partial 'coverpage', locals: {act: act}
-
-      - if act.stub
-        = partial 'stub', locals: {act: act}
-      - else
+    .col-sm-8
+      %article.akoma-ntoso.akoma-ntoso-container
+        = partial 'coverpage', locals: {act: act}
         = act.html
+
+- else
+  -# stub
+  %article.akoma-ntoso.akoma-ntoso-container.stub
+    = partial 'coverpage', locals: {act: act}
+    = partial 'stub', locals: {act: act}
 
 -# XXX = partial 'definitions', locals: {act: act}
