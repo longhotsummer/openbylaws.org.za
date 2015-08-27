@@ -1,3 +1,5 @@
+//= require "bootstrap"
+
 $(function() {
   // show definition popups
   $('.akn-term').popover({
