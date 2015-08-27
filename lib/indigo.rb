@@ -43,7 +43,7 @@ end
 class IndigoComponent < IndigoBase
   attr_accessor :info
 
-  def initialize(url, info=nil)
+  def initialize(url, info=nil, parent=nil)
     super(url)
 
     if info.nil?
@@ -51,10 +51,33 @@ class IndigoComponent < IndigoBase
     end
 
     @info = _transform(Hashie::Mash.new(info))
+    @parent = parent
   end
 
   def html
+    @html ||= _link_terms(get_html)
+  end
+
+  def get_html
     @api['.html'].get
+  end
+
+  # transform <span class="akn-term" .. > tags into links
+  # and make the definitions targetable
+  def _link_terms(html)
+    doc = Nokogiri::HTML(html)
+
+    for term in doc.css('.akn-term')
+      term.name = 'a'
+      term['href'] = "#{frbr_uri}#{term['data-refersto']}"
+    end
+
+    for defn in doc.css('.akn-def')
+      # so we can link to it, see above
+      defn['id'] = defn['data-refersto'].sub(/^#/, '')
+    end
+
+    doc.to_html
   end
 
   # make some changes to the incoming hash
@@ -73,7 +96,9 @@ class IndigoComponent < IndigoBase
   end
 
   def method_missing(method, *args)
-    @info.send(method, *args)
+    v = @info.send(method, *args)
+    v = @parent.send(method, *args) if not v and @parent
+    v
   end
 end
 
@@ -83,7 +108,7 @@ class IndigoDocument < IndigoComponent
     @toc ||= parse_toc(JSON.parse(@api['toc.json'].get())['toc'])
   end
 
-  def html
+  def get_html
     @api['.html'].get(params: {coverpage: 0})
   end
 
@@ -117,10 +142,34 @@ class IndigoDocument < IndigoComponent
     attachments.find { |a| a.filename == 'source.pdf' }
   end
 
+  # Return a Hash from term_id to a +[term, definition]+ pair,
+  # where +term+ is the defined term and +definition+
+  # is the HTML for the definition.
+  def term_definitions
+    unless @term_definitions
+      @term_definitions = {}
+
+      # parse the HTML, the find defined terms
+      doc = Nokogiri::HTML(html)
+
+      for defn in doc.css('.akn-def')
+        term = defn.content
+        refersTo = defn['data-refersto']
+        definition = defn.ancestors("[data-refersto='#{refersTo}']").first
+
+        if refersTo and definition
+          @term_definitions[refersTo.sub(/^#/, '')] = [term, definition.to_html]
+        end
+      end
+    end
+
+    @term_definitions
+  end
+
   protected
   def parse_toc(items)
     items.map do |item|
-      item = IndigoComponent.new(item['url'], item)
+      item = IndigoComponent.new(item['url'], item, self)
       if item.children
         item.children = self.parse_toc(item.children)
         item.children.each { |c| c.info.parent = item }
