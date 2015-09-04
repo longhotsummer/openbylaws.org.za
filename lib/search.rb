@@ -5,22 +5,25 @@ require 'log4r'
 class ElasticSearchSupport
   attr_accessor :es, :mapping, :index, :type, :base_url, :logger
 
-  ELASTICSEARCH_PARAMS = [
-    'openbylaws.org.za',         # index
-    'bylaw',                     # type
-    'http://openbylaws.org.za',  # base url
-    {
-      url: ENV['BONSAI_URL'] || 'http://localhost:9200',
-      reload_on_failure: true,
-    }
-  ]
+  def self.searcher(params={})
+    params = {
+      index: 'openbylaws.org.za',
+      type: 'bylaw',
+      base_url: 'http://openbylaws.org.za',
+      regions: ActHelpers.regions,
+      client_params: {
+        url: ENV['BONSAI_URL'] || 'http://localhost:9200',
+        reload_on_failure: true,
+      },
+    }.update(params)
 
-  def self.searcher
-    @@searcher ||= self.new(*ELASTICSEARCH_PARAMS)
+    @@searcher ||= self.new(params[:index], params[:type], params[:base_url],
+                            params[:regions], params[:client_params], params[:es])
   end
 
-  def initialize(index, type, base_url, client_params={}, es=nil)
+  def initialize(index, type, base_url, regions, client_params={}, es=nil)
     @es = es || create_client(client_params)
+    @regions = regions
 
     @ix = index
     @type = type
@@ -61,6 +64,7 @@ class ElasticSearchSupport
         title: doc.title,
         content: doc.text,
         region: doc.region_code,
+        region_name: @regions[doc.region_code].name,
         published_on: doc.publication_date,
         repealed: doc.repealed?,
       }
