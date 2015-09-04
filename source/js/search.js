@@ -8,13 +8,16 @@ ByLawSearch = function() {
   var ladda = Ladda.create($('button[type=submit]', $form)[0]);
   Mustache.parse(template);
 
-  self.search = function(q) {
+  self.search = function() {
+    var q = $form.find('input[name=q]').val();
+    var region = $form.find('input[name=region_name]').val();
+
     ladda.start();
 
     $results.hide();
     $waiting.show();
 
-    $.getJSON('http://steno.openbylaws.org.za/search', {q: q}, function(response, textStatus, jqXHR) {
+    $.getJSON('http://steno.openbylaws.org.za/search', {q: q, region_name: region}, function(response, textStatus, jqXHR) {
       ladda.stop();
       console.log(response);
 
@@ -36,6 +39,15 @@ ByLawSearch = function() {
         return result;
       });
 
+      // mark an active region
+      response.aggregations.region_names.not_active = true;
+      $.each(response.aggregations.region_names.buckets, function(i, bucket) {
+        if (bucket.key == region) {
+          response.aggregations.region_names.not_active = false;
+          bucket.active = true;
+        }
+      });
+
       $results
         .empty()
         .append(Mustache.render(template, response))
@@ -47,35 +59,47 @@ ByLawSearch = function() {
 
   self.submitSearch = function(e) {
     if (window.history.pushState) {
-      // don't reload the whole window
-      var q = $('input[name=q]', $form).val();
-      window.history.pushState(null, null, '?q=' + q);
-      self.search(q);
       e.preventDefault();
+
+      // don't reload the whole window
+      window.history.pushState(null, null, '?' + $form.serialize());
+      self.search();
     }
+  };
+
+  self.getParamValue = function(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
   };
 
   // search term from uri
   self.searchFromUri = function() {
-    var q = decodeURIComponent(
-      (new RegExp('[?|&]q=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20')
-    )||null;
-
+    var q = self.getParamValue('q');
     if (q) {
-      $('input[name=q]', $form).val(q);
-      self.search(q);
+      $form.find('input[name=q]').val(q);
+      $form.find('input[name=region_name]').val(self.getParamValue('region_name'));
+      $form.submit();
     }
   };
 
-  $form.submit(self.submitSearch);
-  window.onpopstate = self.searchFromUri;
+  // handle clicks on a city
+  $results.on('click', '.list-group-item', function(e) {
+    e.preventDefault();
+    $form.find('[name=region_name]').val($(this).find('.city').text());
+    $form.submit();
+  });
 
-  // kick off a search
-  self.searchFromUri();
+  $form.on('submit', self.submitSearch);
+  window.onpopstate = self.searchFromUri;
 
   return self;
 };
 
 $(function() {
   var search = new ByLawSearch();
-});
+  // kick off a search
+  search.searchFromUri();
+}); 
+
