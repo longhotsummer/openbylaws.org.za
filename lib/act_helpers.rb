@@ -89,7 +89,7 @@ class ActHelpers < Middleman::Extension
     end
 
     def all_bylaws
-      ActHelpers.all_bylaws
+      ActHelpers.regions.values.map { |r| r.bylaws.documents }.flatten
     end
 
     def regions

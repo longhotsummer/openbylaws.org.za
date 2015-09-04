@@ -92,8 +92,10 @@ class IndigoComponent < IndigoBase
       item.each { |e| _transform(e) }
     when Hash
       # dates into Date objects
-      if item.has_key? :date and item.date.is_a? String
-        item.date = Date.parse(item.date)
+      for key in [:date, :updated_at, :created_at, :expression_date]
+        if item.has_key? key and item[key].is_a? String
+          item[key] = Date.parse(item[key])
+        end
       end
 
       item.each_value { |e| _transform(e) }
