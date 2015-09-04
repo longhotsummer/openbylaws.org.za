@@ -4,6 +4,7 @@ require 'rest-client'
 require 'restclient/components'
 require 'rack/cache'
 require 'hashie'
+require 'nokogiri'
 
 # We want to cache files locally to make development faster,
 # and it's convenient to use Rack::Cache to do this. However,
@@ -62,6 +63,10 @@ class IndigoComponent < IndigoBase
     @api['.html'].get
   end
 
+  def text
+    @text ||= Nokogiri::HTML(get_html).inner_text
+  end
+
   # transform <span class="akn-term" .. > tags into links
   # and make the definitions targetable
   def _link_terms(html)
@@ -106,6 +111,10 @@ class IndigoDocument < IndigoComponent
   def toc
     # Load the TOC remotely
     @toc ||= parse_toc(JSON.parse(@api['toc.json'].get())['toc'])
+  end
+
+  def region_code
+    frbr_uri.split('/', 3)[1].split('-')[1]
   end
 
   def get_html

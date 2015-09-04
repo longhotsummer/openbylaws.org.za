@@ -17,3 +17,6 @@ gem 'lru_redux', '~> 0.8.1'
 
 gem "rake", "~> 10.1.0"
 gem 'middleman-s3_sync'
+
+# for search
+gem 'elasticsearch', '~> 1.0.12'

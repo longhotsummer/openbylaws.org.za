@@ -1,5 +1,9 @@
-task :default => [:clean, :build, :resources]
-task :deploy => [:clean, :build, :resources, :sync]
+$:.unshift("lib")
+
+task :default => [:clean, :build]
+
+desc "Build and deploy site to openbylaws.org.za and reindex for search"
+task :deploy => [:clean, :build, :sync, :reindex]
 
 task :clean do
   sh "rm -rf build"
@@ -9,33 +13,19 @@ task :build do
   sh "middleman build"
 end
 
-task :resources => [:pdfs, :xml]
-
-task :pdfs do
-  # copy pdfs 
-  for f in FileList['../za-by-laws/by-laws/**/*.pdf']
-    fname = File.basename(f)
-
-    dir = File.join("build", "za", "by-law", File.dirname(f).split("/")[-2..-1])
-    g = fname.gsub(/-(source|enacted|amendment)/, '')
-    dir = File.join(dir, "/", g.split('.', 2)[0])
-
-    cp f, File.join(dir, fname), verbose: true
-  end
-end
-
-task :xml do
-  # copy over XML
-  for f in FileList['../za-by-laws/by-laws/**/*.xml']
-    fname = File.basename(f)
-
-    dir = File.join("build", "za", "by-law", File.dirname(f).split("/")[-2..-1])
-    dir = File.join(dir, "/", fname[0..-5])
-
-    cp f, File.join(dir, fname), verbose: true
-  end
-end
-
+desc "Sync changed files to S3"
 task :sync do
   sh "middleman s3_sync"
+end
+
+desc "Re-index all documents for searching, removing any existing indexed documents."
+task :reindex do
+  require 'middleman'
+  require 'act_helpers'
+  require 'search'
+
+  ActHelpers.load_bylaws
+  docs = ActHelpers.regions.values.map { |r| r.bylaws.documents }.flatten
+
+  ElasticSearchSupport.searcher.reindex!(docs)
 end

@@ -1,3 +1,7 @@
+require 'hashie'
+require 'json'
+require 'indigo'
+
 class ActHelpers < Middleman::Extension
   @@bylaws = nil
 
