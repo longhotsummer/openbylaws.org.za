@@ -3,7 +3,11 @@
 @import 'vendor/ladda-themeless-0.9.4.min.css';
 
 .sponsors {
-  padding: 10px 15px;
+  padding: 20px 0px;
+
+  img {
+    height: 50px;
+  }
 }
 
 .action-blocks {
