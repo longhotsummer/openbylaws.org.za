@@ -68,6 +68,7 @@ def subpages_for(act, children)
 end
 
 # Load the bylaws!
+puts "Using Indigo at #{IndigoBase::API_ENDPOINT}"
 ActHelpers.load_bylaws
 
 # General by-laws landing page, show each region and their by-laws

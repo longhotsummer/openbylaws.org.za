@@ -5,10 +5,12 @@ task :default => [:clean, :build]
 desc "Build and deploy site to openbylaws.org.za and reindex for search"
 task :deploy => [:clean, :build, :sync, :reindex]
 
+desc "Clean out all build artefacts"
 task :clean do
   sh "rm -rf build"
 end
 
+desc "Build the website into the build directory"
 task :build do
   sh "middleman build"
 end
