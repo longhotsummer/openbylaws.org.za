@@ -1,18 +1,20 @@
+//= require "bootstrap"
+
 $(function() {
   // show definition popups
-  $('.an-term').popover({
+  $('.akn-term').popover({
     placement: 'top',
     trigger: 'hover',
     html: true,
     template: '<div class="popover term-definition"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>',
     delay: { show: 500 },
     title: function() {
-      var term_id = $(this).data('refers-to');
-      return $(term_id).data('term');
+      var term_id = $(this).data('refersto').replace('#', '');
+      return $('#defn-' + term_id).data('term');
     },
     content: function() {
-      var term_id = $(this).data('refers-to');
-      return $(term_id).html();
+      var term_id = $(this).data('refersto').replace('#', '');
+      return $('#defn-' + term_id).html();
     }
   });
 

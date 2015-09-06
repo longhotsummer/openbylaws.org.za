@@ -3,5 +3,5 @@
     .alert.alert-warning
       %h4 Repealed
       %p
-        This #{h act.nature} was repealed on #{act.repealed_on.strftime('%Y-%m-%d')}
-        by #{link_to act.repealed_by['showAs'], act.repealed_by['href']}.
+        This #{h act.nature} was repealed on #{act.repeal.date.strftime('%Y-%m-%d')}
+        by #{link_to act.repeal.repealing_title, act.repeal.repealing_uri}.

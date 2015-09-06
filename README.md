@@ -2,7 +2,7 @@
 
 This is the source code for the [openbylaws.org.za](http://openbylaws.org.za) website.
 
-The by-laws themselves are in the [za-by-laws repo](https://github.com/longhotsummer/za-by-laws).
+The website is a [Middleman](http://middlemanapp.com) app that pulls by-law data from the [Indigo](https://github.com/Code4SA/indigo) service running at [indigo.openbylaws.org.za](http://indigo.openbylaws.org.za) and builds a static website. The website is then uploaded to Amazon S3.
 
 Contributions are welcome!
 
@@ -11,32 +11,49 @@ Contributions are welcome!
 To setup a local development environment:
 
 1. clone this repo
-2. clone the [za-by-laws repo](https://github.com/longhotsummer/za-by-laws) repo alongside this one
-3. install dependencies: `bundle install`
-4. run the server: `middleman`
-5. make your changes and submit a pull request
+2. install dependencies: `bundle install`
+3. run the server: `middleman --reload-paths lib`
 
-TODO: If you make any changes to the code in `/lib` you will need to kill and restart the middleman server.
+The website pulls all data from [indigo.openbylaws.org.za](http://indigo.openbylaws.org.za).
+It caches responses from Indigo in the `_cache` directory for 24 hours which makes local development
+simpler. The list of by-laws is never cached. If you know your cache is out of date, just `rm -rf _cache`.
 
 # Deploying
 
-The built website is deployed to s3. You'll need to put the S3 creds in `.s3_sync`.
+The built website can be built using `rake` or:
 
-To build and sync the entire site, run
+    rake build
+
+To upload the built site by syncing the `build` directory with S3,
+put the S3 creds in `.s3_sync` and the run:
+
+    rake sync
+
+To reindex the documents for search, run
+
+    rake reindex
+
+To build and sync the entire site (ie. clean, build, sync and re-index), run:
 
     rake deploy
 
-To just build the local site, run
+# Architecture
 
-    rake
+The website is a Ruby [Middleman](http://middlemanapp.com) app that realies
+heavily on the [Indigo](https://github.com/Code4SA/indigo) service running at
+[indigo.openbylaws.org.za](http://indigo.openbylaws.org.za) for its content. Indigo
+provides all the by-law metadata, table of contents, rendered HTML, attachments, etc.
+The middleman app simply pulls it all together into a website.
 
-To copy all the XML and PDFs into the build directory, run
+The website focuses on a single country (South Africa) but can easily be modified
+to work for other countries. The country has **regions** which have by-laws associated
+with them. The details of the regions are in `regions.json`.
 
-    rake resources
+When the app starts up, it asks indigo.openyblaws.org.za for a list of by-laws
+for each region and the table of contents for each by-law. It then generates a page
+for each by-law and each item in the table of contents.
 
-To sync the build directory into S3, run
-
-    rake sync
+To deploy the site, a full copy is generated locally and then uploaded to S3.
 
 # Licence
 

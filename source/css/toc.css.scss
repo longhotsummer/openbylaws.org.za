@@ -1,5 +1,5 @@
 .toc {
-  padding-top: 20px;
+  margin-top: 20px;
 
   ol {
     list-style-type: none;
@@ -28,13 +28,16 @@
   }
 
   li.schedules {
-    &> a {
+    a {
       font-weight: bold;
     }
   }
 }
 
 aside.toc {
+  border-right: 1px solid #ccc;
+  padding-right: 5px;
+
   @media (max-width: 768px) {
     display: none;
   }

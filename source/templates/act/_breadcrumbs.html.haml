@@ -2,8 +2,8 @@
   - trail.each_with_index do |item, i|
     %li
       - if i == trail.size-1
-        &= item.toc_title
+        &= toc_title(item)
       - else
         %a{href: act_url(act, item)}
-          &= item.toc_title
+          &= toc_title(item)
         &#9656;

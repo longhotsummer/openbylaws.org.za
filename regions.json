@@ -1,0 +1,12 @@
+{
+  "cpt": {
+    "name": "Cape Town",
+    "logo": "/img/municipalities/cape-town.png",
+    "bylaws-url": "http://www.capetown.gov.za/en/ByLaws/Pages/Home.aspx"
+  },
+  "jhb": {
+    "name": "Johannesburg",
+    "logo": "http://www.joburg.org.za/test_template/logo.gif",
+    "bylaws-url": "http://www.joburg.org.za/index.php?option=com_content&task=view&id=647&itemid=114"
+  }
+}

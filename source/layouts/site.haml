@@ -43,8 +43,6 @@
             .navbar-collapse.collapse
               %ul.nav.navbar-nav
                 %li
-                  %a(href="/za/by-law/") By-laws
-                %li
                   %a(href="/about.html") About
                 %li
                   %a(href="/contact.html") Contact
@@ -53,6 +51,11 @@
 
               %form.navbar-form.navbar-right(action="/search.html" method="get" role="search")
                 %input.form-control(type="text" name="q" placeholder="Search")     
+
+              %ul.nav.navbar-nav.navbar-right
+                %li
+                  %a.twitter(href="https://twitter.com/OpenByLawsZA")
+                    %i.fa.fa-twitter.fa-2x
             
 
       #main-content
@@ -97,7 +100,6 @@
     = javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'
     :javascript
       window.jQuery || document.write('<script src="/js/vendor/jquery-1.10.2.min.js"><\/script>')
-    = javascript_include_tag '//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'
     = javascript_include_tag '/js/main.js'
 
     - if content_for?(:footer)

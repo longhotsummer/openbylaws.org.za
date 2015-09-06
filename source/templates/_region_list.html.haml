@@ -3,12 +3,11 @@
     - for code, region in regions.entries.sort_by { |c, r| r.name }
       .col-sm-6
         .region
-          %a(href="/za/by-law/#{code}/")
+          %a(href="/za-#{code}/")
             %h3&= region.name
 
           %h4 Recent updates
-          - region_bylaws = bylaws.select { |b| b.region == code }
           %ul.list-unstyled
-            - for bylaw in region_bylaws.sort_by { |b| b.mtime }.reverse[0..3]
+            - for bylaw in region.bylaws.sort_by { |b| b.updated_at }.reverse[0..5]
               %li
                 %a{href: act_url(bylaw)}&= bylaw.title

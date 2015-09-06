@@ -5,45 +5,23 @@ layout: 'bylaw'
 - content_for :title do
   = act.title
 
-= partial 'nav', locals: {act: act, tab: 'content'}
+- if not act.stub
+  = partial 'nav', locals: {act: act, tab: 'content'}
 
-.row
-  .col-sm-4
-    %aside.toc
-      = partial 'toc', locals: {act: act}
-  .col-sm-8
-    %article.an-container
-      .title
-        %h2&= act.title
+  .row
+    .col-sm-4
+      %aside.toc
+        = partial 'toc', locals: {act: act}
 
-        - if act.publication
-          %h4.published
-            Published in
-            - url = publication_url(act)
-            - if url
-              %a{href: url}
-                &= act.publication['showAs']
-                no.
-                &= act.publication['number']
-                on
-                &= act.publication['date']
-            - else
-              &= act.publication['showAs']
-              no.
-              &= act.publication['number']
-              on
-              &= act.publication['date']
-       
-        - for amendment in act.amendment_events
-          %h4.published
-            Amended by
-            - if all_bylaws.for_uri(amendment.source['href'])
-              %a{href: amendment.source['href']}&= amendment.source['showAs']
-            - else 
-              &= amendment.source['showAs']               
-            on
-            &= amendment.date  
-                  
-      = act_to_html(act)
+    .col-sm-8
+      %article.akoma-ntoso.akoma-ntoso-container
+        = partial 'coverpage', locals: {act: act}
+        = act.html
+
+- else
+  -# stub
+  %article.akoma-ntoso.akoma-ntoso-container.stub
+    = partial 'coverpage', locals: {act: act}
+    = partial 'stub', locals: {act: act}
 
 = partial 'definitions', locals: {act: act}

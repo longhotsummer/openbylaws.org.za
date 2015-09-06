@@ -1,7 +1,7 @@
 - for child in items
-  %li{class: child.name}
+  %li{class: child.type}
     %a{href: act_url(act, child)}
-      &= child.toc_title
-    - if child.toc_container?
+      &= toc_title(child)
+    - if child.children? and not child.component =~ /schedule/
       %ol
-        = partial 'toc_container', locals: {act: act, items: child.toc_children}
+        = partial 'toc_container', locals: {act: act, items: child.children}

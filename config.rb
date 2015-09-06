@@ -2,6 +2,7 @@ $:.unshift('lib')
 
 require 'slaw'
 require 'act_helpers'
+require 'indigo'
 
 ###
 # Compass
@@ -33,7 +34,7 @@ require 'act_helpers'
 # Proxy pages (http://middlemanapp.com/dynamic-pages/)
 
 def pages_for(act)
-  path = act.id_uri.chomp('/')
+  path = act.frbr_uri.chomp('/')
 
   # full act
   proxy "#{path}/index.html", "/templates/act/index.html", :locals => { :act => act }, :ignore => true
@@ -45,37 +46,42 @@ def pages_for(act)
   proxy "#{path}/resources/index.html", "/templates/act/resources.html", :locals => { :act => act }, :ignore => true
 
   # definitions, usually a duplicate of section 1
-  if defn = act.definitions
-    proxy "#{path}/definitions/index.html", "/templates/act/fragment.html", :locals => { :act => act, fragment: defn }, :ignore => true
-  end
+  #if defn = act.definitions
+  #  proxy "#{path}/definitions/index.html", "/templates/act/fragment.html", :locals => { :act => act, fragment: defn }, :ignore => true
+  #end
 
   # sections, chapters, parts, etc.
-  subpages_for(act, act.body)
+  subpages_for(act, act.toc)
 
   # schedules
-  if schedules = act.schedules
-    proxy "#{path}/schedules/index.html", "/templates/act/fragment.html", :locals => { :act => act, fragment: schedules }, :ignore => true
-    subpages_for(act, act.schedules)
+  #if schedules = act.schedules
+    #proxy "#{path}/schedules/index.html", "/templates/act/fragment.html", :locals => { :act => act, fragment: schedules }, :ignore => true
+    #subpages_for(act, act.schedules)
+  #end
+end
+
+def subpages_for(act, children)
+  for child in children
+    proxy ActHelpers.act_url(act, child) + "/index.html", "/templates/act/fragment.html", :locals => { act: act, fragment: child }, :ignore => true
+    subpages_for(act, child.children) if child.children?
   end
 end
 
-def subpages_for(act, node)
-  for child in node.toc_children
-    proxy ActHelpers.act_url(act, child) + "index.html", "/templates/act/fragment.html", :locals => { act: act, fragment: child }, :ignore => true
-    subpages_for(act, child) if child.toc_container?
+# Load the bylaws!
+puts "Using Indigo at #{IndigoBase::API_ENDPOINT}"
+ActHelpers.load_bylaws
+
+# General by-laws landing page, show each region and their by-laws
+proxy "/by-laws/index.html", "/templates/bylaws.html", ignore: true
+
+# Load the by-laws for each region we care about and generate their URLs and pages
+for code, region in ActHelpers.regions
+  # region pages
+  proxy "/za-#{code}/index.html", "/templates/region.html", locals: {region: region}, ignore: true
+
+  for bylaw in region.bylaws
+    pages_for(bylaw)
   end
-end
-
-# By Laws
-bylaws = ActHelpers.all_bylaws
-bylaws.each { |bylaw| pages_for(bylaw) }
-
-proxy "/za/by-law/index.html", "/templates/bylaws.html", locals: {bylaws: bylaws}, ignore: true
-
-# region pages
-for code in bylaws.map(&:region).uniq
-  region_bylaws = bylaws.select { |b| b.region == code }.sort_by { |b| b.title }
-  proxy "/za/by-law/#{code}/index.html", "/templates/region.html", locals: {bylaws: region_bylaws, region: ActHelpers.regions[code]}, ignore: true
 end
 
 # Ignore templates
@@ -103,7 +109,9 @@ helpers do
   # as a key.
 
   def with_cache(*key, &block)
-    value = $bylaw_cache.getset(key) { capture_html(&block) }
+    # XXX
+    #value = $bylaw_cache.getset(key) { capture_html(&block) }
+    value = capture_html(&block)
     concat_content(value)
   end
 end

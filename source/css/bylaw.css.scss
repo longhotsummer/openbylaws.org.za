@@ -1,6 +1,39 @@
 @import 'site';
-@import 'act';
 @import 'toc';
+
+.akoma-ntoso {
+  text-align: justify;
+  line-height: 1.5em;
+
+  @import 'akoma-ntoso';
+}
+
+.akoma-ntoso-container {
+  margin-top: 0px;
+
+  .title {
+    text-align: center;
+    margin-bottom: 2em;
+
+    h2 {
+      font-size: 18px;
+    }
+  }
+
+  .published {
+    font-style: italic;
+  }
+
+  .popover-content .akn-term {
+    border-bottom-width: 0px;
+  }
+
+  #definitions, .term-definition {
+    .akn-subsection {
+      margin-left: 0px;
+    }
+  }
+}
 
 .downloads {
   .download {
@@ -12,7 +45,7 @@
 .popover.term-definition {
   max-width: 400px;
 
-  .an-term {
+  .akn-term {
     color: inherit;
   }
 }

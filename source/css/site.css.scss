@@ -10,7 +10,19 @@
 
 #header {
   a.navbar-brand {
+    background-image: url(/img/law-icon-lg-inv.png);
+    background-repeat: no-repeat;
+    background-position: 0px 7px;
+    background-size: 35px;
+
+    padding-left: 45px;
+    margin: 0px;
+
     color: white;
+  }
+
+  .twitter {
+    padding-bottom: 0px;
   }
 }
 

@@ -1,0 +1,18 @@
+.alert.alert-warning.text-center
+  %p
+    We don't have the full contents of this by-law captured yet, we hope to have
+    it soon.
+
+  %p
+    In the mean time, you can download the PDF instead.
+
+  %p
+    - if act.source_enacted
+      = partial 'support_download_button', locals: {file: act.source_enacted}
+    - elsif act.source_current
+      = partial 'support_download_button', locals: {file: act.source_current}
+
+  %p
+    - region = regions[act.locality]
+    Or visit the
+    %a{href: region['bylaws-url']}&= "#{region.name} By-laws Website"
