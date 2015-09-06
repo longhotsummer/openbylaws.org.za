@@ -29,5 +29,7 @@ task :reindex do
   ActHelpers.load_bylaws
   docs = ActHelpers.regions.values.map { |r| r.bylaws.documents }.flatten
 
-  ElasticSearchSupport.searcher.reindex!(docs)
+  ElasticSearchSupport.searcher.reindex!(docs) do |doc, data|
+    puts "Indexing #{doc.frbr_uri}"
+  end
 end
