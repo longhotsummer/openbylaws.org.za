@@ -1,0 +1,13 @@
+language: ruby
+rvm:
+  - 2.1.1
+env:
+  global:
+    # AWS_ACCESS_KEY_ID for S3 deployment
+    - secure: "fNilg7f2iRr/YsvPglOrPA7/+PWE5101+b00UZRab7cQIKLVgczCHvSC5a6sd3rLjmtTRu0TTrgaBG6wsxj3U+TAo9ro1MlxTqgqjySwceQBIZbW0D4AKDkwHw2gwIEomvKnvwvyY5iJaQNvcE0JlNSOJbRudGm021tmgZG4Cxo="
+    # AWS_SECRET_ACCESS_KEY for S3 deployment
+    - secure: "JSxbkEJ9+hug7Nl/iF4ASYb+2uASr3g1133WWD/qloDWcVlOsirkcIg4bbwTws+D7qOWOkjiF49Z6nlfIiNyKo7G3KouYzcC18shPhDV+5clZ8ZwYo9eelO2szFuQyxj2eX3Bda7ln0qmZrYI6eRup252PpbloMR02dYLXowWq4="
+    # BONSAI_URL for search
+    - secure: "fIIoTUlXnA2iOexCiEf6xLTH6Ia7I/FOuQcWTAOADA/yDUIGWBBudYvAqwJOOaOsQZzSTU+oV9QCOORcGjp/pgdsiEC6BPyFwOz3nCNiQKcbPf/aNbiHGsKtx/i0dvDtkNQAk6dc1RKHBMz9XpKfah64Rk+ER9Nig2Zj1WnkwtU="
+script:
+  - if [ "$TRAVIS_BRANCH" == "deploy" ]; then rake deploy; else rake build; fi
