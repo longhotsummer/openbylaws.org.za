@@ -11,5 +11,4 @@ env:
     # BONSAI_URL for search
     - secure: "fIIoTUlXnA2iOexCiEf6xLTH6Ia7I/FOuQcWTAOADA/yDUIGWBBudYvAqwJOOaOsQZzSTU+oV9QCOORcGjp/pgdsiEC6BPyFwOz3nCNiQKcbPf/aNbiHGsKtx/i0dvDtkNQAk6dc1RKHBMz9XpKfah64Rk+ER9Nig2Zj1WnkwtU="
 script:
-  - rake build
-  - if [ "$TRAVIS_BRANCH" == "deploy" ]; then rake sync reindex; fi
+  - if [ "$TRAVIS_BRANCH" == "deploy" ]; then rake deploy; else rake build; fi
