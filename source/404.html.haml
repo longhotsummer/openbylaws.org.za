@@ -1,0 +1,23 @@
+---
+title: Not Found
+---
+
+%h2 Whoops, we couldn't find that page
+
+%p.lead
+  We couldn't find the page you were looking for.
+
+%p.lead
+  Try searching for it instead.
+
+%form(action="/search.html")
+  .row
+    .col-sm-6.col-xs-9
+      %input.form-control(name="q" placeholder="What are you looking for?")
+    .col-sm-2.col-xs-3
+      %input.btn.btn-primary(type="submit" value="Search")
+
+- content_for :extra_js do
+  - if true or environment == :build
+    :javascript
+      ga('send', 'event', '404', document.location.pathname, document.referrer);

@@ -114,3 +114,6 @@
 
         ga('create', 'UA-3444003-4', 'openbylaws.org.za');
         ga('send', 'pageview');
+
+    - if content_for?(:extra_js)
+      = yield_content(:extra_js)
