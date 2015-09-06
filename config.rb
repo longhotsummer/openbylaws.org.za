@@ -110,9 +110,7 @@ helpers do
   # as a key.
 
   def with_cache(*key, &block)
-    # XXX
-    #value = $bylaw_cache.getset(key) { capture_html(&block) }
-    value = capture_html(&block)
+    value = $bylaw_cache.getset(key) { capture_html(&block) }
     concat_content(value)
   end
 end
