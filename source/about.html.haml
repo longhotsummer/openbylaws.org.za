@@ -2,97 +2,96 @@
 title: About - Open By-laws South Africa
 ---
 
-%header
+- content_for :header do
   %h1 About openbylaws.org.za
 
-%article
-  %p.lead
-    Open By-laws South Africa is a project to help South Africans be more informed
-    about the legislation that governs them.
+%p.lead
+  Open By-laws South Africa is a project to help South Africans be more informed
+  about the legislation that governs them.
 
+%p
+  This project was born out of curiosity and is run by
+  #{link_to 'Greg Kempe', 'http://kempe.net'}.
+  
+%p
+  Feedback and questions are most welcome! Follow us on Twitter or #{link_to 'get in touch', '/contact.html'}.
+
+%ul.fa-ul
+  %li
+    %i.fa-li.fa.fa-twitter
+    %a(href="https://twitter.com/OpenByLawsZA") @OpenByLawsZA
+%ul.list-unstyled
+  %li
+    %a(href="https://twitter.com/OpenByLawsZA" class="twitter-follow-button" data-show-count="false") Follow @OpenByLawsZA
+    :javascript
+      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+
+%h3#open What is "Open"?
+
+%p
+  We believe all our legislation should be freely available and easy to read
+  and share. We aim to make all of South Africa's by-laws
+  available in open formats that encourage readibility and re-use.
+
+%p
+  The 
+  %a(href="http://okfn.org/opendata/") Open Knowledge Foundation
+  describes "Open" as:
+
+%blockquote
   %p
-    This project was born out of curiosity and is run by
-    #{link_to 'Greg Kempe', 'http://kempe.net'}.
-    
-  %p
-    Feedback and questions are most welcome! Follow us on Twitter or #{link_to 'get in touch', '/contact.html'}.
+    Open data is data that can be freely used, reused and redistributed by
+    anyone – subject only, at most, to the requirement to attribute and
+    sharealike.
+  %footer
+    %cite
+      %a(href="http://opendefinition.org/") OpenDefinition.org
 
-  %ul.fa-ul
-    %li
-      %i.fa-li.fa.fa-twitter
-      %a(href="https://twitter.com/OpenByLawsZA") @OpenByLawsZA
-  %ul.list-unstyled
-    %li
-      %a(href="https://twitter.com/OpenByLawsZA" class="twitter-follow-button" data-show-count="false") Follow @OpenByLawsZA
-      :javascript
-        !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+%p
+  To this end, the by-laws that we make available are:
 
-  %h3#open What is "Open"?
+%ul
+  %li easy to link to, including directly to parts, chapters and sections
+  %li easy to read as HTML webpages
+  %li available as machine-friendly XML in the open #{link_to 'Akoma Ntoso', 'http://akomantoso.org'} format
+  %li freely available in bulk from our #{link_to 'GitHub repo', 'https://github.com/longhotsummer/za-by-laws'}
+  %li licensed under a #{link_to 'Creative Commons Attribution 2.5 South Africa License', 'http://creativecommons.org/licenses/by/2.5/za/deed.en_US'}.
 
-  %p
-    We believe all our legislation should be freely available and easy to read
-    and share. We aim to make all of South Africa's by-laws
-    available in open formats that encourage readibility and re-use.
+%p
+  According to the license, you are free to share and reuse the by-laws, even for commercial purposes, provided that you
+  mention that you got them from openbylaws.org.za.
 
-  %p
-    The 
-    %a(href="http://okfn.org/opendata/") Open Knowledge Foundation
-    describes "Open" as:
+%h3#akomantoso What is Akoma Ntoso?
 
-  %blockquote
-    %p
-      Open data is data that can be freely used, reused and redistributed by
-      anyone – subject only, at most, to the requirement to attribute and
-      sharealike.
-    %footer
-      %cite
-        %a(href="http://opendefinition.org/") OpenDefinition.org
+%p
+  #{link_to 'Akoma Ntoso', 'http://akomantoso.org'} is a machine-readable XML format for representing parliamentary, legislative and judiciary
+  documents. It means "linked hearts" in the Akan language of West Africa. We chose to use Akoma Ntoso as our machine format for by-laws because:
 
-  %p
-    To this end, the by-laws that we make available are:
+%ul
+  %li it allowed us to capture the semantics of the by-laws
+  %li it is an open format under active development
+  %li it has been adopted by a number of parliaments across Africa and the European Union.
 
-  %ul
-    %li easy to link to, including directly to parts, chapters and sections
-    %li easy to read as HTML webpages
-    %li available as machine-friendly XML in the open #{link_to 'Akoma Ntoso', 'http://akomantoso.org'} format
-    %li freely available in bulk from our #{link_to 'GitHub repo', 'https://github.com/longhotsummer/za-by-laws'}
-    %li licensed under a #{link_to 'Creative Commons Attribution 2.5 South Africa License', 'http://creativecommons.org/licenses/by/2.5/za/deed.en_US'}.
+%h3#copyright Are the by-laws copyrighted?
 
-  %p
-    According to the license, you are free to share and reuse the by-laws, even for commercial purposes, provided that you
-    mention that you got them from openbylaws.org.za.
+The original by-laws are not copyrighted. Section (8) (a) of the
+%a(href="http://www.saflii.org/za/legis/hist_act/ca98o1978152/ca98o1978a1m2011225.html") Copyright Act 98 of 1978
+states:
 
-  %h3#akomantoso What is Akoma Ntoso?
+%blockquote
+  (8) (a)	No copyright shall subsist in official texts of a legislative, administrative or legal nature, or in official translations of such texts, or in speeches of a political nature or in speeches delivered in the course of legal proceedings, or in news of the day that are mere items of press information.
 
-  %p
-    #{link_to 'Akoma Ntoso', 'http://akomantoso.org'} is a machine-readable XML format for representing parliamentary, legislative and judiciary
-    documents. It means "linked hearts" in the Akan language of West Africa. We chose to use Akoma Ntoso as our machine format for by-laws because:
+In addition, the presentation of the by-laws on this website are licensed under a
+%a(href="http://creativecommons.org/licenses/by/2.5/za/deed.en_US") Creative Commons Attribution 2.5 South Africa License
+which means that you can basically do anything you want with them provided you provide attribution back to openbylaws.org.za for
+the original content.
 
-  %ul
-    %li it allowed us to capture the semantics of the by-laws
-    %li it is an open format under active development
-    %li it has been adopted by a number of parliaments across Africa and the European Union.
+%h3#disclaimer Disclaimer
 
-  %h3#copyright Are the by-laws copyrighted?
+%p
+  We aren't lawyers. We don't write these laws, we're just making them available and there may be mistakes.
+  Always get a professional legal opinion.
 
-  The original by-laws are not copyrighted. Section (8) (a) of the
-  %a(href="http://www.saflii.org/za/legis/hist_act/ca98o1978152/ca98o1978a1m2011225.html") Copyright Act 98 of 1978
-  states:
+%h3#partners Partners
 
-  %blockquote
-    (8) (a)	No copyright shall subsist in official texts of a legislative, administrative or legal nature, or in official translations of such texts, or in speeches of a political nature or in speeches delivered in the course of legal proceedings, or in news of the day that are mere items of press information.
-
-  In addition, the presentation of the by-laws on this website are licensed under a
-  %a(href="http://creativecommons.org/licenses/by/2.5/za/deed.en_US") Creative Commons Attribution 2.5 South Africa License
-  which means that you can basically do anything you want with them provided you provide attribution back to openbylaws.org.za for
-  the original content.
-
-  %h3#disclaimer Disclaimer
-
-  %p
-    We aren't lawyers. We don't write these laws, we're just making them available and there may be mistakes.
-    Always get a professional legal opinion.
-
-  %h3#partners Partners
-
-  = partial 'partner_logos'
+= partial 'partner_logos'

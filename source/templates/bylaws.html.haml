@@ -1,12 +1,11 @@
 ---
-layout: 'layout'
 title: South Africa By-laws
 ---
 
-%header
+- content_for :header do
   %h1 By-laws
 
-%article#bylaws-page
+#bylaws-page
   .row
     .col-sm-9
       = partial 'region_list.html.haml'

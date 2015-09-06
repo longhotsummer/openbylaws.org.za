@@ -16,6 +16,7 @@ require 'indigo'
 ###
 # Page options, layouts, aliases and proxies
 ###
+set :layout, 'page'
 
 # Per-page layout changes:
 #

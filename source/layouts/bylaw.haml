@@ -3,9 +3,11 @@
     = stylesheet_link_tag 'bylaw.css', media: "screen, print"
 
   %header
-    = partial 'header', locals: {act: act}
-    = yield_content :breadcrumbs
+    .container
+      = partial 'header', locals: {act: act}
+      = yield_content :breadcrumbs
 
   %article
-    = partial 'notices', locals: {act: act}
-    = yield
+    .container
+      = partial 'notices', locals: {act: act}
+      = yield

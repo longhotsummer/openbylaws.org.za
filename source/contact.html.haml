@@ -2,38 +2,37 @@
 title: Contact Us - Open By-laws South Africa
 ---
 
-%header
+- content_for :header do
   %h1 Contact Us
 
-%article
-  %p
-    Feedback and questions are most welcome!
+%p
+  Feedback and questions are most welcome!
 
-  %ul.fa-ul
-    %li
-      %i.fa-li.fa.fa-envelope
-      #{link_to 'Join our mailing list', 'https://groups.google.com/forum/#!forum/openbylaws-za'}
-    %li
-      %i.fa-li.fa.fa-twitter
-      %a(href="https://twitter.com/OpenByLawsZA") @OpenByLawsZA
-  %ul.list-unstyled
-    %li
-      %a(href="https://twitter.com/OpenByLawsZA" class="twitter-follow-button" data-show-count="false") Follow @OpenByLawsZA
-    %li
-      %a(href="https://twitter.com/intent/tweet?screen_name=OpenByLawsZA" class="twitter-mention-button" data-related="OpenByLawsZA") Tweet to @OpenByLawsZA
-      :javascript
-        !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+%ul.fa-ul
+  %li
+    %i.fa-li.fa.fa-envelope
+    #{link_to 'Join our mailing list', 'https://groups.google.com/forum/#!forum/openbylaws-za'}
+  %li
+    %i.fa-li.fa.fa-twitter
+    %a(href="https://twitter.com/OpenByLawsZA") @OpenByLawsZA
+%ul.list-unstyled
+  %li
+    %a(href="https://twitter.com/OpenByLawsZA" class="twitter-follow-button" data-show-count="false") Follow @OpenByLawsZA
+  %li
+    %a(href="https://twitter.com/intent/tweet?screen_name=OpenByLawsZA" class="twitter-mention-button" data-related="OpenByLawsZA") Tweet to @OpenByLawsZA
+    :javascript
+      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
 
-  %p
-    Or you can contact me directly:
+%p
+  Or you can contact me directly:
 
-  %ul.fa-ul
-    %li
-      %i.fa-li.fa.fa-envelope
-      Greg Kempe - #{link_to 'greg@kempe.net', 'mailto:greg@kempe.net'}
-    %li
-      %i.fa-li.fa.fa-twitter
-      #{link_to '@longhotsummer', 'https://twitter.com/longhotsummer'}
-    %li
-      %i.fa-li.fa.fa-link
-      #{link_to 'kempe.net', 'http://kempe.net'}
+%ul.fa-ul
+  %li
+    %i.fa-li.fa.fa-envelope
+    Greg Kempe - #{link_to 'greg@kempe.net', 'mailto:greg@kempe.net'}
+  %li
+    %i.fa-li.fa.fa-twitter
+    #{link_to '@longhotsummer', 'https://twitter.com/longhotsummer'}
+  %li
+    %i.fa-li.fa.fa-link
+    #{link_to 'kempe.net', 'http://kempe.net'}

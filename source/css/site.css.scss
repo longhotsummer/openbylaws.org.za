@@ -17,6 +17,9 @@
 
     padding-left: 45px;
     margin: 0px;
+    @media (max-width: 768px) {
+      margin-left: 15px;
+    }
 
     color: white;
   }
@@ -29,7 +32,7 @@
 #footer {
   background-color: #eee;
   border-top: 1px solid #ccc;
-  padding: 10px 15px;
+  padding: 10px 0px;
 
   color: #777;
 
@@ -59,7 +62,7 @@
 
   header {
     background-color: #eee;
-    padding: 10px 15px;
+    padding: 10px 0px;
     border-bottom: 1px solid #ccc;
 
     h1 {
@@ -104,11 +107,6 @@
 
 /* phones */
 @media (max-width: 768px) {
-  #header, header, #footer {
-    margin-left: -15px;
-    margin-right: -15px;
-  }
-
   .full-xs {
     width: 100%;
   }

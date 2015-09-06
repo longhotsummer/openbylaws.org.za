@@ -25,43 +25,43 @@
         %a(href="http://www.google.com/chromeframe/?redirect=true") install Google Chrome Frame
         to better experience this site.
 
-    .container
-      %header#header
-        %nav.navbar.navbar-inverse(role="navigation")
-          .container-fluid
-            .navbar-header
-              %button.navbar-toggle(type="button" data-toggle="collapse" data-target=".navbar-collapse")
-                %span.sr-only Toggle navigation
-                %span.icon-bar
-                %span.icon-bar
-                %span.icon-bar
+    %header#header
+      %nav.navbar.navbar-inverse(role="navigation")
+        .container
+          .navbar-header
+            %button.navbar-toggle(type="button" data-toggle="collapse" data-target=".navbar-collapse")
+              %span.sr-only Toggle navigation
+              %span.icon-bar
+              %span.icon-bar
+              %span.icon-bar
 
-              %a.navbar-brand(href='/')
-                .hidden-xs Open By-laws South Africa
-                .visible-xs Open By-laws ZA
+            %a.navbar-brand(href='/')
+              .hidden-xs Open By-laws South Africa
+              .visible-xs Open By-laws ZA
 
-            .navbar-collapse.collapse
-              %ul.nav.navbar-nav
-                %li
-                  %a(href="/about.html") About
-                %li
-                  %a(href="/contact.html") Contact
-                %li
-                  %a(href="http://blog.openbylaws.org.za") Blog
+          .navbar-collapse.collapse
+            %ul.nav.navbar-nav
+              %li
+                %a(href="/about.html") About
+              %li
+                %a(href="/contact.html") Contact
+              %li
+                %a(href="http://blog.openbylaws.org.za") Blog
 
-              %form.navbar-form.navbar-right(action="/search.html" method="get" role="search")
-                %input.form-control(type="text" name="q" placeholder="Search")     
+            %form.navbar-form.navbar-right(action="/search.html" method="get" role="search")
+              %input.form-control(type="text" name="q" placeholder="Search")     
 
-              %ul.nav.navbar-nav.navbar-right
-                %li
-                  %a.twitter(href="https://twitter.com/OpenByLawsZA")
-                    %i.fa.fa-twitter.fa-2x
+            %ul.nav.navbar-nav.navbar-right
+              %li
+                %a.twitter(href="https://twitter.com/OpenByLawsZA")
+                  %i.fa.fa-twitter.fa-2x
             
 
-      #main-content
-        = yield
+    #main-content
+      = yield
 
-      %footer#footer
+    %footer#footer
+      .container
         .row
           .col-sm-3
             %nav
