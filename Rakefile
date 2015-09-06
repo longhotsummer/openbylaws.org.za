@@ -12,12 +12,12 @@ end
 
 desc "Build the website into the build directory"
 task :build do
-  sh "middleman build"
+  sh "bundle exec middleman build"
 end
 
 desc "Sync changed files to S3"
 task :sync do
-  sh "middleman s3_sync"
+  sh "bundle exec middleman s3_sync"
 end
 
 desc "Re-index all documents for searching, removing any existing indexed documents."
