@@ -18,11 +18,13 @@ The website pulls all data from [indigo.openbylaws.org.za](http://indigo.openbyl
 It caches responses from Indigo in the `_cache` directory for 24 hours which makes local development
 simpler. The list of by-laws is never cached. If you know your cache is out of date, just `rm -rf _cache`.
 
-# Deploying
+# Building and deploying
 
-The built website can be built using `rake` or:
+The website can be built using `rake` or:
 
     rake build
+
+The website is automatically built and deployed using [travis-ci.org ](https://travis-ci.org/longhotsummer/openbylaws.org.za) when changes are pushed to the `deploy` branch.
 
 To upload the built site by syncing the `build` directory with S3,
 put the S3 creds in `.s3_sync` and the run:
