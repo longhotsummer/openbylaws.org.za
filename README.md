@@ -1,4 +1,4 @@
-# Open By-laws South Africa
+# Open By-laws South Africa [![Build Status](https://travis-ci.org/longhotsummer/openbylaws.org.za.svg)](http://travis-ci.org/longhotsummer/openbylaws.org.za)
 
 This is the source code for the [openbylaws.org.za](http://openbylaws.org.za) website.
 
