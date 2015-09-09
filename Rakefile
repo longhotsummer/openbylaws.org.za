@@ -12,7 +12,7 @@ end
 
 desc "Build the website into the build directory"
 task :build do
-  sh "bundle exec middleman build"
+  sh "bundle exec middleman build --verbose"
 end
 
 desc "Sync changed files to S3"
