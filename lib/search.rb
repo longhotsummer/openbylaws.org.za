@@ -62,7 +62,7 @@ class ElasticSearchSupport
         frbr_uri: doc.frbr_uri,
         url: @base_url + doc.frbr_uri,
         title: doc.title,
-        content: doc.text,
+        content: doc.stub ? '' : doc.text,
         region: doc.region_code,
         region_name: @regions[doc.region_code].name,
         published_on: doc.publication_date,
