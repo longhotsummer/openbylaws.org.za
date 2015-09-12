@@ -2,6 +2,10 @@
   - content_for :head do
     = stylesheet_link_tag 'bylaw.css', media: "screen, print"
 
+    %meta(property="og:type" content="article")
+    %meta(property="og:description" content="#{act.title} for #{regions[act.locality].name}")
+    %meta{property: "og:url", content: "http://openbylaws.org.za#{act.frbr_uri}"}
+
   %header
     .container
       = partial 'header', locals: {act: act}
