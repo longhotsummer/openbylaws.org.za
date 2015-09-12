@@ -46,19 +46,8 @@ def pages_for(act)
   # resources
   proxy "#{path}/resources/index.html", "/templates/act/resources.html", :locals => { :act => act }, :ignore => true
 
-  # definitions, usually a duplicate of section 1
-  #if defn = act.definitions
-  #  proxy "#{path}/definitions/index.html", "/templates/act/fragment.html", :locals => { :act => act, fragment: defn }, :ignore => true
-  #end
-
   # sections, chapters, parts, etc.
   subpages_for(act, act.toc)
-
-  # schedules
-  #if schedules = act.schedules
-    #proxy "#{path}/schedules/index.html", "/templates/act/fragment.html", :locals => { :act => act, fragment: schedules }, :ignore => true
-    #subpages_for(act, act.schedules)
-  #end
 end
 
 def subpages_for(act, children)
