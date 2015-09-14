@@ -6,10 +6,14 @@
 
   %ul.nav.nav-tabs
     %li{class: tab == 'toc' ? 'active' : ''}
-      %a{href: act_url(act, 'contents/')} Table of Contents
+      %a{href: act_url(act, 'contents/')}
+        %span.hidden-xs Table of
+        Contents
 
     %li{class: tab == 'content' ? 'active' : ''}
-      %a{href: act_url(act)} Content
+      %a{href: act_url(act)} By-law
 
     %li{class: tab == 'resources' ? 'active' : ''}
-      %a{href: act_url(act, "resources/")} More Resources
+      %a{href: act_url(act, "resources/")}
+        %span.hidden-xs More
+        Resources
