@@ -11,7 +11,7 @@
     %meta(name="viewport" content="width=device-width,initial-scale=1")
     %link(rel="icon" type="image/png" href="/favicon.png")
 
-    %meta(property="og:site_name" content="OpenBylaws.org.za")
+    %meta(property="og:site_name" content="Open By-laws South Africa")
     %meta(property="og:image" content="http://openbylaws.org.za/img/logo-lg-white.png")
     %meta{property: "og:title", content: content_for?(:title) ? yield_content(:title) : current_page.data.title}
 
@@ -56,6 +56,9 @@
               %input.form-control(type="text" name="q" placeholder="Search")     
 
             %ul.nav.navbar-nav.navbar-right
+              %li
+                %a.facebook(href="https://facebook.com/openbylaws.org.za")
+                  %i.fa.fa-facebook.fa-2x
               %li
                 %a.twitter(href="https://twitter.com/OpenByLawsZA")
                   %i.fa.fa-twitter.fa-2x
