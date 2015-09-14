@@ -110,6 +110,11 @@
   .full-xs {
     width: 100%;
   }
+
+  input[type=text],
+  input[type=email] {
+    font-size: 16px;
+  }
 }
 
 @media print {
