@@ -18,11 +18,14 @@ class ActHelpers < Middleman::Extension
 
   # Generate a url for part an act, or a part
   # of an act (section, subsection, chapter, part, etc.)
-  def self.act_url(act, child=nil, opts={})
+  def self.act_url(act, opts={})
     parts = [act.frbr_uri]
 
+    child = opts[:child]
     case child
     when nil
+      # this ensures a trailing slash, which prevents a redirect in S3
+      parts << ''
     when String
       parts << child
     when IndigoComponent
@@ -36,6 +39,10 @@ class ActHelpers < Middleman::Extension
     if opts[:format]
       url.gsub!(/\/+$/, '')
       url << ".#{opts[:format]}"
+    end
+
+    if opts[:external]
+      url = "http://openbylaws.org.za" + url
     end
 
     url

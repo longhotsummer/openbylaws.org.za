@@ -18,8 +18,8 @@ layout: false
   <% for act in all_bylaws %>
     <entry>
       <title><%=h act.title %></title>
-      <link href="http://openbylaws.org.za<%=h act_url(act) %>" />
-      <id>http://openbylaws.org.za<%=h act_url(act)%></id>
+      <link href="<%=h act_url(act, external: true) %>" />
+      <id><%=h act_url(act, external: true)%></id>
       <published><%=h act.expression_date.iso8601 %></published>
       <updated><%=h act.updated_at.iso8601 %></updated>
     </entry>

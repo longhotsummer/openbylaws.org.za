@@ -1,6 +1,6 @@
 - for child in items
   %li{class: child.type}
-    %a{href: act_url(act, child)}
+    %a{href: act_url(act, child: child)}
       &= toc_title(child)
     - if child.children? and not child.component =~ /schedule/
       %ol

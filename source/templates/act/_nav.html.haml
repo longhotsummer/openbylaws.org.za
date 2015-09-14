@@ -1,6 +1,6 @@
 %nav.bylaw-nav
   .hidden-xs.pull-right
-    .fb-like{data: {href: "http://openbylaws.org.za#{act_url(act)}/", layout: "button_count", action: "recommend"}}
+    .fb-like{data: {href: act_url(act, external: true), layout: "button_count", action: "recommend"}}
 
     %a.btn.btn-default(href="javascript:window.print();")
       %i.fa.fa-print
@@ -8,7 +8,7 @@
 
   %ul.nav.nav-tabs
     %li{class: tab == 'toc' ? 'active' : ''}
-      %a{href: act_url(act, 'contents/')}
+      %a{href: act_url(act, child: 'contents/')}
         %span.hidden-xs Table of
         Contents
 
@@ -16,6 +16,6 @@
       %a{href: act_url(act)} By-law
 
     %li{class: tab == 'resources' ? 'active' : ''}
-      %a{href: act_url(act, "resources/")}
+      %a{href: act_url(act, child: "resources/")}
         %span.hidden-xs More
         Resources

@@ -4,7 +4,7 @@
 
     %meta(property="og:type" content="article")
     %meta(property="og:description" content="#{act.title} for #{regions[act.locality].name}")
-    %meta{property: "og:url", content: "http://openbylaws.org.za#{act.frbr_uri}/"}
+    %meta{property: "og:url", content: act_url(act, external: true)}
 
   %header
     .container

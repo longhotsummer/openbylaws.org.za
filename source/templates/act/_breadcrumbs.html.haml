@@ -4,6 +4,6 @@
       - if i == trail.size-1
         &= toc_title(item)
       - else
-        %a{href: act_url(act, item)}
+        %a{href: act_url(act, child: item)}
           &= toc_title(item)
         &#9656;
