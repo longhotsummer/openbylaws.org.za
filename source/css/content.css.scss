@@ -63,13 +63,12 @@
   }
 
   &.welcome {
-    padding: 10px 30px 30px;
+    padding: 10px 0px 30px;
     border-radius: 0px 0px 5px 5px;
   }
 
   &.belief {
-    padding: 10px 30px;
-    margin: 0px 0px 30px;
+    padding: 10px 20px;
   }
 }
 
@@ -119,8 +118,6 @@ form#subscribe {
 @media (max-width: 768px) {
   .jumbotron,
   .jumbotron.belief {
-    margin-left: -15px;
-    margin-right: -15px;
     border-radius: 0px;
   }
 }
