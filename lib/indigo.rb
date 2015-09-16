@@ -74,7 +74,7 @@ class IndigoComponent < IndigoBase
 
     for term in doc.css('.akn-term')
       term.name = 'a'
-      term['href'] = "#{frbr_uri}#{term['data-refersto']}"
+      term['href'] = "#{frbr_uri}/#{term['data-refersto']}"
     end
 
     for defn in doc.css('.akn-def')
