@@ -43,3 +43,9 @@ $(function() {
     }
   })();
 });
+
+window.fbAsyncInit = function() {
+  FB.Event.subscribe('edge.create', function(targetUrl) {
+    ga('send', 'social', 'facebook', 'like', targetUrl);
+  });
+};
