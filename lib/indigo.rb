@@ -140,7 +140,7 @@ class IndigoDocument < IndigoComponent
   end
 
   def attachments
-    @attachments ||= JSON.parse(RestClient.get(attachments_url)).map do |a|
+    @attachments ||= JSON.parse(RestClient.get(attachments_url))['results'].map do |a|
       IndigoComponent.new(a['url'], a)
     end
   end
@@ -200,7 +200,7 @@ class IndigoDocumentCollection < IndigoBase
 
   def initialize(endpoint)
     super(endpoint)
-    response = JSON.parse(@api.get(cache_control: 'no-cache'))
+    response = JSON.parse(@api.get(cache_control: 'no-cache'))['results']
     @documents = response.map { |doc| IndigoDocument.new(doc['published_url'], doc) }
   end
 end
