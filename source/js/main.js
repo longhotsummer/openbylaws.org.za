@@ -44,8 +44,14 @@ $(function() {
   })();
 });
 
-window.fbAsyncInit = function() {
-  FB.Event.subscribe('edge.create', function(targetUrl) {
-    ga('send', 'social', 'facebook', 'like', targetUrl);
+$(function() {
+  // social buttons
+  $('.fb-share').on('click', function(e) {
+    e.preventDefault();
+    var url = $(this).data('href');
+
+    window.open("https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(url),
+                "share", "width=600, height=400, scrollbars=no");
+    ga('send', 'social', 'facebook', 'share', url);
   });
-};
+});

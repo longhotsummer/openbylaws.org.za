@@ -1,6 +1,9 @@
 %nav.bylaw-nav
   .hidden-xs.pull-right
-    .fb-like{data: {href: act_url(act, external: true), layout: "button_count", action: "recommend"}}
+    %span.social-buttons
+      %a.fb-share{href: "#", data: {href: act_url(act, external: true)}}
+        %i.fa.fa-facebook-official
+        Share
 
     %a.btn.btn-default(href="javascript:window.print();")
       %i.fa.fa-print

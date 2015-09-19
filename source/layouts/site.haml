@@ -15,7 +15,7 @@
     %meta(property="og:image" content="http://openbylaws.org.za/img/logo-lg-white.png")
     %meta{property: "og:title", content: content_for?(:title) ? yield_content(:title) : current_page.data.title}
 
-    = stylesheet_link_tag '//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css', media: "screen, print"
+    = stylesheet_link_tag '//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css', media: "screen, print"
 
     - if content_for?(:head)
       = yield_content(:head)
