@@ -54,4 +54,16 @@ $(function() {
                 "share", "width=600, height=400, scrollbars=no");
     ga('send', 'social', 'facebook', 'share', url);
   });
+
+  $('.twitter-share').on('click', function(e) {
+    e.preventDefault();
+    var url = $(this).data('href');
+
+    window.open("https://twitter.com/intent/tweet?" +
+                "text=" + encodeURIComponent($(this).data('text')) +
+                "&url=" + encodeURIComponent(url) +
+                "&via=OpenByLawsZA",
+                "share", "width=364, height=250, scrollbars=no");
+    ga('send', 'social', 'twitter', 'share', url);
+  });
 });
