@@ -5,34 +5,35 @@ title: Contact Us - Open By-laws South Africa
 - content_for :header do
   %h1 Contact Us
 
-%p
-  Feedback and questions are most welcome!
+.row
+  .col-sm-6
+    %h3
+      We aren't laywers and cannot offer legal advice.
 
-%ul.fa-ul
-  %li
-    %i.fa-li.fa.fa-envelope
-    #{link_to 'Join our mailing list', 'https://groups.google.com/forum/#!forum/openbylaws-za'}
-  %li
-    %i.fa-li.fa.fa-twitter
-    %a(href="https://twitter.com/OpenByLawsZA") @OpenByLawsZA
-%ul.list-unstyled
-  %li
-    %a(href="https://twitter.com/OpenByLawsZA" class="twitter-follow-button" data-show-count="false") Follow @OpenByLawsZA
-  %li
-    %a(href="https://twitter.com/intent/tweet?screen_name=OpenByLawsZA" class="twitter-mention-button" data-related="OpenByLawsZA") Tweet to @OpenByLawsZA
-    :javascript
-      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+    %p.lead
+      Contact your City or your Ward Councillor for help.
 
-%p
-  Or you can contact me directly:
+    %p
+      Your Ward Councillor represents you to your municipality and can help
+      resolve issues.
 
-%ul.fa-ul
-  %li
-    %i.fa-li.fa.fa-envelope
-    Greg Kempe - #{link_to 'greg@kempe.net', 'mailto:greg@kempe.net'}
-  %li
-    %i.fa-li.fa.fa-twitter
-    #{link_to '@longhotsummer', 'https://twitter.com/longhotsummer'}
-  %li
-    %i.fa-li.fa.fa-link
-    #{link_to 'kempe.net', 'http://kempe.net'}
+    #councillor-iframe
+    %script(type="text/javascript" src="http://nearby.code4sa.org/static/councillor-embed.js")
+
+  .col-sm-6.col-md-offset-3.col-md-3
+    %h3 Get in touch
+
+    %ul.fa-ul
+      %li
+        %i.fa-li.fa.fa-envelope
+        #{link_to 'hello@openbylaws.org.za', 'mailto:hello@openbylaws.org.za'}
+      %li
+        %i.fa-li.fa.fa-twitter
+        %a(href="https://twitter.com/OpenByLawsZA") @OpenByLawsZA
+    %ul.list-unstyled
+      %li
+        %a(href="https://twitter.com/OpenByLawsZA" class="twitter-follow-button" data-show-count="false") Follow @OpenByLawsZA
+        :javascript
+          !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+
+    = partial 'mailchimp_form.html'
