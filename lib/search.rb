@@ -33,7 +33,7 @@ class ElasticSearchSupport
       frbr_uri:     {type: 'string', index: 'not_analyzed'},
       url:          {type: 'string', index: 'not_analyzed'},
       title:        {type: 'string', analyzer: 'english', index_options: 'offsets'},
-      content:      {type: 'string', analyzer: 'english', index_options: 'offsets'},
+      content:      {type: 'string', analyzer: 'english', index_options: 'offsets', term_vector: 'with_positions_offsets'},
       published_on: {type: 'date', format: 'dateOptionalTime'},
       region:       {type: 'string', index: 'not_analyzed'},
       region_name:  {type: 'string', index: 'not_analyzed'},
