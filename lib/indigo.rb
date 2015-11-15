@@ -145,6 +145,14 @@ class IndigoDocument < IndigoComponent
     end
   end
 
+  def pdf_url
+    links.find { |k| k.title == 'PDF' }['href']
+  end
+
+  def standalone_html_url
+    "#{@url}.html?standalone=1"
+  end
+
   def source_enacted
     attachments.find { |a| a.filename == 'source-enacted.pdf' }
   end
