@@ -45,6 +45,13 @@ $(function() {
 });
 
 $(function() {
+  // track outbound links
+  $('a[href^=http]').on('click', function(e) {
+    ga('send', 'event', 'outbound-click', e.target.href);
+  });
+});
+
+$(function() {
   // social buttons
   $('.fb-share').on('click', function(e) {
     e.preventDefault();
