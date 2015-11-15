@@ -54,6 +54,15 @@
               %td&= bylaw.repeal.date.year
 
   .col-sm-3.resources
+    %h3 Download
+
+    %p
+      %a.btn.btn-default{href: region_url(region) + ".pdf"}
+        %i.fa.fa-file-pdf-o
+        All by-laws as PDF
+
+    %hr
+
     %h3 More resources
     %p
       %a{href: region['bylaws-url']}

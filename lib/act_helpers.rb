@@ -53,6 +53,10 @@ class ActHelpers < Middleman::Extension
       ActHelpers.act_url(act, *args)
     end
 
+    def region_url(region)
+      IndigoBase::API_ENDPOINT + '/za-' + region.code
+    end
+
     def breadcrumbs_for_fragment(fragment)
       trail = []
   
