@@ -1,16 +1,18 @@
 %nav.bylaw-nav
   .hidden-xs.pull-right
-    %span.social-buttons
-      %a.fb-share{href: "#", data: {href: act_url(act, external: true)}}
-        %i.fa.fa-facebook-official
-        Share
-      %a.twitter-share{href: "#", data: {href: act_url(act, external: true), text: act.title}}
-        %i.fa.fa-twitter
-        Tweet
+    .btn-toolbar
+      .btn-group.social-buttons
+        %a.fb-share{href: "#", data: {href: act_url(act, external: true)}}
+          %i.fa.fa-facebook-official
+          Share
+        %a.twitter-share{href: "#", data: {href: act_url(act, external: true), text: act.title}}
+          %i.fa.fa-twitter
+          Tweet
 
-    %a.btn.btn-default(href="javascript:window.print();")
-      %i.fa.fa-print
-      Print
+      .btn-group
+        %a.btn.btn-default(href="javascript:window.print();")
+          %i.fa.fa-print
+          Print
 
   %ul.nav.nav-tabs
     %li{class: tab == 'toc' ? 'active' : ''}
