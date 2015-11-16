@@ -1,3 +1,5 @@
-%a.btn.btn-default{href: file.download_url}
-  %i.fa.fa-download
-  Download #{File.extname(file.filename)[1..-1].upcase} (#{number_to_human_size(file['size'])})
+%ul.fa-ul
+  %li
+    %i.fa.fa-li.fa-download
+    %a{href: file.download_url}
+      Download #{File.extname(file.filename)[1..-1].upcase} (#{number_to_human_size(file['size'])})

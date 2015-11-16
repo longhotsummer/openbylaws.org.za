@@ -11,57 +11,47 @@ layout: 'bylaw'
   .row
     .col-sm-6
       .download
-        %h4
-          %i.fa.fa-file-pdf-o
-          PDF
-        .pull-right
-          %a.btn.btn-default{href: act.pdf_url}
-            %i.fa.fa-download
-            Download PDF
-        %p
-          Download the current PDF version of the by-law, as shown on this website.
+        %h3 Download this by-law
 
-      .download
-        %h4 
-          %i.fa.fa-file-text-o
-          Standalone Webpage
-        .pull-right
-          %a.btn.btn-default{href: act.standalone_html_url}
-            %i.fa.fa-download
-            Download Webpage
         %p
-          Download a standalone webpage (HTML) version of the by-law, as shown on this website.
+          Download the current version of this by-law.
+
+        %ul.fa-ul
+          %li
+            %i.fa.fa-li.fa-file-pdf-o
+            %a{href: act.pdf_url} Download PDF
+          %li
+            %i.fa.fa-li.fa-file-text-o
+            %a{href: act.standalone_html_url} Download Webpage (HTML)
+
+      %h3 Download other resources
 
       - if act.source_enacted
         .download
           %h4
             %i.fa.fa-file-pdf-o
             Source PDF (as enacted)
-          .pull-right
-            = partial 'support_download_button', locals: {file: act.source_enacted}
           %p
             This is the source PDF version of the by-law, as it
             was first enacted.
+
+          = partial 'support_download_button', locals: {file: act.source_enacted}
 
       - if act.amended? and act.source_current
         .download
           %h4
             %i.fa.fa-file-pdf-o
             Source PDF (as amended)
-          .pull-right
-            = partial 'support_download_button', locals: {file: act.source_current}
           %p
             This is the source PDF version of the by-law, with
             amendments applied.
+
+          = partial 'support_download_button', locals: {file: act.source_current}
 
       .download
         %h4
           %i.fa.fa-file-code-o
           Akoma Ntoso XML
-        .pull-right
-          %a.btn.btn-default{href: act.url + ".xml"}
-            %i.fa.fa-download
-            Download Akoma Ntoso XML
 
         %p
           Download the current Akoma Ntoso XML version of the by-law,
@@ -73,6 +63,11 @@ layout: 'bylaw'
         %p
           #{link_to 'Akoma Ntoso', 'http://www.akomantoso.org/'} is an
           XML format for legislative documents.
+
+        %ul.fa-ul
+          %li
+            %i.fa.fa-li.fa-download
+            %a{href: act.url + ".xml"} Download Akoma Ntoso XML
 
 
     .col-sm-4.col-sm-offset-2

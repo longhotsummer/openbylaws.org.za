@@ -56,10 +56,11 @@
   .col-sm-3.resources
     %h3 Download
 
-    %p
-      %a.btn.btn-default{href: region_url(region) + ".pdf"}
-        %i.fa.fa-file-pdf-o
-        All by-laws as PDF
+    %ul.fa-ul
+      %li
+        %i.fa.fa-li.fa-file-pdf-o
+        %a{href: region_url(region) + ".pdf"}
+          #{region.name} by-laws as PDF
 
     %hr
 
