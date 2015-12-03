@@ -2,22 +2,5 @@
   %li
     %a(href="/za-#{act.locality}/")&= regions[act.locality].name
 
-- if not act.stub
-  .hidden-xs.pull-right
-    .dropdown
-      %button.btn.btn-default(data-toggle="dropdown" type="button")
-        %i.fa.fa-download
-        Download
-        %span.caret
-      %ul.dropdown-menu
-        %li
-          %a{href: act.pdf_url}
-            %i.fa.fa-file-pdf-o
-            PDF
-        %li
-          %a{href: act.standalone_html_url}
-            %i.fa.fa-file-text-o
-            Webpage (HTML)
-
 %h1
   %a{href: act_url(act)}&= act.title

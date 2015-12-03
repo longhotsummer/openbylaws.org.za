@@ -9,10 +9,21 @@
           %i.fa.fa-twitter
           Tweet
 
-      .btn-group
-        %a.btn.btn-default(href="javascript:window.print();")
-          %i.fa.fa-print
-          Print
+      - if not act.stub
+        .btn-group
+          %button.btn.btn-default(data-toggle="dropdown" type="button")
+            %i.fa.fa-download
+            Download
+            %span.caret
+          %ul.dropdown-menu
+            %li
+              %a{href: act.pdf_url}
+                %i.fa.fa-file-pdf-o
+                PDF
+            %li
+              %a{href: act.standalone_html_url}
+                %i.fa.fa-file-text-o
+                Webpage (HTML)
 
   %ul.nav.nav-tabs
     %li{class: tab == 'toc' ? 'active' : ''}
