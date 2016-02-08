@@ -28,7 +28,13 @@ layout: layout
             %input.form-control(type="text" name="q" class="input-large" placeholder="What are you looking for?")
 
   .container
-    = partial 'templates/region_list.html.haml'
+    .row.placards
+      .col-sm-4
+        %a.placard.cpt(href="/za-cpt/")
+          %h2 Cape Town
+      .col-sm-4
+        %a.placard.jhb(href="/za-jhb/")
+          %h2 Johannesburg
 
     .jumbotron.belief
       %p.lead.text-center
