@@ -5,102 +5,106 @@ title: About - Open By-laws South Africa
 - content_for :header do
   %h1 About openbylaws.org.za
 
-%p.lead
-  Open By-laws South Africa is a project to help South Africans be more informed
-  about the legislation that governs them.
+.row
+  .col-md-7
 
-%p
-  This project was born out of curiosity and is run by
-  #{link_to 'Greg Kempe', 'http://kempe.net'}.
-  
-%p
-  Feedback and questions are most welcome! Follow us on Twitter or #{link_to 'get in touch', '/contact.html'}.
+    %p.lead
+      Open By-laws South Africa is a project to help South Africans be more informed
+      about the legislation that governs them.
 
-%ul.fa-ul
-  %li
-    %i.fa-li.fa.fa-twitter
-    %a(href="https://twitter.com/OpenByLawsZA") @OpenByLawsZA
-%ul.list-unstyled
-  %li
-    %a(href="https://twitter.com/OpenByLawsZA" class="twitter-follow-button" data-show-count="false") Follow @OpenByLawsZA
-    :javascript
-      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+    %p
+      By-laws are local laws created by the municipality you live in. They determine
+      many aspects of your day-to-day life in South Africa, such as how your
+      municipality can charge your for water, what you can do in your local parks,
+      and how many pets you can own.
 
-%h3#open What is "Open"?
+    %p
+      It's often hard to find your municipal by-laws. They can be in difficult
+      to read PDF files, or may not reflect recent changes. Open By-laws South Africa
+      is changing that.
 
-%p
-  We believe all our legislation should be freely available and easy to read
-  and share. We aim to make all of South Africa's by-laws
-  available in open formats that encourage readibility and re-use.
+    %h3 Who runs Open By-laws South Africa?
 
-%p
-  The 
-  %a(href="http://okfn.org/opendata/") Open Knowledge Foundation
-  describes "Open" as:
+    %p
+      This project was born out of curiosity and is run by #{link_to 'Greg Kempe', 'http://kempe.net'}.
+      It is supported by #{link_to 'Code for South Africa', 'http://code4sa.org'}, a non-profit
+      civic technology organisation.
 
-%blockquote
-  %p
-    Open data is data that can be freely used, reused and redistributed by
-    anyone – subject only, at most, to the requirement to attribute and
-    sharealike.
-  %footer
-    %cite
-      %a(href="http://opendefinition.org/") OpenDefinition.org
+    %h3#open What is "Open"?
 
-%p
-  To this end, the by-laws that we make available are:
+    %p
+      The 
+      %a(href="http://okfn.org/opendata/") Open Knowledge Foundation
+      describes "Open" as:
 
-%ul
-  %li easy to link to, including directly to parts, chapters and sections
-  %li easy to read as HTML webpages
-  %li available as machine-friendly XML in the open #{link_to 'Akoma Ntoso', 'http://akomantoso.org'} format
-  %li freely available in bulk from our #{link_to 'GitHub repo', 'https://github.com/longhotsummer/za-by-laws'}
-  %li licensed under a #{link_to 'Creative Commons Attribution 2.5 South Africa License', 'http://creativecommons.org/licenses/by/2.5/za/deed.en_US'}.
+    %blockquote
+      %p
+        Open data is data that can be freely used, reused and redistributed by
+        anyone – subject only, at most, to the requirement to attribute and
+        sharealike.
+      %footer
+        %cite
+          %a(href="http://opendefinition.org/") OpenDefinition.org
 
-%p
-  According to the license, you are free to share and reuse the by-laws, even for commercial purposes, provided that you
-  mention that you got them from openbylaws.org.za.
+    %p
+      We believe all our legislation should be freely available and easy to read
+      and share. We aim to make all of South Africa's by-laws
+      available in open formats that encourage readibility and re-use.
 
-%h3#akomantoso What is Akoma Ntoso?
+    %p
+      To this end, the by-laws that we make available are:
 
-%p
-  #{link_to 'Akoma Ntoso', 'http://akomantoso.org'} is a machine-readable XML format for representing parliamentary, legislative and judiciary
-  documents. It means "linked hearts" in the Akan language of West Africa. We chose to use Akoma Ntoso as our machine format for by-laws because:
+    %ul
+      %li easy to link to, including directly to parts, chapters and sections
+      %li easy to read as HTML webpages
+      %li available as machine-friendly XML in the open #{link_to 'Akoma Ntoso', 'http://akomantoso.org'} format
+      %li freely available from our #{link_to 'Indigo API', 'https://indigo.openbylaws.org.za/api/documents?format=api'}
+      %li licensed under a #{link_to 'Creative Commons Attribution 2.5 South Africa License', 'http://creativecommons.org/licenses/by/2.5/za/deed.en_US'}.
 
-%ul
-  %li it allowed us to capture the semantics of the by-laws
-  %li it is an open format under active development
-  %li it has been adopted by a number of parliaments across Africa and the European Union.
+    %p
+      According to the license, you are free to share and reuse the by-laws, even for commercial purposes, provided that you
+      mention that you got them from openbylaws.org.za.
 
-%h3#copyright Are the by-laws copyrighted?
+    %h3#akomantoso What is Akoma Ntoso?
 
-The original by-laws are not copyrighted. Section 12(8)(a) of the
-%a(href="http://www.saflii.org/za/legis/hist_act/ca98o1978152/ca98o1978a1m2011225.html") Copyright Act 98 of 1978
-states:
+    %p
+      #{link_to 'Akoma Ntoso', 'http://akomantoso.org'} is a machine-readable XML format for representing parliamentary, legislative and judiciary
+      documents. It means "linked hearts" in the Akan language of West Africa. We chose to use Akoma Ntoso as our machine format for by-laws because:
 
-%blockquote
-  12(8)(a)	No copyright shall subsist in official texts of a legislative, administrative or legal nature, or in official translations of such texts, or in speeches of a political nature or in speeches delivered in the course of legal proceedings, or in news of the day that are mere items of press information.
+    %ul
+      %li it allowed us to capture the semantics of the by-laws
+      %li it is an open format under active development
+      %li it has been adopted by a number of parliaments across Africa and the European Union.
 
-In addition, the presentation of the by-laws on this website are licensed under a
-%a(href="http://creativecommons.org/licenses/by/2.5/za/deed.en_US") Creative Commons Attribution 2.5 South Africa License
-which means that you can basically do anything you want with them provided you provide attribution back to openbylaws.org.za for
-the original content.
+    %h3#copyright Are the by-laws copyrighted?
 
-%h3#disclaimer Disclaimer
+    The original by-laws are not copyrighted. Section 12(8)(a) of the
+    %a(href="http://www.saflii.org/za/legis/hist_act/ca98o1978152/ca98o1978a1m2011225.html") Copyright Act 98 of 1978
+    states:
 
-%p
-  We aren't lawyers. We don't write these laws, we're just making them available and there may be mistakes.
-  Always get a professional legal opinion.
+    %blockquote
+      12(8)(a)	No copyright shall subsist in official texts of a legislative, administrative or legal nature, or in official translations of such texts, or in speeches of a political nature or in speeches delivered in the course of legal proceedings, or in news of the day that are mere items of press information.
 
-%h3#credits Credits
+    In addition, the presentation of the by-laws on this website are licensed under a
+    %a(href="http://creativecommons.org/licenses/by/2.5/za/deed.en_US") Creative Commons Attribution 2.5 South Africa License
+    which means that you can basically do anything you want with them provided you provide attribution back to openbylaws.org.za for
+    the original content.
 
-%ul
-  %li
-    Photo of
-    %a(href="https://www.flickr.com/photos/nico_roets/2547914600") Johannesburg skyline by nico_roets on flickr
-  %li
-    Photo of
-    %a(href="https://www.flickr.com/photos/mattharvey1/20654618945") Cape Town by mattharvey1 on flickr
+    %h3#disclaimer Disclaimer
+
+    %p
+      We aren't lawyers. We don't write these laws, we're just making them available and there may be mistakes.
+      Always get a professional legal opinion.
+
+    %h3#credits Credits
+
+    %ul
+      %li
+        Photo of
+        %a(href="https://www.flickr.com/photos/nico_roets/2547914600") Johannesburg skyline by nico_roets on flickr
+      %li
+        Photo of
+        %a(href="https://www.flickr.com/photos/mattharvey1/20654618945") Cape Town by mattharvey1 on flickr
 
 %h3#partners Partners
 
