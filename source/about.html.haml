@@ -6,13 +6,25 @@ title: About - Open By-laws South Africa
   %h1 About openbylaws.org.za
 
 .row
-  .col-md-7
-
+  .col-md-9.col-lg-7.col-md-offset-3
     %p.lead
       Open By-laws South Africa is a project to help South Africans be more informed
       about the legislation that governs them.
 
-    %p
+.row
+  .col-md-3.hidden-xs.hidden-sm
+    %nav.list-group.about-nav
+      %a.list-group-item(href="#top") About By-laws
+      %a.list-group-item(href="#who") Who runs Open By-laws?
+      %a.list-group-item(href="#open") What is "Open"?
+      %a.list-group-item(href="#akomantoso") What is Akoma Ntoso?
+      %a.list-group-item(href="#copyright") Are the by-laws copyrighted?
+      %a.list-group-item(href="#disclaimer") Disclaimer
+      %a.list-group-item(href="#credits") Credits
+      %a.list-group-item(href="#partners") Partners
+
+  .col-md-9.col-lg-7
+    %p#top
       By-laws are local laws created by the municipality you live in. They determine
       many aspects of your day-to-day life in South Africa, such as how your
       municipality can charge your for water, what you can do in your local parks,
@@ -23,7 +35,7 @@ title: About - Open By-laws South Africa
       to read PDF files, or may not reflect recent changes. Open By-laws South Africa
       is changing that.
 
-    %h3 Who runs Open By-laws South Africa?
+    %h3#who Who runs Open By-laws South Africa?
 
     %p
       This project was born out of curiosity and is run by #{link_to 'Greg Kempe', 'http://kempe.net'}.
@@ -106,6 +118,6 @@ title: About - Open By-laws South Africa
         Photo of
         %a(href="https://www.flickr.com/photos/mattharvey1/20654618945") Cape Town by mattharvey1 on flickr
 
-%h3#partners Partners
+    %h3#partners Partners
 
-= partial 'partner_logos'
+    = partial 'partner_logos'

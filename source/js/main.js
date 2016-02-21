@@ -49,3 +49,13 @@ $(function() {
     ga('send', 'social', 'twitter', 'share', url);
   });
 });
+
+$(function() {
+  var $nav = $('.about-nav');
+
+  if ($nav.length) {
+    $nav.affix({
+      offset: $nav.offset().top - 20,
+    });
+  }
+});
