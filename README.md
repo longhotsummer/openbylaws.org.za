@@ -2,7 +2,8 @@
 
 This is the source code for the [openbylaws.org.za](http://openbylaws.org.za) website.
 
-The website is a [Middleman](http://middlemanapp.com) app that pulls by-law data from the [Indigo](https://github.com/Code4SA/indigo) service running at [indigo.openbylaws.org.za](http://indigo.openbylaws.org.za) and builds a static website. The website is then uploaded to Amazon S3.
+The website is a [Middleman](http://middlemanapp.com) app that pulls by-law data from the [Indigo](https://github.com/Code4SA/indigo) service running at [indigo.openbylaws.org.za](http://indigo.openbylaws.org.za) and builds a static website. The website is then uploaded to Amazon S3 and served over HTTPS using
+an Amazon Cloudfront distribution.
 
 Contributions are welcome!
 
@@ -24,7 +25,7 @@ The website can be built using:
 
     rake build
 
-The website is automatically built and deployed by [travis-ci.org ](https://travis-ci.org/longhotsummer/openbylaws.org.za) when changes are pushed to the `deploy` branch.
+The website is automatically built and deployed by [travis-ci.org](https://travis-ci.org/longhotsummer/openbylaws.org.za) when changes are pushed to the `deploy` branch.
 
 To upload the built site by syncing the `build` directory with S3,
 put the S3 creds in `.s3_sync` and then run:
@@ -66,4 +67,3 @@ The website software, excluding the HTML and XML versions of the legislation doc
 is licensed under the MIT license.
 
 See [LICENSE](LICENSE) for full license information.
-
