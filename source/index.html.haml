@@ -37,34 +37,33 @@ layout: layout
           %a.placard.jhb(href="/za-jhb/")
             %h2 Johannesburg
 
-  %section.belief
+  %section.about
+    .container
+      .hidden-sm.hidden-xs
+        %img.logo(src="/img/logo-lg.png")
+
+      %p.lead
+        Open By-laws is a community effort to make our by-laws...
+
+      %p.lead
+        %strong Freely-available
+        because everyone has a right to know the law,
+
+      %p.lead
+        %strong Easy to read
+        so that they're easier to understand,
+
+      %p.lead
+        %strong Easy to share
+        to spread knowledge and understanding.
+
+      %p.lead
+        #{link_to 'Find out more →', "/about.html"}
+
+  %section.join
     .container
       .row
         .col-sm-7
-          %p.lead
-            Open By-laws is a community effort to make our by-laws
-            %strong freely available 
-            and
-            %strong easy to read
-            and
-            %strong share.
-
-          %p
-            %strong Freely-available
-            because everyone has a right to know the law.
-
-          %p
-            %strong Easy to read
-            so that they're easier to understand.
-
-          %p
-            %strong Easy to share
-            to spread knowledge and understanding.
-
-          %p
-            #{link_to 'Find out more →', "/about.html"}
-
-        .col-sm-5
           %p.lead
             %strong Join our community
             and help liberate by-laws across the country.
@@ -78,6 +77,7 @@ layout: layout
               %i.fa.fa-facebook
               Like us on Facebook
 
+        .col-sm-5
           %h4 Join our mailing list
 
           %p For updates on new by-laws, workshops and other news.
