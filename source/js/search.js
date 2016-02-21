@@ -17,7 +17,7 @@ ByLawSearch = function() {
     $results.hide();
     $waiting.show();
 
-    $.getJSON('//steno.openbylaws.org.za/search', {q: q, region_name: region}, function(response, textStatus, jqXHR) {
+    $.getJSON('https://indigo.openbylaws.org.za/api/search', {q: q, region_name: region}, function(response, textStatus, jqXHR) {
       ladda.stop();
       console.log(response);
 
