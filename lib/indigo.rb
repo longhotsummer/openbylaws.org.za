@@ -31,7 +31,7 @@ RestClient.enable(Rack::Cache,
 RestClient.enable(FakeCacheable)
 
 class IndigoBase
-  API_ENDPOINT = ENV['INDIGO_API_URL'] || "http://indigo.openbylaws.org.za/api"
+  API_ENDPOINT = ENV['INDIGO_API_URL'] || "https://indigo.openbylaws.org.za/api"
 
   attr_accessor :api, :url
 

@@ -1,11 +1,9 @@
 %form#subscribe(action="//openbylaws.us8.list-manage.com/subscribe/post?u=8d5d7d360e06d41a55d4de581&amp;id=39dbd074dc" method="post" target="_blank")
-  %h3 Subscribe to our email updates
-  %p The occasional email when we add new by-laws.
-  .form-group
-    %input.form-control#mce-EMAIL(type="email" name="EMAIL" required='required' placeholder='your email address')
+  .input-group
+    %input.form-control#mce-EMAIL(type="email" name="EMAIL" required="required" placeholder="your email address")
+    %span.input-group-btn
+      %input.btn.btn-default.full-xs(type="submit" value="Subscribe" name="subscribe")
 
   -# real people should not fill this in and expect good things - do not remove this or risk form bot signups
   %div(style="position: absolute; left: -5000px;")
     %input(type="text" name="b_8d5d7d360e06d41a55d4de581_39dbd074dc" tabindex="-1" value="")
-
-  %input.btn.btn-default.full-xs(type="submit" value="Subscribe" name="subscribe")

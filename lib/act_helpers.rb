@@ -42,7 +42,7 @@ class ActHelpers < Middleman::Extension
     end
 
     if opts[:external]
-      url = "http://openbylaws.org.za" + url
+      url = "https://openbylaws.org.za" + url
     end
 
     url

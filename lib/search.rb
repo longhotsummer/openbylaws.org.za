@@ -9,7 +9,7 @@ class ElasticSearchSupport
     params = {
       index: 'openbylaws.org.za',
       type: 'bylaw',
-      base_url: 'http://openbylaws.org.za',
+      base_url: 'https://openbylaws.org.za',
       regions: ActHelpers.regions,
       client_params: {
         url: ENV['BONSAI_URL'] || 'http://localhost:9200',

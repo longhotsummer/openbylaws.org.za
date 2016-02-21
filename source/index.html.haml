@@ -10,7 +10,7 @@ layout: layout
   %link(rel="alternate" type="application/atom+xml" href="atom.xml")
 
 #main-page
-  .jumbotron.welcome
+  %section.welcome
     .container
       .row
         .col-sm-7
@@ -27,58 +27,62 @@ layout: layout
           %form(action="/search.html" method="get" role="search")
             %input.form-control(type="text" name="q" class="input-large" placeholder="What are you looking for?")
 
-  .container
-    .row.placards
-      .col-sm-6
-        %a.placard.cpt(href="/za-cpt/")
-          %h2 Cape Town
-      .col-sm-6
-        %a.placard.jhb(href="/za-jhb/")
-          %h2 Johannesburg
+  %section.places
+    .container
+      .row.placards
+        .col-sm-6
+          %a.placard.cpt(href="/za-cpt/")
+            %h2 Cape Town
+        .col-sm-6
+          %a.placard.jhb(href="/za-jhb/")
+            %h2 Johannesburg
 
-    .jumbotron.belief
-      %p.lead.text-center
-        Open By-laws is a community effort to make our by-laws
-        %strong freely available 
-        and
-        %strong easy to read
-        and
-        %strong share.
-        %br
-        #{link_to 'Find out more', "/about.html"}.
+  %section.about
+    .container
+      .hidden-sm.hidden-xs
+        %img.logo(src="/img/logo-lg.png")
 
-    .row
-      .col-sm-8
-        .action-blocks
-          .row
-            .col-sm-6.action-block
-              %i.fa.fa-share-square-o.fa-5x
-              .action
-                %h3 Share
+      %p.lead
+        Open By-laws is a community effort to make our by-laws...
 
-                %ul.fa-ul
-                  %li
-                    %i.fa-li.fa.fa-twitter
-                    %a(href="https://twitter.com/OpenByLawsZA") @OpenByLawsZA
-                %ul.list-unstyled
-                  %li
-                    %a(href="https://twitter.com/share" class="twitter-share-button" data-url="http://openbylaws.org.za" data-text="South Africa's by-laws freely available, online, easy to read and share" data-via="OpenByLawsZA") Tweet
-                    :javascript
-                      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+      %p.lead
+        %strong Freely-available
+        because everyone has a right to know the law,
 
-            .col-sm-6.action-block
-              %i.fa.fa-flask.fa-5x
-              .action
-                %h3 Build
+      %p.lead
+        %strong Easy to read
+        so that they're easier to understand,
 
-                #{link_to 'Download the by-laws', 'https://github.com/longhotsummer/za-by-laws'} and build
-                new tools to explore, share and understand them.
+      %p.lead
+        %strong Easy to share
+        to spread knowledge and understanding.
 
-      .col-sm-4
-        = partial 'mailchimp_form.html'
+      %p.lead
+        #{link_to 'Find out more →', "/about.html"}
 
-    = partial 'latest_social'
+  %section.join
+    .container
+      .row
+        .col-sm-7
+          %p.lead
+            %strong Join our community
+            and help liberate by-laws across the country.
 
-%footer
-  .container
-    = partial 'partner_logos'
+          .social-buttons
+            %a.twitter(href="https://twitter.com/OpenByLawsZA" target="_blank")
+              %i.fa.fa-twitter
+              Follow @OpenByLawsZA
+
+            %a.facebook(href="https://www.facebook.com/openbylaws.org.za" target="_blank")
+              %i.fa.fa-facebook
+              Like us on Facebook
+
+        .col-sm-5
+          %h4 Join our mailing list
+
+          %p For updates on new by-laws, workshops and other news.
+          = partial 'mailchimp_form.html'
+
+  %section
+    .container
+      = partial 'partner_logos'
