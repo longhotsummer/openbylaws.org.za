@@ -17,7 +17,7 @@ It doesn't take long to read through and the ideas are straight-forward. In part
 
 It's also import to read and understand [how Indigo separates out the **content** of legislation from the **styling**](http://indigo.readthedocs.org/en/latest/guide/principles.html).
 
-## Finding a document to import
+## 1. Finding a document to import
 
 Thankfully you don't need to re-type the entire by-law. Indigo can import text from PDFs, Word and RTF documents, among others. You need to find
 an existing version of the by-law to import.
@@ -32,7 +32,7 @@ When looking for a by-law to import, keep these guidelines in mind:
 Municipalities must make their by-laws available to the public. Most do so on their websites, although they're often
 out of date or incomplete. They're a good start.
 
-## Importing the document
+## 2. Importing the document
 
 Once you've got your document, you can import it into Indigo.
 
@@ -49,7 +49,7 @@ just imported.
 
 *(Read more about [importing a document into Indigo](http://indigo.readthedocs.org/en/latest/guide/managing.html#importing-a-new-document).)*
 
-## Metadata: titles, dates, etc.
+## 3. Metadata: titles, dates, etc.
 
 ### Basic details
 
@@ -73,14 +73,12 @@ This information relates to when the by-law was published or *promulgated*.
 * **Publication date:** on what date was the by-law published?
 * **Publication name:** use the name of the provincial gazette, such as: *Western Cape Provincial Gazette*
 * **Publication number:** what gazette number was it published in?
-
 * **Assent date** and **Commencement date:** you can leave these empty
-
 * **Expression date:** change this to match the publication date
 
 *(Read more about [editing document metadata in Indigo](http://indigo.readthedocs.org/en/latest/guide/metadata.html).)*
 
-## Proofing and editing
+## 4. Proofing and editing
 
 * edit
 * check
@@ -88,7 +86,7 @@ This information relates to when the by-law was published or *promulgated*.
 * check section numbers
 * check subsection indentation
 
-## Publishing
+## 5. Publishing
 
 * draft -> publish
 * updating the website
