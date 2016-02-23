@@ -75,21 +75,29 @@ This information relates to when the by-law was published or *promulgated*.
 * **Publication number:** what gazette number was it published in?
 * **Assent date** and **Commencement date:** you can leave these empty
 * **Expression date:** change this to match the publication date
+* Click Save
 
 *(Read more about [editing document metadata in Indigo](http://indigo.readthedocs.org/en/latest/guide/metadata.html).)*
 
 ## 4. Proofing and editing
 
-* edit
-* check
-* lather, rinse repeat
-* check section numbers
-* check subsection indentation
+Now you need to clean up what Indigo has imported.
 
-## 5. Publishing
+**Don't forget to click *Save* after you've made a change**
 
-* draft -> publish
-* updating the website
+1. Remove the table of contents. It can really confuse Indigo. It's not necessary because Indigo will create a
+   table of contents automatically.
+2. Check numbering
+  * Run your eye down the table of contents on the left
+  * Ensure **chapters** and **parts** have numbers and titles
+  * Ensure **sections** have numbers and titles
+3. For each section, check the numbering of sub-items
+  * Check that **(a)**, **(b)** etc always start a new line
+  * Check that the **last item** in a numbered list is correct
+4. Check that lines aren't broken incorrectly. **Almost every line should start with a section or subsection number.**
+5. Check that schedules have been captured correctly.
+
+**Don't forget to click *Save* after you've made a change**
 
 ## Further reading
 
