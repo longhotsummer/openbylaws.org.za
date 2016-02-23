@@ -15,6 +15,8 @@ It doesn't take long to read through and the ideas are straight-forward. In part
 * [Publications of Acts](http://indigo.readthedocs.org/en/latest/guide/law-intro.html#publication-of-acts)
 * [Components of an Act](http://indigo.readthedocs.org/en/latest/guide/law-intro.html#components-parts-of-an-act)
 
+It's also import to read and understand [how Indigo separates out the **content** of legislation from the **styling**](http://indigo.readthedocs.org/en/latest/guide/principles.html).
+
 ## Finding a document to import
 
 Thankfully you don't need to re-type the entire by-law. Indigo can import text from PDFs, Word and RTF documents, among others. You need to find
@@ -45,15 +47,38 @@ Indigo will take a few minutes to do the hard work of importing your document.
 Once it's done, it'll show you your newly imported document. Next up is telling Indigo more about what you
 just imported.
 
+*(Read more about [importing a document into Indigo](http://indigo.readthedocs.org/en/latest/guide/managing.html#importing-a-new-document).)*
+
 ## Metadata: titles, dates, etc.
 
-* title
-* country, locality, etc.
-* publication date
-* year
-* short name
-* gazette
-* change attachment filename to source-enacted.pdf
+### Basic details
+
+* **Short title:** find the *official* short title for the document. This is generally in a section called **Short Title**. If that doesn't exist, use the title at the top of the document.
+* **Country:** make sure this is *South Africa*
+* **Locality:** choose the municipality this by-law is for
+* **Language:** this should be the language the by-law is in, generally English
+* **Document subtype:** choose *By-law**
+* **Year:** in what year was this by-law published?
+* **Number:** most by-laws aren't numbered, but we need a way to identify this by-law. This value will also be used as a filename and as a web address.
+  1. Take the title of the by-law and remove any reference to the municipality
+  2. Remove any words like *the*, *for*, *of*, *to* etc.
+  3. Remove the word *by-law* and the year
+  4. Replace all spaces with hyphens and make it all lowercase
+  5. For example, "eThekwini Municipality: Problem Buildings By-law, 2015" becomes "problem-buildings"
+
+### Promulgation
+
+This information relates to when the by-law was published or *promulgated*.
+
+* **Publication date:** on what date was the by-law published?
+* **Publication name:** use the name of the provincial gazette, such as: *Western Cape Provincial Gazette*
+* **Publication number:** what gazette number was it published in?
+
+* **Assent date** and **Commencement date:** you can leave these empty
+
+* **Expression date:** change this to match the publication date
+
+*(Read more about [editing document metadata in Indigo](http://indigo.readthedocs.org/en/latest/guide/metadata.html).)*
 
 ## Proofing and editing
 
