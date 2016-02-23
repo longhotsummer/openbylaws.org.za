@@ -7,7 +7,13 @@ an Amazon Cloudfront distribution.
 
 Contributions are welcome!
 
-# Development and Contributing
+# Contributing
+
+## Adding a by-law
+
+Join our community and help Open By-laws grow. Read up on [how to add a by-law](docs/guide.md) or contact [hello@openbylaws.org.za](mailto:hello@openbylaws.org.za).
+
+## Changing the website
 
 To setup a local development environment:
 
