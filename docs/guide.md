@@ -79,6 +79,21 @@ This information relates to when the by-law was published or *promulgated*.
 
 *(Read more about [editing document metadata in Indigo](http://indigo.readthedocs.org/en/latest/guide/metadata.html).)*
 
+### Attachments
+
+When you imported your by-law Indigo saved your original document as an *attachment*. The
+openbylaws.org.za website will let users download your original version so that they can verify
+for themselves that what we're providing is accurate. To do this, the attachment must be correctly
+named.
+
+* Click **attachments** in the left hand menu
+* Click the pencil icon alongside your original document's name
+* Change the attachment filename to **source-enacted.pdf**
+
+This tells Indigo that this document is the original source of the by-law as it was first enacted.
+
+You can also delete and upload different attachments if you need to.
+
 ## 4. Proofing and editing
 
 Now you need to clean up what Indigo has imported.
@@ -98,6 +113,17 @@ Now you need to clean up what Indigo has imported.
 5. Check that schedules have been captured correctly.
 
 **Don't forget to click *Save* after you've made a change**
+
+## 5. Publishing
+
+Great, you've now proofed your document and it's ready to be published on the openbylaws.org.za website.
+
+1. Please email [hello@openbylaws.org.za](mailto:hello@openbylaws.org.za) and tell him that your by-law is good to go.
+2. We'll double-check the details and change the document from **draft** to **published**.
+3. We'll also start a new build of the openbylaws.org.za website which will pull in your new document. This make take an hour
+   or two to show up when you visit the website.
+
+Thanks for contributing!
 
 ## Further reading
 
