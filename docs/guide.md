@@ -114,6 +114,8 @@ Now you need to clean up what Indigo has imported.
 
 **Don't forget to click *Save* after you've made a change**
 
+*(Read more about [proofing and editing documents in Indigo](http://indigo.readthedocs.org/en/latest/guide/editing.html).)*
+
 ## 5. Publishing
 
 Great, you've now proofed your document and it's ready to be published on the openbylaws.org.za website.
