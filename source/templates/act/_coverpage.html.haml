@@ -6,7 +6,7 @@
       Published in
       - url = publication_url(act)
       - if url
-        %a{href: url}
+        %a{href: url, target: "_blank"}
           &= act.publication_name
           no.
           &= act.publication_number
@@ -18,6 +18,10 @@
         &= act.publication_number
         on
         &= act.publication_date
+
+  - if act.commencement_date
+    %h4.commencement
+      Commences on #{act.commencement_date} unless otherwise noted
  
   - unless act.amendments.empty?
     %ol.amendment-list

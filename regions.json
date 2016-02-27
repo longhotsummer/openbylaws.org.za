@@ -5,6 +5,13 @@
     "logo": "/img/municipalities/cape-town.png",
     "bylaws-url": "http://www.capetown.gov.za/en/ByLaws/Pages/Home.aspx"
   },
+  "eth": {
+    "code": "eth",
+    "name": "eThekwini",
+    "partial": true,
+    "logo": "http://www.durban.gov.za/Style%20Library/images/durban/logo.png",
+    "bylaws-url": "http://www.durban.gov.za/Resource_Centre/Pages/By-Laws.aspx"
+  },
   "jhb": {
     "code": "jhb",
     "name": "Johannesburg",

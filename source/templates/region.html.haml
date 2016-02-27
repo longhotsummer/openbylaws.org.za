@@ -9,6 +9,16 @@
 
 .row
   .col-sm-9
+    - if region.partial
+      .alert.alert-warning
+        %h4 Please note
+        %p
+          We're still working to add all of #{region.name}'s by-laws. There are more
+          by-laws than are listed here, please check the
+          #{link_to "municipality's website", region['bylaws-url']}
+          in the mean time. Please #{link_to 'get in touch', 'mailto:hello@openbylaws.org.za'} if you'd like to
+          help us out.
+
     %table.table.table-condensed.table-hover
       %thead
         %tr
