@@ -1,34 +1,10 @@
 require 'forwardable'
 
-require 'rest-client'
-require 'restclient/components'
-require 'rack/cache'
 require 'hashie'
 require 'nokogiri'
+require 'moneta'
 
-# We want to cache files locally to make development faster,
-# and it's convenient to use Rack::Cache to do this. However,
-# the Indigo API doesn't mark its content as cacheable, so
-# we jump in and fake that.
-class FakeCacheable
-  def initialize(app, options={})
-    @app = app
-    @secs = options[:seconds] || 86400
-  end
-
-  def call(env)
-    status, headers, body = @app.call(env)
-    headers['Cache-Control'] = "max-age=#{@secs}"
-    [status, headers, body]
-  end
-end
-
-RestClient.enable(Rack::Cache,
-                  verbose: true,
-                  metastore: 'file:_cache/meta', 
-                  entitystore: 'file:_cache/body',
-                  allow_reload: true)
-RestClient.enable(FakeCacheable)
+CACHE_SECS = 60 * 60 * 24
 
 class IndigoBase
   API_ENDPOINT = ENV['INDIGO_API_URL'] || "https://indigo.openbylaws.org.za/api"
@@ -37,7 +13,28 @@ class IndigoBase
 
   def initialize(url=API_ENDPOINT)
     @url = url
-    @api = RestClient::Resource.new(url)
+    @client = HTTPClient.new
+    @cache = Moneta.new(:File, dir: '_cache', expires: true)
+  end
+
+  def get(path='', params={})
+    path = @url + path unless path.start_with?('http')
+
+    cache = !params.include?(:nocache)
+    key = [path, params]
+    params.delete(:nocache)
+
+    if cache
+      cached = @cache[key]
+      return cached if cached
+    end
+
+    puts path
+    response = @client.get_content(path, params)
+
+    @cache.store(key, response, expires: CACHE_SECS) if cache
+
+    response
   end
 end
 
@@ -48,7 +45,7 @@ class IndigoComponent < IndigoBase
     super(url)
 
     if info.nil?
-      info = JSON.parse(@api['.json'].get())
+      info = JSON.parse(get('.json'))
     end
 
     @info = _transform(Hashie::Mash.new(info))
@@ -60,7 +57,7 @@ class IndigoComponent < IndigoBase
   end
 
   def get_html
-    @api['.html'].get
+    get('.html')
   end
 
   def text
@@ -112,7 +109,7 @@ end
 class IndigoDocument < IndigoComponent
   def toc
     # Load the TOC remotely
-    @toc ||= parse_toc(JSON.parse(@api['toc.json'].get())['toc'])
+    @toc ||= parse_toc(JSON.parse(get('/toc.json'))['toc'])
   end
 
   def region_code
@@ -120,7 +117,7 @@ class IndigoDocument < IndigoComponent
   end
 
   def get_html
-    @api['.html'].get(params: {coverpage: 0})
+    get('.html', {coverpage: 0})
   end
 
   def schedules
@@ -140,7 +137,7 @@ class IndigoDocument < IndigoComponent
   end
 
   def attachments
-    @attachments ||= JSON.parse(RestClient.get(attachments_url))['results'].map do |a|
+    @attachments ||= JSON.parse(get(attachments_url))['results'].map do |a|
       IndigoComponent.new(a['url'], a)
     end
   end
@@ -208,7 +205,7 @@ class IndigoDocumentCollection < IndigoBase
 
   def initialize(endpoint)
     super(endpoint)
-    response = JSON.parse(@api.get(cache_control: 'no-cache'))['results']
+    response = JSON.parse(get('', {nocache: true}))['results']
     @documents = response.map { |doc| IndigoDocument.new(doc['published_url'], doc) }
   end
 end
