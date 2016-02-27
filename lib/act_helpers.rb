@@ -93,9 +93,12 @@ class ActHelpers < Middleman::Extension
     end
 
     def publication_url(act)
-      if act.locality == 'cpt'
+      case act.locality
+      when 'cpt'
         year = act.publication_date.split('-')[0]
         "http://www.westerncape.gov.za/general-publication/provincial-gazettes-#{year}"
+      when 'eth'
+        'https://www.lawsoc.co.za/default.asp?id=1753'
       end
     end
 
