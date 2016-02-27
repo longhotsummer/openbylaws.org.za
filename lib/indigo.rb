@@ -11,9 +11,11 @@ class IndigoBase
 
   attr_accessor :api, :url
 
+  @@client = nil
+
   def initialize(url=API_ENDPOINT)
+    @@client = HTTPClient.new unless @@client
     @url = url
-    @client = HTTPClient.new
     @cache = Moneta.new(:File, dir: '_cache', expires: true)
   end
 
@@ -30,7 +32,7 @@ class IndigoBase
     end
 
     puts path
-    response = @client.get_content(path, params)
+    response = @@client.get_content(path, params)
 
     @cache.store(key, response, expires: CACHE_SECS) if cache
 
