@@ -5,9 +5,8 @@ ruby '2.1.1'
 
 gem "slaw", "~>0.3.0"
 
-gem 'rest-client', '~> 1.8.0'
-gem 'rest-client-components', '~> 1.4.0'
-gem 'rack-cache', '~> 1.2'
+gem 'httpclient', '~> 2.7'
+gem 'moneta', '~> 0.8'
 
 gem "middleman", "~>3.3"
 gem "middleman-livereload", "~> 3.3"
