@@ -3,6 +3,7 @@ require 'forwardable'
 require 'hashie'
 require 'nokogiri'
 require 'moneta'
+require 'httpclient'
 
 CACHE_SECS = 60 * 60 * 24
 
