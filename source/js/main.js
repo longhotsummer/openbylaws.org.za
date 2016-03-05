@@ -59,3 +59,13 @@ $(function() {
     });
   }
 });
+
+$(function() {
+  var $toc = $('aside.toc');
+
+  if ($toc.length) {
+    $toc.affix({
+      offset: $toc.offset().top - 10,
+    });
+  }
+});
