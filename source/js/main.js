@@ -63,7 +63,7 @@ $(function() {
 $(function() {
   var $toc = $('aside.toc');
 
-  if ($toc.length) {
+  if ($toc.length && $toc.height() < $('article.akoma-ntoso').height()) {
     $toc.affix({
       offset: $toc.offset().top - 10,
     });
