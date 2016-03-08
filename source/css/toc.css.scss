@@ -63,4 +63,9 @@ aside.toc {
       width: 359px;
     }
   }
+
+  &.affix-bottom,
+  &.affix-top {
+    position: relative;
+  }
 }
