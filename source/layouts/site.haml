@@ -116,9 +116,7 @@
               The HTML and XML legislation documents are licensed under
               a #{link_to('Creative Commons Attribution 2.5 South Africa License', 'http://creativecommons.org/licenses/by/2.5/za/deed.en_US', rel: 'license')}.
 
-    = javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'
-    :javascript
-      window.jQuery || document.write('<script src="/js/vendor/jquery-1.10.2.min.js"><\/script>')
+    = javascript_include_tag '/js/vendor/jquery-1.10.2.min.js'
     = javascript_include_tag '/js/main.js'
 
     - if content_for?(:footer)
