@@ -174,7 +174,7 @@ class IndigoDocument < IndigoComponent
       for defn in doc.css('.akn-def')
         term = defn.content
         refersTo = defn['data-refersto']
-        definition = defn.ancestors("[data-refersto='#{refersTo}']").first
+        definition = defn.ancestors("[data-refersto='#{refersTo}']").first || defn.parent
 
         if refersTo and definition
           @term_definitions[refersTo.sub(/^#/, '')] = [term, definition.to_html]
