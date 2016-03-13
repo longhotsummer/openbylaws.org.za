@@ -146,6 +146,9 @@ activate :s3_sync do |s3_sync|
   # we use asset hashing here, so have expiry far in the future
   s3_sync.add_caching_policy 'text/css', max_age: year
   s3_sync.add_caching_policy 'application/javascript', max_age: year
+  s3_sync.add_caching_policy 'image/png', max_age: year
+  s3_sync.add_caching_policy 'image/jpeg', max_age: year
+  s3_sync.add_caching_policy 'application/font-woff', max_age: year
 
   # cache HTML for up to a day
   s3_sync.add_caching_policy 'text/html', max_age: day
