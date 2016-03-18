@@ -3,8 +3,10 @@
     = stylesheet_link_tag 'bylaw.css', media: "screen, print"
 
     %meta(property="og:type" content="article")
-    %meta(property="og:description" content="#{act.title} for #{regions[act.locality].name}")
     %meta{property: "og:url", content: act_url(act, external: true)}
+
+  - content_for :meta_description do
+    #{act.title} for #{regions[act.locality].name}
 
   %header
     .container

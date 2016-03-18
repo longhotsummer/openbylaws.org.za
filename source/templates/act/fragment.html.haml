@@ -3,7 +3,7 @@ layout: 'bylaw'
 ---
 
 - content_for :title do
-  = act.title
+  = toc_title(fragment) + " - " + act.title
 
 - content_for :extra_head do
   -# canonical link for google search https://support.google.com/webmasters/answer/139066?hl=en
