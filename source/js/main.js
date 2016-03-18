@@ -65,7 +65,10 @@ $(function() {
 
   if ($toc.length && $toc.height() < $('article.akoma-ntoso').height()) {
     $toc.affix({
-      offset: $toc.offset().top - 10,
+      offset: {
+        top: $toc.offset().top - 10,
+        bottom: $('#footer').outerHeight(true) + 10,
+      }
     });
   }
 });
