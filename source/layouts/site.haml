@@ -68,7 +68,7 @@
     %footer#footer
       .container
         .row
-          .col-sm-3
+          .col-sm-4
             %nav
               %h5 Openbylaws.org.za
               %ul
@@ -89,9 +89,9 @@
                     %i.fa.fa-fw.fa-facebook
                     Follow us on Facebook
 
-          .col-sm-3
+          .col-sm-4
             %nav
-              %h5 By-laws
+              %h5 Contribute to Open By-laws
               %ul
                 %li
                   %a(href="https://indigo.openbylaws.org.za/api/documents?format=api") Indigo By-laws API
@@ -104,13 +104,17 @@
                     %i.fa.fa-fw.fa-github
                     Browse the By-laws on GitHub
 
-          .col-sm-6
-            %h5 License
-            %a(rel="license" href="http://creativecommons.org/licenses/by/2.5/za/deed.en_US")
-              %img(alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/2.5/za/88x31.png")
-            %p
-              The HTML and XML legislation documents are licensed under
-              a #{link_to('Creative Commons Attribution 2.5 South Africa License', 'http://creativecommons.org/licenses/by/2.5/za/deed.en_US', rel: 'license')}.
+          .col-sm-4
+            %h5 Join our mailing list
+            = partial 'mailchimp_form.html'
+
+        %h5 License
+        %p
+          The HTML and XML legislation documents are licensed under
+          a #{link_to('Creative Commons Attribution 2.5 South Africa License', 'http://creativecommons.org/licenses/by/2.5/za/deed.en_US', rel: 'license')}.
+        %p
+          %a(rel="license" href="http://creativecommons.org/licenses/by/2.5/za/deed.en_US")
+            %img(alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/2.5/za/88x31.png")
 
     = javascript_include_tag '/js/vendor/jquery-1.10.2.min.js'
     = javascript_include_tag '/js/main.js'
