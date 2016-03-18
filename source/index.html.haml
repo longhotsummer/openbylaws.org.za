@@ -22,10 +22,8 @@ layout: layout
             Freely available, easy to read and share.
               
         .col-sm-5
-          %h3
-            Search the By-laws
-          %form(action="/search.html" method="get" role="search")
-            %input.form-control(type="text" name="q" class="input-large" placeholder="What are you looking for?")
+          .hidden-sm.hidden-xs
+            %img.logo(src="/img/logo-lg.png")
 
   %section.places
     .container
@@ -42,46 +40,42 @@ layout: layout
 
   %section.about
     .container
-      .hidden-sm.hidden-xs
-        %img.logo(src="/img/logo-lg.png")
-
-      %p.lead
-        Open By-laws is a community effort to make our by-laws...
-
-      %p.lead
-        %strong Freely-available
-        because everyone has a right to know the law,
-
-      %p.lead
-        %strong Easy to read
-        so that they're easier to understand,
-
-      %p.lead
-        %strong Easy to share
-        to spread knowledge and understanding.
-
-      %p.lead
-        #{link_to 'Find out more →', "/about.html"}
-
-  %section.join
-    .container
       .row
-        .col-sm-7
+        .col-sm-8
+          %p.lead
+            Open By-laws is a community effort to make our by-laws...
+
+          %p.lead
+            %strong Freely-available
+            because everyone has a right to know the law,
+
+          %p.lead
+            %strong Easy to read
+            so that they're easier to understand,
+
+          %p.lead
+            %strong Easy to share
+            to spread knowledge and understanding.
+
+          %p.lead
+            #{link_to 'Find out more →', "/about.html"}
+
+        .col-sm-4
           %p.lead
             %strong Join our community
             and help liberate by-laws across the country.
 
           .social-buttons
-            %a.twitter(href="https://twitter.com/OpenByLawsZA" target="_blank")
-              %i.fa.fa-twitter
-              Follow @OpenByLawsZA
+            %p
+              %a.twitter(href="https://twitter.com/OpenByLawsZA" target="_blank")
+                %i.fa.fa-twitter
+                Follow @OpenByLawsZA
+            %p
+              %a.facebook(href="https://www.facebook.com/openbylaws.org.za" target="_blank")
+                %i.fa.fa-facebook
+                Like us on Facebook
 
-            %a.facebook(href="https://www.facebook.com/openbylaws.org.za" target="_blank")
-              %i.fa.fa-facebook
-              Like us on Facebook
-
-        .col-sm-5
-          %h4 Join our mailing list
+          %h4 Sign up to our mailing list
 
           %p For updates on new by-laws, workshops and other news.
           = partial 'mailchimp_form.html'
