@@ -1,24 +1,11 @@
 @import 'site';
 @import 'toc';
 
-.akoma-ntoso {
-  text-align: justify;
-  line-height: 1.5em;
-
-  @import 'akoma-ntoso';
-}
+// akn styling from Indigo
+@import 'bower_components/indigo-web/scss/akoma-ntoso';
 
 .akoma-ntoso-container {
-  margin-top: 0px;
-
-  .title {
-    text-align: center;
-    margin-bottom: 2em;
-
-    h2 {
-      font-size: 18px;
-    }
-  }
+  margin-top: 20px;
 
   .published {
     font-style: italic;
