@@ -10,13 +10,13 @@
           Tweet
 
   %ul.nav.nav-tabs
+    %li{class: tab == 'content' ? 'active' : ''}
+      %a{href: act_url(act)} By-law
+
     %li{class: tab == 'toc' ? 'active' : ''}
       %a{href: act_url(act, child: 'contents/')}
         %span.hidden-xs Table of
         Contents
-
-    %li{class: tab == 'content' ? 'active' : ''}
-      %a{href: act_url(act)} By-law
 
     %li{class: tab == 'resources' ? 'active' : ''}
       %a{href: act_url(act, child: "resources/")}
