@@ -156,3 +156,96 @@
 .about-nav.affix {
   top: 20px;
 }
+
+.download-list {
+  .download {
+    display: block;
+    float: left;
+    width: 90px;
+    height: 110px;
+    position: relative;
+
+    margin-right: 15px;
+    margin-bottom: 15px;
+    padding: 5px;
+
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+    background: #efefef;
+
+    text-align: center;
+    color: #777;
+  }
+
+  .download:hover,
+  .download:active,
+  .download:focus {
+    text-decoration: none;
+  }
+
+  .download:hover {
+    box-shadow: 4px 4px 3px 0px rgba(0, 0, 0, 0.25);
+    top: -1px;
+    left: -1px;
+  }
+
+  .title {
+    font-size: 12px;
+    line-height: 1.2;
+    display: block;
+    height: 74px;
+    overflow-y: hidden;
+  }
+
+  .format {
+    display: block;
+    position: absolute;
+    top: 80px;
+    width: 100%;
+    color: white;
+    left: -0.5em;
+    box-shadow: 1px 1px 0px 0px rgba(0, 0, 0, 0.3);
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .format::before {
+    content: "";
+    bottom: -0.5em;
+    border-width: .5em 0 0 0.5em;
+    position: absolute;
+    display: block;
+    border-style: solid;
+    z-index: -1;
+  }
+
+  .pdf {
+    .format {
+      background-color: #D9534F;
+    }
+
+    .format::before {
+      border-color: #A94442 transparent transparent transparent;
+    }
+  }
+
+  .epub {
+    .format {
+      background-color: #89B70B;
+    }
+
+    .format::before {
+      border-color: #79A70A transparent transparent transparent;
+    }
+  }
+
+  .html {
+    .format {
+      background-color: #2989d8;
+    }
+
+    .format::before {
+      border-color: #0675b3 transparent transparent transparent;
+    }
+  }
+}

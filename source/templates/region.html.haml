@@ -63,15 +63,19 @@
               %td&= bylaw.repeal.date.year
 
   .col-sm-3.resources
-    %h3 Download
+    %h3 Download for later
 
-    %ul.fa-ul
+    %ul.list-unstyled.download-list.clearfix
       %li
-        %i.fa.fa-li.fa-file-pdf-o
-        %a{href: region_url(region) + ".pdf"}
-          #{region.name} by-laws as PDF
-
-    %hr
+        %a.download.epub{href: region_url(region) + ".epub", target: "_blank"}
+          %span.title #{region.name} By-laws
+          %span.format
+            ePUB
+      %li
+        %a.download.pdf{href: region_url(region) + ".pdf", target: "_blank"}
+          %span.title #{region.name} By-laws
+          %span.format
+            PDF
 
     %h3 More resources
     %p
