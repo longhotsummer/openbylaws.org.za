@@ -149,6 +149,10 @@ class IndigoDocument < IndigoComponent
     links.find { |k| k.title == 'PDF' }['href']
   end
 
+  def epub_url
+    links.find { |k| k.title == 'ePUB' }['href']
+  end
+
   def standalone_html_url
     "#{@url}.html?standalone=1"
   end

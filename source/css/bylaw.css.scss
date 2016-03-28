@@ -59,3 +59,17 @@
     text-decoration: none;
   }
 }
+
+nav.left-nav {
+  border-right: 1px solid #ccc;
+  padding-right: 5px;
+
+  @media print {
+    display: none;
+  }
+
+  // hidden on bootstrap small
+  @media (max-width: 767px) {
+    display: none;
+  }
+}

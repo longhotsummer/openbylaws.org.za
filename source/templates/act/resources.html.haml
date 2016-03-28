@@ -14,15 +14,10 @@ layout: 'bylaw'
         %h3 Download this by-law
 
         %p
-          Download the current version of this by-law.
+          Download the current version of this by-law to read later
+          on your desktop, e-reader or tablet.
 
-        %ul.fa-ul
-          %li
-            %i.fa.fa-li.fa-file-pdf-o
-            %a{href: act.pdf_url} Download PDF
-          %li
-            %i.fa.fa-li.fa-file-text-o
-            %a{href: act.standalone_html_url} Download Webpage (HTML)
+        = partial 'downloads', locals: {act: act}
 
       %h3 Download other resources
 
