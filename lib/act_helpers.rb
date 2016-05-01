@@ -95,7 +95,7 @@ class ActHelpers < Middleman::Extension
     def publication_url(act)
       case act.locality
       when 'cpt'
-        year = act.publication_date.split('-')[0]
+        year = act.publication_date.year
         "http://www.westerncape.gov.za/general-publication/provincial-gazettes-#{year}"
       when 'eth'
         'https://www.lawsoc.co.za/default.asp?id=1753'
@@ -108,6 +108,10 @@ class ActHelpers < Middleman::Extension
 
     def regions
       ActHelpers.regions
+    end
+
+    def bylaw_by_id(id)
+      all_bylaws.find { |b| b.id == id }
     end
   end
 end

@@ -7,21 +7,15 @@
       - url = publication_url(act)
       - if url
         %a{href: url, target: "_blank"}
-          &= act.publication_name
-          no.
-          &= act.publication_number
+          &= act.full_publication
           on
-          &= act.publication_date
+          &= act.publication_date.strftime("%e %B %Y")
       - else
-        &= act.publication_name
-        no.
-        &= act.publication_number
-        on
-        &= act.publication_date
+        &= act.full_publication
 
   - if act.commencement_date
     %h4.commencement
-      Commences on #{act.commencement_date} unless otherwise noted
+      Commences on #{act.commencement_date.strftime("%e %B %Y")} unless otherwise noted
  
   - unless act.amendments.empty?
     %ol.amendment-list
@@ -34,4 +28,4 @@
           - else
             &= amendment.amending_title
         on
-        %span.date&= amendment.date
+        %span.date&= amendment.date.strftime("%e %B %Y")

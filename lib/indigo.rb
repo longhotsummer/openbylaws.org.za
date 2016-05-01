@@ -92,7 +92,7 @@ class IndigoComponent < IndigoBase
       item.each { |e| _transform(e) }
     when Hash
       # dates into Date objects
-      for key in [:date, :updated_at, :created_at, :expression_date]
+      for key in [:date, :updated_at, :created_at, :expression_date, :commencement_date, :assent_date, :publication_date]
         if item.has_key? key and item[key].is_a? String
           item[key] = Date.parse(item[key])
         end
@@ -189,6 +189,36 @@ class IndigoDocument < IndigoComponent
     @term_definitions
   end
 
+  # Return a list of HistoryEvent objects describing the history of this document,
+  # oldest first.
+  def history
+    unless @events
+      @events = []
+
+      @events << HistoryEvent.new(assent_date, :assent) if assent_date
+      @events << HistoryEvent.new(publication_date, :publication) if publication_date
+      @events << HistoryEvent.new(commencement_date, :commencement) if commencement_date
+      @events << HistoryEvent.new(created_at, :created)
+      @events << HistoryEvent.new(updated_at, :updated)
+
+      for amendment in amendments
+        @events << HistoryEvent.new(amendment.date, :amendment, amendment)
+      end
+
+      if repealed?
+        @events << HistoryEvent.new(repeal.date, :repeal, repeal)
+      end
+
+      @events.sort_by! { |e| e.date }
+    end
+
+    @events
+  end
+
+  def full_publication
+    [publication_name, "no.", publication_number].join(" ")
+  end
+
   protected
   def parse_toc(items)
     items.map do |item|
@@ -214,5 +244,17 @@ class IndigoDocumentCollection < IndigoBase
     super(endpoint)
     response = JSON.parse(get('', {nocache: true}))['results']
     @documents = response.map { |doc| IndigoDocument.new(doc['published_url'], doc) }
+  end
+end
+
+class HistoryEvent
+  attr_accessor :date
+  attr_accessor :event
+  attr_accessor :info
+
+  def initialize(date, event, info=nil)
+    @date = date
+    @event = event
+    @info = info
   end
 end
