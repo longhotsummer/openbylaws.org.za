@@ -1,6 +1,4 @@
 .toc {
-  margin-top: 20px;
-
   ol {
     list-style-type: none;
     padding-left: 10px;
@@ -34,26 +32,19 @@
   }
 }
 
+section.toc {
+  margin-top: 20px;
+}
+
 aside.toc {
-  border-right: 1px solid #ccc;
-  padding-right: 5px;
-
-  @media print {
-    display: none;
-  }
-
-  // hidden on bootstrap small
-  @media (max-width: 767px) {
-    display: none;
-  }
-
   &.affix {
     top: 0px;
     bottom: 0px;
     width: 219px;
     margin: 0px;
-    padding: 10px 10px 10px 0px;
+    padding: 0px 10px 10px 0px;
     overflow-y: scroll;
+    border-right: 1px solid #ccc;
 
     @media (min-width: 992px) {
       width: 293px;

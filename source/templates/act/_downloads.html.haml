@@ -1,0 +1,16 @@
+%ul.list-unstyled.download-list.clearfix
+  %li
+    %a.download.epub{href: act.epub_url, target: "_blank"}
+      %span.title #{act.title}
+      %span.format
+        ePUB
+  %li
+    %a.download.html{href: act.standalone_html_url, target: "_blank"}
+      %span.title #{act.title}
+      %span.format
+        HTML
+  %li
+    %a.download.pdf{href: act.pdf_url, target: "_blank"}
+      %span.title #{act.title}
+      %span.format
+        PDF

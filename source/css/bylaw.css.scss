@@ -32,6 +32,12 @@
   }
 }
 
+.timeline {
+  dd {
+    margin-bottom: 5px;
+  }
+}
+
 .popover.term-definition {
   max-width: 400px;
 
@@ -57,5 +63,19 @@
 
   a:hover {
     text-decoration: none;
+  }
+}
+
+nav.left-nav {
+  border-right: 1px solid #ccc;
+  padding-right: 5px;
+
+  @media print {
+    display: none;
+  }
+
+  // hidden on bootstrap small
+  @media (max-width: 767px) {
+    display: none;
   }
 }
