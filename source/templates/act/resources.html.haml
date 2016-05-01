@@ -9,17 +9,65 @@ layout: 'bylaw'
 
 .downloads
   .row
-    .col-sm-6
+    .col-sm-8
       .download
-        %h3 Download this by-law
+        %h3 History of this by-law
 
-        %p
-          Download the current version of this by-law to read later
-          on your desktop, e-reader or tablet.
+        %dl.dl-horizontal.timeline
+          - for event in act.history
+            %dt&= event.date.strftime("%e %B %Y")
+            %dd
+              - case event.event
+              - when :amendment
+                Amended by
+                - if event.info.amending_id
+                  %a{href: event.info.amending_uri}
+                    %i&= event.info.amending_title
+                  - amended_by = bylaw_by_id(event.info.amending_id)
+                  - if amended_by
+                    - if amended_by.source_enacted
+                      %br
+                      = partial 'support_download_button', locals: {file: amended_by.source_enacted}
+                    - elsif amended_by.source_current
+                      %br
+                      = partial 'support_download_button', locals: {file: amended_by.source_current}
+                - else
+                  %i&= event.info.amending_title
 
-        = partial 'downloads', locals: {act: act}
+              - when :assent
+                Assented to by council
 
-      %h3 Download other resources
+              - when :commencement
+                By-law commences.
+
+              - when :created
+                First added to OpenBylaws.org.za.
+
+              - when :publication
+                Published in 
+                %i #{act.full_publication}.
+                - if act.source_enacted
+                  %br
+                  = partial 'support_download_button', locals: {file: act.source_enacted}
+
+              - when :repeal
+                Repealed by
+                - if event.info.repealing_id
+                  %a{href: event.info.repealing_uri}
+                    %i&= event.info.repealing_title
+                  - repealed_by = bylaw_by_id(event.info.repealing_id)
+                  - if repealed_by
+                    - if repealed_by.source_enacted
+                      %br
+                      = partial 'support_download_button', locals: {file: repealed_by.source_enacted}
+                    - elsif repealed_by.source_current
+                      %br
+                      = partial 'support_download_button', locals: {file: repealed_by.source_current}
+                - else
+                  &= event.info.repealing_title
+
+              - when :updated
+                Last updated on OpenBylaws.org.za.
 
       - if act.source_enacted
         .download
@@ -27,7 +75,7 @@ layout: 'bylaw'
             %i.fa.fa-file-pdf-o
             Source PDF (as enacted)
           %p
-            This is the source PDF version of the by-law, as it
+            Download the source PDF version of the by-law, as it
             was first enacted.
 
           = partial 'support_download_button', locals: {file: act.source_enacted}
@@ -38,7 +86,7 @@ layout: 'bylaw'
             %i.fa.fa-file-pdf-o
             Source PDF (as amended)
           %p
-            This is the source PDF version of the by-law, with
+            Download the source PDF version of the by-law, with
             amendments applied.
 
           = partial 'support_download_button', locals: {file: act.source_current}
@@ -46,26 +94,34 @@ layout: 'bylaw'
       .download
         %h4
           %i.fa.fa-file-code-o
-          Akoma Ntoso XML
+          For developers
 
         %p
-          Download the current Akoma Ntoso XML version of the by-law,
-          - if act.amended?
-            with amendments applied.
-          - else
-            as it was first enacted.
+          Download a machine-friendly version of the current by-law.
+
+        %ul.fa-ul
+          %li
+            %i.fa.fa-li.fa-download
+            %a{href: act.url + ".json"} Download JSON
+          %li
+            %i.fa.fa-li.fa-download
+            %a{href: act.url + ".xml"} Download Akoma Ntoso XML
 
         %p
           #{link_to 'Akoma Ntoso', 'http://www.akomantoso.org/'} is an
           XML format for legislative documents.
 
-        %ul.fa-ul
-          %li
-            %i.fa.fa-li.fa-download
-            %a{href: act.url + ".xml"} Download Akoma Ntoso XML
 
+    .col-sm-4
+      .download
+        %h3 Download for later
 
-    .col-sm-4.col-sm-offset-2
+        %p
+          Download the current version of this by-law to read later
+          on your desktop, e-reader or tablet.
+
+        = partial 'downloads', locals: {act: act}
+
       - region = regions[act.locality]
       %h3&= region.name
       %p
