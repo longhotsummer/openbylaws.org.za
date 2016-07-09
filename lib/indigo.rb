@@ -245,6 +245,11 @@ class IndigoDocumentCollection < IndigoBase
     response = JSON.parse(get('', {nocache: true}))['results']
     @documents = response.map { |doc| IndigoDocument.new(doc['published_url'], doc) }
   end
+
+  def for_listing
+    # ignore documents that have the 'amendment' tag and are stubs
+    @documents.select { |d| !(d.stub and d.tags.include?('amendment')) }
+  end
 end
 
 class HistoryEvent
