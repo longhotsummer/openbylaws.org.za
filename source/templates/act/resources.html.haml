@@ -13,61 +13,63 @@ layout: 'bylaw'
       .download
         %h3 History of this by-law
 
-        %dl.dl-horizontal.timeline
-          - for event in act.history
-            %dt&= event.date.strftime("%e %B %Y")
-            %dd
-              - case event.event
-              - when :amendment
-                Amended by
-                - if event.info.amending_id
-                  %a{href: event.info.amending_uri}
+        .timeline
+          %ul.list-unstyled.timeline-items
+            - for event in act.history
+              %li
+                %h5&= event.date.strftime("%e %B %Y")
+
+                - case event.event
+                - when :amendment
+                  Amended by
+                  - if event.info.amending_id
+                    %a{href: event.info.amending_uri}
+                      %i&= event.info.amending_title
+                    - amended_by = bylaw_by_id(event.info.amending_id)
+                    - if amended_by
+                      - if amended_by.source_enacted
+                        %br
+                        = partial 'support_download_button', locals: {file: amended_by.source_enacted}
+                      - elsif amended_by.source_current
+                        %br
+                        = partial 'support_download_button', locals: {file: amended_by.source_current}
+                  - else
                     %i&= event.info.amending_title
-                  - amended_by = bylaw_by_id(event.info.amending_id)
-                  - if amended_by
-                    - if amended_by.source_enacted
-                      %br
-                      = partial 'support_download_button', locals: {file: amended_by.source_enacted}
-                    - elsif amended_by.source_current
-                      %br
-                      = partial 'support_download_button', locals: {file: amended_by.source_current}
-                - else
-                  %i&= event.info.amending_title
 
-              - when :assent
-                Assented to by council.
+                - when :assent
+                  Assented to by council.
 
-              - when :commencement
-                By-law commences.
+                - when :commencement
+                  By-law commences.
 
-              - when :created
-                First added to OpenBylaws.org.za.
+                - when :created
+                  First added to OpenBylaws.org.za.
 
-              - when :publication
-                Published in 
-                %i #{act.full_publication}.
-                - if act.source_enacted
-                  %br
-                  = partial 'support_download_button', locals: {file: act.source_enacted}
+                - when :publication
+                  Published in 
+                  %i #{act.full_publication}.
+                  - if act.source_enacted
+                    %br
+                    = partial 'support_download_button', locals: {file: act.source_enacted}
 
-              - when :repeal
-                Repealed by
-                - if event.info.repealing_id
-                  %a{href: event.info.repealing_uri}
-                    %i&= event.info.repealing_title
-                  - repealed_by = bylaw_by_id(event.info.repealing_id)
-                  - if repealed_by
-                    - if repealed_by.source_enacted
-                      %br
-                      = partial 'support_download_button', locals: {file: repealed_by.source_enacted}
-                    - elsif repealed_by.source_current
-                      %br
-                      = partial 'support_download_button', locals: {file: repealed_by.source_current}
-                - else
-                  &= event.info.repealing_title
+                - when :repeal
+                  Repealed by
+                  - if event.info.repealing_id
+                    %a{href: event.info.repealing_uri}
+                      %i&= event.info.repealing_title
+                    - repealed_by = bylaw_by_id(event.info.repealing_id)
+                    - if repealed_by
+                      - if repealed_by.source_enacted
+                        %br
+                        = partial 'support_download_button', locals: {file: repealed_by.source_enacted}
+                      - elsif repealed_by.source_current
+                        %br
+                        = partial 'support_download_button', locals: {file: repealed_by.source_current}
+                  - else
+                    &= event.info.repealing_title
 
-              - when :updated
-                Last updated on OpenBylaws.org.za.
+                - when :updated
+                  Last updated on OpenBylaws.org.za.
 
       - if act.source_enacted
         .download
