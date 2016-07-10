@@ -17,10 +17,11 @@ layout: 'bylaw'
         = partial 'coverpage', locals: {act: act}
         = act.html
 
+  = partial 'definitions', locals: {act: act}
+
 - else
   -# stub
   %article.akoma-ntoso.akoma-ntoso-container.stub
     = partial 'coverpage', locals: {act: act}
-    = partial 'stub', locals: {act: act}
 
-= partial 'definitions', locals: {act: act}
+  = partial 'stub', locals: {act: act}
