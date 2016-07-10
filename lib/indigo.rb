@@ -32,7 +32,6 @@ class IndigoBase
       return cached if cached
     end
 
-    puts path
     response = @@client.get_content(path, params)
 
     @cache.store(key, response, expires: CACHE_SECS) if cache
