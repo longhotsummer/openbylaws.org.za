@@ -19,13 +19,13 @@
  
   - unless act.amendments.empty?
     %ol.amendment-list
-    - for amendment in act.amendments
-      %li.amendment
-        Amended by
-        %span.amending-title
-          - if amendment.amending_id
-            %a{href: amendment.amending_uri}&= amendment.amending_title
-          - else
-            &= amendment.amending_title
-        on
-        %span.date&= amendment.date.strftime("%e %B %Y")
+      - for amendment in act.amendments
+        %li.amendment
+          Amended by
+          %span.amending-title
+            - if amendment.amending_id
+              %a{href: amendment.amending_uri}&= amendment.amending_title
+            - else
+              &= amendment.amending_title
+          on
+          %span.date&= amendment.date.strftime("%e %B %Y")
