@@ -5,9 +5,9 @@ rvm:
 env:
   global:
     # AWS_ACCESS_KEY_ID for S3 deployment
-    - secure: "fNilg7f2iRr/YsvPglOrPA7/+PWE5101+b00UZRab7cQIKLVgczCHvSC5a6sd3rLjmtTRu0TTrgaBG6wsxj3U+TAo9ro1MlxTqgqjySwceQBIZbW0D4AKDkwHw2gwIEomvKnvwvyY5iJaQNvcE0JlNSOJbRudGm021tmgZG4Cxo="
+    - secure: "BIFbtHSRX3STLFDTcBMKJ38/00FKLFmavyAdTY4KkqQYaGqjpWChPOIVA7iKv1WdSZjn0gLM6HfGBgvUF3pSEstdxGnOTbLtY/9QXYpoCIh5tLAsRsq9vPo1yv0y1TDpLX0NSPgry8EDApUIROf8bUmSTqfsbsoWnkstq+Ckg30="
     # AWS_SECRET_ACCESS_KEY for S3 deployment
-    - secure: "JSxbkEJ9+hug7Nl/iF4ASYb+2uASr3g1133WWD/qloDWcVlOsirkcIg4bbwTws+D7qOWOkjiF49Z6nlfIiNyKo7G3KouYzcC18shPhDV+5clZ8ZwYo9eelO2szFuQyxj2eX3Bda7ln0qmZrYI6eRup252PpbloMR02dYLXowWq4="
+    - secure: "Zs84AWMeVxKhr09o6XpJdGJ2XQGD7eQobQp5YQgnz2u46mwBsEDnOUQB7RADBj2zss4/mi4rVxaiSZdgPUmn5A8X1Oets9cL0/H7SvSICT1ADIkxeLzAZoRDEM20zHMbisWRN8i1l1ULeAoqLp9kRp57Ob6oB9b7K4+a/Kq9s5k="
     # BONSAI_URL for search
     - secure: "fIIoTUlXnA2iOexCiEf6xLTH6Ia7I/FOuQcWTAOADA/yDUIGWBBudYvAqwJOOaOsQZzSTU+oV9QCOORcGjp/pgdsiEC6BPyFwOz3nCNiQKcbPf/aNbiHGsKtx/i0dvDtkNQAk6dc1RKHBMz9XpKfah64Rk+ER9Nig2Zj1WnkwtU="
 script:
