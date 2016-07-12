@@ -110,6 +110,11 @@ class IndigoComponent < IndigoBase
 end
 
 class IndigoDocument < IndigoComponent
+  def initialize(url, info=nil, collection=nil)
+    super(url, info)
+    @collection = collection
+  end
+
   def toc
     # Load the TOC remotely
     @toc ||= parse_toc(JSON.parse(get('/toc.json'))['toc'])
@@ -198,7 +203,7 @@ class IndigoDocument < IndigoComponent
       @events << HistoryEvent.new(assent_date, :assent) if assent_date
       @events << HistoryEvent.new(publication_date, :publication) if publication_date
       @events << HistoryEvent.new(commencement_date, :commencement) if commencement_date
-      @events << HistoryEvent.new(created_at, :created)
+      @events << HistoryEvent.new(added_at, :created)
       @events << HistoryEvent.new(updated_at, :updated)
 
       for amendment in amendments
@@ -217,6 +222,14 @@ class IndigoDocument < IndigoComponent
 
   def full_publication
     [publication_name, "no.", publication_number].join(" ")
+  end
+
+  # Date first version added to the website. This is the earliest created_at date
+  # of all the amended versions.
+  def added_at
+    dates = [self.created_at]
+    dates += amended_versions.select(&:id).map { |v| @collection.fetch(v.id) }.compact.map(&:created_at)
+    dates.min
   end
 
   protected
@@ -243,7 +256,15 @@ class IndigoDocumentCollection < IndigoBase
   def initialize(endpoint)
     super(endpoint)
     response = JSON.parse(get('', {nocache: true}))['results']
-    @documents = response.map { |doc| IndigoDocument.new(doc['published_url'], doc) }
+    @documents = response.map { |doc| IndigoDocument.new(doc['published_url'], doc, self) }
+  end
+
+  # try to find a document with this id, otherwise try to fetch it remotely
+  def fetch(id)
+    doc = @documents.find { |d| d.id == id }
+    return doc if doc
+
+    IndigoDocument.new(API_ENDPOINT + "/documents/#{id}", nil, self)
   end
 
   def for_listing
