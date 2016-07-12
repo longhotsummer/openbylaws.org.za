@@ -4,6 +4,7 @@ require 'hashie'
 require 'nokogiri'
 require 'moneta'
 require 'httpclient'
+require 'json'
 
 CACHE_SECS = 60 * 60 * 24
 
