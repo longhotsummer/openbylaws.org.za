@@ -25,7 +25,7 @@ The website can be built using:
 
     rake build
 
-The website is automatically built and deployed by [travis-ci.org](https://travis-ci.org/longhotsummer/openbylaws.org.za) when changes are pushed to the `deploy` branch.
+The website is automatically built and deployed by [travis-ci.org](https://travis-ci.org/longhotsummer/openbylaws.org.za) when changes are pushed to the `master` branch.
 
 To upload the built site by syncing the `build` directory with S3,
 put the S3 creds in `.s3_sync` and then run:

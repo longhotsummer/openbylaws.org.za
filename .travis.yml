@@ -11,4 +11,4 @@ env:
     # BONSAI_URL for search
     - secure: "fIIoTUlXnA2iOexCiEf6xLTH6Ia7I/FOuQcWTAOADA/yDUIGWBBudYvAqwJOOaOsQZzSTU+oV9QCOORcGjp/pgdsiEC6BPyFwOz3nCNiQKcbPf/aNbiHGsKtx/i0dvDtkNQAk6dc1RKHBMz9XpKfah64Rk+ER9Nig2Zj1WnkwtU="
 script:
-  - if [ "$TRAVIS_BRANCH" == "deploy" ]; then bundle exec rake deploy; else bundle exec rake build; fi
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then bundle exec rake deploy; else bundle exec rake build; fi
