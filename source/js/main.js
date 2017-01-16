@@ -10,7 +10,9 @@ $(function() {
     delay: { show: 500 },
     title: function() {
       var term_id = $(this).data('refersto').replace('#', '');
-      return $('#defn-' + term_id).data('term');
+      var term = $('#defn-' + term_id).data('term');
+      if (window.ga) ga('send', 'event', 'term-popup', term_id);
+      return term;
     },
     content: function() {
       var term_id = $(this).data('refersto').replace('#', '');
