@@ -9,24 +9,12 @@
     margin-left: 0px;
   }
 
-  li.part {
-    margin-bottom: 20px;
-
-    &> a {
-      font-weight: bold;
-    }
-  }
-
-  li.chapter {
+  li.part,
+  li.chapter,
+  li.schedules li.doc {
     margin-bottom: 10px;
 
     &> a {
-      font-weight: bold;
-    }
-  }
-
-  li.schedules {
-    a {
       font-weight: bold;
     }
   }
