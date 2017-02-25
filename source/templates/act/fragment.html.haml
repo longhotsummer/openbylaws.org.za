@@ -7,7 +7,7 @@ layout: 'bylaw'
 
 - content_for :extra_head do
   -# canonical link for google search https://support.google.com/webmasters/answer/139066?hl=en
-  %link(rel="canonical" href="http://openbylaws.org.za#{act_url(act)}")
+  %link(rel="canonical" href="https://openbylaws.org.za#{act_url(act)}")
 
 - content_for :breadcrumbs do
   = partial 'breadcrumbs', locals: {act: act, trail: breadcrumbs_for_fragment(fragment)}
