@@ -5,3 +5,59 @@ title: Help track - Open By-laws South Africa
 - content_for :header do
   %h1 Help track
 
+.muni
+  %h4
+    What municipality?
+  %a.btn.btn-default(href="#" muni="ct")
+    Cape Town
+  %a.btn.btn-default(href="#" muni="db")
+    eThekwini
+  %a.btn.btn-default(href="#" muni="jb")
+    Johannesburg
+  %a.btn.btn-default(href="#" muni="ot")
+    Other
+
+.issue.hidden
+  %h4
+    What's your issue about?
+  %a.btn.btn-default(href="#" issue="ads")
+    Advertising
+  %a.btn.btn-default(href="#" issue="animals")
+    Animals and pets
+  %a.btn.btn-default(href="#" issue="neighbours")
+    Neighbourhood activities
+  %a.btn.btn-default(href="#" issue="noise")
+    Noise and disturbances
+
+.questions
+  .question.ads.hidden
+    %br
+    %a.btn.btn-default(href="#" question="put-ad")
+      I want to put up an ad
+
+    %a.btn.btn-default(href="#" question="remove-ad")
+      I want to get an ad removed
+
+.solutions
+  .solution.put-ad.hidden
+    .muni.ct.hidden
+      %ul
+        %li
+          %a(href="/za-cpt/act/by-law/2001/outdoor-advertising-signage")
+            Read the by-law cape town
+    .muni.db.hidden
+      %ul
+        %li
+          %a(href="http://www.durban.gov.za/City_Services/development_planning_management/Advertising_Signage/Documents/Chapter%20IV%20Building%20Bylaws%20Advertising.pdf")
+            Read the by-law durban
+    .muni.jb.hidden
+      %ul
+        %li
+          %a(href="/za-jhb/act/by-law/2009/outdoor-advertising")
+            Read the by-law joburg
+    .muni.ot.hidden
+      %ul
+        %li
+          Contact your municipality or go to their website and read the by-law regarding advertising.
+        %li
+          You'll most likely have to apply for permission. Contact your local municipality for details.
