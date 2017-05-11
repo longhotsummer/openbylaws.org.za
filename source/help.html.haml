@@ -34,7 +34,6 @@ title: Help track - Open By-laws South Africa
     %br
     %a.btn.btn-default(href="#" question="put-ad")
       I want to put up an ad
-
     %a.btn.btn-default(href="#" question="remove-ad")
       I want to get an ad removed
 
@@ -44,20 +43,73 @@ title: Help track - Open By-laws South Africa
       %ul
         %li
           %a(href="/za-cpt/act/by-law/2001/outdoor-advertising-signage")
-            Read the by-law cape town
+            Read the by-law
+        %li
+          %a(href="http://www.capetown.gov.za/work%20and%20business/doing-business-in-the-city/signage-and-advertising/outdoor-advertising")
+            Read more and apply
+        %li
+          %a(href="http://www.capetown.gov.za/City-Connect/Apply/Advertising-and-signage/Temporary-signage/apply-for-temporary-development-boards/Apply%20for%20temporary%20development%20boards")
+            Apply for temporary development boards
     .muni.db.hidden
       %ul
         %li
           %a(href="http://www.durban.gov.za/City_Services/development_planning_management/Advertising_Signage/Documents/Chapter%20IV%20Building%20Bylaws%20Advertising.pdf")
-            Read the by-law durban
+            Read the by-law
+        %li
+          %a(href="http://www.durban.gov.za/City_Services/development_planning_management/Advertising_Signage/Pages/default.aspx")
+            Read more and apply
     .muni.jb.hidden
       %ul
         %li
           %a(href="/za-jhb/act/by-law/2009/outdoor-advertising")
-            Read the by-law joburg
+            Read the by-law
+        %li
+          %a(href="https://joburg.org.za/index.php?option=com_content&task=view&id=554&Itemid=9")
+            Read more and apply
     .muni.ot.hidden
       %ul
         %li
-          Contact your municipality or go to their website and read the by-law regarding advertising.
+          Contact your municipality or go to their website and read the by-law regarding advertising
         %li
-          You'll most likely have to apply for permission. Contact your local municipality for details.
+          You'll most likely have to apply for permission. Contact your local municipality for details
+  .solution.remove-ad.hidden
+    .muni.ct.hidden
+      %ul
+        %li
+          #{link_to 'Read the by-law', '/za-cpt/act/by-law/2001/outdoor-advertising-signage'} and identify which part of the by-law the advertisement is in breach of
+        %li
+          Contact the
+          %a(href="http://www.capetown.gov.za/Departments/Environmental%20Management%20Department")
+            Environmental Management Department
+          at
+          %a(href="mailto:enviro@capetown.gov.za")
+            enviro@capetown.gov.za
+          \. The complaint will be sent to the relevant District office for investigation and direct interaction with the complainant. You can also call them at
+          %a(href="tel:0214872284")
+            021 487 2284
+          \.
+    .muni.db.hidden
+      %ul
+        %li
+          %a(href="http://www.durban.gov.za/City_Services/development_planning_management/Advertising_Signage/Documents/Chapter%20IV%20Building%20Bylaws%20Advertising.pdf")
+            Read the by-law
+          and identify which part of the by-law the advertisement is in breach of
+        %li
+          %a(href="http://www.durban.gov.za/City_Services/development_planning_management/Advertising_Signage/Pages/default.aspx")
+            Read more and apply
+          and identify which part of the by-law the advertisement is in breach of
+    .muni.jb.hidden
+      %ul
+        %li
+          %a(href="/za-jhb/act/by-law/2009/outdoor-advertising")
+            Read the by-law
+          and identify which part of the by-law the advertisement is in breach of
+        %li
+          %a(href="https://joburg.org.za/index.php?option=com_content&task=view&id=554&Itemid=9")
+            Read more and apply
+    .muni.ot.hidden
+      %ul
+        %li
+          Contact your municipality or go to their website and read the by-law regarding advertising. Identify which part of the by-law the advertisement is in breach of
+        %li
+          Contact your municipality and request them to remove the advertisement
