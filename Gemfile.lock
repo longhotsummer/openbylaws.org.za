@@ -210,3 +210,9 @@ DEPENDENCIES
   moneta (~> 0.8)
   rake (~> 10.1.0)
   slaw (~> 0.3.0)
+
+RUBY VERSION
+   ruby 2.1.1p76
+
+BUNDLED WITH
+   1.14.6
