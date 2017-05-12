@@ -1,44 +1,253 @@
 ---
-title: Help - Open By-laws South Africa
+title: Help track - Open By-laws South Africa
 ---
+= stylesheet_link_tag 'help.css'
 
 - content_for :header do
   %h1 Help track
 
-%h3 What's your municipality?
-%a.btn.btn-primary(href="#")
-  Cape Town
-%a.btn.btn-default(href="#")
-  eThekwini
-%a.btn.btn-default(href="#")
-  Johannesburg
-%a.btn.btn-default(href="#")
-  Other
+.muni
+  %h4
+    What municipality?
+  %a.btn.btn-default(href="#" muni="ct")
+    Cape Town
+  %a.btn.btn-default(href="#" muni="db")
+    eThekwini
+  %a.btn.btn-default(href="#" muni="jb")
+    Johannesburg
+  %a.btn.btn-default(href="#" muni="ot")
+    Other
 
-%h3 What do you need help with?
-%a.btn.btn-default(href="#")
-  Advertising
-%a.btn.btn-default(href="#")
-  Animals and pets
-%a.btn.btn-default(href="#")
-  Neighbourhood activities
-%a.btn.btn-primary(href="#")
-  Noise and disturbances
-%a.btn.btn-default(href="#")
-  Something else
+.issue.hidden
+  %h4
+    What's your issue about?
+  %a.btn.btn-default(href="#" issue="ads")
+    Advertising
+  %a.btn.btn-default(href="#" issue="animals")
+    Animals and pets
+  %a.btn.btn-default(href="#" issue="neighbours")
+    Neighbourhood activities
+  %a.btn.btn-default(href="#" issue="noise")
+    Noise and disturbances
 
-%h3 What's the issue exactly?
-%a(href="#")
-  My neighbour is making noise
+.questions
+  .question.ads.hidden
+    %br
+    %a.btn.btn-default(href="#" question="put-ad")
+      I want to put up an ad
+    %a.btn.btn-default(href="#" question="remove-ad")
+      I want to get an ad removed
+  .question.animals.hidden
+    %br
+    %a.btn.btn-default(href="#" question="animal-noise")
+      Someone's pet is making noise
+    %a.btn.btn-default(href="#" question="animal-aggressive")
+      Someone's pet is aggressive
+    %a.btn.btn-default(href="#" question="animal-abused")
+      Someone's pet is being abused
+  .question.neighbours.hidden
+    %br
+    %a.btn.btn-default(href="#" question="nbr-construction")
+      My neighbour is doing construction work
+    %a.btn.btn-default(href="#" question="me-construction")
+      I want to do construction work
+  .question.noise.hidden
+    %br
+    %a.btn.btn-default(href="#" question="throw-party")
+      I want to throw a party
+    %a.btn.btn-default(href="#" question="noise-nbr")
+      My neighbour is making noise
 
-%h2 Step you can take
-%ul
-  %li
-    Read the relevant
-    %a(href="/za-cpt/act/by-law/2007/streets-public-places-noise-nuisances/section/3/")
-      by-law
-  %li
-    Talk to your neighbour
-  %li
-    Contact your municipality to report a noise or disturbance
-    
+.solutions
+  .solution.put-ad.hidden
+    .muni.ct.hidden
+      %ul
+        %li
+          %a(href="/za-cpt/act/by-law/2001/outdoor-advertising-signage")
+            Read the by-law
+        %li
+          %a(href="http://www.capetown.gov.za/work%20and%20business/doing-business-in-the-city/signage-and-advertising/outdoor-advertising")
+            Read more and apply
+        %li
+          %a(href="http://www.capetown.gov.za/City-Connect/Apply/Advertising-and-signage/Temporary-signage/apply-for-temporary-development-boards/Apply%20for%20temporary%20development%20boards")
+            Apply for temporary development boards
+    .muni.db.hidden
+      %ul
+        %li
+          %a(href="http://www.durban.gov.za/City_Services/development_planning_management/Advertising_Signage/Documents/Chapter%20IV%20Building%20Bylaws%20Advertising.pdf")
+            Read the by-law
+        %li
+          %a(href="http://www.durban.gov.za/City_Services/development_planning_management/Advertising_Signage/Pages/default.aspx")
+            Read more and apply
+    .muni.jb.hidden
+      %ul
+        %li
+          %a(href="/za-jhb/act/by-law/2009/outdoor-advertising")
+            Read the by-law
+        %li
+          %a(href="https://joburg.org.za/index.php?option=com_content&task=view&id=554&Itemid=9")
+            Read more and apply
+    .muni.ot.hidden
+      %ul
+        %li
+          Contact your municipality or go to their website and read the by-law regarding advertising
+        %li
+          You'll most likely have to apply for permission. Contact your local municipality for details
+  .solution.remove-ad.hidden
+    .muni.ct.hidden
+      %ul
+        %li
+          #{link_to 'Read the by-law', '/za-cpt/act/by-law/2001/outdoor-advertising-signage'} and identify which part of the by-law the advertisement is in breach of
+        %li
+          Contact the
+          %a(href="http://www.capetown.gov.za/Departments/Environmental%20Management%20Department")
+            Environmental Management Department
+          at
+          %a(href="mailto:enviro@capetown.gov.za")
+            enviro@capetown.gov.za
+          \. The complaint will be sent to the relevant District office for investigation and direct interaction with the complainant. You can also call them at
+          %a(href="tel:0214872284")
+            021 487 2284
+          \.
+    .muni.db.hidden
+      %ul
+        %li
+          %a(href="http://www.durban.gov.za/City_Services/development_planning_management/Advertising_Signage/Documents/Chapter%20IV%20Building%20Bylaws%20Advertising.pdf")
+            Read the by-law
+          and identify which part of the by-law the advertisement is in breach of
+        %li
+          %a(href="http://www.durban.gov.za/City_Services/development_planning_management/Advertising_Signage/Pages/default.aspx")
+            Read more and apply
+          and identify which part of the by-law the advertisement is in breach of
+    .muni.jb.hidden
+      %ul
+        %li
+          %a(href="/za-jhb/act/by-law/2009/outdoor-advertising")
+            Read the by-law
+          and identify which part of the by-law the advertisement is in breach of
+        %li
+          %a(href="https://joburg.org.za/index.php?option=com_content&task=view&id=554&Itemid=9")
+            Read more and apply
+    .muni.ot.hidden
+      %ul
+        %li
+          Contact your municipality or go to their website and read the by-law regarding advertising. Identify which part of the by-law the advertisement is in breach of
+        %li
+          Contact your municipality and request them to remove the advertisement
+  .solution.animal-noise.hidden
+    .muni.ct.hidden
+      %ul
+        %li
+          %a(href="/za-cpt/act/by-law/2011/animal/")
+            Read the animals by-law
+        %li
+          %a(href="/za-cpt/act/by-law/2007/streets-public-places-noise-nuisances/section/3/")
+            Read the noise pollution by-law
+        %li
+          Talk to your neighbour
+    .muni.db.hidden
+      %ul
+        %li
+          %a(href="/za-eth/act/by-law/2015/nuisances-behaviour-public-places/section/8/")
+            Read the noise pollution by-law
+        %li
+          Talk to your neighbour
+    .muni.jb.hidden
+      %ul
+        %li
+          %a(href="/za-jhb/act/by-law/2006/dogs-and-cats")
+            Read the dogs and cats by-law
+        %li
+          Talk to your neighbour
+    .muni.ot.hidden
+      %ul
+        %li
+          Contact your municipality or go to their website and read the by-law regarding noise pollution.
+        %li
+          Talk to your neighbour
+  .solution.animal-aggressive.hidden
+    .muni.ct.hidden
+      %ul
+        %li
+    .muni.db.hidden
+      %ul
+        %li
+    .muni.jb.hidden
+      %ul
+        %li
+    .muni.ot.hidden
+      %ul
+        %li
+  .solution.animal-abused.hidden
+    .muni.ct.hidden
+      %ul
+        %li
+    .muni.db.hidden
+      %ul
+        %li
+    .muni.jb.hidden
+      %ul
+        %li
+    .muni.ot.hidden
+      %ul
+        %li
+  .solution.nbr-construction.hidden
+    .muni.ct.hidden
+      %ul
+        %li
+    .muni.db.hidden
+      %ul
+        %li
+    .muni.jb.hidden
+      %ul
+        %li
+    .muni.ot.hidden
+      %ul
+        %li
+  .solution.me-construction.hidden
+    .muni.ct.hidden
+      %ul
+        %li
+    .muni.db.hidden
+      %ul
+        %li
+    .muni.jb.hidden
+      %ul
+        %li
+    .muni.ot.hidden
+      %ul
+        %li
+  .solution.throw-party.hidden
+    .muni.ct.hidden
+      %ul
+        %li
+    .muni.db.hidden
+      %ul
+        %li
+    .muni.jb.hidden
+      %ul
+        %li
+    .muni.ot.hidden
+      %ul
+        %li
+  .solution.noise-nbr.hidden
+    .muni.ct.hidden
+      %ul
+        %li
+    .muni.db.hidden
+      %ul
+        %li
+    .muni.jb.hidden
+      %ul
+        %li
+    .muni.ot.hidden
+      %ul
+        %li
+
+.feedback.hidden
+  %h4
+    Was this answer helpful?
+  %a.positive(href="#" opinion="positive")
+    %i.fa.fa-fw.fa-thumbs-up
+  %a.negative(href="#" opinion="negative")
+    %i.fa.fa-fw.fa-thumbs-down

@@ -1,0 +1,17 @@
+.feedback {
+  a {
+    color: #666;
+    font-size: 18px;
+    &:hover, &:active, &:focus {
+      text-decoration: none;
+    }
+    &.active {
+      &.positive {
+        color: #149e28;
+      }
+      &.negative {
+        color: #9e1414;
+      }
+    }
+  }
+}
