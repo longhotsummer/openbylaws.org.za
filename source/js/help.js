@@ -5,7 +5,6 @@ $(".muni a").click(function() {
   $(".solutions .muni").addClass("hidden");
   $("." + $(this).attr('muni')).removeClass("hidden");
   $(".feedback a").removeClass('active');
-  $(".feedback").addClass('hidden');
 })
 
 $(".issue a").click(function() {
@@ -36,3 +35,21 @@ $(".feedback a").click(function() {
   var opinion = $(this).attr("opinion");
   ga('send', 'event', muni, question, opinion);
 })
+
+function getParameterByName(name, url) {
+  if (!url) url = window.location.href;
+  name = name.replace(/[\[\]]/g, "\\$&");
+  var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+      results = regex.exec(url);
+  if (!results) return null;
+  if (!results[2]) return '';
+  return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+var selectedMuni = getParameterByName('muni');
+var selectedIssue = getParameterByName('issue');
+
+$(window).load(function(){
+  $('[muni='+selectedMuni+']').click();
+  $('[issue='+selectedIssue+']').click();
+});
