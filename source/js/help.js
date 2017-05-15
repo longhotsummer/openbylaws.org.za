@@ -1,6 +1,6 @@
 $(".muni a").click(function() {
-  $(".muni a").removeClass("btn-primary ga")
-  $(this).addClass("btn-primary ga");
+  $(".muni a").removeClass("selected ga")
+  $(this).addClass("selected ga");
   $(".issue").removeClass("hidden");
   $(".solutions .muni").addClass("hidden");
   $("." + $(this).attr('muni')).removeClass("hidden");
@@ -8,19 +8,19 @@ $(".muni a").click(function() {
 })
 
 $(".issue a").click(function() {
-  $(".issue a").removeClass("btn-primary ")
-  $(this).addClass("btn-primary");
+  $(".issue a").removeClass("selected ")
+  $(this).addClass("selected");
   $(".question").addClass("hidden");
   $(".question." + $(this).attr('issue')).removeClass("hidden");
   $(".solution").addClass("hidden");
-  $(".question a").removeClass("btn-primary");
+  $(".question a").removeClass("selected");
   $(".feedback a").removeClass('active');
   $(".feedback").addClass('hidden');
 })
 
 $(".question a").click(function() {
-  $(".question a").removeClass("btn-primary ga")
-  $(this).addClass("btn-primary ga");
+  $(".question a").removeClass("selected ga")
+  $(this).addClass("selected ga");
   $(".solution").addClass("hidden");
   $(".solution." + $(this).attr('question')).removeClass("hidden");
   $(".feedback a").removeClass('active');

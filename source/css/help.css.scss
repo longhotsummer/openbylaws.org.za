@@ -16,3 +16,52 @@
     }
   }
 }
+
+.muni, .issue {
+  padding-bottom: 40px;
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+  color: #666;
+  i {
+    display: block;
+    font-size: 30px;
+    margin-bottom: 5px;
+  }
+}
+
+.issue {
+  padding-top: 40px;
+}
+
+.muni {
+  h4 {
+    padding-bottom: 20px;
+  }
+}
+
+a {
+  color: #666;
+  &:hover, &:active, &:focus {
+    color: green;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  &.selected {
+    color: green;
+  }
+}
+
+.questions {
+  a {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 15px;
+    min-height: 50px;
+    text-align: center;
+    min-height: 80px;
+    vertical-align: middle;
+    &.selected {
+      border: 1px solid green;
+    }
+  }
+}

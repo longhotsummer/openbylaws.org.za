@@ -6,57 +6,70 @@ title: Help track - Open By-laws South Africa
 - content_for :header do
   %h1 Help track
 
-.muni
-  %h4
-    What municipality?
-  %a.btn.btn-default(href="#" muni="ct")
-    Cape Town
-  %a.btn.btn-default(href="#" muni="db")
-    eThekwini
-  %a.btn.btn-default(href="#" muni="jb")
-    Johannesburg
-  %a.btn.btn-default(href="#" muni="ot")
-    Other
+.row
+  .muni.col-md-10.col-lg-8
+    %h4
+      %i.fa.fa-map-marker
+      Select your municipality
+    .row
+      .col-sm-3
+        %a(muni="ct")
+          Cape Town
+      .col-sm-3
+        %a(muni="db")
+          eThekwini
+      .col-sm-3
+        %a(muni="jb")
+          Johannesburg
+      .col-sm-3
+        %a(muni="ot")
+          Other
 
-.issue.hidden
-  %h4
-    What's your issue about?
-  %a.btn.btn-default(href="#" issue="ads")
-    Advertising
-  %a.btn.btn-default(href="#" issue="animals")
-    Animals and pets
-  %a.btn.btn-default(href="#" issue="neighbours")
-    Neighbourhood activities
-  %a.btn.btn-default(href="#" issue="noise")
-    Noise and disturbances
+.row
+  .issue.col-md-10.col-lg-8
+    .row
+      .col-sm-3
+        %a(issue="ads")
+          %i.fa.fa-shopping-cart
+          Advertising
+      .col-sm-3
+        %a(issue="animals")
+          %i.fa.fa-paw
+          Animals and pets
+      .col-sm-3
+        %a(issue="neighbours")
+          %i.fa.fa-users
+          Neighbourhood activities
+      .col-sm-3
+        %a(issue="noise")
+          %i.fa.fa-bell
+          Noise and disturbances
 
-.questions
-  .question.ads.hidden
-    %br
-    %a.btn.btn-default(href="#" question="put-ad")
-      I want to put up an ad
-    %a.btn.btn-default(href="#" question="remove-ad")
-      I want to get an ad removed
-  .question.animals.hidden
-    %br
-    %a.btn.btn-default(href="#" question="animal-noise")
-      Someone's pet is making noise
-    %a.btn.btn-default(href="#" question="animal-aggressive")
-      Someone's pet is aggressive
-    %a.btn.btn-default(href="#" question="animal-abused")
-      Someone's pet is being abused
-  .question.neighbours.hidden
-    %br
-    %a.btn.btn-default(href="#" question="nbr-construction")
-      My neighbour is doing construction work
-    %a.btn.btn-default(href="#" question="me-construction")
-      I want to do construction work
-  .question.noise.hidden
-    %br
-    %a.btn.btn-default(href="#" question="throw-party")
-      I want to throw a party
-    %a.btn.btn-default(href="#" question="noise-nbr")
-      My neighbour is making noise
+
+.questions.row
+  .col-md-10.col-lg-8
+    .question.ads.row.hidden
+      %a.col-sm-3(question="put-ad")
+        I want to put up an ad
+      %a.col-sm-3(question="remove-ad")
+        I want to get an ad removed
+    .question.animals.row.hidden
+      %a.col-sm-3(question="animal-noise")
+        Someone's pet is making noise
+      %a.col-sm-3(question="animal-aggressive")
+        Someone's pet is aggressive
+      %a.col-sm-3(question="animal-abused")
+        Someone's pet is being abused
+    .question.neighbours.row.hidden
+      %a.col-sm-3(question="nbr-construction")
+        My neighbour is doing construction work
+      %a.col-sm-3(question="me-construction")
+        I want to do construction work
+    .question.noise.row.hidden
+      %a.col-sm-3(question="throw-party")
+        I want to throw a party
+      %a.col-sm-3(question="noise-nbr")
+        My neighbour is making noise
 
 .solutions
   .solution.put-ad.hidden
