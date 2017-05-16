@@ -1,5 +1,4 @@
 .feedback {
-  text-align: center;
   a {
     color: #666;
     font-size: 18px;
@@ -79,7 +78,10 @@
   margin-top: 30px;
   .solution {
     background-color: #e5e5e5;
-    padding: 10px;
+    padding: 15px 15px 5px 15px;
+  }
+  .single-sol {
+    margin-bottom: 10px;
   }
 }
 

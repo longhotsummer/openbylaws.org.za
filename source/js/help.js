@@ -25,10 +25,7 @@ $(".question a").click(function() {
   $(".solution." + $(this).attr('question')).removeClass("hidden");
   $(".feedback a").removeClass('active');
   $(".feedback").removeClass('hidden');
-})
-
-$(".feedback a.negative").click(function() {
-  $(".extras").removeClass("hidden");
+  $(".sol-title").text($.trim($(this).text()));
 })
 
 $(".feedback a").click(function() {
