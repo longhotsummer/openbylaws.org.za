@@ -1,10 +1,17 @@
 .feedback {
+  text-align: center;
   a {
     color: #666;
     font-size: 18px;
     cursor: pointer;
     &:hover, &:active, &:focus {
       text-decoration: none;
+      &.positive {
+        color: #149e28;
+      }
+      &.negative {
+        color: #9e1414;
+      }
     }
     &.active {
       &.positive {
@@ -18,7 +25,7 @@
 }
 
 .muni, .issue {
-  padding-bottom: 40px;
+  padding-bottom: 30px;
   border-bottom: 1px solid #ccc;
   text-align: center;
   color: #666;
@@ -30,7 +37,7 @@
 }
 
 .issue {
-  padding-top: 40px;
+  padding-top: 30px;
 }
 
 .muni {
@@ -39,29 +46,39 @@
   }
 }
 
-a {
-  color: #666;
-  &:hover, &:active, &:focus {
-    color: green;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  &.selected {
-    color: green;
+.muni, .issue, .questions {
+  a {
+    color: #666;
+    &:hover, &:active, &:focus {
+      color: #337ab7;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    &.selected {
+      color: #337ab7;
+    }
   }
 }
 
 .questions {
+  margin-top: 30px;
   a {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin: 15px;
-    min-height: 50px;
-    text-align: center;
-    min-height: 80px;
-    vertical-align: middle;
-    &.selected {
-      border: 1px solid green;
+    .single-question {
+      text-align: center;
+      vertical-align: middle;
+      border: 1px solid #ccc;
+      padding: 20px 10px;
+      &.selected {
+        border: 1px solid #337ab7;
+      }
     }
+  }
+}
+
+.solutions {
+  margin-top: 30px;
+  .solution {
+    background-color: #eee;
+    padding: 10px;
   }
 }
