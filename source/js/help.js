@@ -27,6 +27,10 @@ $(".question a").click(function() {
   $(".feedback").removeClass('hidden');
 })
 
+$(".feedback a.negative").click(function() {
+  $(".extras").removeClass("hidden");
+})
+
 $(".feedback a").click(function() {
   $(".feedback a").removeClass('active');
   $(this).addClass('active');
@@ -35,6 +39,7 @@ $(".feedback a").click(function() {
   var opinion = $(this).attr("opinion");
   ga('send', 'event', muni, question, opinion);
 })
+
 
 function getParameterByName(name, url) {
   if (!url) url = window.location.href;
