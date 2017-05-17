@@ -1,26 +1,32 @@
 $(".muni a").click(function() {
-  $(".muni a").removeClass("selected ga")
-  $(this).addClass("selected ga");
+  $(".muni a").removeClass("ga");
+  $(this).addClass("ga");
+  $(".muni a .single-muni").removeClass("selected")
+  $(".single-muni", this).addClass("selected")
   $(".issue").removeClass("hidden");
   $(".solutions .sol-muni").addClass("hidden");
   $("." + $(this).attr('muni')).removeClass("hidden");
   $(".feedback a").removeClass('active');
+  $(".questions").removeClass('hidden');
 })
 
 $(".issue a").click(function() {
-  $(".issue a").removeClass("selected ")
-  $(this).addClass("selected");
+  $(".single-issue").removeClass("selected")
+  $(".single-issue", this).addClass("selected")
   $(".question").addClass("hidden");
   $(".question." + $(this).attr('issue')).removeClass("hidden");
   $(".solution").addClass("hidden");
   $(".question a").removeClass("selected");
   $(".feedback a").removeClass('active');
   $(".feedback").addClass('hidden');
+  $(".questions").removeClass('double-hidden');
 })
 
 $(".question a").click(function() {
-  $(".question a").removeClass("selected ga")
-  $(this).addClass("selected ga");
+  $(".question a").removeClass("ga");
+  $(this).addClass("ga");
+  $(".questions .single-question").removeClass("selected")
+  $(".single-question", this).addClass("selected")
   $(".solution").addClass("hidden");
   $(".solution." + $(this).attr('question')).removeClass("hidden");
   $(".feedback a").removeClass('active');

@@ -12,79 +12,85 @@ title: Help track - Open By-laws South Africa
       %i.fa.fa-map-marker
       Select your municipality
     .row
-      .col-sm-3
-        %a(muni="ct")
+      %a.col-sm-3.col-xs-6(muni="ct")
+        .single-muni
           Cape Town
-      .col-sm-3
-        %a(muni="db")
+      %a.col-sm-3.col-xs-6(muni="db")
+        .single-muni
           eThekwini
-      .col-sm-3
-        %a(muni="jb")
+      %a.col-sm-3.col-xs-6(muni="jb")
+        .single-muni
           Johannesburg
-      .col-sm-3
-        %a(muni="ot")
+      %a.col-sm-3.col-xs-6(muni="ot")
+        .single-muni
           Other
 
 .row
   .issue.col-md-9.col-lg-7
+    %h4
+      %i.fa.fa-circle-o
+      What area does your issue fall under?
     .row
-      .col-sm-3
-        %a(issue="ads")
+      %a.col-sm-3.col-xs-6(issue="ads")
+        .single-issue
           %i.fa.fa-bullhorn
           Advertising
-      .col-sm-3
-        %a(issue="animals")
+      %a.col-sm-3.col-xs-6(issue="animals")
+        .single-issue
           %i.fa.fa-paw
           Animals and pets
-      .col-sm-3
-        %a(issue="neighbours")
+      %a.col-sm-3.col-xs-6(issue="neighbours")
+        .single-issue
           %i.fa.fa-home
           Neighbourhood activities
-      .col-sm-3
-        %a(issue="noise")
+      %a.col-sm-3.col-xs-6(issue="noise")
+        .single-issue
           %i.fa.fa-bell
           Noise and disturbances
 
 
-.questions.row
-  .col-md-9.col-lg-7
+.row
+  .questions.col-md-9.col-lg-7.hidden.double-hidden
+    %h4
+      %i.fa.fa-question-circle
+      What's the problem?
     .question.ads.row.hidden
-      %a.col-sm-3(question="put-ad")
+      %a.col-sm-3.col-xs-6(question="put-ad")
         .single-question
           I want to put up an ad
-      %a.col-sm-3(question="remove-ad")
+      %a.col-sm-3.col-xs-6(question="remove-ad")
         .single-question
           I want to get an ad removed
     .question.animals.row.hidden
-      %a.col-sm-3(question="animal-noise")
+      %a.col-sm-3.col-xs-6(question="animal-noise")
         .single-question
           Someone's pet is making noise
-      %a.col-sm-3(question="animal-aggressive")
+      %a.col-sm-3.col-xs-6(question="animal-aggressive")
         .single-question
           Someone's pet is aggressive
-      %a.col-sm-3(question="animal-abused")
+      %a.col-sm-3.col-xs-6(question="animal-abused")
         .single-question
           Someone's pet is being abused
-      %a.col-sm-3(question="animal-abused")
+      %a.col-sm-3.col-xs-6(question="animal-abused")
         .single-question
           Someone's pet is being abused
     .question.neighbours.row.hidden
-      %a.col-sm-3(question="nbr-construction")
+      %a.col-sm-3.col-xs-6(question="nbr-construction")
         .single-question
           My neighbour is doing construction work
-      %a.col-sm-3(question="me-construction")
+      %a.col-sm-3.col-xs-6(question="me-construction")
         .single-question
           I want to do construction work
     .question.noise.row.hidden
-      %a.col-sm-3(question="throw-party")
+      %a.col-sm-3.col-xs-6(question="throw-party")
         .single-question
           I want to throw a party
-      %a.col-sm-3(question="noise-nbr")
+      %a.col-sm-3.col-xs-6(question="noise-nbr")
         .single-question
           My neighbour is making noise
 
-.solutions.row
-  .col-md-9.col-lg-7
+.row
+  .solutions.col-md-9.col-lg-7
     %h4.sol-title
     .solution.put-ad.hidden
       .sol-muni.ct.hidden
@@ -479,33 +485,43 @@ title: Help track - Open By-laws South Africa
         .single-sol
           %i.fa.fa-fw.fa-exclamation-circle
           Contact law enforcement if the situation is dangerous
-      .sol-muni.ot.hidden
-        .single-sol
-          %i.fa.fa-fw.fa-handshake-o
-          Talk to your neighbour
-        .single-sol
-          %i.fa.fa-fw.fa-phone
-          If your neighbour is uncooperative contact your muncipality to report the noise
-        .single-sol
-          %i.fa.fa-fw.fa-exclamation-circle
-          Contact law enforcement if the situation is dangerous
-
-    .feedback.hidden
-      Was this answer helpful?
-      %a.positive(opinion="positive")
-        %i.fa.fa-fw.fa-thumbs-up
-      %a.negative(opinion="negative")
-        %i.fa.fa-fw.fa-thumbs-down
+      .row.sol-muni.ot
+        .col-sm-4
+          .single-sol
+            %i.fa.fa-fw.fa-handshake-o
+            Talk to your neighbour
+            .feedback
+              %a.positive(opinion="positive")
+                %i.fa.fa-fw.fa-thumbs-up
+              %a.negative(opinion="negative")
+                %i.fa.fa-fw.fa-thumbs-down
+        .col-sm-4
+          .single-sol
+            %i.fa.fa-fw.fa-phone
+            If your neighbour is uncooperative contact your muncipality to report the noise
+            .feedback
+              %a.positive(opinion="positive")
+                %i.fa.fa-fw.fa-thumbs-up
+              %a.negative(opinion="negative")
+                %i.fa.fa-fw.fa-thumbs-down
+        .col-sm-4
+          .single-sol
+            %i.fa.fa-fw.fa-exclamation-circle
+            Contact law enforcement if the situation is dangerous
+            .feedback
+              %a.positive(opinion="positive")
+                %i.fa.fa-fw.fa-thumbs-up
+              %a.negative(opinion="negative")
+                %i.fa.fa-fw.fa-thumbs-down
 
 %a.btn.btn-default(role="button" data-toggle="collapse" href="#extras" aria-expanded="false" aria-controls="extras")
   Still struggling?
 
-#extras.collapse
-  .row
-    .col-md-9.col-lg-7
-      Still struggling? Contact your ward councillor who can assist you with municipal matters
-      .row
-        #councillor-iframe
-        %script{:src => "https://nearby.code4sa.org/static/councillor-embed.js"}
 
-
+-# #extras.collapse
+-#   .row
+-#     .col-md-9.col-lg-7
+-#       Still struggling? Contact your ward councillor who can assist you with municipal matters
+-#       .row
+-#         #councillor-iframe
+-#         %script{:src => "https://nearby.code4sa.org/static/councillor-embed.js"}
