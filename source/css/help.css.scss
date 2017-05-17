@@ -30,19 +30,21 @@ a {
 .muni, .issue, .questions {
   a, &:hover {
     text-decoration: none;
+    color: #000;
   }
 }
 
 .muni {
-  background-color: #73bc74;
-  padding-bottom: 40px;
+  background-color: #99d8c9;
+  border-radius: 3px 3px 0 0;
+  padding-top: 15px;
   .single-muni {
     background-color: #fff;
     text-align: center;
-    padding: 30px 0;
+    padding: 30px 10px;
     margin-bottom: 30px;
     &.selected {
-      background-color: #000;
+      background-color: #2ca25f;
       color: #fff;
     }
   }
@@ -52,7 +54,7 @@ a {
     width: 0;
     height: 0;
     position: absolute;
-    border-top-color: #73bc74;
+    border-top-color: #99d8c9;
     border-width: 15px;
     bottom: -30px;
     left: 25px;
@@ -61,16 +63,15 @@ a {
 }
 
 .issue {
-  background-color: #bc7473;
-  padding-bottom: 40px;
-  padding-top: 40px;
+  background-color: #a6bddb;
+  padding-top: 25px;
   .single-issue {
     background-color: #fff;
     text-align: center;
-    padding: 30px 0;
+    padding: 30px 10px;
     margin-bottom: 30px;
     &.selected {
-      background-color: #000;
+      background-color: #2b8cbe;
       color: #fff;
     }
   }
@@ -80,7 +81,7 @@ a {
     width: 0;
     height: 0;
     position: absolute;
-    border-top-color: #bc7473;
+    border-top-color: #a6bddb;
     border-width: 15px;
     bottom: -30px;
     left: 25px;
@@ -89,19 +90,19 @@ a {
 }
 
 .questions {
-  background-color: #7473bc;
-  padding-bottom: 40px;
-  padding-top: 40px;
+  background-color: #fdbb84;
+  padding-top: 25px;
+  border-radius: 0 0 3px 3px;
   &.double-hidden {
     display: none;
   }
   .single-question {
     background-color: #fff;
     text-align: center;
-    padding: 30px 0;
+    padding: 30px 10px;
     margin-bottom: 30px;
     &.selected {
-      background-color: #000;
+      background-color: #e34a33;
       color: #fff;
     }
   }
@@ -111,7 +112,7 @@ a {
     width: 0;
     height: 0;
     position: absolute;
-    border-top-color: #7473bc;
+    border-top-color: #fdbb84;
     border-width: 15px;
     bottom: -30px;
     left: 25px;
@@ -119,30 +120,27 @@ a {
   }
 }
 
+.sol-title {
+  margin-top: 25px;
+}
+
 .single-sol {
   border: 1px solid #ccc;
   box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-  padding: 10px 10px 30px 10px;
+  padding: 10px;
   font-size: 20px;
-  i {
+  margin-bottom: 20px;
+  min-height: 150px;
+  & > i {
     position: absolute;
-    bottom: 5px;
-    left: 20px;
+    bottom: 25px;
+    right: 20px;
     font-size: 20px;
-    opacity: 0.75;
+    opacity: 0.25;
   }
-  .feedback {
-    font-size: 20px;
-    .positive {
-      position: absolute;
-      right: 90px;
-      bottom: 5px;
-    }
-    .negative {
-      position: absolute;
-      right: 65px;
-      bottom: 5px;
-    }
+  small {
+    font-size: 11px;
+    line-height: 20px;
   }
 }
 

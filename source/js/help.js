@@ -1,12 +1,9 @@
 $(".muni a").click(function() {
-  $(".muni a").removeClass("ga");
-  $(this).addClass("ga");
   $(".muni a .single-muni").removeClass("selected")
   $(".single-muni", this).addClass("selected")
   $(".issue").removeClass("hidden");
   $(".solutions .sol-muni").addClass("hidden");
   $("." + $(this).attr('muni')).removeClass("hidden");
-  $(".feedback a").removeClass('active');
   $(".questions").removeClass('hidden');
 })
 
@@ -17,30 +14,36 @@ $(".issue a").click(function() {
   $(".question." + $(this).attr('issue')).removeClass("hidden");
   $(".solution").addClass("hidden");
   $(".question a").removeClass("selected");
-  $(".feedback a").removeClass('active');
-  $(".feedback").addClass('hidden');
+  $(".single-question").removeClass("selected");
   $(".questions").removeClass('double-hidden');
+  $(".sol-title").text(" ");
 })
 
 $(".question a").click(function() {
-  $(".question a").removeClass("ga");
-  $(this).addClass("ga");
-  $(".questions .single-question").removeClass("selected")
-  $(".single-question", this).addClass("selected")
+  $(".single-question").removeClass("selected");
+  $(".single-question", this).addClass("selected");
   $(".solution").addClass("hidden");
   $(".solution." + $(this).attr('question')).removeClass("hidden");
-  $(".feedback a").removeClass('active');
-  $(".feedback").removeClass('hidden');
   $(".sol-title").text($.trim($(this).text()));
 })
 
+$(".feedback").hover(
+  function() {
+    $("small", this).removeClass("hidden");
+  }, function() {
+    $("small", this).addClass("hidden");
+  }
+);
+
 $(".feedback a").click(function() {
-  $(".feedback a").removeClass('active');
+  $(this).siblings().removeClass('active');
   $(this).addClass('active');
-  var question = $.trim($(".question .ga").text());
-  var muni = $.trim($(".sol-muni .ga").text());
+  var question = $.trim($(".single-question.selected").text());
+  var muni = $.trim($(".single-muni.selected").text());
+  var solution = $.trim($(this).closest(".single-sol").not("small").text().replace($("small").text(),''));
   var opinion = $(this).attr("opinion");
-  ga('send', 'event', muni, question, opinion);
+  console.log(muni + ", " + question + ", " + solution + ", " + opinion)
+  ga('send', 'event', muni, question, solution, opinion);
 })
 
 
