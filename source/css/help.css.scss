@@ -27,34 +27,43 @@ a {
   }
 }
 
+.info {
+  margin-bottom: 15px;
+}
+
 .muni, .issue, .questions {
   a, &:hover {
     text-decoration: none;
     color: #000;
   }
-}
-
-.muni {
-  background-color: #99d8c9;
-  border-radius: 3px 3px 0 0;
-  padding-top: 15px;
-  .single-muni {
+  .single-muni, .single-issue, .single-question {
     background-color: #fff;
     text-align: center;
-    padding: 30px 10px;
+    padding: 20px 5px;
     margin-bottom: 30px;
+    border-bottom: 2px solid #333;
+    border-radius: 3px;
+    &:hover {
+      background-color: #eee;
+    }
     &.selected {
-      background-color: #2ca25f;
+      background-color: #774F38;
       color: #fff;
     }
   }
+}
+
+.muni {
+  background-color: #E08E79;
+  border-radius: 3px 3px 0 0;
+  padding-top: 15px;
   &::after {
     border: solid transparent;
     content: " ";
     width: 0;
     height: 0;
     position: absolute;
-    border-top-color: #99d8c9;
+    border-top-color: #E08E79;
     border-width: 15px;
     bottom: -30px;
     left: 25px;
@@ -63,25 +72,15 @@ a {
 }
 
 .issue {
-  background-color: #a6bddb;
+  background-color: #F1D4AF;
   padding-top: 25px;
-  .single-issue {
-    background-color: #fff;
-    text-align: center;
-    padding: 30px 10px;
-    margin-bottom: 30px;
-    &.selected {
-      background-color: #2b8cbe;
-      color: #fff;
-    }
-  }
   &::after {
     border: solid transparent;
     content: " ";
     width: 0;
     height: 0;
     position: absolute;
-    border-top-color: #a6bddb;
+    border-top-color: #F1D4AF;
     border-width: 15px;
     bottom: -30px;
     left: 25px;
@@ -90,21 +89,11 @@ a {
 }
 
 .questions {
-  background-color: #fdbb84;
+  background-color: #ECE5CE;
   padding-top: 25px;
   border-radius: 0 0 3px 3px;
   &.double-hidden {
     display: none;
-  }
-  .single-question {
-    background-color: #fff;
-    text-align: center;
-    padding: 30px 10px;
-    margin-bottom: 30px;
-    &.selected {
-      background-color: #e34a33;
-      color: #fff;
-    }
   }
   &::after {
     border: solid transparent;
@@ -112,7 +101,7 @@ a {
     width: 0;
     height: 0;
     position: absolute;
-    border-top-color: #fdbb84;
+    border-top-color: #ECE5CE;
     border-width: 15px;
     bottom: -30px;
     left: 25px;
@@ -125,8 +114,7 @@ a {
 }
 
 .single-sol {
-  border: 1px solid #ccc;
-  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.5);
   padding: 10px;
   font-size: 20px;
   margin-bottom: 20px;

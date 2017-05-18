@@ -5,7 +5,7 @@ $(".muni a").click(function() {
   $(".solutions .sol-muni").addClass("hidden");
   $("." + $(this).attr('muni')).removeClass("hidden");
   $(".questions").removeClass('hidden');
-})
+});
 
 $(".issue a").click(function() {
   $(".single-issue").removeClass("selected")
@@ -17,7 +17,8 @@ $(".issue a").click(function() {
   $(".single-question").removeClass("selected");
   $(".questions").removeClass('double-hidden');
   $(".sol-title").text(" ");
-})
+  $(".struggling").addClass("hidden");
+});
 
 $(".question a").click(function() {
   $(".single-question").removeClass("selected");
@@ -25,27 +26,8 @@ $(".question a").click(function() {
   $(".solution").addClass("hidden");
   $(".solution." + $(this).attr('question')).removeClass("hidden");
   $(".sol-title").text($.trim($(this).text()));
-})
-
-$(".feedback").hover(
-  function() {
-    $("small", this).removeClass("hidden");
-  }, function() {
-    $("small", this).addClass("hidden");
-  }
-);
-
-$(".feedback a").click(function() {
-  $(this).siblings().removeClass('active');
-  $(this).addClass('active');
-  var question = $.trim($(".single-question.selected").text());
-  var muni = $.trim($(".single-muni.selected").text());
-  var solution = $.trim($(this).closest(".single-sol").not("small").text().replace($("small").text(),''));
-  var opinion = $(this).attr("opinion");
-  console.log(muni + ", " + question + ", " + solution + ", " + opinion)
-  ga('send', 'event', muni, question, solution, opinion);
-})
-
+  $(".struggling").removeClass("hidden");
+});
 
 function getParameterByName(name, url) {
   if (!url) url = window.location.href;
