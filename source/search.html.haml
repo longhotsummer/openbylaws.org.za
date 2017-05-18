@@ -25,13 +25,6 @@ title: Search - Open By-laws South Africa
 
     .row
       .col-sm-3
-        %h3 Quick help
-        .list-group
-          %a.list-group-item(href="/help.html")
-            I want to put up an ad
-          %a.list-group-item(href="/help.html")
-            I want to get an ad removed
-
         .list-group
           %a.list-group-item(href="#" class="{{#aggregations.region_names.not_active}}active{{/aggregations.region_names.not_active}}")
             %span All Cities
@@ -43,6 +36,20 @@ title: Search - Open By-laws South Africa
           {{/aggregations.region_names.buckets}}
 
       .col-sm-9
+        #help.alert.alert-success.hidden
+          .ads.hidden
+            %i.fa.fa-fw.fa-bullhorn
+            Do you have an advertisement related issue? #{link_to 'Use our help page for quick answers', '/help.html?issue=ads'} 
+          .animals.hidden
+            %i.fa.fa-fw.fa-paw
+            Do you have an animal related issue? #{link_to 'Use our help page for quick answers', '/help.html?issue=animals'} 
+          .neighbours.hidden
+            %i.fa.fa-fw.fa-home
+            Do you have an issue with your neighbour? #{link_to 'Use our help page for quick answers', '/help.html?issue=neighbours'}
+          .noise.hidden
+            %i.fa.fa-fw.fa-bell-o
+            Do you have a noise related issue? #{link_to 'Use our help page for quick answers', '/help.html?issue=noise'} 
+
         %p.search-results-summary
           About {{ hits.total }} results ({{ seconds }} seconds)
 
