@@ -23,26 +23,9 @@ layout: layout
           .hidden-sm.hidden-xs
             %img.logo(src="/img/logo-lg.png")
 
-  %section.help
-    .container
-      %h2 I need help with something
-      .row.placards
-        .col-sm-3
-          %a(href="/help.html?issue=ads")
-            %h2 Advertising
-        .col-sm-3
-          %a(href="/help.html?issue=animals")
-            %h2 Animals and pets
-        .col-sm-3
-          %a(href="/help.html?issue=neighbours")
-            %h2 Neighbourhood activities
-        .col-sm-3
-          %a(href="/help.html?issue=noise")
-            %h2 Noise and disturbances
-
   %section.places
     .container
-      %h2 I want to explore my municipality's by-laws
+      %h2 Explore your municipality's by-laws
       .row.placards
         .col-sm-4
           %a.placard.cpt(href="/za-cpt/")
@@ -53,6 +36,23 @@ layout: layout
         .col-sm-4
           %a.placard.jhb(href="/za-jhb/")
             %h2 Johannesburg
+
+  %section.help
+    .container
+      %h2 Get help with a specific issue
+      .row.placards
+        .col-sm-3
+          %a.placard.ads(href="/help.html?issue=ads")
+            %h3 Advertising
+        .col-sm-3
+          %a.placard.animals(href="/help.html?issue=animals")
+            %h3 Animals and pets
+        .col-sm-3
+          %a.placard.neighbours(href="/help.html?issue=neighbours")
+            %h3 Neighbourhood activities
+        .col-sm-3
+          %a.placard.noise(href="/help.html?issue=noise")
+            %h3 Noise and disturbances
 
   %section.about
     .container

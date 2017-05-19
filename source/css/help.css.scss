@@ -91,7 +91,6 @@ a {
 .questions {
   background-color: #ECE5CE;
   padding-top: 25px;
-  border-radius: 0 0 3px 3px;
   &.double-hidden {
     display: none;
   }
@@ -114,22 +113,29 @@ a {
 }
 
 .single-sol {
-  box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.5);
+  box-shadow: 0px 0px 3px 0px #d4cdb9;
   padding: 10px;
   font-size: 20px;
   margin-bottom: 20px;
   min-height: 150px;
+  background-color: #fff;
   & > i {
     position: absolute;
-    bottom: 25px;
-    right: 20px;
-    font-size: 20px;
+    bottom: 30px;
+    right: 25px;
+    font-size: 35px;
     opacity: 0.25;
   }
   small {
     font-size: 11px;
     line-height: 20px;
   }
+}
+
+.solutions {
+  border-radius: 0 0 3px 3px;
+  padding-bottom: 20px;
+  background-color: #f5f0e1;
 }
 
 .extras {

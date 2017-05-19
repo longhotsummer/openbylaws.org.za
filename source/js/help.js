@@ -5,6 +5,11 @@ $(".muni a").click(function() {
   $(".solutions .sol-muni").addClass("hidden");
   $("." + $(this).attr('muni')).removeClass("hidden");
   $(".questions").removeClass('hidden');
+  var gaMuni = $.trim($(".single-muni.selected").text());
+  var gaIssue =  $.trim($(".single-issue.selected").text());
+  var gaQuestion = $.trim($(".single-question.selected").text());
+  console.log(gaMuni + ", " + gaIssue + ", " + gaQuestion);
+  ga('send', 'event', gaMuni, gaIssue, gaQuestion);
 });
 
 $(".issue a").click(function() {
@@ -17,7 +22,12 @@ $(".issue a").click(function() {
   $(".single-question").removeClass("selected");
   $(".questions").removeClass('double-hidden');
   $(".sol-title").text(" ");
-  $(".struggling").addClass("hidden");
+  $(".solutions").addClass("hidden");
+  var gaMuni = $.trim($(".single-muni.selected").text());
+  var gaIssue =  $.trim($(".single-issue.selected").text());
+  var gaQuestion = $.trim($(".single-question.selected").text());
+  console.log(gaMuni + ", " + gaIssue + ", " + gaQuestion);
+  ga('send', 'event', gaMuni, gaIssue, gaQuestion);
 });
 
 $(".question a").click(function() {
@@ -26,7 +36,12 @@ $(".question a").click(function() {
   $(".solution").addClass("hidden");
   $(".solution." + $(this).attr('question')).removeClass("hidden");
   $(".sol-title").text($.trim($(this).text()));
-  $(".struggling").removeClass("hidden");
+  $(".solutions").removeClass("hidden");
+  var gaMuni = $.trim($(".single-muni.selected").text());
+  var gaIssue =  $.trim($(".single-issue.selected").text());
+  var gaQuestion = $.trim($(".single-question.selected").text());
+  console.log(gaMuni + ", " + gaIssue + ", " + gaQuestion);
+  ga('send', 'event', gaMuni, gaIssue, gaQuestion);
 });
 
 function getParameterByName(name, url) {
