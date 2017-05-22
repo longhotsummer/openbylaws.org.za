@@ -136,24 +136,40 @@ nav.left-nav {
 
 .help {
   margin-top: 10px;
+  background-color: #f5f0e1;
+  padding: 20px;
+  border-radius: 3px;
+  h3 {
+    margin-top: 0;
+  }
+  .btn-group-vertical > .btn {
+    float: left;
+    text-align: left;
+    border-radius: 0 !important;
+  }
+  .answer {
+    margin-top: 20px;
+  }
 }
 
 .single-sol {
-  box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.5);
+  box-shadow: 0px 0px 3px 0px #d4cdb9;
   padding: 10px;
   font-size: 16px;
   margin-bottom: 20px;
   min-height: 150px;
+  background-color: #fff;
+  color: #000;
   & > i {
     position: absolute;
-    bottom: 25px;
-    right: 20px;
-    font-size: 16px;
+    bottom: 30px;
+    right: 25px;
+    font-size: 28px;
     opacity: 0.25;
   }
   small {
     font-size: 11px;
-    line-height: 16px;
+    line-height: 20px;
   }
 }
 

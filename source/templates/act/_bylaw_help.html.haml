@@ -1,57 +1,63 @@
 .help.hidden
-	.alert.alert-info
-		%a.btn.btn-default.single-question.hidden(question="put-ad-ct")
-			%i.fa.fa-fw.fa-bullhorn
-			I want to put up an ad
-		%a.btn.btn-default.single-question.hidden(question="remove-ad-ct")
-			%i.fa.fa-fw.fa-bullhorn
-			I want to get an ad removed
-		%a.btn.btn-default.single-question.hidden(question="animal-noise-ct")
-			%i.fa.fa-fw.fa-paw
-			Someone's pet is making noise
-		%a.btn.btn-default.single-question.hidden(question="animal-aggressive-ct")
-			%i.fa.fa-fw.fa-paw
-			Someone's pet is aggressive
-		%a.btn.btn-default.single-question.hidden(question="nbr-construction-ct")
-			%i.fa.fa-fw.fa-home
-			My neighbour is doing construction work		
-		%a.btn.btn-default.single-question.hidden(question="me-construction-ct")
-			%i.fa.fa-fw.fa-home
-			I want to do construction work
-		%a.btn.btn-default.single-question.hidden(question="throw-party-ct")
-			%i.fa.fa-fw.fa-home
-			I want to throw a party
-		%a.btn.btn-default.single-question.hidden(question="noise-nbr-ct")
-			%i.fa.fa-fw.fa-home
-			My neighbour is making noise
-		%a.btn.btn-default.single-question.hidden(question="nbr-construction-db")
-			%i.fa.fa-fw.fa-home
-			My neighbour is doing construction work
-		%a.btn.btn-default.single-question.hidden(question="me-construction-db")
-			%i.fa.fa-fw.fa-home
-			I want to do construction work
-		%a.btn.btn-default.single-question.hidden(question="throw-party-db")
-			%i.fa.fa-fw.fa-home
-			I want to throw a party
-		%a.btn.btn-default.single-question.hidden(question="animal-noise-db")
-			%i.fa.fa-fw.fa-paw
-			Someone's pet is making noise
-		%a.btn.btn-default.single-question.hidden(question="noise-nbr-db")
-			%i.fa.fa-fw.fa-bell-o
-			My neighbour is making noise
-		%a.btn.btn-default.single-question.hidden(question="put-ad-jb")
-			%i.fa.fa-fw.fa-bullhorn
-			I want to put up an ad		
-		%a.btn.btn-default.single-question.hidden(question="remove-ad-jb")
-			%i.fa.fa-fw.fa-bullhorn
-			I want to get an ad removed
-		%a.btn.btn-default.single-question.hidden(question="animal-noise-jb")
-			%i.fa.fa-fw.fa-paw
-			Someone's pet is making noise
-		%a.btn.btn-default.single-question.hidden(question="animal-aggressive-jb")
-			%i.fa.fa-fw.fa-paw
-			Someone's pet is aggressive								
-
+	.row
+		.col-md-6
+			%h3
+				Quick help
+			We occasionally get questions from users asking us for help. In order to provide answers more quickly, we've prepared the answers to some common question. See the #{link_to 'help page', '/help.html'} for more.
+		.col-md-6
+			.btn-group-vertical
+				%a.btn.btn-default.single-question.hidden(question="put-ad-ct")
+					%i.fa.fa-fw.fa-bullhorn
+					I want to put up an ad
+				%a.btn.btn-default.single-question.hidden(question="remove-ad-ct")
+					%i.fa.fa-fw.fa-bullhorn
+					I want to get an ad removed
+				%a.btn.btn-default.single-question.hidden(question="animal-noise-ct")
+					%i.fa.fa-fw.fa-paw
+					Someone's pet is making noise
+				%a.btn.btn-default.single-question.hidden(question="animal-aggressive-ct")
+					%i.fa.fa-fw.fa-paw
+					Someone's pet is aggressive
+				%a.btn.btn-default.single-question.hidden(question="nbr-construction-ct")
+					%i.fa.fa-fw.fa-home
+					My neighbour is doing construction work		
+				%a.btn.btn-default.single-question.hidden(question="me-construction-ct")
+					%i.fa.fa-fw.fa-home
+					I want to do construction work
+				%a.btn.btn-default.single-question.hidden(question="throw-party-ct")
+					%i.fa.fa-fw.fa-home
+					I want to throw a party
+				%a.btn.btn-default.single-question.hidden(question="noise-nbr-ct")
+					%i.fa.fa-fw.fa-home
+					My neighbour is making noise
+				%a.btn.btn-default.single-question.hidden(question="nbr-construction-db")
+					%i.fa.fa-fw.fa-home
+					My neighbour is doing construction work
+				%a.btn.btn-default.single-question.hidden(question="me-construction-db")
+					%i.fa.fa-fw.fa-home
+					I want to do construction work
+				%a.btn.btn-default.single-question.hidden(question="throw-party-db")
+					%i.fa.fa-fw.fa-home
+					I want to throw a party
+				%a.btn.btn-default.single-question.hidden(question="animal-noise-db")
+					%i.fa.fa-fw.fa-paw
+					Someone's pet is making noise
+				%a.btn.btn-default.single-question.hidden(question="noise-nbr-db")
+					%i.fa.fa-fw.fa-bell-o
+					My neighbour is making noise
+				%a.btn.btn-default.single-question.hidden(question="put-ad-jb")
+					%i.fa.fa-fw.fa-bullhorn
+					I want to put up an ad		
+				%a.btn.btn-default.single-question.hidden(question="remove-ad-jb")
+					%i.fa.fa-fw.fa-bullhorn
+					I want to get an ad removed
+				%a.btn.btn-default.single-question.hidden(question="animal-noise-jb")
+					%i.fa.fa-fw.fa-paw
+					Someone's pet is making noise
+				%a.btn.btn-default.single-question.hidden(question="animal-aggressive-jb")
+					%i.fa.fa-fw.fa-paw
+					Someone's pet is aggressive								
+	
 	.row.answer.put-ad-ct.hidden{"muni" => "Cape Town"}
 		.col-sm-4
 			.single-sol
