@@ -142,10 +142,15 @@ nav.left-nav {
   h3 {
     margin-top: 0;
   }
-  .btn-group-vertical > .btn {
+  .btn-group-vertical {
+    > .btn {
     float: left;
     text-align: left;
     border-radius: 0 !important;
+    } 
+    @media (max-width: 767px) {
+      margin-top: 10px;
+    }
   }
   .answer {
     margin-top: 20px;
