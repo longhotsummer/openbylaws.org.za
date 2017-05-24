@@ -54,6 +54,23 @@ ByLawSearch = function() {
         .show();
 
       $waiting.hide();
+
+      if(getParameterByName('q').match(/(ads|advert|billboard)/)) {
+        $("#help").removeClass("hidden");
+        $(".ads").removeClass("hidden");
+      }
+      if(getParameterByName('q').match(/(animal|dog|cat|pet)/)) {
+        $("#help").removeClass("hidden");
+        $(".animals").removeClass("hidden");
+      }
+      if(getParameterByName('q').match(/(neighbo|contruct|build)/)) {
+        $("#help").removeClass("hidden");
+        $(".neighbours").removeClass("hidden");
+      }
+      if(getParameterByName('q').match(/(nois|music|sound|loud)/)) {
+        $("#help").removeClass("hidden");
+        $(".noise").removeClass("hidden");
+      }
     });
   };
 
@@ -102,4 +119,3 @@ $(function() {
   // kick off a search
   search.searchFromUri();
 }); 
-

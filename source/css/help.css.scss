@@ -1,0 +1,146 @@
+a {
+  cursor: pointer;
+}
+
+.feedback {
+  a {
+    color: #666;
+    font-size: 18px;
+    cursor: pointer;
+    &:hover, &:active, &:focus {
+      text-decoration: none;
+      &.positive {
+        color: #149e28;
+      }
+      &.negative {
+        color: #9e1414;
+      }
+    }
+    &.active {
+      &.positive {
+        color: #149e28;
+      }
+      &.negative {
+        color: #9e1414;
+      }
+    }
+  }
+}
+
+.info {
+  margin-bottom: 15px;
+}
+
+.muni, .issue, .questions {
+  a, &:hover {
+    text-decoration: none;
+    color: #000;
+  }
+  .single-muni, .single-issue, .single-question {
+    background-color: #fff;
+    text-align: center;
+    padding: 20px 5px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #333;
+    border-radius: 3px;
+    &:hover {
+      background-color: #eee;
+    }
+    &.selected {
+      background-color: #774F38;
+      color: #fff;
+    }
+  }
+}
+
+.muni {
+  background-color: #E08E79;
+  border-radius: 3px 3px 0 0;
+  padding-top: 15px;
+  &::after {
+    border: solid transparent;
+    content: " ";
+    width: 0;
+    height: 0;
+    position: absolute;
+    border-top-color: #E08E79;
+    border-width: 15px;
+    bottom: -30px;
+    left: 25px;
+    z-index: 1000;
+  }
+}
+
+.issue {
+  background-color: #F1D4AF;
+  padding-top: 25px;
+  &::after {
+    border: solid transparent;
+    content: " ";
+    width: 0;
+    height: 0;
+    position: absolute;
+    border-top-color: #F1D4AF;
+    border-width: 15px;
+    bottom: -30px;
+    left: 25px;
+    z-index: 1000;
+  }
+}
+
+.questions {
+  background-color: #ECE5CE;
+  padding-top: 25px;
+  &.double-hidden {
+    display: none;
+  }
+  &::after {
+    border: solid transparent;
+    content: " ";
+    width: 0;
+    height: 0;
+    position: absolute;
+    border-top-color: #ECE5CE;
+    border-width: 15px;
+    bottom: -30px;
+    left: 25px;
+    z-index: 1000;
+  }
+}
+
+.sol-title {
+  margin-top: 25px;
+}
+
+.single-sol {
+  box-shadow: 0px 0px 3px 0px #d4cdb9;
+  padding: 10px;
+  font-size: 20px;
+  margin-bottom: 20px;
+  min-height: 150px;
+  background-color: #fff;
+  & > i {
+    position: absolute;
+    bottom: 30px;
+    right: 25px;
+    font-size: 35px;
+    opacity: 0.25;
+  }
+  small {
+    font-size: 11px;
+    line-height: 20px;
+  }
+}
+
+.solutions {
+  border-radius: 0 0 3px 3px;
+  padding-bottom: 20px;
+  background-color: #f5f0e1;
+}
+
+.extras {
+  margin-top: 30px;
+  h4 {
+    margin-bottom: 0;
+  }
+}

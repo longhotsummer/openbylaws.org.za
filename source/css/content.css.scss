@@ -75,7 +75,7 @@
     opacity: 0.8;
   }
 
-  h2 {
+  h2, h3 {
     position: absolute;
     color: white;
     display: inline;
@@ -97,6 +97,23 @@
   &.eth {
     background-image: url(/img/municipalities/eth-placard.jpg);
     background-position: 0%;
+  }
+
+  &.ads {
+    background-image: url(/img/issues/ads-placard.jpg);
+    background-position: 0% 30%;
+  }
+  &.animals {
+    background-image: url(/img/issues/animals-placard.jpg);
+    background-position: 60% 40%;
+  }
+  &.neighbours {
+    background-image: url(/img/issues/neighbours-placard.jpg);
+    background-position: 40% 70%;
+  }
+  &.noise {
+    background-image: url(/img/issues/noise-placard.jpg);
+    background-position: 100% 30%;
   }
 }
 

@@ -56,7 +56,7 @@
               %li
                 %a(href="/about.html") About
               %li
-                %a(href="/contact.html") Contact Us
+                %a(href="/help.html") Help
 
             %form.navbar-form.navbar-right(action="/search.html" method="get" role="search")
               %input.form-control(type="text" name="q" placeholder="Search")     
@@ -82,6 +82,8 @@
               %ul
                 %li
                   %a(href="/about.html") About Open By-laws
+                %li
+                  %a(href="/help.html") Help
                 %li
                   %a(href="/contact.html") Contact Us
                 %li
@@ -129,6 +131,9 @@
 
     = javascript_include_tag '/js/vendor/jquery-1.10.2.min.js'
     = javascript_include_tag '/js/main.js'
+    = javascript_include_tag '/js/help.js'
+    = javascript_include_tag '/js/feedback.js'
+    = javascript_include_tag '/js/bylaw.js'
 
     - if content_for?(:footer)
       = yield_content(:footer)
