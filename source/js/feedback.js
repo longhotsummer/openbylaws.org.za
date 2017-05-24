@@ -19,6 +19,6 @@ $(".feedback a").click(function() {
   solution.find("small").remove();
   var gaSolution = $.trim($(solution).text());
   var opinion = $(this).attr("opinion");
-  console.log("help / " + opinion, muni + " / " + question, gaSolution)
-  ga('send', 'event', "help / " + opinion, muni + " / " + question, gaSolution);
+  console.log("help feedback / " + opinion, muni + " / " + question, gaSolution)
+  ga('send', 'event', "help feedback / " + opinion, muni + " / " + question, gaSolution);
 })

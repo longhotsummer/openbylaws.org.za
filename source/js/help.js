@@ -8,8 +8,8 @@ $(".muni a").click(function() {
   var gaMuni = $.trim($(".single-muni.selected").text());
   var gaIssue =  $.trim($(".single-issue.selected").text());
   var gaQuestion = $.trim($(".single-question.selected").text());
-  console.log(gaMuni + ", " + gaIssue + ", " + gaQuestion);
-  ga('send', 'event', gaMuni, gaIssue, gaQuestion);
+  console.log("help menu / " + gaMuni + " / " + gaQuestion);
+  ga('send', 'event', "help menu / " + gaMuni + " / " + gaQuestion);
 });
 
 $(".issue a").click(function() {
@@ -26,8 +26,8 @@ $(".issue a").click(function() {
   var gaMuni = $.trim($(".single-muni.selected").text());
   var gaIssue =  $.trim($(".single-issue.selected").text());
   var gaQuestion = $.trim($(".single-question.selected").text());
-  console.log(gaMuni + ", " + gaIssue + ", " + gaQuestion);
-  ga('send', 'event', gaMuni, gaIssue, gaQuestion);
+  console.log("help menu / " + gaMuni, gaIssue + " / " + gaQuestion);
+  ga('send', 'event', "help menu / " + gaMuni, gaIssue + " / " + gaQuestion);
 });
 
 $(".question a").click(function() {
@@ -40,8 +40,18 @@ $(".question a").click(function() {
   var gaMuni = $.trim($(".single-muni.selected").text());
   var gaIssue =  $.trim($(".single-issue.selected").text());
   var gaQuestion = $.trim($(".single-question.selected").text());
-  console.log(gaMuni + ", " + gaIssue + ", " + gaQuestion);
-  ga('send', 'event', gaMuni, gaIssue, gaQuestion);
+  console.log("help menu / " + gaMuni, gaIssue + " / " + gaQuestion);
+  ga('send', 'event', "help menu / " + gaMuni, gaIssue + " / " + gaQuestion);
+});
+
+
+$(".single-sol > a").click(function() {
+  var gaDestination = $(this);
+  var gaMuni = $.trim($(".single-muni.selected").text());
+  var gaIssue =  $.trim($(".single-issue.selected").text());
+  var gaQuestion = $.trim($(".single-question.selected").text());
+  console.log("help solution / " + gaMuni, gaQuestion + " / " +  $(this).text() + " / " + this.href);
+  ga('send', 'event', "help solution / " + gaMuni, gaQuestion + " / " +  $(this).text() + " / " + this.href);
 });
 
 function getParameterByName(name, url) {

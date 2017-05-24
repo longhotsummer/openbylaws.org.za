@@ -143,7 +143,7 @@ title: Help track - Open By-laws South Africa
       .col-sm-6
         .single-sol
           %i.fa.fa-fw.fa-phone
-          Contact the #{link_to 'Environmental Management Department', 'href="http://www.capetown.gov.za/Departments/Environmental%20Management%20Department'} at #{link_to 'enviro@capetown.gov.za', 'mailto:enviro@capetown.gov.za'} or call them at #{link_to '021 487 2284', 'tel:0214872284'}. Your complaint will be sent to the relevant District office for investigation.
+          Contact the #{link_to 'Environmental Management Department', 'http://www.capetown.gov.za/Departments/Environmental%20Management%20Department'} at #{link_to 'enviro@capetown.gov.za', 'mailto:enviro@capetown.gov.za'} or call them at #{link_to '021 487 2284', 'tel:0214872284'}. Your complaint will be sent to the relevant District office for investigation.
           = partial 'feedback'
     .row.sol-muni.db
       .col-sm-6
@@ -724,5 +724,21 @@ title: Help track - Open By-laws South Africa
           Contact law enforcement if the situation is dangerous
           = partial 'feedback'
 
-  %a.struggling.pull-right(href="/contact.html")
-    Still struggling?
+  .h3
+    We'd love to hear from you!
+
+  Have our answers worked for you? Did you find another way to solve your problem?
+  %a.open-chat
+    Please let us know!
+
+  .h4
+    Were our answers unhelpful?
+
+  %p
+    %a.open-chat
+      Get in touch
+    and let us help you find the right answer for you and future users.
+  
+  %p
+    Alternatively, #{link_to 'contact your ward councillor', '/contact.html'}, who represents you to your municipality and can help resolve issues.
+
