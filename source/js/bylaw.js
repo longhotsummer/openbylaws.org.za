@@ -37,7 +37,7 @@ $(document).ready(function () {
   }
 });
 
-$(".help a").click(function() {
+$(".single-question").click(function() {
   $(".help a").removeClass("selected active");
   $(this).addClass("selected active");
   $(".single-muni").removeClass("selected");
