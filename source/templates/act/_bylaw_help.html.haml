@@ -3,7 +3,9 @@
 		.col-md-6
 			%h3
 				Quick help
-			Explore the answers to some common questions. #{link_to 'Find more answers →', '/help.html'}
+			Explore the answers to some common questions
+			%br
+			#{link_to 'Find more answers →', '/help.html'}
 		.col-md-6
 			.btn-group-vertical
 				%a.btn.btn-default.single-question.hidden(question="put-ad-ct")
@@ -402,3 +404,22 @@
 				%i.fa.fa-fw.fa-exclamation-circle
 				In case of an emergency, contact law enforcement.
 				= partial 'feedback'
+
+	.in-touch.hidden
+		.h3
+			We'd love to hear from you!
+
+		Have our answers worked for you? Did you find another way to solve your problem?
+		%a.open-chat
+			Please let us know!
+
+		.h4
+			Were our answers unhelpful?
+
+		%p
+			%a.open-chat
+				Get in touch
+			and let us help you find the right answer for you and future users.
+
+		%p
+			Alternatively, #{link_to 'contact your ward councillor', '/contact.html'}, who represents you to your municipality and can help resolve issues.

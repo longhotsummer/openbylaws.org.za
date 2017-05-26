@@ -44,4 +44,5 @@ $(".single-question").click(function() {
   $(".single-muni", this).addClass("selected");
   $(".row.answer").addClass("hidden");
   $(".row." + $(this).attr('question')).removeClass("hidden");
+  $(".in-touch").removeClass("hidden");
 });
