@@ -5,6 +5,7 @@ $(".muni a").click(function() {
   $(".solutions .sol-muni").addClass("hidden");
   $("." + $(this).attr('muni')).removeClass("hidden");
   $(".questions").removeClass('hidden');
+  $(".muni-explainer").addClass('hidden');
   var gaMuni = $.trim($(".single-muni.selected").text());
   var gaIssue =  $.trim($(".single-issue.selected").text());
   var gaQuestion = $.trim($(".single-question.selected").text());
@@ -21,7 +22,6 @@ $(".issue a").click(function() {
   $(".question a").removeClass("selected");
   $(".single-question").removeClass("selected");
   $(".questions").removeClass('double-hidden');
-  $(".sol-title").text(" ");
   $(".solutions").addClass("hidden");
   var gaMuni = $.trim($(".single-muni.selected").text());
   var gaIssue =  $.trim($(".single-issue.selected").text());
@@ -35,7 +35,6 @@ $(".question a").click(function() {
   $(".single-question", this).addClass("selected");
   $(".solution").addClass("hidden");
   $(".solution." + $(this).attr('question')).removeClass("hidden");
-  $(".sol-title").text($.trim($(this).text()));
   $(".solutions").removeClass("hidden");
   var gaMuni = $.trim($(".single-muni.selected").text());
   var gaIssue =  $.trim($(".single-issue.selected").text());
@@ -53,6 +52,10 @@ $(".single-sol > a").click(function() {
   console.log("help solution / " + gaMuni, gaQuestion + " / " +  $(this).text() + " / " + this.href);
   ga('send', 'event', "help solution / " + gaMuni, gaQuestion + " / " +  $(this).text() + " / " + this.href);
 });
+
+if(window.location.href.indexOf("?issue=") > -1) {
+   $(".muni-explainer").removeClass("hidden");
+};
 
 function getParameterByName(name, url) {
   if (!url) url = window.location.href;
