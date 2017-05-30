@@ -9,7 +9,7 @@
     "akoma ntoso"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/OpenUpSA/indigo-web",
+  "homepage": "https://github.com/Code4SA/indigo-web",
   "ignore": [
     "**/.*",
     "node_modules",
