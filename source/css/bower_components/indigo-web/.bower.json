@@ -9,7 +9,7 @@
     "akoma ntoso"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/Code4SA/indigo-web",
+  "homepage": "https://github.com/OpenUpSA/indigo-web",
   "ignore": [
     "**/.*",
     "node_modules",
@@ -23,7 +23,7 @@
     "tag": "v0.1.1",
     "commit": "c0cb26ab11d37c02b22821928b355d3a3c898dd1"
   },
-  "_source": "git://github.com/Code4SA/indigo-web.git",
+  "_source": "git://github.com/OpenUpSA/indigo-web.git",
   "_target": "^0.1.1",
   "_originalSource": "indigo-web",
   "_direct": true
