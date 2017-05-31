@@ -2,7 +2,7 @@
 
 This is the source code for the [openbylaws.org.za](http://openbylaws.org.za) website.
 
-The website is a [Middleman](http://middlemanapp.com) app that pulls by-law data from the [Indigo](https://github.com/Code4SA/indigo) service running at [indigo.openbylaws.org.za](http://indigo.openbylaws.org.za) and builds a static website. The website is then uploaded to Amazon S3 and served over HTTPS using
+The website is a [Middleman](http://middlemanapp.com) app that pulls by-law data from the [Indigo](https://github.com/OpenUpSA/indigo) service running at [indigo.openbylaws.org.za](http://indigo.openbylaws.org.za) and builds a static website. The website is then uploaded to Amazon S3 and served over HTTPS using
 an Amazon Cloudfront distribution.
 
 Contributions are welcome!
@@ -43,7 +43,7 @@ To build and sync the entire site just like Travis does (ie. clean, build, sync 
 # Architecture
 
 The website is a Ruby [Middleman](http://middlemanapp.com) app that realies
-heavily on the [Indigo](https://github.com/Code4SA/indigo) service running at
+heavily on the [Indigo](https://github.com/OpenUpSA/indigo) service running at
 [indigo.openbylaws.org.za](http://indigo.openbylaws.org.za) for its content. Indigo
 provides all the by-law metadata, table of contents, rendered HTML, attachments, etc.
 The middleman app simply pulls it all together into a website.
