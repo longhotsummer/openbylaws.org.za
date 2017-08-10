@@ -212,7 +212,7 @@ DEPENDENCIES
   slaw (~> 0.3.0)
 
 RUBY VERSION
-   ruby 2.1.1p76
+   ruby 2.3.3p222
 
 BUNDLED WITH
-   1.14.6
+   1.15.3
