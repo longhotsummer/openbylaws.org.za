@@ -92,7 +92,7 @@ activate :act_helpers
 # activate :livereload
 
 require 'lru_redux'
-$bylaw_cache = LruRedux::Cache.new(100)
+$bylaw_cache = LruRedux::Cache.new(50)
 helpers do
   # Simple caching. Use this in a view to avoid re-generating
   # expensive partials. Any array of hashable arguments can be used
