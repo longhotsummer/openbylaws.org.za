@@ -1,6 +1,0 @@
-= with_cache('definitions', act) do
-  #definitions-container(style='display: none')
-    - for term_id, pair in act.term_definitions
-      - term, defn = pair
-      %div{id: "defn-#{term_id}", data: {term: term}}
-        = defn

@@ -153,30 +153,6 @@ class IndigoDocument < IndigoComponent
     attachments.find { |a| a.filename == 'source.pdf' }
   end
 
-  # Return a Hash from term_id to a +[term, definition]+ pair,
-  # where +term+ is the defined term and +definition+
-  # is the HTML for the definition.
-  def term_definitions
-    unless @term_definitions
-      @term_definitions = {}
-
-      # parse the HTML, the find defined terms
-      doc = Nokogiri::HTML(html)
-
-      for defn in doc.css('.akn-def')
-        term = defn.content
-        refersTo = defn['data-refersto']
-        definition = defn.ancestors("[data-refersto='#{refersTo}']").first || defn.parent
-
-        if refersTo and definition
-          @term_definitions[refersTo.sub(/^#/, '')] = [term, definition.to_html]
-        end
-      end
-    end
-
-    @term_definitions
-  end
-
   # Return a list of HistoryEvent objects describing the history of this document,
   # oldest first.
   def history

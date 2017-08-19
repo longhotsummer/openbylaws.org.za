@@ -16,12 +16,6 @@
     border-bottom-width: 0px;
   }
 
-  #definitions, .term-definition {
-    .akn-subsection {
-      margin-left: 0px;
-    }
-  }
-
   .term-link {
     cursor: pointer;
     color: #337ab7;
@@ -48,6 +42,10 @@
 
   .akn-term {
     color: inherit;
+  }
+
+  .akn-subsection {
+    margin-left: 0px;
   }
 }
 

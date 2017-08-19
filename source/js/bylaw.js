@@ -1,32 +1,41 @@
 $(function() {
-  // link term definitions
-   document.querySelectorAll(".akoma-ntoso .akn-term[data-refersto]").forEach(function(term) {
-    // make them look nice
-    term.classList.add("term-link");
+  // tag term definition containers
+  $('.akoma-ntoso .akn-def[data-refersto]').each(function(i, def) {
+    var term = def.getAttribute("data-refersto").replace('#', '');
 
-    // jump to term definition
-    term.addEventListener("click", function(e) {
-      e.preventDefault();
-      document.querySelector('.akoma-ntoso .akn-def[data-refersto="' + term.getAttribute("data-refersto") + '"]').scrollIntoView();
-    });
-   });
+    $(def)
+      .attr('id', 'defn-' + term)
+      .closest('.akn-p, .akn-subsection, .akn-section, .akn-blockList')
+      .attr('data-defines', def.getAttribute('data-refersto'));
+  });
+
+  // link term definitions
+  $(".akoma-ntoso .akn-term[data-refersto]").each(function(i, term) {
+    $(term)
+      .addClass('term-link')
+      .on('click', function(e) {
+        // jump to term definition
+        e.preventDefault();
+        window.location.hash = '#defn-' + term.getAttribute("data-refersto").replace('#', '');
+      });
+  });
 
   // show definition popups
   $('.akn-term').popover({
     placement: 'top',
     trigger: 'hover',
     html: true,
-    template: '<div class="popover term-definition"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>',
+    template: '<div class="popover term-definition"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content akoma-ntoso"></div></div>',
     delay: { show: 500 },
     title: function() {
-      var term_id = $(this).data('refersto').replace('#', '');
-      var term = $('#defn-' + term_id).data('term');
-      if (window.ga) ga('send', 'event', 'term-popup', term_id);
+      var term_id = $(this).data('refersto');
+      var term = $('.akn-def[data-refersto="' + term_id + '"]').text();
+      if (window.ga) ga('send', 'event', 'term-popup', term_id.replace('#', ''));
       return term;
     },
     content: function() {
-      var term_id = $(this).data('refersto').replace('#', '');
-      return $('#defn-' + term_id).html();
+      var term_id = $(this).data('refersto');
+      return $('.akoma-ntoso [data-defines="' + term_id + '"]')[0].outerHTML;
     }
   });
 });
