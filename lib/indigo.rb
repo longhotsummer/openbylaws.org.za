@@ -56,33 +56,16 @@ class IndigoComponent < IndigoBase
   end
 
   def html
-    @html ||= _link_terms(get_html)
+    @html ||= get_html
   end
 
   def get_html
+    # fetch html remotely
     get('.html')
   end
 
   def text
-    @text ||= Nokogiri::HTML(get_html).inner_text
-  end
-
-  # transform <span class="akn-term" .. > tags into links
-  # and make the definitions targetable
-  def _link_terms(html)
-    doc = Nokogiri::HTML(html)
-
-    for term in doc.css('.akn-term')
-      term.name = 'a'
-      term['href'] = "#{frbr_uri}/#{term['data-refersto']}"
-    end
-
-    for defn in doc.css('.akn-def')
-      # so we can link to it, see above
-      defn['id'] = defn['data-refersto'].sub(/^#/, '')
-    end
-
-    doc.to_html
+    @text ||= Nokogiri::HTML(html).inner_text
   end
 
   # make some changes to the incoming hash

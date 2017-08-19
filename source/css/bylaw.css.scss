@@ -21,6 +21,16 @@
       margin-left: 0px;
     }
   }
+
+  .term-link {
+    cursor: pointer;
+    color: #337ab7;
+
+    &:hover {
+      color: #23527c;
+      text-decoration: underline;
+    }
+  }
 }
 
 .downloads {
