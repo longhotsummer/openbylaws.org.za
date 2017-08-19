@@ -4,6 +4,11 @@
 // akn styling from Indigo
 @import 'bower_components/indigo-web/scss/akoma-ntoso';
 
+@keyframes fadeout {
+  from { background-color: yellow; }
+  to { background-color: none; }
+}
+
 .akoma-ntoso-container {
   margin-top: 20px;
   overflow-x: auto;
@@ -24,6 +29,10 @@
       color: #23527c;
       text-decoration: underline;
     }
+  }
+
+  :target {
+    animation: fadeout 2s;
   }
 }
 
