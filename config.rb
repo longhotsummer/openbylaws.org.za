@@ -52,8 +52,10 @@ end
 
 def subpages_for(act, children)
   for child in children
-    proxy ActHelpers.act_url(act, child: child) + "/index.html", "/templates/act/fragment.html", :locals => { act: act, fragment: child }, :ignore => true
-    subpages_for(act, child.children) if child.children?
+    # only do subpages for sub-documents (schedules)
+    if child.type == "doc"
+      proxy ActHelpers.act_url(act, child: child) + "/index.html", "/templates/act/fragment.html", :locals => { act: act, fragment: child }, :ignore => true
+    end
   end
 end
 

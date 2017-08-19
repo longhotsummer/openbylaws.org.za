@@ -31,7 +31,7 @@ class ActHelpers < Middleman::Extension
     when IndigoComponent
       # TOC element
       parts << child.component if child.component and child.component != "main"
-      parts << child.subcomponent if child.subcomponent
+      parts << "##{child.info.id}" if child.info.id
     end
 
     url = File.join(parts)

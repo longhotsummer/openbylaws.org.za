@@ -1,7 +1,7 @@
 - for child in items
   %li{class: child.type}
-    %a{href: act_url(act, child: child)}
-      &= toc_title(child)
+    %a{href: act_url(act, child: child)}&= toc_title(child)
+
     - if child.children?
       %ol
         = partial 'toc_container', locals: {act: act, items: child.children}
