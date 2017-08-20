@@ -45,18 +45,6 @@ def pages_for(act)
 
   # resources
   proxy "#{path}/resources/index.html", "/templates/act/resources.html", :locals => { :act => act }, :ignore => true
-
-  # sections, chapters, parts, etc.
-  subpages_for(act, act.toc)
-end
-
-def subpages_for(act, children)
-  for child in children
-    # only do subpages for sub-documents (schedules)
-    if child.type == "doc"
-      proxy ActHelpers.act_url(act, child: child) + "/index.html", "/templates/act/fragment.html", :locals => { act: act, fragment: child }, :ignore => true
-    end
-  end
 end
 
 # Load the bylaws!

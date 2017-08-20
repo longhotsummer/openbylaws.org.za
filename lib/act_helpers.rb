@@ -30,8 +30,17 @@ class ActHelpers < Middleman::Extension
       parts << child
     when IndigoComponent
       # TOC element
-      parts << child.component if child.component and child.component != "main"
-      parts << "##{child.info.id}" if child.info.id
+      parts << ""  # ensure trailing slash
+
+      if child.type == "doc"
+        # schedules have IDs in the html
+        parts << "##{child.component}"
+      elsif child.info.id or child.subcomponent
+        id = "#"
+        id << "#{child.component}/" if child.component != "main"
+        id << child.info.id || child.subcomponent
+        parts << id
+      end
     end
 
     url = File.join(parts)
