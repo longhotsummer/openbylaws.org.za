@@ -38,7 +38,7 @@ class ActHelpers < Middleman::Extension
       elsif child.info.id or child.subcomponent
         id = "#"
         id << "#{child.component}/" if child.component != "main"
-        id << child.info.id || child.subcomponent
+        id << (child.info.id || child.subcomponent)
         parts << id
       end
     end
