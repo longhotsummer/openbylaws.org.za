@@ -2,11 +2,13 @@
   ol {
     list-style-type: none;
     padding-left: 10px;
+    margin-top: 4px;
   }
 
   &> ol {
     padding-left: 0px;
     margin-left: 0px;
+    margin-top: 0px;
   }
 
   li {
