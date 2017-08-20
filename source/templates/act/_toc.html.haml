@@ -1,11 +1,10 @@
-= with_cache('toc', act) do
-  %ol
-    %li
-      %a{href: act_url(act)} Entire by-law
-    = partial 'toc_container', locals: {act: act, items: act.toc.reject { |t| t.component =~ /schedule/ }}
+%ol
+  %li
+    %a{href: act_url(act)} Entire by-law
+  = partial 'toc_container', locals: {act: act, items: act.toc.reject { |t| t.component =~ /schedule/ }}
 
-    - if act.schedules.present?
-      %li.schedules
-        %strong Schedules
-        %ol
-          = partial 'toc_container', locals: {act: act, items: act.schedules}
+  - if act.schedules.present?
+    %li.schedules
+      %strong Schedules
+      %ol
+        = partial 'toc_container', locals: {act: act, items: act.schedules}

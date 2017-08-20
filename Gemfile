@@ -12,7 +12,6 @@ gem "middleman", "~>3.3"
 gem "middleman-livereload", "~> 3.3"
 gem 'bootstrap-sass', '~> 3.3.5', require: false
 gem 'hashie', '~> 3.3.1'
-gem 'lru_redux', '~> 0.8.1'
 
 gem "rake", "~> 10.1.0"
 gem 'middleman-s3_sync'

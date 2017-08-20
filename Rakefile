@@ -15,7 +15,7 @@ task :build do
   # We run with --verbose so that we get stack traces on errors, which
   # makes debugging builds much simpler. But this makes the log huge
   # so we trim it down by removing some lines
-  sh "bundle exec middleman build --verbose | egrep -v '== (Request|Finishing)'"
+  sh "bundle exec middleman build --verbose"
 end
 
 desc "Sync changed files to S3"
