@@ -91,7 +91,6 @@ GEM
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
     log4r (1.1.10)
-    lru_redux (0.8.4)
     map (6.5.5)
     middleman (3.4.0)
       coffee-script (~> 2.2)
@@ -203,7 +202,6 @@ DEPENDENCIES
   elasticsearch (~> 1.0.12)
   hashie (~> 3.3.1)
   httpclient (~> 2.7)
-  lru_redux (~> 0.8.1)
   middleman (~> 3.3)
   middleman-livereload (~> 3.3)
   middleman-s3_sync
