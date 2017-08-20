@@ -4,9 +4,9 @@ $(function() {
     var term = def.getAttribute("data-refersto").replace('#', '');
 
     $(def)
-      .attr('id', 'defn-' + term)
       .closest('.akn-p, .akn-subsection, .akn-section, .akn-blockList')
-      .attr('data-defines', def.getAttribute('data-refersto'));
+      .attr('data-defines', def.getAttribute('data-refersto'))
+      .attr('id', 'defn-' + term);
   });
 
   // link term definitions
