@@ -10,43 +10,48 @@ ByLawSearch = function() {
 
   self.search = function() {
     var q = $form.find('input[name=q]').val();
-    var region = $form.find('input[name=region_name]').val();
+    var region_code = $form.find('input[name=region]').val();
+    var params = {};
 
     ladda.start();
 
     $results.hide();
     $waiting.show();
 
-    $.getJSON('https://indigo.openbylaws.org.za/api/search', {q: q, region_name: region}, function(response, textStatus, jqXHR) {
+    params = {
+      q: q,
+      draft: 'false',
+      country: 'za',
+    };
+    
+    if (region_code) {
+      params.frbr_uri__startswith = '/za-' + region_code + '/';
+    }
+
+    $.getJSON('https://indigo.openbylaws.org.za/api/search/works', params, function(response, textStatus, jqXHR) {
       ladda.stop();
       console.log(response);
 
       response.q = q;
-      response.seconds = response.took / 1000.0;
-      response.hits.hits = $.map(response.hits.hits, function(result) {
-        if (result.highlight.content) {
-          result.snippet = result.highlight.content
-            .slice(0, 2)
-            .join(' ... ')
-            .replace(/^\s*[;:",.()-]+/, '')  // trim leading punctuation
-            .trim();
-        }
+      var hits = $.map(response.results, function(result) {
+        result.snippet = result._snippet
+          .replace(/^\s*[;:",.()-]+/, '')  // trim leading punctuation
+          .replace(/<b>/g, "<mark>")
+          .replace(/<\/b>/g, "</mark>")
+          .trim();
 
-        // highlighted (or regular) title
-        result.title = result.highlight.title ? result.highlight.title[0] : result.fields.title;
-        result.repealed = result.fields.repealed[0];
+        result.region = REGIONS[result.locality];
 
         return result;
       });
-
-      // mark an active region
-      response.aggregations.region_names.not_active = true;
-      $.each(response.aggregations.region_names.buckets, function(i, bucket) {
-        if (bucket.key == region) {
-          response.aggregations.region_names.not_active = false;
-          bucket.active = true;
-        }
-      });
+      response.hits = {hits: hits};
+      response.no_region = region_code == "";
+      response.regions = []
+      for (code in REGIONS) {
+        var region = REGIONS[code];
+        region.active = code == region_code;
+        response.regions.push(region);
+      }
 
       $results
         .empty()
@@ -96,7 +101,7 @@ ByLawSearch = function() {
     var q = self.getParamValue('q');
     if (q) {
       $form.find('input[name=q]').val(q);
-      $form.find('input[name=region_name]').val(self.getParamValue('region_name'));
+      $form.find('input[name=region]').val(self.getParamValue('region'));
       $form.submit();
     }
   };
@@ -104,7 +109,7 @@ ByLawSearch = function() {
   // handle clicks on a city
   $results.on('click', '.list-group-item', function(e) {
     e.preventDefault();
-    $form.find('[name=region_name]').val($(this).find('.city').text());
+    $form.find('[name=region]').val($(this).data('code'));
     $form.submit();
   });
 

@@ -13,7 +13,11 @@ class ActHelpers < Middleman::Extension
   end
 
   def self.regions
-    @@regions ||= Hashie::Mash.new(File.open('regions.json') { |f| JSON.load(f) })
+    @@regions ||= Hashie::Mash.new(self.raw_regions)
+  end
+
+  def self.raw_regions
+    File.open('regions.json') { |f| JSON.load(f) }
   end
 
   # Generate a url for part an act, or a part
@@ -117,6 +121,10 @@ class ActHelpers < Middleman::Extension
 
     def regions
       ActHelpers.regions
+    end
+
+    def raw_regions
+      ActHelpers.raw_regions
     end
 
     def bylaw_by_id(id)
