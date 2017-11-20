@@ -15,6 +15,3 @@ gem 'hashie', '~> 3.3.1'
 
 gem "rake", "~> 10.1.0"
 gem 'middleman-s3_sync'
-
-# for search
-gem 'elasticsearch', '~> 1.0.12'

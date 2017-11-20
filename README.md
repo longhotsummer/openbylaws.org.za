@@ -32,11 +32,7 @@ put the S3 creds in `.s3_sync` and then run:
 
     rake sync
 
-To reindex the documents for search, run:
-
-    rake reindex
-
-To build and sync the entire site just like Travis does (ie. clean, build, sync and re-index), run:
+To build and sync the entire site just like Travis does (ie. clean, build and sync), run:
 
     rake deploy
 
