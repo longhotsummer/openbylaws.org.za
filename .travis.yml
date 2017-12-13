@@ -8,7 +8,7 @@ env:
     - secure: "BIFbtHSRX3STLFDTcBMKJ38/00FKLFmavyAdTY4KkqQYaGqjpWChPOIVA7iKv1WdSZjn0gLM6HfGBgvUF3pSEstdxGnOTbLtY/9QXYpoCIh5tLAsRsq9vPo1yv0y1TDpLX0NSPgry8EDApUIROf8bUmSTqfsbsoWnkstq+Ckg30="
     # AWS_SECRET_ACCESS_KEY for S3 deployment
     - secure: "Zs84AWMeVxKhr09o6XpJdGJ2XQGD7eQobQp5YQgnz2u46mwBsEDnOUQB7RADBj2zss4/mi4rVxaiSZdgPUmn5A8X1Oets9cL0/H7SvSICT1ADIkxeLzAZoRDEM20zHMbisWRN8i1l1ULeAoqLp9kRp57Ob6oB9b7K4+a/Kq9s5k="
-    # BONSAI_URL for search
-    - secure: "fIIoTUlXnA2iOexCiEf6xLTH6Ia7I/FOuQcWTAOADA/yDUIGWBBudYvAqwJOOaOsQZzSTU+oV9QCOORcGjp/pgdsiEC6BPyFwOz3nCNiQKcbPf/aNbiHGsKtx/i0dvDtkNQAk6dc1RKHBMz9XpKfah64Rk+ER9Nig2Zj1WnkwtU="
+    # INDIGO_API_AUTH_TOKEN
+    - secure: "ZOGkfPjuv17jPq1ptsivsur+6+IpcE5chXCQ+6K166sTEwTUmRHQeY/e2MrOEKUDLSBVqTLOeJ2v0PdQFCQ9X0GMgNnDMShKY6shAxO/Iy8ZrOQss8eBbLsM1wctQgNY7DmDhXwpO3/1s+aMhBoojKOSIfd6KrURlVA83knkcAU="
 script:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then bundle exec rake deploy; else bundle exec rake build; fi

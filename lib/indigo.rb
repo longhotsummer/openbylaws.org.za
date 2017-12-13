@@ -10,13 +10,18 @@ CACHE_SECS = 60 * 60 * 24
 
 class IndigoBase
   API_ENDPOINT = ENV['INDIGO_API_URL'] || "https://indigo.openbylaws.org.za/api"
+  AUTH_TOKEN = ENV['INDIGO_API_AUTH_TOKEN']
 
   attr_accessor :api, :url
 
   @@client = nil
 
   def initialize(url=API_ENDPOINT)
-    @@client = HTTPClient.new unless @@client
+    unless @@client
+      @@client = HTTPClient.new unless @@client
+      @@client.default_header['Authorization'] = "Token #{AUTH_TOKEN}" if AUTH_TOKEN
+    end
+
     @url = url
     @cache = Moneta.new(:File, dir: '_cache', expires: true)
   end
