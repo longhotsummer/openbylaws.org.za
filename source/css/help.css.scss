@@ -108,6 +108,13 @@ a {
   }
 }
 
+@media (min-width: 992px) {
+  .sol-muni {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
 .sol-title {
   margin-top: 25px;
 }
@@ -118,6 +125,7 @@ a {
   font-size: 20px;
   margin-bottom: 20px;
   min-height: 150px;
+  height: calc(100% - 20px);
   background-color: #fff;
   & > i {
     position: absolute;
