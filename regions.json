@@ -17,5 +17,11 @@
     "name": "Johannesburg",
     "logo": "http://www.joburg.org.za/test_template/logo.gif",
     "bylaws-url": "http://www.joburg.org.za/index.php?option=com_content&task=view&id=647&itemid=114"
+  },
+  "wc033": {
+    "code": "wc033",
+    "name": "Cape Agulhas",
+    "logo": "http://www.capeagulhas.org/sites/default/files/styles/homepage_logo/public/logo/KAM%20logo_0.jpg",
+    "bylaws-url": "http://www.capeagulhas.org/resource-category/policies-and-laws"
   }
 }
