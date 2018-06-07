@@ -2,26 +2,26 @@
   "cpt": {
     "code": "cpt",
     "name": "Cape Town",
-    "logo": "/img/municipalities/cape-town.png",
+    "logo": "/img/municipalities/cpt-logo.png",
     "bylaws-url": " http://www.capetown.gov.za/bylaws"
   },
   "eth": {
     "code": "eth",
     "name": "eThekwini",
     "partial": true,
-    "logo": "http://www.durban.gov.za/Style%20Library/images/durban/logo.png",
+    "logo": "/img/municipalities/eth-logo.png",
     "bylaws-url": "http://www.durban.gov.za/Resource_Centre/Pages/By-Laws.aspx"
   },
   "jhb": {
     "code": "jhb",
     "name": "Johannesburg",
-    "logo": "http://www.joburg.org.za/test_template/logo.gif",
-    "bylaws-url": "http://www.joburg.org.za/index.php?option=com_content&task=view&id=647&itemid=114"
+    "logo": "/img/municipalities/jhb-logo.png",
+    "bylaws-url": "https://www.joburg.org.za/documents_/By-Laws/Pages/By-Laws.aspx"
   },
   "wc033": {
     "code": "wc033",
     "name": "Cape Agulhas",
-    "logo": "http://www.capeagulhas.org/sites/default/files/styles/homepage_logo/public/logo/KAM%20logo_0.jpg",
+    "logo": "/img/municipalities/wc033-logo.jpg",
     "bylaws-url": "http://www.capeagulhas.org/resource-category/policies-and-laws"
   }
 }
