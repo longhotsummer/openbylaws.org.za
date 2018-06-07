@@ -12,6 +12,8 @@
           &= act.publication_date.strftime("%e %B %Y")
       - else
         &= act.full_publication
+        on
+        &= act.publication_date.strftime("%e %B %Y")
 
   - if act.commencement_date
     %h4.commencement
