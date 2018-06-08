@@ -107,7 +107,7 @@ class ActHelpers < Middleman::Extension
 
     def publication_url(act)
       case act.locality
-      when 'cpt'
+      when 'cpt', 'wc033'
         year = act.publication_date.year
         "http://www.westerncape.gov.za/general-publication/provincial-gazettes-#{year}"
       when 'eth'
