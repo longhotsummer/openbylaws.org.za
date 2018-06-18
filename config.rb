@@ -26,10 +26,6 @@ set :layout, 'page'
 # With alternative layout
 # page "/path/to/file.html", :layout => :otherlayout
 #
-# A path which all have the same layout
-# with_layout :admin do
-#   page "/admin/*"
-# end
 
 # ----------------------------------------------------------------------
 # Proxy pages (http://middlemanapp.com/dynamic-pages/)
@@ -117,18 +113,18 @@ activate :s3_sync do |s3_sync|
   s3_sync.after_build                = false # We chain after the build step by default. This may not be your desired behavior...
   s3_sync.prefer_gzip                = true
   s3_sync.reduced_redundancy_storage = false
-
-  # cache policies
-  year = 60*60*24*365
-  day = 60*60*24
-
-  # we use asset hashing here, so have expiry far in the future
-  s3_sync.add_caching_policy 'text/css', max_age: year
-  s3_sync.add_caching_policy 'application/javascript', max_age: year
-  s3_sync.add_caching_policy 'image/png', max_age: year
-  s3_sync.add_caching_policy 'image/jpeg', max_age: year
-  s3_sync.add_caching_policy 'application/font-woff', max_age: year
-
-  # cache HTML for up to a day
-  s3_sync.add_caching_policy 'text/html', max_age: day
 end
+
+# cache policies
+year = 60*60*24*365
+day = 60*60*24
+
+# we use asset hashing here, so have expiry far in the future
+caching_policy 'text/css', max_age: year
+caching_policy 'application/javascript', max_age: year
+caching_policy 'image/png', max_age: year
+caching_policy 'image/jpeg', max_age: year
+caching_policy 'application/font-woff', max_age: year
+
+# cache HTML for up to a day
+caching_policy 'text/html', max_age: day
