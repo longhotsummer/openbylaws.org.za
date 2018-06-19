@@ -12,3 +12,4 @@ gem "rake", "~> 10.1.0"
 gem "middleman", "~>4.2.1"
 gem 'hashie', '~> 3.4'
 gem 'middleman-s3_sync', "~> 4.0.3"
+gem 'haml', '~> 4'

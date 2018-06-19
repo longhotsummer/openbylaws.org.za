@@ -9,13 +9,7 @@ GEM
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
     ansi (1.5.0)
-    autoprefixer-rails (6.0.1)
-      execjs
-      json
     backports (3.11.3)
-    bootstrap-sass (3.3.5.1)
-      autoprefixer-rails (>= 5.0.0.1)
-      sass (>= 3.3.0)
     builder (3.2.2)
     coffee-script (2.4.1)
       coffee-script-source
@@ -49,8 +43,7 @@ GEM
       fog-core
       nokogiri (>= 1.5.11, < 2.0.0)
     formatador (0.2.5)
-    haml (5.0.4)
-      temple (>= 0.8.0)
+    haml (4.0.7)
       tilt
     hamster (3.0.0)
       concurrent-ruby (~> 1.0)
@@ -58,7 +51,6 @@ GEM
     httpclient (2.7.1)
     i18n (0.7.0)
     ipaddress (0.8.3)
-    json (1.8.3)
     kramdown (1.17.0)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -139,7 +131,6 @@ GEM
       log4r (~> 1.1.10)
       nokogiri (~> 1.6.0)
       treetop (~> 1.5)
-    temple (0.8.0)
     thor (0.20.0)
     thread_safe (0.3.6)
     tilt (2.0.8)
@@ -157,7 +148,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootstrap-sass (~> 3.3.5)
+  haml (~> 4)
   hashie (~> 3.4)
   httpclient (~> 2.7)
   middleman (~> 4.2.1)
