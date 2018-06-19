@@ -5,27 +5,13 @@ require 'act_helpers'
 require 'indigo'
 
 ###
-# Compass
-###
-
-# Change Compass configuration
-# compass_config do |config|
-#   config.output_style = :compact
-# end
-
-###
 # Page options, layouts, aliases and proxies
 ###
 set :layout, 'page'
 
-# Per-page layout changes:
-#
-# With no layout
-# page "/path/to/file.html", :layout => false
-#
-# With alternative layout
-# page "/path/to/file.html", :layout => :otherlayout
-#
+# Load the bylaws!
+puts "Using Indigo at #{IndigoBase::API_ENDPOINT}"
+ActHelpers.load_bylaws
 
 # ----------------------------------------------------------------------
 # Proxy pages (http://middlemanapp.com/dynamic-pages/)
@@ -43,10 +29,6 @@ def pages_for(act)
   proxy "#{path}/resources/index.html", "/templates/act/resources.html", :locals => { :act => act }, :ignore => true
 end
 
-# Load the bylaws!
-puts "Using Indigo at #{IndigoBase::API_ENDPOINT}"
-ActHelpers.load_bylaws
-
 # General by-laws landing page, show each region and their by-laws
 proxy "/by-laws/index.html", "/templates/bylaws.html", ignore: true
 
@@ -60,49 +42,23 @@ for code, region in ActHelpers.regions
   end
 end
 
-# Ignore templates
-ignore "/templates/**/*"
-
 # ----------------------------------------------------------------------
 
-###
-# Helpers
-###
+ignore 'css/bower_components/indigo-web/*'
+ignore "/templates/**/*"
 
 activate :act_helpers
 
-# Automatic image dimensions on image_tag helper
-# activate :automatic_image_sizes
-
-# Reload the browser automatically whenever files change
-# activate :livereload
-
 set :css_dir, 'css'
-
 set :js_dir, 'js'
-
 set :images_dir, 'img'
-
-ignore 'css/bower_components/indigo-web/*'
 
 # Build-specific configuration
 configure :build do
-  # For example, change the Compass output style for deployment
   activate :minify_css
-
   activate :relative_assets
-
-  # Minify Javascript on build
-  # activate :minify_javascript
-
   # Enable cache buster
   activate :asset_hash, ignore: [/favicon.*/]
-
-  # Use relative URLs
-  # activate :relative_assets
-
-  # Or use a different image path
-  # set :http_path, "/Content/images/"
 end
 
 activate :s3_sync do |s3_sync|
@@ -125,6 +81,5 @@ caching_policy 'application/javascript', max_age: year
 caching_policy 'image/png', max_age: year
 caching_policy 'image/jpeg', max_age: year
 caching_policy 'application/font-woff', max_age: year
-
 # cache HTML for up to a day
 caching_policy 'text/html', max_age: day
