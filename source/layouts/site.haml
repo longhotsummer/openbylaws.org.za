@@ -37,97 +37,18 @@
         %a(href="http://browsehappy.com/") Upgrade your browser today
         to better experience this site.
 
-    %header#header
-      %nav.navbar.navbar-inverse(role="navigation")
-        .container
-          .navbar-header
-            %button.navbar-toggle(type="button" data-toggle="collapse" data-target=".navbar-collapse")
-              %span.sr-only Toggle navigation
-              %span.icon-bar
-              %span.icon-bar
-              %span.icon-bar
-
-            %a.navbar-brand(href='/')
-              .hidden-xs Open By-laws South Africa
-              .visible-xs Open By-laws ZA
-
-          .navbar-collapse.collapse
-            %ul.nav.navbar-nav
-              %li
-                %a(href="/about.html") About
-              %li
-                %a(href="/help.html") Help
-
-            %form.navbar-form.navbar-right(action="/search.html" method="get" role="search")
-              %input.form-control(type="text" name="q" placeholder="Search")     
-
-            %ul.nav.navbar-nav.navbar-right
-              %li
-                %a.social(href="https://facebook.com/openbylaws.org.za")
-                  %i.fa.fa-facebook-official.fa-2x
-              %li
-                %a.social(href="https://twitter.com/OpenByLawsZA")
-                  %i.fa.fa-twitter.fa-2x
-            
+    - if config[:microsite]
+      = partial 'microsite/header'
+    - else
+      = partial 'header.html.haml'
 
     #main-content
       = yield
 
-    %footer#footer
-      .container
-        .row
-          .col-sm-4
-            %nav
-              %h5 Openbylaws.org.za
-              %ul
-                %li
-                  %a(href="/about.html") About Open By-laws
-                %li
-                  %a(href="/help.html") Help
-                %li
-                  %a(href="/contact.html") Contact Us
-                %li
-                  %a(href="/about.html#disclaimer") Disclaimer
-
-              %ul
-                %li
-                  %a(href="https://twitter.com/OpenByLawsZA")
-                    %i.fa.fa-fw.fa-twitter
-                    Follow us on Twitter
-                %li
-                  %a(href="https://facebook.com/openbylaws.org.za")
-                    %i.fa.fa-fw.fa-facebook
-                    Follow us on Facebook
-
-          .col-sm-4
-            %nav
-              %h5 Contribute to Open By-laws
-              %ul
-                %li
-                  %a(href="https://indigo.openbylaws.org.za/api/documents?format=api") Indigo By-laws API
-                %li
-                  %a(href="https://github.com/longhotsummer/openbylaws.org.za")
-                    %i.fa.fa-fw.fa-github
-                    This website on GitHub
-                %li
-                  %a(href="https://github.com/longhotsummer/za-by-laws")
-                    %i.fa.fa-fw.fa-github
-                    Browse the By-laws on GitHub
-
-              %ul
-                %li Thank you to #{link_to 'our contributors', '/about.html#contributors'}. Much love.
-
-          .col-sm-4
-            %h5 Join our mailing list
-            = partial 'mailchimp_form.html.haml'
-
-        %h5 License
-        %p
-          The HTML and XML legislation documents are licensed under
-          a #{link_to('Creative Commons Attribution 4.0 International License', 'https://creativecommons.org/licenses/by/4.0/', rel: 'license')}.
-        %p
-          %a(rel="license" href="https://creativecommons.org/licenses/by/4.0/")
-            %img(alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by/3.0/88x31.png")
+    - if config[:microsite]
+      = partial 'microsite/footer'
+    - else
+      = partial 'footer.html.haml'
 
     = javascript_include_tag '/js/vendor/jquery-1.10.2.min.js'
     = javascript_include_tag '/js/bootstrap.min.js'

@@ -22,6 +22,7 @@
     "code": "wc033",
     "name": "Cape Agulhas",
     "logo": "/img/municipalities/wc033-logo.jpg",
-    "bylaws-url": "http://www.capeagulhas.org/resource-category/policies-and-laws"
+    "bylaws-url": "http://www.capeagulhas.org/resource-category/policies-and-laws",
+    "microsite": true
   }
 }

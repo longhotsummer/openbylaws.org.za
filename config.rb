@@ -9,39 +9,6 @@ require 'indigo'
 ###
 set :layout, 'page'
 
-# Load the bylaws!
-puts "Using Indigo at #{IndigoBase::API_ENDPOINT}"
-ActHelpers.load_bylaws
-
-# ----------------------------------------------------------------------
-# Proxy pages (http://middlemanapp.com/dynamic-pages/)
-
-def pages_for(act)
-  path = act.frbr_uri.chomp('/')
-
-  # full act
-  proxy "#{path}/index.html", "/templates/act/index.html", :locals => { :act => act }, :ignore => true
-
-  # table of contents
-  proxy "#{path}/contents/index.html", "/templates/act/contents.html", :locals => { :act => act }, :ignore => true
-
-  # resources
-  proxy "#{path}/resources/index.html", "/templates/act/resources.html", :locals => { :act => act }, :ignore => true
-end
-
-# General by-laws landing page, show each region and their by-laws
-proxy "/by-laws/index.html", "/templates/bylaws.html", ignore: true
-
-# Load the by-laws for each region we care about and generate their URLs and pages
-for code, region in ActHelpers.regions
-  # region pages
-  proxy "/za-#{code}/index.html", "/templates/region.html", locals: {region: region}, ignore: true
-
-  for bylaw in region.bylaws
-    pages_for(bylaw)
-  end
-end
-
 # ----------------------------------------------------------------------
 
 ignore 'css/bower_components/indigo-web/*'
@@ -83,3 +50,58 @@ caching_policy 'image/jpeg', max_age: year
 caching_policy 'application/font-woff', max_age: year
 # cache HTML for up to a day
 caching_policy 'text/html', max_age: day
+
+
+# ----------------------------------------------------------------------
+# Website pages
+
+def pages_for_act(act)
+  path = act.frbr_uri.chomp('/')
+
+  # full act
+  proxy "#{path}/index.html", "/templates/act/index.html", locals: {act: act}, ignore: true
+
+  # table of contents
+  proxy "#{path}/contents/index.html", "/templates/act/contents.html", :locals => {act: act}, :ignore => true
+
+  # resources
+  proxy "#{path}/resources/index.html", "/templates/act/resources.html", :locals => {act: act}, :ignore => true
+end
+
+configure :openbylaws do
+  # openbylaws.org.za site
+  puts "Building openbylaws.org.za"
+  config[:microsite] = false
+
+  regions = ActHelpers.general_regions
+
+  # Load the bylaws!
+  ActHelpers.load_bylaws(regions)
+
+  for region in regions
+    next if region.microsite
+
+    # region pages
+    proxy "/za-#{region.code}/index.html", "/templates/region.html", locals: {region: region}, ignore: true
+
+    region.bylaws.each { |bylaw| pages_for_act(bylaw) }
+  end
+end
+
+configure :microsite do
+  # municipality microsites
+  region = ENV['REGION']
+  region = ActHelpers.regions[region]
+  config[:microsite] = true
+  config[:region] = region
+
+  puts "Building microsite for #{region}"
+
+  # Load the bylaws!
+  ActHelpers.load_bylaws([region])
+
+  # region pages
+  proxy "/index.html", "/templates/region.html", locals: {region: region}, ignore: true
+
+  region.bylaws.each { |bylaw| pages_for_act(bylaw) }
+end
