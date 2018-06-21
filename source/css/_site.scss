@@ -29,6 +29,39 @@
     padding-bottom: 0px;
     padding-top: 12px;
   }
+
+  .microsite-region-logo {
+    float: left;
+    width: 75px;
+  }
+  
+  .microsite-region-name {
+    float: left;
+    margin-left: 10px;
+  }
+}
+
+.microsite {
+  #main-content .header-content {
+    margin-left: 85px;
+  }
+
+  #header a.navbar-brand {
+    background-image: none;
+    padding-left: 0px;
+  }
+}
+
+.powered-by-banner {
+  background-color: #444;
+  color: #ddd;
+  padding: 4px 0px;
+  font-size: 12px;
+
+  a {
+    color: #ddd;
+    text-decoration: underline;
+  }
 }
 
 #footer {

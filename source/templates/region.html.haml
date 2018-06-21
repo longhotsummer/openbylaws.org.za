@@ -1,13 +1,11 @@
 - content_for :title do
-  #{region.name} By-laws
+  #{region.name}
 
 - content_for :meta_description do
   By-laws for #{region.name}, up-to-date and easy to read and share.
 
 - content_for :header do
-  %h1
-    &= region.name
-    By-laws
+  %h1&= region.name
 
 .row
   .col-sm-9
@@ -85,4 +83,7 @@
       %a{href: region['bylaws-url']}
         %img{src: region.logo}
     %p
-      %a{href: region['bylaws-url']}&= "#{region.name} By-laws Website"
+      - if config[:microsite]
+        %a{href: region['website-url']}&= "#{region.name} Municipality Website"
+      - else
+        %a{href: region['bylaws-url']}&= "#{region.name} By-laws Website"
