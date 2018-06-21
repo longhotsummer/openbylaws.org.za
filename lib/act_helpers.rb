@@ -76,16 +76,6 @@ class ActHelpers < Middleman::Extension
       IndigoBase::API_ENDPOINT + '/za-' + region.code
     end
 
-    def breadcrumbs_for_fragment(fragment)
-      trail = []
-  
-      trail << act_for_node(fragment).schedules if fragment.in_schedules?
-      trail << fragment.parent if fragment.parent && %(chapter part).include?(fragment.parent.type)
-      trail << fragment
-         
-      trail
-    end
-
     # suitable title for this item in the table of contents
     def toc_title(item)
       case item.type

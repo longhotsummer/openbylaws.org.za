@@ -1,7 +1,8 @@
 = wrap_layout :layout do
   %header
     .container
-      = yield_content(:header)
+      .header-content
+        = yield_content(:header)
 
   %article
     .container

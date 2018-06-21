@@ -10,8 +10,8 @@
 
   %header
     .container
-      = partial 'header', locals: {act: act}
-      = yield_content :breadcrumbs
+      .header-content
+        = partial 'header', locals: {act: act}
 
   %article
     .container
