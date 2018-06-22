@@ -33,6 +33,7 @@
   .microsite-region-logo {
     float: left;
     width: 75px;
+    border: 1px solid #ccc;
   }
   
   .microsite-region-name {
@@ -85,6 +86,16 @@
   a[rel="license"] > img {
     width: 88px;
     margin: 0px 0px 10px 0px;
+  }
+}
+
+.microsite-footer {
+  .region-logo {
+    width: 100px;
+  }
+
+  .openbylaws-logo {
+    width: 75px;
   }
 }
 
