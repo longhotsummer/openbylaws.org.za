@@ -13,12 +13,19 @@
     %meta(name="apple-mobile-web-app-status-bar-style" content="default")
     %link(rel="icon" type="image/png" href="/favicon.png")
     %link(rel="apple-touch-icon" sizes="152x152" href="/img/logo-152.png")
-
-    %meta(property="og:site_name" content="Open By-laws South Africa")
     %meta(property="og:image" content="https://openbylaws.org.za/img/logo-lg-white.png")
+
     %meta{property: "og:title", content: content_for?(:title) ? yield_content(:title) : current_page.data.title}
-    %meta{property: "og:description", content: content_for?(:meta_description) ? yield_content(:meta_description) : "South Africa's by-laws: freely available, easy to read and share."}
-    %meta{property: "description", content: content_for?(:meta_description) ? yield_content(:meta_description) : "South Africa's by-laws: freely available, easy to read and share."}
+
+    - if config[:microsite]
+      %meta{property: "og:site_name", content: "#{config[:region].name} By-laws"}
+      %meta{property: "og:description", content: content_for?(:meta_description) ? yield_content(:meta_description) : "#{config[:region].name}'s by-laws: freely available, easy to read and share."}
+      %meta{property: "description", content: content_for?(:meta_description) ? yield_content(:meta_description) : "#{config[:region].name}'s by-laws: freely available, easy to read and share."}
+    - else
+      %meta(property="og:site_name" content="Open By-laws South Africa")
+      %meta{property: "og:title", content: content_for?(:title) ? yield_content(:title) : current_page.data.title}
+      %meta{property: "og:description", content: content_for?(:meta_description) ? yield_content(:meta_description) : "South Africa's by-laws: freely available, easy to read and share."}
+      %meta{property: "description", content: content_for?(:meta_description) ? yield_content(:meta_description) : "South Africa's by-laws: freely available, easy to read and share."}
 
     - if content_for?(:head)
       = yield_content(:head)
