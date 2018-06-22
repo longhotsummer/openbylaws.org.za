@@ -2,8 +2,7 @@
 
 This is the source code for the [openbylaws.org.za](http://openbylaws.org.za) website.
 
-The website is a [Middleman](http://middlemanapp.com) app that pulls by-law data from the [Indigo](https://github.com/OpenUpSA/indigo) service running at [indigo.openbylaws.org.za](http://indigo.openbylaws.org.za) and builds a static website. The website is then uploaded to Amazon S3 and served over HTTPS using
-an Amazon Cloudfront distribution.
+The website is a [Middleman](http://middlemanapp.com) app that pulls by-law data from the [Indigo](https://github.com/OpenUpSA/indigo) service running at [indigo.openbylaws.org.za](http://indigo.openbylaws.org.za) and builds a static website. The website is then uploaded to Amazon S3 and served over HTTPS using an Amazon Cloudfront distribution.
 
 Contributions are welcome!
 
@@ -13,7 +12,7 @@ To setup a local development environment:
 
 1. clone this repo
 2. install dependencies: `bundle install`
-3. run the server: `middleman --reload-paths lib`
+3. run the server: `middleman --reload-paths lib -e openbylaws`
 
 The website pulls all data from [indigo.openbylaws.org.za](http://indigo.openbylaws.org.za).
 It caches responses from Indigo in the `_cache` directory for 24 hours which makes local development
