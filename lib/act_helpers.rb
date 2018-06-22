@@ -4,18 +4,23 @@ require 'indigo'
 
 class ActHelpers < Middleman::Extension
   @@bylaws = nil
+  @@active_regions = []
+
+  cattr_accessor :active_regions
+
+  def self.setup(regions)
+    self.active_regions = regions
+
+    puts "Using Indigo at #{IndigoBase::API_ENDPOINT}"
+    for region in self.active_regions
+      region.bylaws = IndigoDocumentCollection.new(IndigoBase::API_ENDPOINT + '/za-' + region.code)
+      puts "Got #{region.bylaws.length} by-laws for #{region.code}"
+    end
+  end
 
   def self.general_regions
     # non-microsite regions
     self.regions.values.reject { |region| region.microsite }
-  end
-
-  def self.load_bylaws(regions)
-    puts "Using Indigo at #{IndigoBase::API_ENDPOINT}"
-    for region in regions
-      region.bylaws = IndigoDocumentCollection.new(IndigoBase::API_ENDPOINT + '/za-' + region.code)
-      puts "Got #{region.bylaws.length} by-laws for #{region.code}"
-    end
   end
 
   def self.regions
@@ -112,7 +117,7 @@ class ActHelpers < Middleman::Extension
     end
 
     def all_bylaws
-      ActHelpers.regions.values.map { |r| r.bylaws.documents }.flatten
+      ActHelpers.active_regions.map { |r| r.bylaws.documents }.flatten
     end
 
     def regions

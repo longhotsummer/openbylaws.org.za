@@ -75,12 +75,10 @@ configure :openbylaws do
   puts "Building openbylaws.org.za"
   config[:microsite] = false
 
-  regions = ActHelpers.general_regions
-
   # Load the bylaws!
-  ActHelpers.load_bylaws(regions)
+  ActHelpers.setup(ActHelpers.general_regions)
 
-  for region in regions
+  for region in ActHelpers.active_regions
     next if region.microsite
 
     # region pages
@@ -97,10 +95,10 @@ configure :microsite do
   config[:microsite] = true
   config[:region] = region
 
-  puts "Building microsite for #{region}"
+  puts "Building microsite for #{region.code} - #{region.name}"
 
   # Load the bylaws!
-  ActHelpers.load_bylaws([region])
+  ActHelpers.setup([region])
 
   # region pages
   proxy "/index.html", "/templates/region.html", locals: {region: region}, ignore: true
