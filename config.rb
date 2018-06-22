@@ -28,6 +28,7 @@ configure :build do
   activate :asset_hash, ignore: [/favicon.*/]
 end
 
+s3_sync_config = nil
 activate :s3_sync do |s3_sync|
   # creds are store in .s3_sync
   s3_sync.bucket                     = 'openbylaws.org.za'
@@ -36,6 +37,7 @@ activate :s3_sync do |s3_sync|
   s3_sync.after_build                = false # We chain after the build step by default. This may not be your desired behavior...
   s3_sync.prefer_gzip                = true
   s3_sync.reduced_redundancy_storage = false
+  s3_sync_config = s3_sync
 end
 
 # cache policies
@@ -104,4 +106,7 @@ configure :microsite do
   proxy "/index.html", "/templates/region.html", locals: {region: region}, ignore: true
 
   region.bylaws.each { |bylaw| pages_for_act(bylaw) }
+
+  # s3 bucket
+  s3_sync_config.bucket = region.bucket
 end
