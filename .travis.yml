@@ -1,7 +1,7 @@
 language: ruby
 sudo: false
 rvm:
-  - 2.4
+  - 2.3
 env:
   global:
     # AWS_ACCESS_KEY_ID for S3 deployment
