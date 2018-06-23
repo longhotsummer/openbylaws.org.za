@@ -38,7 +38,9 @@ class IndigoBase
       return cached if cached
     end
 
-    response = @@client.get_content(path, params)
+    client = HTTPClient.new
+    client.default_header['Authorization'] = "Token #{AUTH_TOKEN}" if AUTH_TOKEN
+    response = client.get_content(path, params)
 
     @cache.store(key, response, expires: CACHE_SECS) if cache
 
