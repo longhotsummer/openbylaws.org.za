@@ -23,5 +23,7 @@ end
 
 desc "Sync changed files to S3"
 task :sync do
-  sh "bundle exec middleman s3_sync"
+  region = ENV['REGION'] || ''
+  env = region != '' ? 'microsite' : 'openbylaws'
+  sh "bundle exec middleman s3_sync -e #{env}"
 end
