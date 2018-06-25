@@ -4,12 +4,23 @@ require 'indigo'
 
 class ActHelpers < Middleman::Extension
   @@bylaws = nil
+  @@active_regions = []
 
-  def self.load_bylaws
-    for code, region in self.regions.each_pair
-      region.bylaws = IndigoDocumentCollection.new(IndigoBase::API_ENDPOINT + '/za-' + code)
-      puts "Got #{region.bylaws.length} by-laws for #{code}"
+  cattr_accessor :active_regions
+
+  def self.setup(regions)
+    self.active_regions = regions
+
+    puts "Using Indigo at #{IndigoBase::API_ENDPOINT}"
+    for region in self.active_regions
+      region.bylaws = IndigoDocumentCollection.new(IndigoBase::API_ENDPOINT + '/za-' + region.code)
+      puts "Got #{region.bylaws.length} by-laws for #{region.code}"
     end
+  end
+
+  def self.general_regions
+    # non-microsite regions
+    self.regions.values.reject { |region| region.microsite }
   end
 
   def self.regions
@@ -70,16 +81,6 @@ class ActHelpers < Middleman::Extension
       IndigoBase::API_ENDPOINT + '/za-' + region.code
     end
 
-    def breadcrumbs_for_fragment(fragment)
-      trail = []
-  
-      trail << act_for_node(fragment).schedules if fragment.in_schedules?
-      trail << fragment.parent if fragment.parent && %(chapter part).include?(fragment.parent.type)
-      trail << fragment
-         
-      trail
-    end
-
     # suitable title for this item in the table of contents
     def toc_title(item)
       case item.type
@@ -116,7 +117,7 @@ class ActHelpers < Middleman::Extension
     end
 
     def all_bylaws
-      ActHelpers.regions.values.map { |r| r.bylaws.documents }.flatten
+      ActHelpers.active_regions.map { |r| r.bylaws.documents }.flatten
     end
 
     def regions

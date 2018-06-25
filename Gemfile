@@ -7,11 +7,9 @@ gem "slaw", "~>0.3.0"
 
 gem 'httpclient', '~> 2.7'
 gem 'moneta', '~> 0.8'
-
-gem "middleman", "~>3.3"
-gem "middleman-livereload", "~> 3.3"
-gem 'bootstrap-sass', '~> 3.3.5', require: false
-gem 'hashie', '~> 3.3.1'
-
 gem "rake", "~> 10.1.0"
-gem 'middleman-s3_sync'
+
+gem "middleman", "~>4.2.1"
+gem 'hashie', '~> 3.4'
+gem 'middleman-s3_sync', "~> 4.0.3"
+gem 'haml', '~> 4'

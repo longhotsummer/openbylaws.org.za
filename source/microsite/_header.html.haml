@@ -1,0 +1,11 @@
+%header#header
+  %aside.powered-by-banner
+    .container.text-right
+      Powered by
+      %a(href="https://openbylaws.org.za/partner.html") OpenByLaws.org.za
+  %nav.navbar.navbar-inverse(role="navigation")
+    .container
+      .navbar-header
+        %a.navbar-brand(href='/')
+          %img.microsite-region-logo{src: config[:region].logo}
+          .microsite-region-name #{config[:region].name} By-laws
