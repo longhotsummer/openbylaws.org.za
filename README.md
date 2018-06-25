@@ -1,6 +1,6 @@
 # Open By-laws South Africa [![Build Status](https://travis-ci.org/longhotsummer/openbylaws.org.za.svg)](http://travis-ci.org/longhotsummer/openbylaws.org.za)
 
-This is the source code for the [openbylaws.org.za](http://openbylaws.org.za) website.
+This is the source code for the [openbylaws.org.za](http://openbylaws.org.za) website and related microsites.
 
 The website is a [Middleman](http://middlemanapp.com) app that pulls by-law data from the [Indigo](https://github.com/OpenUpSA/indigo) service running at [indigo.openbylaws.org.za](http://indigo.openbylaws.org.za) and builds a static website. The website is then uploaded to Amazon S3 and served over HTTPS using an Amazon Cloudfront distribution.
 
@@ -17,6 +17,11 @@ To setup a local development environment:
 The website pulls all data from [indigo.openbylaws.org.za](http://indigo.openbylaws.org.za).
 It caches responses from Indigo in the `_cache` directory for 24 hours which makes local development
 simpler. The list of by-laws is never cached. If you know your cache is out of date, just `rm -rf _cache`.
+
+The app can build two different types of sites, using the `-e` argument.
+
+1. Build the main openbylaws.org.za website with: `middleman -e openbylaws`
+2. Build a municipality microsite with `-e microsite` and set the `REGION` environment variable to a municipality code: `REGION=wc033 middleman -e microsite`
 
 # Building and deploying
 
