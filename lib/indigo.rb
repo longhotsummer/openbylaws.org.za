@@ -134,7 +134,7 @@ class IndigoDocument < IndigoComponent
 
   def attachments
     @attachments ||= JSON.parse(get(attachments_url))['results'].map do |a|
-      IndigoComponent.new(a['url'], a)
+      IndigoAttachment.new(a['url'], a, self)
     end
   end
 
@@ -206,6 +206,12 @@ class IndigoDocument < IndigoComponent
       end
       item
     end
+  end
+end
+
+class IndigoAttachment < IndigoComponent
+  def media_url
+    return @parent.published_url + "/media/" + self.filename
   end
 end
 
