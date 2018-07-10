@@ -10,7 +10,7 @@
             %li
               %a(href="/") By-laws
             %li
-              %a(href="/") #{config[:region].name} website
+              %a{href: config[:region]['website-url']} #{config[:region].name} website
           %p
             %img.region-logo{src: config[:region].logo}
       .col-sm-6
