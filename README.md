@@ -40,6 +40,25 @@ To build and sync the entire site just like Travis does (ie. clean, build and sy
 
     rake deploy
 
+# Adding a new municipality
+
+## Partner municipalities with a microsite
+
+1. Add the municipality to `regions.json`, copying one of the existing regions **that has microsite set to `true`.**
+2. Use the municipality code as per https://en.wikipedia.org/wiki/List_of_municipalities_in_South_Africa
+3. Source a placard image and save it as `/img/municipalities/<code>-placard.jpg`
+4. Source the municipality's logo and save it as `/img/municipalities/<code>-logo.png`
+5. Add a `REGION=<code>` entry to the `matrix` element of `.travis.yml` so that travis builds the microsite.
+6. Create an appropriate S3 bucket in Greg's AWS S3 Account: `<name>.openbylaws.org.za`
+7. Create a corresponding cloudfront distribution, and create a DNS entry in Route 53.
+
+## Regular municipalities without a microsite
+
+1. Add the municipality to `regions.json`, copying one of the existing regions **that doesn't have a microsite attribute.**
+2. Use the municipality code as per https://en.wikipedia.org/wiki/List_of_municipalities_in_South_Africa
+3. Source a placard image and save it as `/img/municipalities/<code>-placard.jpg`
+4. Source the municipality's logo and save it as `/img/municipalities/<code>-logo.png`
+
 # Architecture
 
 The website is a Ruby [Middleman](http://middlemanapp.com) app that realies
