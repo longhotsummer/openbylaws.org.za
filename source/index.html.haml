@@ -26,23 +26,20 @@ layout: layout
   %section.places
     .container
       %h2 Explore your municipality's by-laws
-      .row.placards
-        .col-sm-4
-          %a.placard.cpt(href="/za-cpt/")
-            %h2 Cape Town
-        .col-sm-4
-          %a.placard.eth(href="/za-eth/")
-            %h2 eThekwini
-        .col-sm-4
-          %a.placard.jhb(href="/za-jhb/")
-            %h2 Johannesburg
-      .row.placards
-        .col-sm-4
-          %a.placard.wc033(href="https://capeagulhas.openbylaws.org.za/")
-            %h2 Cape Agulhas
-        .col-sm-4
-          %a.placard.wc011(href="https://matzikama.openbylaws.org.za/")
-            %h2 Matzikama
+
+      - regions.values.reject { |r| r.microsite }.sort_by { |r| r.name }.each_slice(3) do |chunk|
+        .row
+          - for region in chunk
+            .col-sm-4
+              %a.placard{class: region.code, href: "/za-#{region.code}/", style: "background-image: url(/img/municipalities/#{region.code}-placard.jpg)"}
+                %h2&= region.name
+
+      - regions.values.select { |r| r.microsite }.sort_by { |r| r.name }.each_slice(3) do |chunk|
+        .row
+          - for region in chunk
+            .col-sm-4
+              %a.placard{class: region.code, href: "https://#{region.bucket}/", style: "background-image: url(/img/municipalities/#{region.code}-placard.jpg)"}
+                %h2&= region.name
 
   %section.help
     .container

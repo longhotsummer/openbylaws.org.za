@@ -70,6 +70,7 @@
   margin-bottom: 30px;
   border-radius: 5px;
   transition: opacity 0.15s ease;
+  background-position: 0;
 
   &:hover {
     opacity: 0.8;
@@ -83,30 +84,6 @@
     left: 10px;
     background-color: rgba(0, 0, 0, 0.5);
     padding: 5px 10px;
-  }
-
-  &.jhb {
-    background-image: url(/img/municipalities/jhb-placard.jpg);
-    background-position: 0% 30%;
-  }
-
-  &.cpt {
-    background-image: url(/img/municipalities/cpt-placard.jpg);
-  }
-
-  &.eth {
-    background-image: url(/img/municipalities/eth-placard.jpg);
-    background-position: 0%;
-  }
-
-  &.wc033 {
-    background-image: url(/img/municipalities/wc033-placard.jpg);
-    background-position: 0%;
-  }
-
-  &.wc011 {
-    background-image: url(/img/municipalities/wc011-placard.jpg);
-    background-position: 0%;
   }
 
   &.ads {
