@@ -12,7 +12,7 @@ To setup a local development environment:
 
 1. clone this repo
 2. install dependencies: `bundle install`
-3. run the server: `middleman --reload-paths lib -e openbylaws`
+3. run the server: `middleman -e openbylaws`
 
 The website pulls all data from [indigo.openbylaws.org.za](http://indigo.openbylaws.org.za).
 It caches responses from Indigo in the `_cache` directory for 24 hours which makes local development
