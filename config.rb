@@ -62,13 +62,13 @@ def pages_for_act(act)
   path = act.frbr_uri.chomp('/')
 
   for lang in act.languages
-    expression = act.get_expression(lang)
+    expression = act.get_expression(lang.code3)
 
     # full act
-    proxy "#{path}/#{lang}/index.html", "/templates/act/index.html", locals: {act: expression}, ignore: true
+    proxy "#{path}/#{lang.code3}/index.html", "/templates/act/index.html", locals: {act: expression}, ignore: true
 
     # table of contents
-    proxy "#{path}/#{lang}/contents/index.html", "/templates/act/contents.html", :locals => {act: expression}, :ignore => true
+    proxy "#{path}/#{lang.code3}/contents/index.html", "/templates/act/contents.html", :locals => {act: expression}, :ignore => true
   end
 
   # resources
@@ -108,7 +108,7 @@ configure :microsite do
   # region pages, for each language
   for lang in region.bylaws.languages
     path = '/index.html'
-    path = "/#{lang}#{path}" if lang != 'eng'
+    path = "/#{lang.code3}#{path}" unless lang.is_default
     proxy path, "/templates/region.html", locals: {region: region, language: lang}, ignore: true
   end
 

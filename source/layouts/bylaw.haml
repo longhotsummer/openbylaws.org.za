@@ -15,5 +15,14 @@
 
   %article
     .container
+      - if act.languages.length > 1
+        .lang-changer
+          Change language:
+
+          %ul.list-inline
+            - for lang in act.languages
+              %li
+                %a{href: act_url(act, language: lang.code3), class: act.language == lang.code3 ? 'text-muted' : ''}&= lang.name
+
       = partial 'notices', locals: {act: act}
       = yield

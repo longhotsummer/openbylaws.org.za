@@ -37,7 +37,10 @@ class ActHelpers < Middleman::Extension
   def self.act_url(act, opts={})
     parts = [act.frbr_uri]
 
-    parts << act.language unless (opts[:language] == false)
+    lang = opts[:language]
+    if lang != false
+      parts << (lang.nil? ? act.language : lang)
+    end
 
     child = opts[:child]
     case child

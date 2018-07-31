@@ -19,13 +19,22 @@
           in the mean time. Please #{link_to 'get in touch', 'mailto:hello@openbylaws.org.za'} if you'd like to
           help us out.
 
+    - if region.bylaws.languages
+      .lang-changer
+        Change language:
+
+        %ul.list-inline
+          - for lang in region.bylaws.languages
+            %li
+              %a{href: lang.is_default ? "/" : "/#{lang.code3}", class: language == lang ? 'text-muted': ''}&= lang.name
+
     %table.table.table-condensed.table-hover
       %thead
         %tr
           %th Title
           %th First Published
       %tbody
-        - for bylaw in region.bylaws.for_listing(language).sort_by(&:title)
+        - for bylaw in region.bylaws.for_listing(language.code3).sort_by(&:title)
           - next if bylaw.repealed?
           %tr
             %td
@@ -46,7 +55,7 @@
               %td&= bylaw.title
               %td&= bylaw.year
 
-    - repealed = region.bylaws.for_listing(language).select { |b| b.repealed? }
+    - repealed = region.bylaws.for_listing(language.code3).select { |b| b.repealed? }
     - if not repealed.empty?
       %h4 Repealed
       %table.table.table-condensed.table-hover

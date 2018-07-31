@@ -8,6 +8,20 @@ require 'json'
 
 CACHE_SECS = 60 * 60 * 24
 
+LANGUAGES = Hashie::Mash.new({
+  'afr': {
+    code3: 'afr',
+    code2: 'af',
+    name: 'Afrikaans',
+  },
+  'eng': {
+    code3: 'eng',
+    code2: 'en',
+    name: 'English',
+    is_default: true,
+  },
+})
+
 class IndigoBase
   API_ENDPOINT = ENV['INDIGO_API_URL'] || "https://indigo.openbylaws.org.za/api"
   AUTH_TOKEN = ENV['INDIGO_API_AUTH_TOKEN']
@@ -191,7 +205,7 @@ class IndigoDocument < IndigoComponent
 
   def languages
     languages = Set.new(self.point_in_time(expression_date).expressions.map(&:language))
-    languages.sort.to_a
+    LANGUAGES.values.select { |lang| languages.include? lang.code3 }
   end
 
   def point_in_time(expression_date)
@@ -253,7 +267,7 @@ class IndigoDocumentCollection < IndigoBase
   end
 
   def languages
-    Set.new(@documents.map(&:languages).flatten).to_a
+    Set.new(@documents.map(&:languages).flatten)
   end
 
   def for_listing(lang)

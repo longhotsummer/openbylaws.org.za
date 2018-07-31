@@ -158,6 +158,15 @@
   }
 }
 
+.lang-changer {
+  margin-bottom: 20px;
+
+  ul {
+    display: inline;
+    margin-left: 5px;
+  }
+}
+
 /* phones */
 @media (max-width: 768px) {
   .full-xs {
