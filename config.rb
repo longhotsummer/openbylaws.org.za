@@ -61,11 +61,15 @@ caching_policy 'text/html', max_age: day
 def pages_for_act(act)
   path = act.frbr_uri.chomp('/')
 
-  # full act
-  proxy "#{path}/index.html", "/templates/act/index.html", locals: {act: act}, ignore: true
+  for lang in act.languages
+    expression = act.get_expression(lang)
 
-  # table of contents
-  proxy "#{path}/contents/index.html", "/templates/act/contents.html", :locals => {act: act}, :ignore => true
+    # full act
+    proxy "#{path}/#{lang}/index.html", "/templates/act/index.html", locals: {act: expression}, ignore: true
+
+    # table of contents
+    proxy "#{path}/#{lang}/contents/index.html", "/templates/act/contents.html", :locals => {act: expression}, :ignore => true
+  end
 
   # resources
   proxy "#{path}/resources/index.html", "/templates/act/resources.html", :locals => {act: act}, :ignore => true
@@ -101,8 +105,12 @@ configure :microsite do
   # Load the bylaws!
   ActHelpers.setup([region])
 
-  # region pages
-  proxy "/index.html", "/templates/region.html", locals: {region: region}, ignore: true
+  # region pages, for each language
+  for lang in region.bylaws.languages
+    path = '/index.html'
+    path = "/#{lang}#{path}" if lang != 'eng'
+    proxy path, "/templates/region.html", locals: {region: region, language: lang}, ignore: true
+  end
 
   region.bylaws.each { |bylaw| pages_for_act(bylaw) }
 

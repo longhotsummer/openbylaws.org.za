@@ -133,16 +133,18 @@ class IndigoDocument < IndigoComponent
   end
 
   def attachments
-    @attachments ||= JSON.parse(get(attachments_url))['results'].map do |a|
+    @attachments ||= JSON.parse(get('/media.json'))['results'].map do |a|
       IndigoAttachment.new(a['url'], a, self)
     end
   end
 
   def pdf_url
+    # TODO - doesn't work for expressions
     links.find { |k| k.title == 'PDF' }['href']
   end
 
   def epub_url
+    # TODO - doesn't work for expressions
     links.find { |k| k.title == 'ePUB' }['href']
   end
 
@@ -167,7 +169,6 @@ class IndigoDocument < IndigoComponent
       @events << HistoryEvent.new(assent_date, :assent) if assent_date
       @events << HistoryEvent.new(publication_date, :publication) if publication_date
       @events << HistoryEvent.new(commencement_date, :commencement) if commencement_date
-      @events << HistoryEvent.new(added_at, :created)
       @events << HistoryEvent.new(updated_at, :updated)
 
       for amendment in amendments
@@ -188,12 +189,26 @@ class IndigoDocument < IndigoComponent
     [publication_name, "no.", publication_number].join(" ")
   end
 
-  # Date first version added to the website. This is the earliest created_at date
-  # of all the amended versions.
-  def added_at
-    dates = [self.created_at]
-    dates += amended_versions.select(&:id).map { |v| @collection.fetch(v.id) }.compact.map(&:created_at)
-    dates.min
+  def languages
+    languages = Set.new(self.point_in_time(expression_date).expressions.map(&:language))
+    languages.sort.to_a
+  end
+
+  def point_in_time(expression_date)
+    self.points_in_time.find { |p| p.date == expression_date }
+  end
+
+  # Get a new IndigoDocument corresponding to the expression at the given
+  # date and language.
+  def get_expression(language, date=nil)
+    pit = point_in_time(date || self.expression_date)
+    expr = pit.expressions.find { |e| e.language == language }
+
+    if expr
+      # fold expression info into this document's info, and return a new document
+      info = @info.clone.update(expr)
+      return IndigoDocument.new(info.url, info)
+    end
   end
 
   protected
@@ -226,7 +241,7 @@ class IndigoDocumentCollection < IndigoBase
   def initialize(endpoint)
     super(endpoint)
     response = JSON.parse(get('', {nocache: true}))['results']
-    @documents = response.map { |doc| IndigoDocument.new(doc['published_url'], doc, self) }
+    @documents = response.map { |doc| IndigoDocument.new(doc['url'], doc, self) }
   end
 
   # try to find a document with this id, otherwise try to fetch it remotely
@@ -237,9 +252,23 @@ class IndigoDocumentCollection < IndigoBase
     IndigoDocument.new(API_ENDPOINT + "/documents/#{id}", nil, self)
   end
 
-  def for_listing
+  def languages
+    Set.new(@documents.map(&:languages).flatten).to_a
+  end
+
+  def for_listing(lang)
     # ignore documents that have the 'amendment' tag and are stubs
-    @documents.select { |d| !(d.stub and d.tags.include?('amendment')) }
+    docs = @documents.select { |d| !(d.stub and d.tags.include?('amendment')) }
+
+    # favour documents in the given language
+    docs.map do |doc|
+      # is there a doc in the correct language?
+      if doc.language != lang
+        doc = doc.get_expression(lang) || doc
+      end
+
+      doc
+    end
   end
 end
 

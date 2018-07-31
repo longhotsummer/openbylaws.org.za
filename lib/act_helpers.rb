@@ -1,6 +1,7 @@
 require 'hashie'
 require 'json'
 require 'indigo'
+require 'set'
 
 class ActHelpers < Middleman::Extension
   @@bylaws = nil
@@ -35,6 +36,8 @@ class ActHelpers < Middleman::Extension
   # of an act (section, subsection, chapter, part, etc.)
   def self.act_url(act, opts={})
     parts = [act.frbr_uri]
+
+    parts << act.language unless (opts[:language] == false)
 
     child = opts[:child]
     case child
