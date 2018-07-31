@@ -7,6 +7,10 @@
 - content_for :header do
   %h1&= region.name
 
+- content_for :lang_links do
+  - for lang in region.bylaws.languages
+    %link{rel: "alternate", hreflang: lang.code2, href: lang.is_default ? "/" : "/#{lang.code3}/"}
+
 .row
   .col-sm-9
     - if region.partial
@@ -26,7 +30,7 @@
         %ul.list-inline
           - for lang in region.bylaws.languages
             %li
-              %a{href: lang.is_default ? "/" : "/#{lang.code3}", class: language == lang ? 'text-muted': ''}&= lang.name
+              %a{href: lang.is_default ? "/" : "/#{lang.code3}/", class: language == lang ? 'text-muted': ''}&= lang.name
 
     %table.table.table-condensed.table-hover
       %thead
