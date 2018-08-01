@@ -1,4 +1,5 @@
 require 'forwardable'
+require 'fileutils'
 
 require 'hashie'
 require 'nokogiri'
@@ -153,17 +154,27 @@ class IndigoDocument < IndigoComponent
   end
 
   def pdf_url
-    # TODO - doesn't work for expressions
-    links.find { |k| k.title == 'PDF' }['href']
+    "#{@url}.pdf"
   end
 
   def epub_url
-    # TODO - doesn't work for expressions
-    links.find { |k| k.title == 'ePUB' }['href']
+    "#{@url}.epub"
   end
 
   def standalone_html_url
     "#{@url}.html?standalone=1"
+  end
+
+  def local_pdf_url
+    "#{frbr_uri}/resources/#{language}.pdf"
+  end
+
+  def local_epub_url
+    "#{frbr_uri}/resources/#{language}.epub"
+  end
+
+  def local_standalone_html_url
+    "#{frbr_uri}/resources/#{language}.html"
   end
 
   def source_enacted
@@ -239,8 +250,9 @@ class IndigoDocument < IndigoComponent
 end
 
 class IndigoAttachment < IndigoComponent
-  def media_url
-    return @parent.published_url + "/media/" + self.filename
+  def local_url
+    # TODO: LANG
+    @parent.frbr_uri + "/media/" + filename
   end
 end
 
@@ -295,5 +307,63 @@ class HistoryEvent
     @date = date
     @event = event
     @info = info
+  end
+end
+
+class IndigoMiddlemanExtension < ::Middleman::Extension
+  def manipulate_resource_list(resources)
+    for region in ActHelpers.active_regions
+      for bylaw in region.bylaws
+        # strip leading and trailing slash
+        path = bylaw.frbr_uri.chomp('/')[1..-1]
+
+        for lang in bylaw.languages
+          expr = bylaw.get_expression(lang.code3)
+
+          # include PDF, HTML and ePUB downloads for all available languages
+          for ext, url in [['pdf', 'pdf_url'], ['epub', 'epub_url'], ['html', 'standalone_html_url']]
+            target = "#{path}/resources/#{lang.code3}.#{ext}"
+            source = app.source_dir.to_s + "/../downloads/" + target.gsub("/", "-")
+
+            res = Middleman::Sitemap::Resource.new(app.sitemap, target, source)
+            res.options[:download_from] = expr.send(url)
+
+            resources.append(res)
+          end
+
+          # include attachments
+          for attachment in expr.attachments
+            target = "#{path}/#{lang.code3}/media/#{attachment.filename}"
+            source = app.source_dir.to_s + "/../downloads/media-" + target.gsub("/", "-")
+
+            res = Middleman::Sitemap::Resource.new(app.sitemap, target, source)
+            res.options[:download_from] = attachment.url
+
+            resources.append(res)
+          end
+        end
+      end
+    end
+
+    resources
+  end
+
+  def after_build
+    stash_attachments
+  end
+
+  def stash_attachments
+    # pull attachments into build folder
+    for resource in app.sitemap.resources.select { |r| r.options[:download_from] }
+      fname = resource.source_file.to_s
+      url = resource.options[:download_from]
+
+      FileUtils.mkdir(File.dirname(fname))
+
+      File.open(fname, 'wb') do |f|
+        app.logger.info("Downloading #{url} to #{f.path}")
+        f.write(IndigoBase.new(url).get)
+      end
+    end
   end
 end

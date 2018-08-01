@@ -41,6 +41,11 @@ activate :s3_sync do |s3_sync|
   s3_sync_config = s3_sync
 end
 
+# indigo extension
+
+Middleman::Extensions.register(:indigo, IndigoMiddlemanExtension)
+activate :indigo
+
 # cache policies
 year = 60*60*24*365
 day = 60*60*24
