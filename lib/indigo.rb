@@ -6,6 +6,7 @@ require 'nokogiri'
 require 'moneta'
 require 'httpclient'
 require 'json'
+require 'digest'
 
 CACHE_SECS = 60 * 60 * 24
 
@@ -45,7 +46,8 @@ class IndigoBase
     path = @url + path unless path.start_with?('http')
 
     cache = !params.include?(:nocache)
-    key = [path, params]
+    # hash a digest of the pathname otherwise it can become too long
+    key = [Digest::MD5.hexdigest(path), params]
     params.delete(:nocache)
 
     if cache
@@ -311,7 +313,27 @@ class HistoryEvent
 end
 
 class IndigoMiddlemanExtension < ::Middleman::Extension
-  def manipulate_resource_list(resources)
+  class DownloadResource < ::Middleman::Sitemap::Resource
+    def binary?
+      true
+    end
+
+    def download!
+      fname = self.source_file
+      url = options[:download_from]
+
+      @app.logger.info("Downloading #{url} to #{fname}")
+
+      FileUtils.mkdir(File.dirname(fname)) rescue Errno::EEXIST
+      File.open(fname, 'wb') { |f| f.write(IndigoBase.new(url).get) }
+    end
+  end
+
+  def before_build(builder)
+    add_files(builder.app.sitemap.resources)
+  end
+
+  def add_files(resources)
     for region in ActHelpers.active_regions
       for bylaw in region.bylaws
         # strip leading and trailing slash
@@ -325,8 +347,9 @@ class IndigoMiddlemanExtension < ::Middleman::Extension
             target = "#{path}/resources/#{lang.code3}.#{ext}"
             source = app.source_dir.to_s + "/../downloads/" + target.gsub("/", "-")
 
-            res = Middleman::Sitemap::Resource.new(app.sitemap, target, source)
+            res = DownloadResource.new(app.sitemap, target, source)
             res.options[:download_from] = expr.send(url)
+            res.download!
 
             resources.append(res)
           end
@@ -336,33 +359,13 @@ class IndigoMiddlemanExtension < ::Middleman::Extension
             target = "#{path}/#{lang.code3}/media/#{attachment.filename}"
             source = app.source_dir.to_s + "/../downloads/media-" + target.gsub("/", "-")
 
-            res = Middleman::Sitemap::Resource.new(app.sitemap, target, source)
+            res = DownloadResource.new(app.sitemap, target, source)
             res.options[:download_from] = attachment.url
+            res.download!
 
             resources.append(res)
           end
         end
-      end
-    end
-
-    resources
-  end
-
-  def after_build
-    stash_attachments
-  end
-
-  def stash_attachments
-    # pull attachments into build folder
-    for resource in app.sitemap.resources.select { |r| r.options[:download_from] }
-      fname = resource.source_file.to_s
-      url = resource.options[:download_from]
-
-      FileUtils.mkdir(File.dirname(fname))
-
-      File.open(fname, 'wb') do |f|
-        app.logger.info("Downloading #{url} to #{f.path}")
-        f.write(IndigoBase.new(url).get)
       end
     end
   end
