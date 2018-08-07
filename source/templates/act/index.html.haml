@@ -5,6 +5,10 @@ layout: 'bylaw'
 - content_for :title do
   = act.title
 
+- content_for :lang_links do
+  - for lang in act.languages
+    %link{rel: "alternate", hreflang: lang.code2, href: act_url(act, language: lang.code3)}
+
 - if not act.stub
   = partial 'nav', locals: {act: act, tab: 'content'}
 

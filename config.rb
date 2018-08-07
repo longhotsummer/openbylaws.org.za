@@ -41,6 +41,11 @@ activate :s3_sync do |s3_sync|
   s3_sync_config = s3_sync
 end
 
+# indigo extension
+
+Middleman::Extensions.register(:indigo, IndigoMiddlemanExtension)
+activate :indigo
+
 # cache policies
 year = 60*60*24*365
 day = 60*60*24
@@ -61,11 +66,15 @@ caching_policy 'text/html', max_age: day
 def pages_for_act(act)
   path = act.frbr_uri.chomp('/')
 
-  # full act
-  proxy "#{path}/index.html", "/templates/act/index.html", locals: {act: act}, ignore: true
+  for lang in act.languages
+    expression = act.get_expression(lang.code3)
 
-  # table of contents
-  proxy "#{path}/contents/index.html", "/templates/act/contents.html", :locals => {act: act}, :ignore => true
+    # full act
+    proxy "#{path}/#{lang.code3}/index.html", "/templates/act/index.html", locals: {act: expression}, ignore: true
+
+    # table of contents
+    proxy "#{path}/#{lang.code3}/contents/index.html", "/templates/act/contents.html", :locals => {act: expression}, :ignore => true
+  end
 
   # resources
   proxy "#{path}/resources/index.html", "/templates/act/resources.html", :locals => {act: act}, :ignore => true
@@ -82,8 +91,10 @@ configure :openbylaws do
   for region in ActHelpers.active_regions
     next if region.microsite
 
-    # region pages
-    proxy "/za-#{region.code}/index.html", "/templates/region.html", locals: {region: region}, ignore: true
+    # region listing page
+    for lang in region.bylaws.languages
+      proxy "/za-#{region.code}/#{lang.code3}/index.html", "/templates/region.html", locals: {region: region, language: lang}, ignore: true
+    end
 
     region.bylaws.each { |bylaw| pages_for_act(bylaw) }
   end
@@ -101,8 +112,12 @@ configure :microsite do
   # Load the bylaws!
   ActHelpers.setup([region])
 
-  # region pages
-  proxy "/index.html", "/templates/region.html", locals: {region: region}, ignore: true
+  # region pages, for each language
+  for lang in region.bylaws.languages
+    path = '/index.html'
+    path = "/#{lang.code3}#{path}" unless lang.is_default
+    proxy path, "/templates/region.html", locals: {region: region, language: lang}, ignore: true
+  end
 
   region.bylaws.each { |bylaw| pages_for_act(bylaw) }
 

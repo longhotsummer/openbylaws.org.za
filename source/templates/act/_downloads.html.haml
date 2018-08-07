@@ -1,16 +1,16 @@
 %ul.list-unstyled.download-list.clearfix
   %li
-    %a.download.epub{href: act.epub_url, target: "_blank"}
+    %a.download.epub{href: act.local_epub_url, target: "_blank"}
       %span.title #{act.title}
       %span.format
         ePUB
   %li
-    %a.download.html{href: act.standalone_html_url, target: "_blank"}
+    %a.download.html{href: act.local_standalone_html_url, target: "_blank"}
       %span.title #{act.title}
       %span.format
         HTML
   %li
-    %a.download.pdf{href: act.pdf_url, target: "_blank"}
+    %a.download.pdf{href: act.local_pdf_url, target: "_blank"}
       %span.title #{act.title}
       %span.format
         PDF

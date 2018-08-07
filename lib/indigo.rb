@@ -1,12 +1,28 @@
 require 'forwardable'
+require 'fileutils'
 
 require 'hashie'
 require 'nokogiri'
 require 'moneta'
 require 'httpclient'
 require 'json'
+require 'digest'
 
 CACHE_SECS = 60 * 60 * 24
+
+LANGUAGES = Hashie::Mash.new({
+  'afr': {
+    code3: 'afr',
+    code2: 'af',
+    name: 'Afrikaans',
+  },
+  'eng': {
+    code3: 'eng',
+    code2: 'en',
+    name: 'English',
+    is_default: true,
+  },
+})
 
 class IndigoBase
   API_ENDPOINT = ENV['INDIGO_API_URL'] || "https://indigo.openbylaws.org.za/api"
@@ -30,7 +46,8 @@ class IndigoBase
     path = @url + path unless path.start_with?('http')
 
     cache = !params.include?(:nocache)
-    key = [path, params]
+    # hash a digest of the pathname otherwise it can become too long
+    key = [Digest::MD5.hexdigest(path), params]
     params.delete(:nocache)
 
     if cache
@@ -133,21 +150,33 @@ class IndigoDocument < IndigoComponent
   end
 
   def attachments
-    @attachments ||= JSON.parse(get(attachments_url))['results'].map do |a|
+    @attachments ||= JSON.parse(get('/media.json'))['results'].map do |a|
       IndigoAttachment.new(a['url'], a, self)
     end
   end
 
   def pdf_url
-    links.find { |k| k.title == 'PDF' }['href']
+    "#{@url}.pdf"
   end
 
   def epub_url
-    links.find { |k| k.title == 'ePUB' }['href']
+    "#{@url}.epub"
   end
 
   def standalone_html_url
     "#{@url}.html?standalone=1"
+  end
+
+  def local_pdf_url
+    "#{frbr_uri}/resources/#{language}.pdf"
+  end
+
+  def local_epub_url
+    "#{frbr_uri}/resources/#{language}.epub"
+  end
+
+  def local_standalone_html_url
+    "#{frbr_uri}/resources/#{language}.html"
   end
 
   def source_enacted
@@ -167,7 +196,6 @@ class IndigoDocument < IndigoComponent
       @events << HistoryEvent.new(assent_date, :assent) if assent_date
       @events << HistoryEvent.new(publication_date, :publication) if publication_date
       @events << HistoryEvent.new(commencement_date, :commencement) if commencement_date
-      @events << HistoryEvent.new(added_at, :created)
       @events << HistoryEvent.new(updated_at, :updated)
 
       for amendment in amendments
@@ -188,12 +216,26 @@ class IndigoDocument < IndigoComponent
     [publication_name, "no.", publication_number].join(" ")
   end
 
-  # Date first version added to the website. This is the earliest created_at date
-  # of all the amended versions.
-  def added_at
-    dates = [self.created_at]
-    dates += amended_versions.select(&:id).map { |v| @collection.fetch(v.id) }.compact.map(&:created_at)
-    dates.min
+  def languages
+    languages = Set.new(self.point_in_time(expression_date).expressions.map(&:language))
+    LANGUAGES.values.select { |lang| languages.include? lang.code3 }
+  end
+
+  def point_in_time(expression_date)
+    self.points_in_time.find { |p| p.date == expression_date }
+  end
+
+  # Get a new IndigoDocument corresponding to the expression at the given
+  # date and language.
+  def get_expression(language, date=nil)
+    pit = point_in_time(date || self.expression_date)
+    expr = pit.expressions.find { |e| e.language == language }
+
+    if expr
+      # fold expression info into this document's info, and return a new document
+      info = @info.clone.update(expr)
+      return IndigoDocument.new(info.url, info)
+    end
   end
 
   protected
@@ -210,8 +252,9 @@ class IndigoDocument < IndigoComponent
 end
 
 class IndigoAttachment < IndigoComponent
-  def media_url
-    return @parent.published_url + "/media/" + self.filename
+  def local_url
+    # TODO: LANG
+    @parent.frbr_uri + "/media/" + filename
   end
 end
 
@@ -226,7 +269,7 @@ class IndigoDocumentCollection < IndigoBase
   def initialize(endpoint)
     super(endpoint)
     response = JSON.parse(get('', {nocache: true}))['results']
-    @documents = response.map { |doc| IndigoDocument.new(doc['published_url'], doc, self) }
+    @documents = response.map { |doc| IndigoDocument.new(doc['url'], doc, self) }
   end
 
   # try to find a document with this id, otherwise try to fetch it remotely
@@ -237,9 +280,23 @@ class IndigoDocumentCollection < IndigoBase
     IndigoDocument.new(API_ENDPOINT + "/documents/#{id}", nil, self)
   end
 
-  def for_listing
+  def languages
+    Set.new(@documents.map(&:languages).flatten)
+  end
+
+  def for_listing(lang)
     # ignore documents that have the 'amendment' tag and are stubs
-    @documents.select { |d| !(d.stub and d.tags.include?('amendment')) }
+    docs = @documents.select { |d| !d.stub }
+
+    # favour documents in the given language
+    docs.map do |doc|
+      # is there a doc in the correct language?
+      if doc.language != lang
+        doc = doc.get_expression(lang) || doc
+      end
+
+      doc
+    end
   end
 end
 
@@ -252,5 +309,64 @@ class HistoryEvent
     @date = date
     @event = event
     @info = info
+  end
+end
+
+class IndigoMiddlemanExtension < ::Middleman::Extension
+  class DownloadResource < ::Middleman::Sitemap::Resource
+    def binary?
+      true
+    end
+
+    def download!
+      fname = self.source_file
+      url = options[:download_from]
+
+      @app.logger.info("Downloading #{url} to #{fname}")
+
+      FileUtils.mkdir(File.dirname(fname)) rescue Errno::EEXIST
+      File.open(fname, 'wb') { |f| f.write(IndigoBase.new(url).get) }
+    end
+  end
+
+  def before_build(builder)
+    add_files(builder.app.sitemap.resources)
+  end
+
+  def add_files(resources)
+    for region in ActHelpers.active_regions
+      for bylaw in region.bylaws
+        # strip leading and trailing slash
+        path = bylaw.frbr_uri.chomp('/')[1..-1]
+
+        for lang in bylaw.languages
+          expr = bylaw.get_expression(lang.code3)
+
+          # include PDF, HTML and ePUB downloads for all available languages
+          for ext, url in [['pdf', 'pdf_url'], ['epub', 'epub_url'], ['html', 'standalone_html_url']]
+            target = "#{path}/resources/#{lang.code3}.#{ext}"
+            source = app.source_dir.to_s + "/../downloads/" + target.gsub("/", "-")
+
+            res = DownloadResource.new(app.sitemap, target, source)
+            res.options[:download_from] = expr.send(url)
+            res.download!
+
+            resources.append(res)
+          end
+
+          # include attachments
+          for attachment in expr.attachments
+            target = "#{path}/#{lang.code3}/media/#{attachment.filename}"
+            source = app.source_dir.to_s + "/../downloads/media-" + target.gsub("/", "-")
+
+            res = DownloadResource.new(app.sitemap, target, source)
+            res.options[:download_from] = attachment.url
+            res.download!
+
+            resources.append(res)
+          end
+        end
+      end
+    end
   end
 end

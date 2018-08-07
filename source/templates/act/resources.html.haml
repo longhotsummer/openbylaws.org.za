@@ -42,9 +42,6 @@ layout: 'bylaw'
                 - when :commencement
                   By-law commences.
 
-                - when :created
-                  First added to OpenBylaws.org.za.
-
                 - when :publication
                   Published in 
                   %i #{act.full_publication}.
@@ -92,27 +89,6 @@ layout: 'bylaw'
             amendments applied.
 
           = partial 'support_download_button', locals: {file: act.source_current}
-
-      .download
-        %h4
-          %i.fa.fa-file-code-o
-          For developers
-
-        %p
-          Download a machine-friendly version of the current by-law.
-
-        %ul.fa-ul
-          %li
-            %i.fa.fa-li.fa-download
-            %a{href: act.url + ".json"} Download JSON
-          %li
-            %i.fa.fa-li.fa-download
-            %a{href: act.url + ".xml"} Download Akoma Ntoso XML
-
-        %p
-          #{link_to 'Akoma Ntoso', 'http://www.akomantoso.org/'} is an
-          XML format for legislative documents.
-
 
     .col-sm-4
       .download

@@ -31,7 +31,7 @@ layout: layout
         .row
           - for region in chunk
             .col-sm-4
-              %a.placard{class: region.code, href: "/za-#{region.code}/", style: "background-image: url(/img/municipalities/#{region.code}-placard.jpg)"}
+              %a.placard{class: region.code, href: "/za-#{region.code}/eng/", style: "background-image: url(/img/municipalities/#{region.code}-placard.jpg)"}
                 %h2&= region.name
 
       - regions.values.select { |r| r.microsite }.sort_by { |r| r.name }.each_slice(3) do |chunk|
