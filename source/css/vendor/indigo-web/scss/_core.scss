@@ -51,19 +51,24 @@
   }
 
   /* block containers */
-  .akn-akomaNtoso,
   .akn-act,
-  .akn-coverPage,
-  .akn-preface,
-  .akn-preamble,
-  .akn-conclusions,
-  .akn-chapter,
-  .akn-part,
-  .akn-section,
-  .akn-subsection,
+  .akn-akomaNtoso,
+  .akn-article,
   .akn-blockList,
+  .akn-chapter,
+  .akn-conclusions,
+  .akn-coverPage,
+  .akn-division,
   .akn-heading,
-  .akn-subheading {
+  .akn-list,
+  .akn-part,
+  .akn-point,
+  .akn-preamble,
+  .akn-preface,
+  .akn-section,
+  .akn-subdivision,
+  .akn-subheading,
+  .akn-subsection {
     display: block;
   }
 
@@ -77,9 +82,12 @@
     }
   }
 
+  .akn-article,
   .akn-chapter,
+  .akn-division,
   .akn-part,
-  .akn-section {
+  .akn-section,
+  .akn-subdivision {
     margin-bottom: $akn-section-spacing;
   }
 
@@ -150,10 +158,29 @@
     font-style: italic;
   }
 
+  img {
+    max-width: 100%;
+  }
+
   /* generated custom elements */
   .coverpage {
     text-align: center;
     margin-bottom: $akn-section-spacing;
+
+    .notice-list {
+      margin: 0px;
+      padding: 0px;
+
+      li {
+        list-style: none;
+      }
+    }
+
+    .assent-date,
+    .commencement-date {
+      margin-bottom: $akn-para-spacing;
+      font-weight: bold;
+    }
 
     .amendment-list {
       margin-top: $akn-section-spacing;
@@ -164,12 +191,6 @@
       list-style: none;
       margin-bottom: $akn-para-spacing;
       font-style: italic;
-    }
-
-    .assent-date,
-    .commencement-date {
-      margin-bottom: $akn-para-spacing;
-      font-weight: bold;
     }
   }
 }
