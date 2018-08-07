@@ -91,8 +91,12 @@ configure :openbylaws do
   for region in ActHelpers.active_regions
     next if region.microsite
 
-    # region pages
-    proxy "/za-#{region.code}/index.html", "/templates/region.html", locals: {region: region}, ignore: true
+    # region listing page
+    for lang in region.bylaws.languages
+      path = "/za-#{region.code}"
+      path = "#{path}/#{lang.code3}" unless lang.is_default
+      proxy "#{path}/index.html", "/templates/region.html", locals: {region: region, language: lang}, ignore: true
+    end
 
     region.bylaws.each { |bylaw| pages_for_act(bylaw) }
   end

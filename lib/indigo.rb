@@ -286,7 +286,7 @@ class IndigoDocumentCollection < IndigoBase
 
   def for_listing(lang)
     # ignore documents that have the 'amendment' tag and are stubs
-    docs = @documents.select { |d| !(d.stub and d.tags.include?('amendment')) }
+    docs = @documents.select { |d| !d.stub }
 
     # favour documents in the given language
     docs.map do |doc|
