@@ -93,9 +93,7 @@ configure :openbylaws do
 
     # region listing page
     for lang in region.bylaws.languages
-      path = "/za-#{region.code}"
-      path = "#{path}/#{lang.code3}" unless lang.is_default
-      proxy "#{path}/index.html", "/templates/region.html", locals: {region: region, language: lang}, ignore: true
+      proxy "/za-#{region.code}/#{lang.code3}/index.html", "/templates/region.html", locals: {region: region, language: lang}, ignore: true
     end
 
     region.bylaws.each { |bylaw| pages_for_act(bylaw) }
