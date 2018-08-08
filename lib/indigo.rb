@@ -329,8 +329,8 @@ class IndigoMiddlemanExtension < ::Middleman::Extension
     end
   end
 
-  def before_build(builder)
-    add_files(builder.app.sitemap.resources)
+  def manipulate_resource_list(resources)
+    app.config[:mode] == :build ? add_files(resources) : resources
   end
 
   def add_files(resources)
@@ -368,5 +368,7 @@ class IndigoMiddlemanExtension < ::Middleman::Extension
         end
       end
     end
+
+    resources
   end
 end
