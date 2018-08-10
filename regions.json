@@ -25,7 +25,8 @@
     "bylaws-url": "http://www.capeagulhas.org/resource-category/policies-and-laws",
     "website-url": "http://www.capeagulhas.org/",
     "bucket": "capeagulhas.openbylaws.org.za",
-    "microsite": true
+    "microsite": true,
+    "ga": "UA-123714032-1"
   },
   "wc011": {
     "code": "wc011",
@@ -34,6 +35,7 @@
     "bylaws-url": "http://www.matzikamamun.co.za/resource-category/policies-and-laws",
     "website-url": "http://www.matzikamamun.co.za/",
     "bucket": "matzikama.openbylaws.org.za",
-    "microsite": true
+    "microsite": true,
+    "ga": "UA-123714032-2"
   }
 }
