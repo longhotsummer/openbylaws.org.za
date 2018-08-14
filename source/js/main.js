@@ -11,7 +11,7 @@ $(function() {
   // social buttons
   $('.fb-share').on('click', function(e) {
     e.preventDefault();
-    var url = $(this).data('href');
+    var url = $(this).data('href') || location.toString();
 
     window.open("https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(url),
                 "share", "width=600, height=400, scrollbars=no");
@@ -20,7 +20,7 @@ $(function() {
 
   $('.twitter-share').on('click', function(e) {
     e.preventDefault();
-    var url = $(this).data('href');
+    var url = $(this).data('href') || location.toString();
 
     window.open("https://twitter.com/intent/tweet?" +
                 "text=" + encodeURIComponent($(this).data('text')) +
