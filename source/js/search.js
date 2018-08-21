@@ -28,7 +28,7 @@ ByLawSearch = function() {
       params.frbr_uri__startswith = '/za-' + region_code + '/';
     }
 
-    $.getJSON('https://indigo.openbylaws.org.za/api/search/works', params, function(response, textStatus, jqXHR) {
+    $.getJSON('https://srbeugae08.execute-api.eu-west-1.amazonaws.com/default/searchOpenBylaws', params, function(response, textStatus, jqXHR) {
       ladda.stop();
       console.log(response);
 
