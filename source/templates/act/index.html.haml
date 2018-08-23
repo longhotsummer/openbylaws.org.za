@@ -3,7 +3,7 @@ layout: 'bylaw'
 ---
 
 - content_for :title do
-  = act.title
+  #{act.title} - #{region.name} By-laws
 
 - content_for :lang_links do
   - for lang in act.languages
