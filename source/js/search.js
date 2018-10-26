@@ -45,9 +45,9 @@ ByLawSearch = function() {
         return result;
       });
       response.hits = {hits: hits};
-      response.no_region = region_code == "";
-      response.regions = []
-      for (code in REGIONS) {
+      response.no_region = region_code === "";
+      response.regions = [];
+      for (var code in REGIONS) {
         var region = REGIONS[code];
         region.active = code == region_code;
         response.regions.push(region);

@@ -7,7 +7,11 @@ title: Search - Open By-laws South Africa
 
 .clearfix
   %form#search.form-horizontal(action="/search.html" method="get")
-    %input(type="hidden" name="region" value="")
+    - if config[:microsite]
+      %input{type: "hidden", name: "region", value: config[:region]['code']}
+    - else
+      %input(type="hidden" name="region" value="")
+
     .input-group
       %input.form-control#query(type="text" name="q" autofocus="autofocus" placeholder="What are you looking for?")
       .input-group-btn
@@ -24,15 +28,16 @@ title: Search - Open By-laws South Africa
   %script(id="search-result-tmpl" type="x-tmpl-mustache")
 
     .row
-      .col-sm-3
-        .list-group
-          %a.list-group-item(href="#" class="{{#no_region}}active{{/no_region}}")
-            %span All Cities
+      - unless config[:microsite]
+        .col-sm-3
+          .list-group
+            %a.list-group-item(href="#" class="{{#no_region}}active{{/no_region}}")
+              %span All Cities
 
-          {{#regions}}
-          %a.list-group-item(href="#" class="{{#active}}active{{/active}}" data-code="{{ code }}")
-            %span {{name}}
-          {{/regions}}
+            {{#regions}}
+            %a.list-group-item(href="#" class="{{#active}}active{{/active}}" data-code="{{ code }}")
+              %span {{name}}
+            {{/regions}}
 
       .col-sm-9
         #help.hidden
