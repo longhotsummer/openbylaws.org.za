@@ -20,12 +20,14 @@ ByLawSearch = function() {
 
     params = {
       q: q,
-      draft: 'false',
       country: 'za',
     };
     
     if (region_code) {
       params.frbr_uri__startswith = '/za-' + region_code + '/';
+      if ($('body').hasClass('microsite')) {
+        params.o = REGIONS[region_code].bucket;
+      }
     }
 
     $.getJSON('https://srbeugae08.execute-api.eu-west-1.amazonaws.com/default/searchOpenBylaws', params, function(response, textStatus, jqXHR) {
