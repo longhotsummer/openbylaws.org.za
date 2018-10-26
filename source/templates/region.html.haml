@@ -32,6 +32,14 @@
             %li
               %a{href: lang.is_default ? "/" : "/#{lang.code3}/", class: language == lang ? 'text-muted': ''}&= lang.name
 
+    %form(action="/search.html" method="get" role="search")
+      %input{type: "hidden", name: "region", value: region.code}
+      .input-group
+        %input.form-control(name="q" placeholder="Search the by-laws" type="text")
+        .input-group-btn
+          %button.btn.btn-primary(type="submit") Search
+      %br
+
     %table.table.table-condensed.table-hover
       %thead
         %tr

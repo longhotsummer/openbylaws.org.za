@@ -19,4 +19,9 @@
       #navbar-collapse.collapse.navbar-collapse
         %ul.nav.navbar-nav.navbar-right
           %li
+            %form(action="/search.html" class="navbar-form navbar-right" method="get" role="search")
+              %input(class="form-control" name="q" placeholder="Search by-laws" type="text")
+              - if config[:microsite]
+                %input{type: "hidden", name: "region", value: config[:region]['code']}
+          %li
             %a.website-link{href: config[:region]['website-url']} #{config[:region].name} website →
