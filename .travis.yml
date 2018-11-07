@@ -11,8 +11,8 @@ env:
     # INDIGO_API_AUTH_TOKEN
     - secure: "ZOGkfPjuv17jPq1ptsivsur+6+IpcE5chXCQ+6K166sTEwTUmRHQeY/e2MrOEKUDLSBVqTLOeJ2v0PdQFCQ9X0GMgNnDMShKY6shAxO/Iy8ZrOQss8eBbLsM1wctQgNY7DmDhXwpO3/1s+aMhBoojKOSIfd6KrURlVA83knkcAU="
   matrix:
-    - REGION=wc033
+    - REGION=ec443
     - REGION=wc011
-    - REGION=
+    - REGION=wc033
 script:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then bundle exec rake deploy; else bundle exec rake build; fi
