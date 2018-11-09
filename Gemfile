@@ -13,6 +13,3 @@ gem "middleman", "~>4.2.1"
 gem 'hashie', '~> 3.4'
 gem 'middleman-s3_sync', "~> 4.0.3"
 gem 'haml', '~> 4'
-
-gem 'execjs'
-gem 'therubyracer'
