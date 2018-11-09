@@ -119,6 +119,8 @@ class ActHelpers < Middleman::Extension
         "http://www.westerncape.gov.za/general-publication/provincial-gazettes-#{year}"
       when 'eth'
         'https://www.lawsoc.co.za/default.asp?id=1753'
+      when 'ec443'
+        'http://www.gpwonline.co.za/Gazettes/Pages/Provincial-Gazettes-Eastern-Cape.aspx'
       end
     end
 
