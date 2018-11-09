@@ -14,5 +14,6 @@ env:
     - REGION=ec443
     - REGION=wc011
     - REGION=wc033
+    - REGION=
 script:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then bundle exec rake deploy; else bundle exec rake build; fi
