@@ -90,7 +90,4 @@
       %a{href: region['bylaws-url']}
         %img{src: region.logo}
     %p
-      - if config[:microsite]
-        %a{href: region['website-url']}&= "#{region.name} Municipality Website"
-      - else
-        %a{href: region['bylaws-url']}&= "#{region.name} By-laws Website"
+      %a{href: region['bylaws-url']}&= "#{region.name} By-laws Website"

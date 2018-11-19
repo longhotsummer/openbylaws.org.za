@@ -17,15 +17,10 @@
 
     %meta{property: "og:title", content: content_for?(:title) ? yield_content(:title) : current_page.data.title}
 
-    - if config[:microsite]
-      %meta{property: "og:site_name", content: "#{config[:region].name} By-laws"}
-      %meta{property: "og:description", content: content_for?(:meta_description) ? yield_content(:meta_description) : "#{config[:region].name}'s by-laws: freely available, easy to read and share."}
-      %meta{property: "description", content: content_for?(:meta_description) ? yield_content(:meta_description) : "#{config[:region].name}'s by-laws: freely available, easy to read and share."}
-    - else
-      %meta(property="og:site_name" content="Open By-laws South Africa")
-      %meta{property: "og:title", content: content_for?(:title) ? yield_content(:title) : current_page.data.title}
-      %meta{property: "og:description", content: content_for?(:meta_description) ? yield_content(:meta_description) : "South Africa's by-laws: freely available, easy to read and share."}
-      %meta{property: "description", content: content_for?(:meta_description) ? yield_content(:meta_description) : "South Africa's by-laws: freely available, easy to read and share."}
+    %meta(property="og:site_name" content="Open By-laws South Africa")
+    %meta{property: "og:title", content: content_for?(:title) ? yield_content(:title) : current_page.data.title}
+    %meta{property: "og:description", content: content_for?(:meta_description) ? yield_content(:meta_description) : "South Africa's by-laws: freely available, easy to read and share."}
+    %meta{property: "description", content: content_for?(:meta_description) ? yield_content(:meta_description) : "South Africa's by-laws: freely available, easy to read and share."}
 
     - if content_for?(:head)
       = yield_content(:head)
@@ -40,25 +35,19 @@
       %script(src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js")
       %script(src="//oss.maxcdn.com/respond/1.4.2/respond.min.js")
 
-  %body{class: config[:microsite] ? 'microsite' : ''}
+  %body
     /[if lt IE 7]
       %p.chromeframe
         You are using an outdated browser.
         %a(href="http://browsehappy.com/") Upgrade your browser today
         to better experience this site.
 
-    - if config[:microsite]
-      = partial 'microsite/header'
-    - else
-      = partial 'header.html.haml'
+    = partial 'header.html.haml'
 
     #main-content
       = yield
 
-    - if config[:microsite]
-      = partial 'microsite/footer'
-    - else
-      = partial 'footer.html.haml'
+    = partial 'footer.html.haml'
 
     = javascript_include_tag '/js/vendor/jquery-1.10.2.min.js'
     = javascript_include_tag '/js/bootstrap.min.js'
