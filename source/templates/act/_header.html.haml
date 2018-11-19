@@ -1,7 +1,6 @@
-- unless config[:microsite]
-  %ol.list-inline.breadcrumbs.region
-    %li
-      %a(href="/za-#{act.locality}/#{act.language}/")&= regions[act.locality].name
+%ol.list-inline.breadcrumbs.region
+  %li
+    %a(href="/za-#{act.locality}/#{act.language}/")&= regions[act.locality].name
 
 %h1
   %a{href: act_url(act)}&= act.title

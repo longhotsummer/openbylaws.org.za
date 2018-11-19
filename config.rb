@@ -80,47 +80,19 @@ def pages_for_act(act)
   proxy "#{path}/resources/index.html", "/templates/act/resources.html", :locals => {act: act}, :ignore => true
 end
 
-configure :openbylaws do
-  # openbylaws.org.za site
-  puts "Building openbylaws.org.za"
-  config[:microsite] = false
+# openbylaws.org.za site
+puts "Building openbylaws.org.za"
 
-  # Load the bylaws!
-  ActHelpers.setup(ActHelpers.general_regions)
+# Load the bylaws!
+ActHelpers.setup(ActHelpers.general_regions)
 
-  for region in ActHelpers.active_regions
-    next if region.microsite
+for region in ActHelpers.active_regions
+  next if region.microsite
 
-    # region listing page
-    for lang in region.bylaws.languages
-      proxy "/za-#{region.code}/#{lang.code3}/index.html", "/templates/region.html", locals: {region: region, language: lang}, ignore: true
-    end
-
-    region.bylaws.each { |bylaw| pages_for_act(bylaw) }
-  end
-end
-
-configure :microsite do
-  # municipality microsites
-  region = ENV['REGION']
-  region = ActHelpers.regions[region]
-  config[:microsite] = true
-  config[:region] = region
-
-  puts "Building microsite for #{region.code} - #{region.name}"
-
-  # Load the bylaws!
-  ActHelpers.setup([region])
-
-  # region pages, for each language
+  # region listing page
   for lang in region.bylaws.languages
-    path = '/index.html'
-    path = "/#{lang.code3}#{path}" unless lang.is_default
-    proxy path, "/templates/region.html", locals: {region: region, language: lang}, ignore: true
+    proxy "/za-#{region.code}/#{lang.code3}/index.html", "/templates/region.html", locals: {region: region, language: lang}, ignore: true
   end
 
   region.bylaws.each { |bylaw| pages_for_act(bylaw) }
-
-  # s3 bucket
-  s3_sync_config.bucket = region.bucket
 end

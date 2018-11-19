@@ -3,19 +3,11 @@ layout: false
 ---
 <?xml version='1.0' encoding='utf-8' ?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <% if config[:microsite] %>
-    <title><%= config[:region].name %> By-laws</title>
-    <subtitle><%= config[:region].name %> By-laws: freely available, easy to read and share</subtitle>
-    <id>https://<%= config[:region].bucket %></id>
-    <link href="https://<%= config[:region].bucket %>/atom.xml" rel="self"/>
-    <link href="https://<%= config[:region].bucket %>/"/>
-  <% else %>
-    <title>Open By-laws South Africa</title>
-    <subtitle>South Africa's by-laws: freely available, easy to read and share</subtitle>
-    <id>https://openbylaws.org.za/</id>
-    <link href="https://openbylaws.org.za/atom.xml" rel="self"/>
-    <link href="https://openbylaws.org.za/"/>
-  <% end %>
+  <title>Open By-laws South Africa</title>
+  <subtitle>South Africa's by-laws: freely available, easy to read and share</subtitle>
+  <id>https://openbylaws.org.za/</id>
+  <link href="https://openbylaws.org.za/atom.xml" rel="self"/>
+  <link href="https://openbylaws.org.za/"/>
 
   <updated><%=h all_bylaws.map(&:updated_at).max.iso8601 %></updated>
 
