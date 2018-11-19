@@ -1,6 +1,10 @@
-# Open By-laws South Africa [![Build Status](https://travis-ci.org/longhotsummer/openbylaws.org.za.svg)](http://travis-ci.org/longhotsummer/openbylaws.org.za)
+# Microsites for Municipal By-laws in South Africa [![Build Status](https://travis-ci.org/OpenUpSA/bylaws-microsites.svg)](http://travis-ci.org/OpenUpSA/bylaws-microsites)
 
-This is the source code for the [openbylaws.org.za](http://openbylaws.org.za) website and related microsites.
+This is the source code for OpenUp's by-laws microsites:
+
+* https://capeagulhas.openbylaws.org.za/
+* https://matzikama.openbylaws.org.za/
+* https://mbizana.openbylaws.org.za/
 
 The website is a [Middleman](http://middlemanapp.com) app that pulls by-law data from the [Indigo](https://github.com/OpenUpSA/indigo) service running at [indigo.openbylaws.org.za](http://indigo.openbylaws.org.za) and builds a static website. The website is then uploaded to Amazon S3 and served over HTTPS using an Amazon Cloudfront distribution.
 
@@ -12,16 +16,16 @@ To setup a local development environment:
 
 1. clone this repo
 2. install dependencies: `bundle install`
-3. run the server: `middleman -e openbylaws`
+3. get the Indigo Auth token from [indigo.openbylaws.org.za](https://indigo.openbylaws.org.za)
+3. run the server: `INDIGO_API_AUTH_TOKEN=xxx REGION=wc033 middleman`
 
 The website pulls all data from [indigo.openbylaws.org.za](http://indigo.openbylaws.org.za).
 It caches responses from Indigo in the `_cache` directory for 24 hours which makes local development
 simpler. The list of by-laws is never cached. If you know your cache is out of date, just `rm -rf _cache`.
 
-The app can build two different types of sites, using the `-e` argument.
+The app builds one microsites at a time, depending on the `REGION` environment variable:
 
-1. Build the main openbylaws.org.za website with: `middleman -e openbylaws`
-2. Build a municipality microsite with `-e microsite` and set the `REGION` environment variable to a municipality code: `REGION=wc033 middleman -e microsite`
+    INDIGO_AUTH_TOKEN=xxx REGION=wc033 middleman
 
 # Building and deploying
 
@@ -29,7 +33,7 @@ The website can be built using:
 
     rake build
 
-The website is automatically built and deployed by [travis-ci.org](https://travis-ci.org/longhotsummer/openbylaws.org.za) when changes are pushed to the `master` branch.
+The website is automatically built and deployed by [travis-ci.org](https://travis-ci.org/OpenUpSA/bylaws-microsites) when changes are pushed to the `master` branch.
 
 To upload the built site by syncing the `build` directory with S3,
 put the S3 creds in `.s3_sync` and then run:
@@ -51,13 +55,6 @@ To build and sync the entire site just like Travis does (ie. clean, build and sy
 5. Add a `REGION=<code>` entry to the `matrix` element of `.travis.yml` so that travis builds the microsite.
 6. Create an appropriate S3 bucket in Greg's AWS S3 Account: `<name>.openbylaws.org.za`
 7. Create a corresponding cloudfront distribution, and create a DNS entry in Route 53.
-
-## Regular municipalities without a microsite
-
-1. Add the municipality to `regions.json`, copying one of the existing regions **that doesn't have a microsite attribute.**
-2. Use the municipality code as per https://en.wikipedia.org/wiki/List_of_municipalities_in_South_Africa
-3. Source a placard image and save it as `/img/municipalities/<code>-placard.jpg`
-4. Source the municipality's logo and save it as `/img/municipalities/<code>-logo.png`
 
 # Architecture
 
