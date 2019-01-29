@@ -25,7 +25,7 @@ LANGUAGES = Hashie::Mash.new({
 })
 
 class IndigoBase
-  API_ENDPOINT = ENV['INDIGO_API_URL'] || "https://indigo.openbylaws.org.za/api"
+  API_ENDPOINT = ENV['INDIGO_API_URL'] || "https://api.laws.africa/v1"
   AUTH_TOKEN = ENV['INDIGO_API_AUTH_TOKEN']
 
   attr_accessor :api, :url
