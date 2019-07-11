@@ -217,7 +217,13 @@ class IndigoDocument < IndigoComponent
   end
 
   def languages
-    languages = Set.new(self.point_in_time(expression_date).expressions.map(&:language))
+    if stub
+      languages = [language]
+    else
+      pit = self.point_in_time(expression_date)
+      raise "Unable to find point in time for #{expression_date} for #{frbr_uri}" if pit.nil?
+      languages = Set.new(pit.expressions.map(&:language))
+    end
     LANGUAGES.values.select { |lang| languages.include? lang.code3 }
   end
 
@@ -228,7 +234,9 @@ class IndigoDocument < IndigoComponent
   # Get a new IndigoDocument corresponding to the expression at the given
   # date and language.
   def get_expression(language, date=nil)
-    pit = point_in_time(date || self.expression_date)
+    date = date || self.expression_date
+    pit = point_in_time(date)
+    raise "Unable to find point in time for #{date} for #{frbr_uri}" if pit.nil?
     expr = pit.expressions.find { |e| e.language == language }
 
     if expr
@@ -335,7 +343,7 @@ class IndigoMiddlemanExtension < ::Middleman::Extension
 
   def add_files(resources)
     for region in ActHelpers.active_regions
-      for bylaw in region.bylaws
+      for bylaw in region.bylaws.reject(&:stub)
         # strip leading and trailing slash
         path = bylaw.frbr_uri.chomp('/')[1..-1]
 
