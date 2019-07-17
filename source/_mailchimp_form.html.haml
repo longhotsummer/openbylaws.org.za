@@ -1,8 +1,8 @@
 %form#subscribe(action="//openbylaws.us8.list-manage.com/subscribe/post?u=8d5d7d360e06d41a55d4de581&amp;id=39dbd074dc" method="post" target="_blank")
   .input-group
     %input.form-control#mce-EMAIL(type="email" name="EMAIL" required="required" placeholder="Your email address")
-    %span.input-group-btn
-      %input.btn.btn-default.full-xs(type="submit" value="Sign up" name="subscribe")
+    .input-group-append
+      %button.btn.btn-primary(type="submit" name="subscribe") Sign up
 
   -# real people should not fill this in and expect good things - do not remove this or risk form bot signups
   %div(style="position: absolute; left: -5000px;")

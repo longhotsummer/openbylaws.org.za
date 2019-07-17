@@ -13,6 +13,11 @@
     %meta(name="apple-mobile-web-app-status-bar-style" content="default")
     %link(rel="icon" type="image/png" href="/favicon.png")
     %link(rel="apple-touch-icon" sizes="152x152" href="/img/logo-152.png")
+
+    %link(href="https://fonts.googleapis.com/css?family=Merriweather|Source+Sans+Pro:400,700" rel="stylesheet")
+    %link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous")
+    %link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous")
+    
     %meta(property="og:image" content="https://openbylaws.org.za/img/logo-lg-white.png")
 
     %meta{property: "og:title", content: content_for?(:title) ? yield_content(:title) : current_page.data.title}
@@ -31,17 +36,7 @@
     - if content_for?(:lang_links)
       = yield_content(:lang_links)
 
-    /[if lt IE 9]
-      %script(src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js")
-      %script(src="//oss.maxcdn.com/respond/1.4.2/respond.min.js")
-
   %body
-    /[if lt IE 7]
-      %p.chromeframe
-        You are using an outdated browser.
-        %a(href="http://browsehappy.com/") Upgrade your browser today
-        to better experience this site.
-
     = partial 'header.html.haml'
 
     #main-content
@@ -49,10 +44,11 @@
 
     = partial 'footer.html.haml'
 
-    = javascript_include_tag '/js/vendor/jquery-1.10.2.min.js'
-    = javascript_include_tag '/js/bootstrap.min.js'
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
     = javascript_include_tag '/js/main.js'
-    = javascript_include_tag '/js/help.js'
     = javascript_include_tag '/js/bylaw.js'
 
     - if content_for?(:footer)

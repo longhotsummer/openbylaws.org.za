@@ -12,7 +12,7 @@
     %link{rel: "alternate", hreflang: lang.code2, href: lang.is_default ? "/" : "/#{lang.code3}/"}
 
 .row
-  .col-sm-9
+  .col-md-9
     - if region.partial
       .alert.alert-warning
         %h4 Please note
@@ -36,12 +36,12 @@
       %input{type: "hidden", name: "region", value: region.code}
       .input-group
         %input.form-control(name="q" placeholder="Search the by-laws" type="text")
-        .input-group-btn
+        .input-group-append
           %button.btn.btn-primary(type="submit") Search
       %br
 
-    %table.table.table-condensed.table-hover
-      %thead
+    %table.table.table-sm.table-hover
+      %thead.thead-light
         %tr
           %th Title
           %th First Published
@@ -54,10 +54,10 @@
             %td&= bylaw.year
 
     - if region.missing
-      %h4 Coming soon
+      %h4.mt-4 Coming soon
 
-      %table.table.table-condensed.table-hover
-        %thead
+      %table.table.table-sm.table-hover
+        %thead.thead-light
           %tr
             %th Title
             %th First Published
@@ -69,9 +69,9 @@
 
     - repealed = region.bylaws.for_listing(language.code3).select { |b| b.repealed? }
     - if not repealed.empty?
-      %h4 Repealed
-      %table.table.table-condensed.table-hover
-        %thead
+      %h4.mt-4 Repealed
+      %table.table.table-sm.table-hover
+        %thead.thead-light
           %tr
             %th Title
             %th First Published
@@ -84,7 +84,7 @@
               %td&= bylaw.year
               %td&= bylaw.repeal.date.year
 
-  .col-sm-3.resources
+  .col-md-3.resources
     %h3 More resources
     %p
       %a{href: region['bylaws-url']}

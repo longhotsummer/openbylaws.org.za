@@ -13,11 +13,10 @@ layout: 'bylaw'
   = partial 'nav', locals: {act: act, tab: 'content'}
 
   .row
-    .col-sm-4
+    .col-md-4
       = partial 'left_nav', locals: {act: act}
 
-    .col-sm-8
-      = partial 'bylaw_help'
+    .col-md-8
       %article.akoma-ntoso.akoma-ntoso-container
         = partial 'coverpage', locals: {act: act}
         = act.html
