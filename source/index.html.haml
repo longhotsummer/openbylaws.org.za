@@ -8,7 +8,7 @@ layout: layout
   %link(rel="alternate" type="application/atom+xml" href="atom.xml")
 
 #main-page
-  %section.welcome.py-4
+  %section.welcome.py-5
     .container
       .row
         .col-sm-7
@@ -23,10 +23,8 @@ layout: layout
           .d-none.d-sm-block
             %img.logo.img-fluid(src="/img/logo-lg.png")
 
-  %section.places.py-4
+  %section.places.py-5
     .container
-      %h2 Explore your municipality's by-laws
-
       - regions.values.reject { |r| r.microsite }.sort_by { |r| r.name }.each_slice(3) do |chunk|
         .row
           - for region in chunk
@@ -41,61 +39,59 @@ layout: layout
               %a.placard{class: region.code, href: "https://#{region.bucket}/", style: "background-image: url(/img/municipalities/#{region.code}-placard.jpg)"}
                 %h3&= region.name
 
-  %section.about
+  %section.about.py-5
     .container
+      %h3 Anyone can help to make the law freely available
+
       .row
-        .col-sm-8
+        .col-md-8
           %p.lead
-            Open By-laws is a community effort to make our by-laws:
+            Open By-laws is maintained by the Laws.Africa contributor community. Anyone can join the community and help to make African law freely available. You can help by adding new by-laws or keeping them up to date. Laws.Africa offers training and support.
 
-          %p.lead
-            %strong Freely-available
-            because everyone has a right to know the law,
+          %p
+            %a(href="https://laws.africa/faq") About the Laws.Africa Contributor Community →
 
-          %p.lead
-            %strong Easy to read
-            so that they're easier to understand,
-
-          %p.lead
-            %strong Easy to share
-            to spread knowledge and understanding.
-
-          %p.lead
-            #{link_to 'Find out more →', "/about.html"}
-
-        .col-sm-4
-          %p.lead
-            %strong Join our community
-            and help liberate by-laws across the country.
-
+        .col-md-4
           .social-buttons
             %p
-              %a.twitter(href="https://twitter.com/OpenByLawsZA" target="_blank")
-                %i.fa.fa-twitter
-                Follow @OpenByLawsZA
+              %a(href="https://twitter.com/OpenByLawsZA" target="_blank")
+                %i.fab.fa-twitter
+                Follow @OpenByLawsZA on Twitter
             %p
-              %a.facebook(href="https://www.facebook.com/openbylaws.org.za" target="_blank")
-                %i.fa.fa-facebook
-                Like us on Facebook
+              %a(href="https://www.facebook.com/openbylaws.org.za" target="_blank")
+                %i.fab.fa-facebook
+                Open By-laws on Facebook
 
           %h4 Sign up to our mailing list
 
           %p For updates on new by-laws, workshops and other news.
           = partial 'mailchimp_form.html.haml'
 
-  %section
+  %section.my-5
+    .container
+      .row
+        .col-md-9
+          %h3 Powered by Laws.Africa
+          %p.lead
+            Open By-laws is powered by the Laws.Africa legislation commons of African legislation.
+
+          %p.lead
+            <a href="https://laws.africa">Laws.Africa</a> is a non-profit organisation that curates the African legislation commons and builds technology to enable free access to the law.
+
+        .col-md-3.text-center.align-self-center
+          %img.my-3(src="/img/lawsafrica-logo.png" style="width: 150px" alt="Laws.Africa logo")
+
+  %section.my-5
     .container
       .row
         .col-md-8
-          %h2 We want to add your municipality
+          %h3 Use the by-laws in your app or website
 
           %p.lead
-            If you're passionate about by-laws in your municipality, we want to work with you to make them
-            available to your community.
+            Include the by-laws in your research, website, or app and build powerful interactive solutions for your users.
 
           %p.lead
-            Please email us at #{link_to 'hello@openbylaws.org.za', 'mailto:hello@openbylaws.org.za'}.
+            The by-laws are available as structured, machine-friendly Akoma Ntoso XML through the Laws.Africa Content API. Access rich content in HTML, PDF and ePub, and detailed metadata including publication and amendment information.
 
-  %section
-    .container
-      = partial 'partner_logos.html.haml'
+          %p
+            %a(href="https://laws.africa/api/")About the Laws.Africa Content API →
