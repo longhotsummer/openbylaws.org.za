@@ -41,23 +41,6 @@ layout: layout
               %a.placard{class: region.code, href: "https://#{region.bucket}/", style: "background-image: url(/img/municipalities/#{region.code}-placard.jpg)"}
                 %h2&= region.name
 
-  %section.help
-    .container
-      %h2 Get help with a specific issue
-      .row.placards
-        .col-sm-3
-          %a.placard.ads(href="/help.html?issue=ads")
-            %h3 Advertising
-        .col-sm-3
-          %a.placard.animals(href="/help.html?issue=animals")
-            %h3 Animals and pets
-        .col-sm-3
-          %a.placard.neighbours(href="/help.html?issue=neighbours")
-            %h3 Neighbourhood activities
-        .col-sm-3
-          %a.placard.noise(href="/help.html?issue=noise")
-            %h3 Noise and disturbances
-
   %section.about
     .container
       .row
