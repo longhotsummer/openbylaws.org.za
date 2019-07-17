@@ -25,7 +25,7 @@ $(function() {
     placement: 'top',
     trigger: 'hover',
     html: true,
-    template: '<div class="popover term-definition"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content akoma-ntoso"></div></div>',
+    template: '<div class="popover term-definition" role="tooltip"><div class="arrow"></div><h3 class="popover-header"></h3><div class="popover-body akoma-ntoso"></div></div>',
     delay: { show: 500 },
     title: function() {
       var term_id = $(this).data('refersto');
