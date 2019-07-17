@@ -23,10 +23,10 @@
 
   .term-link {
     cursor: pointer;
-    color: #337ab7;
+    color: #007bff;
 
     &:hover {
-      color: #23527c;
+      color: #007bff;
       text-decoration: underline;
     }
   }
@@ -48,6 +48,7 @@
 
 .popover.term-definition {
   max-width: 400px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
 
   .akn-term {
     color: inherit;
