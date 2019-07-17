@@ -32,14 +32,14 @@ layout: layout
           - for region in chunk
             .col-sm-4
               %a.placard{class: region.code, href: "/za-#{region.code}/eng/", style: "background-image: url(/img/municipalities/#{region.code}-placard.jpg)"}
-                %h2&= region.name
+                %h3&= region.name
 
       - regions.values.select { |r| r.microsite }.sort_by { |r| r.name }.each_slice(3) do |chunk|
         .row
           - for region in chunk
             .col-sm-4
               %a.placard{class: region.code, href: "https://#{region.bucket}/", style: "background-image: url(/img/municipalities/#{region.code}-placard.jpg)"}
-                %h2&= region.name
+                %h3&= region.name
 
   %section.about
     .container
