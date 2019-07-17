@@ -25,7 +25,7 @@ title: Search - Open By-laws South Africa
   %script(id="search-result-tmpl" type="x-tmpl-mustache")
 
     .row
-      .col-sm-3
+      .col-md-3
         .list-group
           %a.list-group-item(href="#" class="{{#no_region}}active{{/no_region}}")
             %span All Cities
@@ -35,21 +35,7 @@ title: Search - Open By-laws South Africa
             %span {{name}}
           {{/regions}}
 
-      .col-sm-9
-        #help.hidden
-          .ads.hidden
-            %i.fa.fa-fw.fa-bullhorn
-            Do you have an advertisement related issue? #{link_to 'Use our help page for quick answers', '/help.html?issue=ads'} 
-          .animals.hidden
-            %i.fa.fa-fw.fa-paw
-            Do you have an animal related issue? #{link_to 'Use our help page for quick answers', '/help.html?issue=animals'} 
-          .neighbours.hidden
-            %i.fa.fa-fw.fa-home
-            Do you have an issue with your neighbour? #{link_to 'Use our help page for quick answers', '/help.html?issue=neighbours'}
-          .noise.hidden
-            %i.fa.fa-fw.fa-bell-o
-            Do you have a noise related issue? #{link_to 'Use our help page for quick answers', '/help.html?issue=noise'} 
-
+      .col-md-9
         %p.search-results-summary
           Found {{ count }} by-laws
 
