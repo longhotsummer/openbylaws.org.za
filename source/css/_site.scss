@@ -1,8 +1,3 @@
-@import 'bootstrap.min.css';
-@import 'bootstrap-theme.min.css';
-@import 'html5bootstrap.css';
-@import 'font-awesome.min.css';
-
 .navbar {
   margin-bottom: 0px;
   border-radius: 0px;
@@ -13,21 +8,9 @@
   a.navbar-brand {
     background-image: url(/img/logo-md-inv.png);
     background-repeat: no-repeat;
-    background-position: 0px 7px;
+    background-position: 0px 3px;
     background-size: 35px;
-
     padding-left: 45px;
-    margin: 0px;
-    @media (max-width: 768px) {
-      margin-left: 15px;
-    }
-
-    color: white;
-  }
-
-  .social {
-    padding-bottom: 0px;
-    padding-top: 12px;
   }
 }
 

@@ -1,31 +1,19 @@
 %header#header
-  %nav.navbar.navbar-inverse(role="navigation")
+  %nav.navbar.navbar-expand-lg.navbar-dark.bg-dark(role="navigation")
     .container
-      .navbar-header
-        %button.navbar-toggle(type="button" data-toggle="collapse" data-target=".navbar-collapse")
-          %span.sr-only Toggle navigation
-          %span.icon-bar
-          %span.icon-bar
-          %span.icon-bar
+      %a.navbar-brand.mr-5(href='/')
+        .d-none.d-sm-block Open By-laws South Africa
+        .d-block.d-sm-none Open By-laws
 
-        %a.navbar-brand(href='/')
-          .hidden-xs Open By-laws South Africa
-          .visible-xs Open By-laws ZA
+      %button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation")
+        %span.navbar-toggler-icon
 
-      .navbar-collapse.collapse
-        %ul.nav.navbar-nav
-          %li
-            %a(href="/about.html") About
-          %li
-            %a(href="/help.html") Help
+      #navbarSupportedContent.collapse.navbar-collapse
+        %ul.navbar-nav.mr-auto
+          %li.nav-item.mr-3
+            %a.nav-link(href="/about.html") About
+          %li.nav-item
+            %a.nav-link(href="/help.html") Help
 
-        %form.navbar-form.navbar-right(action="/search.html" method="get" role="search")
-          %input.form-control(type="text" name="q" placeholder="Search")     
-
-        %ul.nav.navbar-nav.navbar-right
-          %li
-            %a.social(href="https://facebook.com/openbylaws.org.za")
-              %i.fa.fa-facebook-official.fa-2x
-          %li
-            %a.social(href="https://twitter.com/OpenByLawsZA")
-              %i.fa.fa-twitter.fa-2x
+        %form.form-inline.my-2.my-lg-0(action="/search.html" method="get" role="search")
+          %input.form-control(type="text" name="q" placeholder="Search" aria-label="Search")
