@@ -18,106 +18,35 @@ contributors:
   %h1 About openbylaws.org.za
 
 .row
-  .col-md-9.col-lg-7.col-md-offset-3
+  .col-md-8.mx-auto
     %p.lead
-      Open By-laws South Africa is a project to help South Africans be more informed
-      about the legislation that governs them.
+      Open By-laws is a community project to make our by-laws easier to find, read and share.
 
-.row
-  .col-md-3.hidden-xs.hidden-sm
-    %nav.list-group.about-nav
-      %a.list-group-item(href="#top") About By-laws
-      %a.list-group-item(href="#who") Who runs Open By-laws?
-      %a.list-group-item(href="#open") What is "Open"?
-      %a.list-group-item(href="#akomantoso") What is Akoma Ntoso?
-      %a.list-group-item(href="#copyright") Are the by-laws copyrighted?
-      %a.list-group-item(href="#contributors") Contributors
-      %a.list-group-item(href="#disclaimer") Disclaimer
-      %a.list-group-item(href="#credits") Credits
-      %a.list-group-item(href="#partners") Partners
+    %p.lead
+      Municipal by-laws form part of the legal foundation for effective service
+      delivery and cooperative communities. In many municipalities, however,
+      the by-laws are out of date or difficult to find. Open By-laws helps to
+      solve this problem by working with a contributor community to put
+      up-to-date by-laws online, freely available to everyone.
 
-  .col-md-9.col-lg-7
-    %p#top
-      By-laws are local laws created by the municipality you live in. They determine
-      many aspects of your day-to-day life in South Africa, such as how your
-      municipality can charge your for water, what you can do in your local parks,
-      and how many pets you can own.
+    %h3 What are by-laws?
+    %p
+      By-laws are laws managed by municipalities. <a href="https://myconstitution.co.za/en/07.html#powers-and-functions-of-municipalities">The Constitution of South Africa</a> gives municipalities the power to pass their own legislation, in the form of by-laws, for particular subject areas. These by-laws the same power and force as other national and provincial legislation.
 
     %p
-      It's often hard to find your municipal by-laws. They can be in difficult
-      to read PDF files, or may not reflect recent changes. Open By-laws South Africa
-      is changing that.
-
-    %h3#who Who runs Open By-laws South Africa?
-
+      Municipalities are required by the Municipal Systems Act to make their by-laws publicly available on their website. However, most municipalities lack the capacity to do so. Open By-laws helps to fill this gap.
+      
+    %h3 Powered by Laws.Africa
     %p
-      This project was born out of curiosity and is run by #{link_to 'Greg Kempe', 'http://kempe.net'}.
-      It is supported by #{link_to 'OpenUp', 'https://openup.org.za'}, a non-profit
-      civic technology organisation.
-
+      Open By-laws is a project of <a href="https://laws.africa">Laws.Africa</a>, a non-profit organisation that curates the African legislation commons and builds technology to enable free access to the law.
     %p
-      In 2013, Open By-laws received a Shuttleworth Flash Grant and an AMI Sandbox Fund grant,
-      and we're grateful to these funders who helped us in our infancy.
+      Laws.Africa trains and supports a contributor community that is working together to build an African legislation commons and make African law freely available to everyone. 
 
-    %h3#open What is "Open"?
-
+    %h3 How you can help
     %p
-      The 
-      %a(href="http://okfn.org/opendata/") Open Knowledge Foundation
-      describes "Open" as:
-
-    %blockquote
-      %p
-        Open data is data that can be freely used, reused and redistributed by
-        anyone – subject only, at most, to the requirement to attribute and
-        sharealike.
-      %footer
-        %cite
-          %a(href="http://opendefinition.org/") OpenDefinition.org
-
+      The by-laws on this website are maintained by a community of contributors. The contributors work hard to put by-laws online and keep them up-to-date. Laws.Africa provides training and support and builds the technology that makes this project possible.
     %p
-      We believe all our legislation should be freely available and easy to read
-      and share. We aim to make all of South Africa's by-laws
-      available in open formats that encourage readibility and re-use.
-
-    %p
-      To this end, the by-laws that we make available are:
-
-    %ul
-      %li easy to link to, including directly to parts, chapters and sections
-      %li easy to read as HTML webpages
-      %li available as machine-friendly XML in the open #{link_to 'Akoma Ntoso', 'http://www.akomantoso.org/'} format
-      %li freely available from our #{link_to 'Indigo API', 'https://indigo.openbylaws.org.za/api/documents?format=api'}
-      %li licensed under a #{link_to 'Creative Commons Attribution 4.0 International License', 'https://creativecommons.org/licenses/by/4.0/'}.
-
-    %p
-      According to the license, you are free to share and reuse the by-laws, even for commercial purposes, provided that you
-      mention that you got them from openbylaws.org.za.
-
-    %h3#akomantoso What is Akoma Ntoso?
-
-    %p
-      #{link_to 'Akoma Ntoso', 'http://akomantoso.org'} is a machine-readable XML format for representing parliamentary, legislative and judiciary
-      documents. It means "linked hearts" in the Akan language of West Africa. We chose to use Akoma Ntoso as our machine format for by-laws because:
-
-    %ul
-      %li it allowed us to capture the semantics of the by-laws
-      %li it is an open format under active development
-      %li it has been adopted by a number of parliaments across Africa and the European Union.
-
-    %h3#copyright Are the by-laws copyrighted?
-
-    The original by-laws are not copyrighted. Section 12(8)(a) of the
-    %a(href="http://www.saflii.org/za/legis/hist_act/ca98o1978152/ca98o1978a1m2011225.html") Copyright Act 98 of 1978
-    states:
-
-    %blockquote
-      12(8)(a)	No copyright shall subsist in official texts of a legislative, administrative or legal nature, or in official translations of such texts, or in speeches of a political nature or in speeches delivered in the course of legal proceedings, or in news of the day that are mere items of press information.
-
-    In addition, the presentation of the by-laws on this website are licensed under a
-    %a(href="https://creativecommons.org/licenses/by/4.0/") Creative Commons Attribution 4.0 International License
-    which means that you can basically do anything you want with them provided you provide attribution back to openbylaws.org.za for
-    the original content.
+      <a href="https://laws.africa/faq">Read more about being a contributor</a>.
 
     %h3#contributors Contributors
 
@@ -126,6 +55,13 @@ contributors:
 
     %p
       #{current_page.data.contributors.sort.join(', ')}.
+
+    %p
+      In 2013, Open By-laws received a Shuttleworth Flash Grant and an AMI Sandbox Fund grant,
+      and we're grateful to these funders who helped us in our infancy.
+
+    %p
+      <a href="https://laws.africa/faq">Read more about being a contributor</a>.
 
     %h3#disclaimer Disclaimer
 
@@ -151,7 +87,3 @@ contributors:
       %li
         Photo of Mbizana from
         %a(href="http://www.mbizana.gov.za/") Mbizana Municipality website
-
-    %h3#partners Partners
-
-    = partial 'partner_logos.html.haml'
