@@ -11,31 +11,35 @@ layout: layout
   %section.welcome.py-5
     .container
       .row
-        .col-sm-7
+        .col-sm-7.pb-3
           %h1
             South Africa's
             %nobr By-laws
 
           %h3.font-weight-normal
             Freely available, easy to find, read and share.
-              
+
         .col-sm-5
-          .d-none.d-sm-block.text-right
-            %img.logo(src="/img/logo-lg.png")
+          .text-center
+            %div
+              %img.logo(src="/img/logo-lg.png")
+            %div.mt-5
+              %a(href="https://laws.africa")
+                %img.mt-1(src="/img/lawsafrica-logo-horizontal.png" width="200px" alt="Laws.Africa logo")
 
   %section.places.py-5
     .container
       - regions.values.reject { |r| r.microsite }.sort_by { |r| r.name }.each_slice(3) do |chunk|
         .row
           - for region in chunk
-            .col-sm-4
+            .col-md-4
               %a.placard{class: region.code, href: "/za-#{region.code}/eng/", style: "background-image: url(/img/municipalities/#{region.code}-placard.jpg)"}
                 %h3&= region.name
 
       - regions.values.select { |r| r.microsite }.sort_by { |r| r.name }.each_slice(3) do |chunk|
         .row
           - for region in chunk
-            .col-sm-4
+            .col-md-4
               %a.placard{class: region.code, href: "https://#{region.bucket}/", style: "background-image: url(/img/municipalities/#{region.code}-placard.jpg)"}
                 %h3&= region.name
 
@@ -46,7 +50,7 @@ layout: layout
       .row
         .col-md-8
           %p.lead
-            Open By-laws is maintained by the Laws.Africa contributor community. Anyone can join the community and help to make African law freely available. You can help by adding new by-laws or keeping them up to date. Laws.Africa offers training and support.
+            Open By-laws is maintained by the <a href="https://laws.africa">Laws.Africa</a> contributor community. Anyone can join the community and help to make African law freely available. You can help by adding new by-laws or keeping them up to date. Laws.Africa offers training and support.
 
           %p
             %a(href="https://laws.africa/faq") About the Laws.Africa Contributor Community →
