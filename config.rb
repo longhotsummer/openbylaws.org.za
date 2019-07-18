@@ -47,8 +47,9 @@ Middleman::Extensions.register(:indigo, IndigoMiddlemanExtension)
 activate :indigo
 
 # cache policies
-year = 60*60*24*365
-day = 60*60*24
+hour = 60*60
+day = hour*24
+year = day*365
 
 # we use asset hashing here, so have expiry far in the future
 caching_policy 'text/css', max_age: year
@@ -56,8 +57,8 @@ caching_policy 'application/javascript', max_age: year
 caching_policy 'image/png', max_age: year
 caching_policy 'image/jpeg', max_age: year
 caching_policy 'application/font-woff', max_age: year
-# cache HTML for up to a day
-caching_policy 'text/html', max_age: day
+# cache HTML for up to an hour
+caching_policy 'text/html', max_age: hour
 
 
 # ----------------------------------------------------------------------
