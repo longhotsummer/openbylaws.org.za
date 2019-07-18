@@ -5,13 +5,12 @@
 
     %li.nav-item
       %a.nav-link{href: act_url(act, child: 'contents/'), class: tab == 'toc' ? 'active' : ''}
-        %span.hidden-xs Table of
+        %span.d-none.d-sm-inline Table of
         Contents
 
     %li.nav-item
       %a.nav-link{href: act_url(act, child: 'resources/', language: false), class: tab == 'resources' ? 'active' : ''}
         History
-        %span.hidden-xs &amp; Downloads
 
     %li.ml-auto.d-none.d-md-block.social-buttons
       %a.fb-share{href: "#"}
