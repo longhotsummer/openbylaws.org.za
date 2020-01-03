@@ -23,6 +23,12 @@ layout: layout
           .text-center
             %img.logo(src="/img/logo-lg.png")
 
+      .mt-4
+        %h5.text-center.text-sm-left
+          A project by
+          %a(href="https://laws.africa")
+            %img.ml-2(src="/img/lawsafrica-logo-horizontal.png" style="width: 150px" alt="Laws.Africa")
+
   %section.places.py-5
     .container
       - regions.values.reject { |r| r.microsite }.sort_by { |r| r.name }.each_slice(3) do |chunk|
