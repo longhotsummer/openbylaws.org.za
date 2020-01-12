@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 ruby '~> 2.6'
 
-gem "slaw", "~>0.3.0"
+gem "slaw", "~>6.0"
 
 gem 'httpclient', '~> 2.7'
 gem 'moneta', '~> 0.8'
