@@ -73,7 +73,7 @@ class IndigoComponent < IndigoBase
       info = JSON.parse(get('.json'))
     end
 
-    @info = _transform(Hashie::Mash.new(info))
+    @info = Hashie::Mash.new(_transform(info))
     @parent = parent
   end
 
@@ -97,11 +97,14 @@ class IndigoComponent < IndigoBase
       item.each { |e| _transform(e) }
     when Hash
       # dates into Date objects
-      for key in [:date, :updated_at, :created_at, :expression_date, :commencement_date, :assent_date, :publication_date]
+      for key in ['date', 'updated_at', 'created_at', 'expression_date', 'commencement_date', 'assent_date', 'publication_date']
         if item.has_key? key and item[key].is_a? String
           item[key] = Date.parse(item[key])
         end
       end
+
+      # size to _size to avoid Hashie conflict
+      item['_size'] = item.delete('size') if item.has_key? 'size'
 
       item.each_value { |e| _transform(e) }
     end

@@ -23,7 +23,7 @@ set :images_dir, 'img'
 # Build-specific configuration
 configure :build do
   config[:build] = true
-  activate :minify_css
+  #activate :minify_css
   activate :relative_assets
   # Enable cache buster
   activate :asset_hash, ignore: [/favicon.*/]
@@ -72,13 +72,7 @@ def pages_for_act(act)
 
     # full act
     proxy "#{path}/#{lang.code3}/index.html", "/templates/act/index.html", locals: {act: expression}, ignore: true
-
-    # table of contents
-    proxy "#{path}/#{lang.code3}/contents/index.html", "/templates/act/contents.html", :locals => {act: expression}, :ignore => true
   end
-
-  # resources
-  proxy "#{path}/resources/index.html", "/templates/act/resources.html", :locals => {act: act}, :ignore => true
 end
 
 # openbylaws.org.za site
