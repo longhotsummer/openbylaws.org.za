@@ -9,7 +9,7 @@ gem 'httpclient', '~> 2.7'
 gem 'moneta', '~> 0.8'
 gem "rake", "~> 10.1.0"
 
-gem "middleman", "~>4.2.1"
+gem "middleman", "~>4.3"
 gem 'hashie', '~> 3.4'
 gem 'middleman-s3_sync', "~> 4.0.3"
 gem 'haml', '~> 5'
