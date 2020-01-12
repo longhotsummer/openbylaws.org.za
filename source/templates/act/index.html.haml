@@ -10,16 +10,46 @@ layout: 'bylaw'
     %link{rel: "alternate", hreflang: lang.code2, href: act_url(act, language: lang.code3)}
 
 - if not act.stub
-  = partial 'nav', locals: {act: act, tab: 'content'}
+  %nav.bylaw-nav
+    %ul.nav.nav-tabs(role="tablist")
+      %li.nav-item
+        %a#main-tab.nav-link.active(href='#main' data-toggle="tab" role="tab" aria-controls="main" aria-selected="true") By-law
 
-  .row
-    .col-md-4
-      = partial 'left_nav', locals: {act: act}
+      %li.nav-item
+        %a#toc-tab.nav-link(href='#toc' data-toggle="tab" role="tab" aria-controls="toc")
+          %span.d-none.d-sm-inline Table of
+          Contents
 
-    .col-md-8
-      %article.akoma-ntoso.akoma-ntoso-container
-        = partial 'coverpage', locals: {act: act}
-        = act.html
+      %li.nav-item
+        %a#resources-tab.nav-link(href='#resources' data-toggle="tab" role="tab" aria-controls="resources")
+          History
+
+      %li.ml-auto.d-none.d-md-block.social-buttons
+        %a.fb-share{href: "#"}
+          %i.fab.fa-facebook
+          Share
+        %a.twitter-share{href: "#", text: act.title}
+          %i.fab.fa-twitter
+          Tweet
+
+  .tab-content
+    #main.tab-pane.fade.show.active(role="tabpanel" aria-labelledby="main-tab")
+      .row
+        .col-md-4
+          = partial 'left_nav', locals: {act: act}
+
+        .col-md-8
+          %article.akoma-ntoso.akoma-ntoso-container
+            = partial 'coverpage', locals: {act: act}
+            = act.html
+
+    #toc.tab-pane.fade(role="tabpanel" aria-labelledby="toc-tab")
+      %section.toc
+        = partial 'toc', locals: {act: act}
+
+    #resources.tab-pane.fade(role="tabpanel" aria-labelledby="resources-tab")
+      %section.resources
+        = partial 'resources', locals: {act: act}
 
 - else
   -# stub
