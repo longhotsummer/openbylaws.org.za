@@ -23,7 +23,7 @@ set :images_dir, 'img'
 # Build-specific configuration
 configure :build do
   config[:build] = true
-  activate :minify_css
+  #activate :minify_css
   activate :relative_assets
   # Enable cache buster
   activate :asset_hash, ignore: [/favicon.*/]
