@@ -1,5 +1,5 @@
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     activesupport (5.0.7.2)
       concurrent-ruby (~> 1.0, >= 1.0.2)
@@ -10,7 +10,7 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     ansi (1.5.0)
     backports (3.15.0)
-    builder (3.2.2)
+    builder (3.2.4)
     coffee-script (2.4.1)
       coffee-script-source
       execjs
@@ -19,23 +19,23 @@ GEM
     contracts (0.13.0)
     dotenv (2.7.5)
     erubis (2.7.0)
-    excon (0.71.0)
+    excon (0.71.1)
     execjs (2.7.0)
     fast_blank (1.0.0)
     fastimage (2.1.7)
     ffi (1.11.3)
-    fog-aws (3.0.0)
+    fog-aws (3.5.2)
       fog-core (~> 2.1)
       fog-json (~> 1.1)
       fog-xml (~> 0.1)
       ipaddress (~> 0.8)
-    fog-core (2.1.0)
+    fog-core (2.2.0)
       builder
-      excon (~> 0.58)
+      excon (~> 0.71)
       formatador (~> 0.2)
       mime-types
-    fog-json (1.1.0)
-      fog-core (~> 2.0)
+    fog-json (1.2.0)
+      fog-core
       multi_json (~> 1.10)
     fog-xml (0.1.3)
       fog-core
@@ -47,7 +47,7 @@ GEM
     hamster (3.0.0)
       concurrent-ruby (~> 1.0)
     hashie (3.6.0)
-    httpclient (2.7.1)
+    httpclient (2.8.3)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
     ipaddress (0.8.3)
@@ -98,13 +98,13 @@ GEM
       parallel
       ruby-progressbar
       unf
-    mime-types (3.1)
+    mime-types (3.3.1)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2016.0521)
+    mime-types-data (3.2019.1009)
     mini_portile2 (2.1.0)
     minitest (5.14.0)
-    moneta (0.8.0)
-    multi_json (1.13.1)
+    moneta (0.8.1)
+    multi_json (1.14.1)
     nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
     padrino-helpers (0.13.3.4)
@@ -116,12 +116,12 @@ GEM
     parallel (1.19.1)
     polyglot (0.3.5)
     public_suffix (4.0.3)
-    rack (2.1.1)
-    rake (10.1.1)
+    rack (2.0.8)
+    rake (10.5.0)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
-    ruby-progressbar (1.9.0)
+    ruby-progressbar (1.10.1)
     sassc (2.2.1)
       ffi (~> 1.9)
     servolux (0.13.0)
@@ -134,7 +134,7 @@ GEM
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
-    treetop (1.6.3)
+    treetop (1.6.10)
       polyglot (~> 0.3)
     tzinfo (1.2.6)
       thread_safe (~> 0.1)
@@ -142,7 +142,7 @@ GEM
       execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.7.5)
+    unf_ext (0.0.7.6)
 
 PLATFORMS
   ruby
@@ -154,11 +154,12 @@ DEPENDENCIES
   middleman (~> 4.3)
   middleman-s3_sync (~> 4.0.3)
   moneta (~> 0.8)
-  rake (~> 10.1.0)
+  rack (= 2.0.8)
+  rake (~> 10.1)
   slaw (~> 0.3.0)
 
 RUBY VERSION
-   ruby 2.3.3p222
+   ruby 2.6.2p47
 
 BUNDLED WITH
    1.17.2
