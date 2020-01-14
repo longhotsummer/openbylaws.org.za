@@ -89,5 +89,5 @@ for region in ActHelpers.active_regions
     proxy "/za-#{region.code}/#{lang.code3}/index.html", "/templates/region.html", locals: {region: region, language: lang}, ignore: true
   end
 
-  region.bylaws.reject(&:stub).each { |bylaw| pages_for_act(bylaw) }
+  region.bylaws.each { |bylaw| pages_for_act(bylaw) }
 end

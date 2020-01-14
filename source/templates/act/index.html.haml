@@ -40,7 +40,6 @@ layout: 'bylaw'
 
         .col-md-8
           %article.akoma-ntoso.akoma-ntoso-container
-            = partial 'coverpage', locals: {act: act}
             = act.html
 
     #toc.tab-pane.fade(role="tabpanel" aria-labelledby="toc-tab")
@@ -54,6 +53,6 @@ layout: 'bylaw'
 - else
   -# stub
   %article.akoma-ntoso.akoma-ntoso-container.stub
-    = partial 'coverpage', locals: {act: act}
+    = act.html
 
   = partial 'stub', locals: {act: act}

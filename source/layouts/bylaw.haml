@@ -1,6 +1,7 @@
 = wrap_layout :site do
   - content_for :head do
     = stylesheet_link_tag 'bylaw.css', media: "screen, print"
+    = stylesheet_link_tag 'https://cdn.jsdelivr.net/gh/laws-africa/indigo-web@3.9.0/css/akoma-ntoso.min.css', media: "screen, print"
 
     %meta(property="og:type" content="article")
     %meta{property: "og:url", content: act_url(act, external: true)}

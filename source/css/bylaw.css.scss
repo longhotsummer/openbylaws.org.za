@@ -1,9 +1,6 @@
 @import 'site';
 @import 'toc';
 
-// akn styling from Indigo
-@import 'vendor/indigo-web/scss/akoma-ntoso';
-
 @keyframes fadeout {
   from { background-color: yellow; }
   to { background-color: none; }

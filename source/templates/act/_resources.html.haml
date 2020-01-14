@@ -14,18 +14,7 @@
                 - case event.event
                 - when :amendment
                   Amended by
-                  - if event.info.amending_id
-                    %a{href: event.info.amending_uri}
-                      %i&= event.info.amending_title
-                    - amended_by = bylaw_by_id(event.info.amending_id)
-                    - if amended_by
-                      - if amended_by.source_enacted
-                        %br
-                        = partial 'support_download_button', locals: {file: amended_by.source_enacted}
-                      - elsif amended_by.source_current
-                        %br
-                        = partial 'support_download_button', locals: {file: amended_by.source_current}
-                  - else
+                  %a{href: event.info.amending_uri + '/eng'}
                     %i&= event.info.amending_title
 
                 - when :assent
@@ -36,51 +25,16 @@
 
                 - when :publication
                   Published in 
-                  %i #{act.full_publication}.
-                  - if act.source_enacted
-                    %br
-                    = partial 'support_download_button', locals: {file: act.source_enacted}
+                  %a{href: act.publication_document.url}
+                    #{act.full_publication}
 
                 - when :repeal
                   Repealed by
-                  - if event.info.repealing_id
-                    %a{href: event.info.repealing_uri}
-                      %i&= event.info.repealing_title
-                    - repealed_by = bylaw_by_id(event.info.repealing_id)
-                    - if repealed_by
-                      - if repealed_by.source_enacted
-                        %br
-                        = partial 'support_download_button', locals: {file: repealed_by.source_enacted}
-                      - elsif repealed_by.source_current
-                        %br
-                        = partial 'support_download_button', locals: {file: repealed_by.source_current}
-                  - else
-                    &= event.info.repealing_title
+                  %a{href: event.info.repealing_uri + '/eng'}
+                    %i&= event.info.repealing_title
 
                 - when :updated
                   Last updated on OpenBylaws.org.za.
-
-      - if act.source_enacted
-        .download
-          %h4
-            %i.fa.fa-file-pdf-o
-            Source PDF (as enacted)
-          %p
-            Download the source PDF version of the by-law, as it
-            was first enacted.
-
-          = partial 'support_download_button', locals: {file: act.source_enacted}
-
-      - if act.amended? and act.source_current
-        .download
-          %h4
-            %i.fa.fa-file-pdf-o
-            Source PDF (as amended)
-          %p
-            Download the source PDF version of the by-law, with
-            amendments applied.
-
-          = partial 'support_download_button', locals: {file: act.source_current}
 
     .col-sm-4
       .download
