@@ -78,16 +78,34 @@ class IndigoComponent < IndigoBase
   end
 
   def html
-    @html ||= get_html
+    @html ||= _process_html(get_html)
   end
 
   def get_html
-    # fetch html remotely
-    get('.html')
+    # fetch html remotely, without resolver links
+    get('.html', {resolver: 'no'})
   end
 
   def text
     @text ||= Nokogiri::HTML(html).inner_text
+  end
+
+  # pre-process HTML from Indigo
+  def _process_html(html)
+    html = Nokogiri::HTML(html)
+
+    for a in html.css("a[href]")
+      if a['href'].start_with? '/za-' and !a['href'].end_with?('/eng')
+        # ensure local links end with '/eng'
+        a['href'] = a['href'] + '/eng'
+
+      elsif !a['href'].start_with? 'http'
+        # ensure other links go via the resolver
+        a['href'] = 'https://edit.laws.africa/resolver/resolve' + a['href']
+      end
+    end
+
+    html.to_html
   end
 
   # make some changes to the incoming hash
@@ -130,10 +148,6 @@ class IndigoDocument < IndigoComponent
 
   def region_code
     frbr_uri.split('/', 3)[1].split('-')[1]
-  end
-
-  def get_html
-    get('.html', {coverpage: 0})
   end
 
   def schedules
