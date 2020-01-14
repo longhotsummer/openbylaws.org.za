@@ -237,6 +237,8 @@ class IndigoDocument < IndigoComponent
   # Get a new IndigoDocument corresponding to the expression at the given
   # date and language.
   def get_expression(language, date=nil)
+    return self if stub
+
     date = date || self.expression_date
     pit = point_in_time(date)
     raise "Unable to find point in time for #{date} for #{frbr_uri}" if pit.nil?
