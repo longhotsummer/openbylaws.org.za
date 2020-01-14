@@ -135,10 +135,6 @@ class ActHelpers < Middleman::Extension
     def raw_regions
       ActHelpers.raw_regions
     end
-
-    def bylaw_by_id(id)
-      all_bylaws.find { |b| b.id == id }
-    end
   end
 end
 

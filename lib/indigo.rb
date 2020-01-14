@@ -182,14 +182,6 @@ class IndigoDocument < IndigoComponent
     "#{frbr_uri}/resources/#{language}.html"
   end
 
-  def source_enacted
-    attachments.find { |a| a.filename == 'source-enacted.pdf' }
-  end
-
-  def source_current
-    attachments.find { |a| a.filename == 'source.pdf' }
-  end
-
   # Return a list of HistoryEvent objects describing the history of this document,
   # oldest first.
   def history
