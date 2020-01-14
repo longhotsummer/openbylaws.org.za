@@ -1,16 +1,17 @@
 .alert.alert-warning.text-center
   %p
-    We don't have the full contents of this by-law captured yet, we hope to have
-    it soon.
+    We don't have the full contents of this by-law captured.
 
-  %p
-    In the mean time, you can download the PDF instead.
+  - if act.publication?
+    %p
+      You can download the PDF instead.
 
-  %p
-    - if act.source_enacted
-      = partial 'support_download_button', locals: {file: act.source_enacted}
-    - elsif act.source_current
-      = partial 'support_download_button', locals: {file: act.source_current}
+    %p
+      %i.fa.fa-fw.fa-download
+      %a{href: act.publication_document.url}
+        Download #{act.full_publication} PDF
+        - if act.publication_document._size
+          (#{number_to_human_size(act.publication_document._size)})
 
   %p
     - region = regions[act.locality]
