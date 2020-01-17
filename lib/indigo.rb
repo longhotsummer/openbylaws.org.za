@@ -99,7 +99,7 @@ class IndigoComponent < IndigoBase
         # ensure local links end with '/eng'
         a['href'] = a['href'] + '/eng'
 
-      elsif !a['href'].start_with? 'http'
+      elsif !a['href'].start_with? 'http' and !a['href'].start_with? '#'
         # ensure other links go via the resolver
         a['href'] = 'https://edit.laws.africa/resolver/resolve' + a['href']
       end
