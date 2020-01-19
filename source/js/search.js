@@ -28,21 +28,29 @@ ByLawSearch = function() {
     }
 
     $.getJSON('https://srbeugae08.execute-api.eu-west-1.amazonaws.com/default/searchOpenBylaws', params, function(response, textStatus, jqXHR) {
+      var hits = [];
       ladda.stop();
       console.log(response);
 
       response.q = q;
-      var hits = $.map(response.results, function(result) {
-        result.snippet = result._snippet
-          .replace(/^\s*[;:",.()-]+/, '')  // trim leading punctuation
-          .replace(/<b>/g, "<mark>")
-          .replace(/<\/b>/g, "</mark>")
-          .trim();
-
+      response.results.forEach(function(result) {
         result.region = REGIONS[result.locality];
 
-        return result;
+        // only keep those with a region
+        if (result.region) {
+          hits.push(result);
+
+          result.url = (result.region.microsite ? ('https://' + result.region.bucket) : '') +
+            result.frbr_uri + "/" + result.language + "/";
+
+          result.snippet = result._snippet
+            .replace(/^\s*[;:",.()-]+/, '')  // trim leading punctuation
+            .replace(/<b>/g, "<mark>")
+            .replace(/<\/b>/g, "</mark>")
+            .trim();
+        }
       });
+
       response.hits = {hits: hits};
       response.no_region = region_code === "";
       response.regions = [];
