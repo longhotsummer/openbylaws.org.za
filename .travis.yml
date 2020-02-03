@@ -9,6 +9,6 @@ env:
     # AWS_SECRET_ACCESS_KEY for S3 deployment
     - secure: "Zs84AWMeVxKhr09o6XpJdGJ2XQGD7eQobQp5YQgnz2u46mwBsEDnOUQB7RADBj2zss4/mi4rVxaiSZdgPUmn5A8X1Oets9cL0/H7SvSICT1ADIkxeLzAZoRDEM20zHMbisWRN8i1l1ULeAoqLp9kRp57Ob6oB9b7K4+a/Kq9s5k="
     # INDIGO_API_AUTH_TOKEN
-    - secure: "ZOGkfPjuv17jPq1ptsivsur+6+IpcE5chXCQ+6K166sTEwTUmRHQeY/e2MrOEKUDLSBVqTLOeJ2v0PdQFCQ9X0GMgNnDMShKY6shAxO/Iy8ZrOQss8eBbLsM1wctQgNY7DmDhXwpO3/1s+aMhBoojKOSIfd6KrURlVA83knkcAU="
+    - secure: "fljdfxbOeNSeJzg8mesDsLbutUwjiJbbz4wp9rqoWtzA63eFNTC2OuHrhGcO8Whh/a1mkPnyMqWdgg1eejk+g7JBmNbxr7AQOcx5CkNxDTYKvGKLoNcfOdoW4fk3tQ/hIjinNE8evRX00PIlFdrIe/JnZM3YV4flNzKvjeT3l9k="
 script:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then bundle exec rake deploy; else bundle exec rake build; fi
