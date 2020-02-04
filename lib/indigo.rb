@@ -205,7 +205,6 @@ class IndigoDocument < IndigoComponent
       @events << HistoryEvent.new(assent_date, :assent) if assent_date
       @events << HistoryEvent.new(publication_date, :publication) if publication_date
       @events << HistoryEvent.new(commencement_date, :commencement) if commencement_date
-      @events << HistoryEvent.new(updated_at, :updated)
 
       for amendment in amendments
         @events << HistoryEvent.new(amendment.date, :amendment, amendment)
