@@ -8,7 +8,6 @@
   "eth": {
     "code": "eth",
     "name": "eThekwini",
-    "partial": true,
     "logo": "/img/municipalities/eth-logo.png",
     "bylaws-url": "http://www.durban.gov.za/Resource_Centre/Pages/By-Laws.aspx"
   },
