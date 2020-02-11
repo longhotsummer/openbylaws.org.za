@@ -185,15 +185,15 @@ class IndigoDocument < IndigoComponent
   end
 
   def local_pdf_url
-    "#{frbr_uri}/resources/#{language}.pdf"
+    "resources/#{language}.pdf"
   end
 
   def local_epub_url
-    "#{frbr_uri}/resources/#{language}.epub"
+    "resources/#{language}.epub"
   end
 
   def local_standalone_html_url
-    "#{frbr_uri}/resources/#{language}.html"
+    "resources/#{language}.html"
   end
 
   # Return a list of HistoryEvent objects describing the history of this document,
@@ -254,6 +254,21 @@ class IndigoDocument < IndigoComponent
       info = @info.clone.update(expr)
       return IndigoDocument.new(info.url, info)
     end
+  end
+
+  def expressions
+    return [] if stub
+
+    # load a new expression for each pit
+    return points_in_time.map { |pit|
+      pit.expressions.map { |expr|
+        if self.expression_frbr_uri == expr.expression_frbr_uri
+          self
+        else
+          IndigoDocument.new(expr.url)
+        end
+      }
+    }.flatten
   end
 
   protected
@@ -354,37 +369,46 @@ class IndigoMiddlemanExtension < ::Middleman::Extension
   def add_files(resources)
     for region in ActHelpers.active_regions
       for bylaw in region.bylaws.reject(&:stub)
-        # strip leading and trailing slash
-        path = bylaw.frbr_uri.chomp('/')[1..-1]
+        for expr in bylaw.expressions
+          add_files_for_expression(resources, expr, expr.expression_frbr_uri)
 
-        for lang in bylaw.languages
-          expr = bylaw.get_expression(lang.code3)
-
-          # include PDF, HTML and ePUB downloads for all available languages
-          for ext, url in [['pdf', 'pdf_url'], ['epub', 'epub_url'], ['html', 'standalone_html_url']]
-            target = "#{path}/resources/#{lang.code3}.#{ext}"
-            source = app.source_dir.to_s + "/../downloads/" + target.gsub("/", "-")
-
-            res = DownloadResource.new(app.sitemap, target, source)
-            res.options[:download_from] = expr.send(url)
-            res.download!
-
-            resources.append(res)
-          end
-
-          # include attachments
-          for attachment in expr.attachments
-            target = "#{path}/#{lang.code3}/media/#{attachment.filename}"
-            source = app.source_dir.to_s + "/../downloads/media-" + target.gsub("/", "-")
-
-            res = DownloadResource.new(app.sitemap, target, source)
-            res.options[:download_from] = attachment.url
-            res.download!
-
-            resources.append(res)
+          # for the latest expression, also add resources under the generic URL
+          if expr.expression_date == bylaw.expression_date
+            add_files_for_expression(resources, expr, expr.frbr_uri + "/" + expr.language)
           end
         end
       end
+    end
+
+    resources
+  end
+
+  def add_files_for_expression(resources, expr, frbr_uri)
+    # strip leading and trailing slash
+    path = frbr_uri.chomp('/')[1..-1]
+
+    # include PDF, HTML and ePUB downloads
+    for ext, url in [['pdf', 'pdf_url'], ['epub', 'epub_url'], ['html', 'standalone_html_url']]
+      target = "#{path}/resources/#{expr.language}.#{ext}"
+      source = app.source_dir.to_s + "/../downloads/" + target.gsub("/", "-")
+
+      res = DownloadResource.new(app.sitemap, target, source)
+      res.options[:download_from] = expr.send(url)
+      res.download!
+
+      resources.append(res)
+    end
+
+    # include attachments
+    for attachment in expr.attachments
+      target = "#{path}/media/#{attachment.filename}"
+      source = app.source_dir.to_s + "/../downloads/media-" + target.gsub("/", "-")
+
+      res = DownloadResource.new(app.sitemap, target, source)
+      res.options[:download_from] = attachment.url
+      res.download!
+
+      resources.append(res)
     end
 
     resources
