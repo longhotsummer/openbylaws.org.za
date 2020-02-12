@@ -77,7 +77,6 @@ def pages_for_act(act)
 
   # other expressions
   for expr in act.expressions
-    is_latest = expr.expression_date == act.expression_date
     proxy "#{path}/#{lang.code3}@#{expr.expression_date}/index.html", "/templates/act/index.html", locals: {act: expr}, ignore: true
   end
 end

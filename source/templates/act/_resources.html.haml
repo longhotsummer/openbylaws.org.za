@@ -6,9 +6,14 @@
 
         .timeline
           %ul.list-unstyled.timeline-items
-            - for event in act.history
+            - for event in act.latest_expression.history
               %li
-                %h5&= event.date.strftime("%e %B %Y")
+                %h5
+                  &= event.date.strftime("%e %B %Y")
+                  - if event.date == act.expression_date
+                    %span.badge.badge-info this version
+                  - elsif event.date == act.latest_expression.expression_date
+                    %span.badge.badge-info latest version
 
                 - case event.event
                 - when :amendment

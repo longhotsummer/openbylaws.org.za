@@ -7,5 +7,4 @@
 
 - if not act.stub and not act.latest_expression?
   %h2.pt-1
-    as at
-    &= act.expression_date
+    as from #{act.expression_date.strftime("%e %B %Y")} to #{act.next_pit_date.strftime("%e %B %Y")}

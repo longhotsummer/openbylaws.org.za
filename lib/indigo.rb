@@ -214,7 +214,7 @@ class IndigoDocument < IndigoComponent
         @events << HistoryEvent.new(repeal.date, :repeal, repeal)
       end
 
-      @events.sort_by! { |e| e.date }
+      @events.sort_by! { |e| e.date }.reverse!
     end
 
     @events
@@ -272,7 +272,27 @@ class IndigoDocument < IndigoComponent
   end
 
   def latest_expression?
-    return stub || (self.expression_date == self.points_in_time[-1].date)
+    return stub || (expression_date == points_in_time[-1].date)
+  end
+
+  def latest_expression
+    latest_date = points_in_time[-1].date
+    candidates = expressions.select { |x| x.expression_date == latest_date }
+
+    # try to find current language match
+    expr = candidates.select { |x| x.language == language }
+    return expr.first if expr
+
+    # no matching language, just use the first one
+    return candidates.first
+  end
+
+  def next_pit_date
+    # date of next point in time after this one.
+    ix = points_in_time.index { |p| p.date == expression_date } + 1
+    if ix < points_in_time.size
+      points_in_time[ix].date - 1
+    end
   end
 
   protected

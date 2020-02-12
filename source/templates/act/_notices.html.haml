@@ -6,6 +6,16 @@
         This by-law was repealed on #{act.repeal.date.strftime('%e %B %Y')} by
         #{link_to act.repeal.repealing_title, act.repeal.repealing_uri + '/eng'}.
 
-  - if not act.repealed? and not act.stub and act.latest_expression?
-    .alert.alert-info
-      This is the latest version of this by-law and is the version currently in force.
+  - if not act.stub
+    - if act.latest_expression?
+      - if not act.repealed?
+        .alert.alert-info
+          This is the latest version of this by-law and is the version currently in force.
+
+    - elsif act.points_in_time.length > 1
+      .alert.alert-warning
+        This is the version of this by-law as it was from
+        %b #{act.expression_date.strftime("%e %B %Y")} to #{act.next_pit_date.strftime("%e %B %Y")}.
+        Read the
+        %a{href: act.frbr_uri + "/eng/"}
+          latest version currently in force.
