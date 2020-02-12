@@ -214,7 +214,10 @@ class IndigoDocument < IndigoComponent
         @events << HistoryEvent.new(repeal.date, :repeal, repeal)
       end
 
-      @events.sort_by! { |e| e.date }.reverse!
+      @events = @events.group_by(&:date).to_a
+
+      # turn into pairs, sorted by descending date
+      @events.sort_by! { |x| x[0] }.reverse!
     end
 
     @events
