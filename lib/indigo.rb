@@ -399,8 +399,8 @@ class IndigoMiddlemanExtension < ::Middleman::Extension
       resources.append(res)
     end
 
-    # include attachments
-    for attachment in expr.attachments
+    # include image attachments
+    for attachment in expr.attachments.filter { |a| a.mime_type.start_with?('image/') }
       target = "#{path}/media/#{attachment.filename}"
       source = app.source_dir.to_s + "/../downloads/media-" + target.gsub("/", "-")
 
