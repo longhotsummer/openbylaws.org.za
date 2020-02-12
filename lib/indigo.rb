@@ -256,6 +256,17 @@ class IndigoDocument < IndigoComponent
     end
   end
 
+  # Try to get an expression at a date a language, falling back to
+  # any language if necessary.
+  def get_best_expression(language, date)
+    candidates = expressions.select { |x| x.expression_date == date }
+    expr = candidates.select { |x| x.language == language }
+    return expr.first if expr.size > 0
+
+    # no matching language, just use the first one
+    return candidates.first
+  end
+
   def expressions
     return [] if stub
 
@@ -275,16 +286,9 @@ class IndigoDocument < IndigoComponent
     return stub || (expression_date == points_in_time[-1].date)
   end
 
+  # Latest expression for this work, trying to match on current language
   def latest_expression
-    latest_date = points_in_time[-1].date
-    candidates = expressions.select { |x| x.expression_date == latest_date }
-
-    # try to find current language match
-    expr = candidates.select { |x| x.language == language }
-    return expr.first if expr
-
-    # no matching language, just use the first one
-    return candidates.first
+    get_best_expression(language, points_in_time[-1].date)
   end
 
   def next_pit_date

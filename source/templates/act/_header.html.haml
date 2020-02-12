@@ -5,6 +5,10 @@
 %h1
   %a{href: act_url(act)}&= act.title
 
-- if not act.stub and not act.latest_expression?
+- if not act.stub and act.points_in_time.size > 1
   %h2.pt-1
-    as from #{act.expression_date.strftime("%e %B %Y")} to #{act.next_pit_date.strftime("%e %B %Y")}
+    as from #{act.expression_date.strftime("%e %B %Y")}
+    - if act.latest_expression?
+      onwards
+    - else
+      to #{act.next_pit_date.strftime("%e %B %Y")}
