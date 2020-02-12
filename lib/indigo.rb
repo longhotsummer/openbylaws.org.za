@@ -271,6 +271,10 @@ class IndigoDocument < IndigoComponent
     }.flatten
   end
 
+  def latest_expression?
+    return stub || (self.expression_date == self.points_in_time[-1].date)
+  end
+
   protected
   def parse_toc(items)
     items.map do |item|

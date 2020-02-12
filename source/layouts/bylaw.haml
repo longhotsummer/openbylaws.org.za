@@ -5,6 +5,7 @@
 
     %meta(property="og:type" content="article")
     %meta{property: "og:url", content: act_url(act, external: true)}
+    %link{rel: "canonical", href: "https://openbylaws.org.za" + act.frbr_uri + "/eng/"}
 
   - content_for :meta_description do
     #{act.title} for #{regions[act.locality].name}

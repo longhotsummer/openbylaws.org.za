@@ -5,3 +5,7 @@
       %p
         This by-law was repealed on #{act.repeal.date.strftime('%e %B %Y')} by
         #{link_to act.repeal.repealing_title, act.repeal.repealing_uri + '/eng'}.
+
+  - if not act.repealed? and not act.stub and act.latest_expression?
+    .alert.alert-info
+      This is the latest version of this by-law and is the version currently in force.
