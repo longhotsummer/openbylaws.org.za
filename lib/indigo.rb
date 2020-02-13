@@ -242,32 +242,20 @@ class IndigoDocument < IndigoComponent
     self.points_in_time.find { |p| p.date == expression_date }
   end
 
-  # Get a new IndigoDocument corresponding to the expression at the given
-  # date and language.
-  def get_expression(language, date=nil)
-    return self if stub
-
-    date = date || self.expression_date
-    pit = point_in_time(date)
-    raise "Unable to find point in time for #{date} for #{frbr_uri}" if pit.nil?
-    expr = pit.expressions.find { |e| e.language == language }
-
-    if expr
-      # fold expression info into this document's info, and return a new document
-      info = @info.clone.update(expr)
-      return IndigoDocument.new(info.url, info)
-    end
-  end
-
   # Try to get an expression at a date a language, falling back to
-  # any language if necessary.
+  # English if necessary.
   def get_best_expression(language, date)
     candidates = expressions.select { |x| x.expression_date == date }
     expr = candidates.select { |x| x.language == language }
     return expr.first if expr.size > 0
 
-    # no matching language, just use the first one
-    return candidates.first
+    if language == 'eng'
+      # no matching language, just use the first one
+      return candidates.first
+    else
+      # try english
+      return get_best_expression('eng', date)
+    end
   end
 
   def expressions
@@ -352,14 +340,9 @@ class IndigoDocumentCollection < IndigoBase
     # ignore documents that have the 'amendment' tag and are stubs
     docs = @documents.select { |d| !d.stub }
 
-    # favour documents in the given language
     docs.map do |doc|
-      # is there a doc in the correct language?
-      if doc.language != lang
-        doc = doc.get_expression(lang) || doc
-      end
-
-      doc
+      # favour documents in the given language, falling back to english
+      doc.get_best_expression(lang, doc.points_in_time[-1].date)
     end
   end
 end

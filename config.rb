@@ -65,19 +65,25 @@ caching_policy 'text/html', max_age: hour
 # Website pages
 
 def pages_for_act(act)
-  path = act.frbr_uri.chomp('/')
-
-  # latest expression
-  for lang in act.languages
-    expression = act.get_expression(lang.code3)
-
-    # full act
-    proxy "#{path}/#{lang.code3}/index.html", "/templates/act/index.html", locals: {act: expression}, ignore: true
+  if act.stub
+    expressions = [act]
+  else
+    # expressions at the latest date
+    date = act.points_in_time[-1].date
+    expressions = act.expressions.filter { |x| x.expression_date = date }
   end
 
-  # other expressions
+  # pages for the expressions at the latest point in time
+  for expr in expressions
+    # full act
+    path = act.frbr_uri.chomp('/')
+    proxy "#{path}/#{expr.language}/index.html", "/templates/act/index.html", locals: {act: expr}, ignore: true
+  end
+
+  # older expressions
   for expr in act.expressions
-    proxy "#{path}/#{lang.code3}@#{expr.expression_date}/index.html", "/templates/act/index.html", locals: {act: expr}, ignore: true
+    path = expr.expression_frbr_uri.chomp('/')
+    proxy "#{path}/index.html", "/templates/act/index.html", locals: {act: expr}, ignore: true
   end
 end
 
