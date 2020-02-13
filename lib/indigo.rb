@@ -304,10 +304,6 @@ class IndigoDocument < IndigoComponent
 end
 
 class IndigoAttachment < IndigoComponent
-  def local_url
-    # TODO: LANG
-    @parent.frbr_uri + "/media/" + filename
-  end
 end
 
 # document collection loaded from Indigo
