@@ -1,7 +1,7 @@
 #notices
   - if act.repealed?
     .alert.alert-warning
-      %h4 Repealed
+      %h5 Repealed
       This by-law was repealed on #{act.repeal.date.strftime('%e %B %Y')} by
       #{link_to act.repeal.repealing_title, act.repeal.repealing_uri + '/eng'}.
 
