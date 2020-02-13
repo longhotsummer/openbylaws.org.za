@@ -1,27 +1,24 @@
 #notices
   - if act.repealed?
-    .alert.alert-warning
+    .alert.alert-danger
       %h5 Repealed
       This by-law was repealed on #{act.repeal.date.strftime('%e %B %Y')} by
       #{link_to act.repeal.repealing_title, act.repeal.repealing_uri + '/eng'}.
 
   - if not act.stub
     - if act.latest_expression?
-      - if act.repealed?
-        .alert.alert-info
-          This is the latest version of this by-law up to when it was repealed.
-
-      - else
-        .alert.alert-info
-          This is the latest version of this by-law and is the version currently in force.
+      .alert.alert-info
+        - if act.repealed?
+          This is the version of this by-law as it was when it was repealed.
+        - else
+          This is the latest version of this by-law.
 
     - elsif act.points_in_time.length > 1
       .alert.alert-warning
         This is the version of this by-law as it was from
         #{act.expression_date.strftime("%e %B %Y")} to #{act.next_pit_date.strftime("%e %B %Y")}.
-        Read the
         %a{href: act.frbr_uri + "/eng/"}
           - if act.repealed?
-            latest version.
+            Read it as it was when it was repealed.
           - else
-            latest version currently in force.
+            Read the version currently in force.
