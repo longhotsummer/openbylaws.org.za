@@ -1,40 +1,49 @@
-
-.downloads.mt-3
+.mt-3
   .row
-    .col-sm-8
-      .download
-        %h3 History of this by-law
+    .col-sm-8.mb-3
+      %h3 History of this by-law
 
-        .timeline
-          %ul.list-unstyled.timeline-items
-            - for event in act.history
-              %li
-                %h5&= event.date.strftime("%e %B %Y")
+      .timeline
+        %ul.list-unstyled.timeline-items
+          - for date, events in act.latest_expression.history
+            %li
+              %h5
+                &= date.strftime("%e %B %Y")
+                - if date == act.expression_date
+                  %span{class: act.latest_expression? ? "badge badge-info" : "badge badge-warning"} this version
 
-                - case event.event
-                - when :amendment
-                  Amended by
-                  %a{href: event.info.amending_uri + '/eng'}
-                    %i&= event.info.amending_title
 
-                - when :assent
-                  Assented to by council.
+              - for event in events
+                %div
+                  - case event.event
+                  - when :amendment
+                    Amended by
+                    %a{href: event.info.amending_uri + '/eng'}
+                      %i&= event.info.amending_title
 
-                - when :commencement
-                  By-law commences.
+                  - when :assent
+                    Assented to by council.
 
-                - when :publication
-                  Published in 
-                  %a{href: act.publication_document.url}
-                    #{act.full_publication}
+                  - when :commencement
+                    By-law commences.
 
-                - when :repeal
-                  Repealed by
-                  %a{href: event.info.repealing_uri + '/eng'}
-                    %i&= event.info.repealing_title
+                  - when :publication
+                    Published in 
+                    %a{href: act.publication_document.url}
+                      #{act.full_publication}
+
+                  - when :repeal
+                    Repealed by
+                    %a{href: event.info.repealing_uri + '/eng'}
+                      %i&= event.info.repealing_title
+
+              - if date != act.expression_date
+                - expr = act.get_best_expression(act.language, date)
+                - if expr
+                  %a.btn.btn-outline-primary.mt-2{href: expr.expression_frbr_uri} Read this version
 
     .col-sm-4
-      .download
+      .downloads.mb-3
         %h3 Download for later
 
         %p
