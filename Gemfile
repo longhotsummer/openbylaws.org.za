@@ -7,7 +7,7 @@ gem "slaw", "~>6.0"
 
 gem 'httpclient', '~> 2.7'
 gem 'moneta', '~> 0.8'
-gem "rake", "~> 10.1"
+gem "rake", "~> 12.3"
 
 gem "middleman", "~>4.3"
 gem 'hashie', '~> 3.4'
