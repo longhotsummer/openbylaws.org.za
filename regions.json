@@ -46,5 +46,11 @@
     "bucket": "mbizana.openbylaws.org.za",
     "microsite": true,
     "ga": "UA-123714032-3"
+  },
+  "wc013": {
+    "code": "wc013",
+    "name": "Bergrivier",
+    "logo": "/img/municipalities/wc013-logo.png",
+    "bylaws-url": "https://www.bergmun.org.za/resource-category/policies-and-laws"
   }
 }
