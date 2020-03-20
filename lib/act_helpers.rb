@@ -14,7 +14,12 @@ class ActHelpers < Middleman::Extension
 
     puts "Using Indigo at #{IndigoBase::API_ENDPOINT}"
     for region in self.active_regions
-      region.bylaws = IndigoDocumentCollection.new(IndigoBase::API_ENDPOINT + '/za-' + region.code)
+      if region.code == 'za'
+        url = '/za/'
+      else
+        url = '/za-' + region.code + '/'
+      end
+      region.bylaws = IndigoDocumentCollection.new(IndigoBase::API_ENDPOINT + url)
       puts "Got #{region.bylaws.length} by-laws for #{region.code}"
     end
   end

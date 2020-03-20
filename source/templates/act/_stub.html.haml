@@ -1,6 +1,6 @@
 .alert.alert-warning.text-center
   %p
-    We don't have the full contents of this by-law captured.
+    We don't have the full contents of this #{act.subtype_name} captured.
 
   - if act.publication?
     %p
@@ -13,7 +13,8 @@
         - if act.publication_document._size
           (#{number_to_human_size(act.publication_document._size)})
 
-  %p
-    - region = regions[act.locality]
-    Or visit the
-    %a{href: region['bylaws-url']}&= "#{region.name} By-laws Website"
+  - region = regions[act.locality || act.country]
+  - if not region.special
+    %p
+      Or visit the
+      %a{href: region['bylaws-url']}&= "#{region.name} By-laws Website"

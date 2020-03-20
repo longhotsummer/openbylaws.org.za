@@ -8,7 +8,7 @@
     %link{rel: "canonical", href: "https://openbylaws.org.za" + act.frbr_uri + "/eng/"}
 
   - content_for :meta_description do
-    #{act.title} for #{regions[act.locality].name}
+    #{act.title} for #{regions[act.locality || act.country].name}
 
   %header{class: act.stub ? "" : "pb-0"}
     .container
@@ -19,7 +19,7 @@
           %nav.bylaw-nav
             %ul.nav.nav-tabs(role="tablist")
               %li.nav-item
-                %a#main-tab.nav-link.active(href='#main' data-toggle="tab" role="tab" aria-controls="main" aria-selected="true") By-law
+                %a#main-tab.nav-link.active(href='#main' data-toggle="tab" role="tab" aria-controls="main" aria-selected="true") #{act.subtype_name.capitalize}
 
               %li.nav-item
                 %a#toc-tab.nav-link(href='#toc' data-toggle="tab" role="tab" aria-controls="toc")

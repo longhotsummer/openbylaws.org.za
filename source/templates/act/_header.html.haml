@@ -1,6 +1,6 @@
 %ol.list-inline.breadcrumbs.region
   %li
-    %a(href="/za-#{act.locality}/#{act.language}/")&= regions[act.locality].name
+    %a(href="/#{act.place_code}/#{act.language}/")&= regions[act.locality || act.country].name
 
 %h1
   %a{href: act_url(act)}&= act.title

@@ -1,6 +1,6 @@
 %ol
   %li
-    %a{href: act_url(act)} Entire by-law
+    %a{href: act_url(act)} Entire #{act.subtype_name}
   = partial 'toc_container', locals: {act: act, items: act.toc.reject { |t| t.component =~ /schedule/ }}
 
   - if act.schedules.present?

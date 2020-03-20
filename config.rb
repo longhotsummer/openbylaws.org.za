@@ -94,7 +94,7 @@ puts "Building openbylaws.org.za"
 ActHelpers.setup(ActHelpers.general_regions)
 
 for region in ActHelpers.active_regions
-  next if region.microsite
+  next if region.microsite or region.special
 
   # region listing page
   for lang in region.bylaws.languages
@@ -103,3 +103,10 @@ for region in ActHelpers.active_regions
 
   region.bylaws.each { |bylaw| pages_for_act(bylaw) }
 end
+
+# HACK
+# za for covid-19
+za = ActHelpers.regions['za']
+eng = LANGUAGES['eng']
+proxy "/za/eng/index.html", "/templates/za.html", locals: {region: za, language: eng}, ignore: true
+za.bylaws.each { |bylaw| pages_for_act(bylaw) }

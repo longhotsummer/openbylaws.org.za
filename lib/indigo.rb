@@ -146,8 +146,12 @@ class IndigoDocument < IndigoComponent
     @toc ||= parse_toc(JSON.parse(get('/toc.json'))['toc'])
   end
 
+  def place_code
+    frbr_uri.split('/', 3)[1]
+  end
+
   def region_code
-    frbr_uri.split('/', 3)[1].split('-')[1]
+    place_code.split('-')[1]
   end
 
   def schedules
@@ -164,6 +168,15 @@ class IndigoDocument < IndigoComponent
 
   def repealed?
     !repeal.nil?
+  end
+
+  def subtype_name
+    {
+      'by-law' => 'by-law',
+      'p' => 'proclamation',
+      'reg' => 'regulation',
+      nil => 'act',
+    }[subtype] or subtype
   end
 
   def attachments
