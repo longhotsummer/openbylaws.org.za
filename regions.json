@@ -52,5 +52,10 @@
     "name": "Bergrivier",
     "logo": "/img/municipalities/wc013-logo.png",
     "bylaws-url": "https://www.bergmun.org.za/resource-category/policies-and-laws"
+  },
+  "za": {
+    "code": "za",
+    "name": "South Africa",
+    "special": true
   }
 }

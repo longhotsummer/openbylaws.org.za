@@ -1,7 +1,7 @@
 .mt-3
   .row
     .col-sm-8.mb-3
-      %h3 History of this by-law
+      %h3 History of this #{act.subtype_name}
 
       .timeline
         %ul.list-unstyled.timeline-items
@@ -25,7 +25,7 @@
                     Assented to by council.
 
                   - when :commencement
-                    By-law commences.
+                    #{act.subtype_name.capitalize} commences.
 
                   - when :publication
                     Published in 
@@ -47,15 +47,16 @@
         %h3 Download for later
 
         %p
-          Download the current version of this by-law to read later
+          Download the current version of this #{act.subtype_name} to read later
           on your desktop, e-reader or tablet.
 
         = partial 'downloads', locals: {act: act}
 
-      - region = regions[act.locality]
-      %h3&= region.name
-      %p
-        %a{href: region['bylaws-url']}
-          %img{src: region.logo}
-      %p
-        %a{href: region['bylaws-url']}&= "#{region.name} By-laws Website"
+      - region = regions[act.locality || act.country]
+      - if (not region.nil? and not region.special)
+        %h3&= region.name
+        %p
+          %a{href: region['bylaws-url']}
+            %img{src: region.logo}
+        %p
+          %a{href: region['bylaws-url']}&= "#{region.name} By-laws Website"

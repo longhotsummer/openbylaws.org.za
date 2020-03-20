@@ -31,7 +31,10 @@ layout: layout
 
   %section.places.py-5
     .container
-      - regions.values.reject { |r| r.microsite }.sort_by { |r| r.name }.each_slice(3) do |chunk|
+      .mb-5
+        = partial 'templates/act/covid19_notice'
+
+      - regions.values.reject { |r| r.microsite or r.special }.sort_by { |r| r.name }.each_slice(3) do |chunk|
         .row
           - for region in chunk
             .col-md-4

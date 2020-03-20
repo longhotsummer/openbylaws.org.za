@@ -13,6 +13,9 @@
 
 .row
   .col-md-9
+    - if region.code != 'za'
+      = partial 'act/covid19_notice'
+
     - if region.partial
       .alert.alert-warning
         %h4 Please note

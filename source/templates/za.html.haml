@@ -1,0 +1,49 @@
+- content_for :title do
+  South African COVID-19 Regulations
+
+- content_for :meta_description do
+  COVID-19 Regulations for South Africa, up-to-date and easy to read and share.
+
+- content_for :header do
+  %h1
+    South Africa COVID-19 Regulations
+
+.row
+  .col-md-9
+    .alert.alert-warning
+      Some municipal functions such as public transport, restaurant hours and liquor sales are impacted by the recent national COVID-19 regulations listed below.
+
+    %table.table.table-sm.table-hover
+      %thead.thead-light
+        %tr
+          %th Title
+          %th First Published
+      %tbody
+        - for bylaw in region.bylaws.for_listing(language.code3).sort_by(&:title)
+          - next if bylaw.repealed?
+          %tr
+            %td
+              %a{href: act_url(bylaw)}&= bylaw.title
+            %td&= bylaw.year
+
+    - repealed = region.bylaws.for_listing(language.code3).select { |b| b.repealed? }
+    - if not repealed.empty?
+      %h4.mt-4 Repealed
+      %table.table.table-sm.table-hover
+        %thead.thead-light
+          %tr
+            %th Title
+            %th First Published
+            %th Repealed
+        %tbody
+          - for bylaw in repealed
+            %tr
+              %td
+                %a{href: act_url(bylaw)}&= bylaw.title
+              %td&= bylaw.year
+              %td&= bylaw.repeal.date.year
+
+  .col-md-3.resources
+    %h3 More resources
+    %p
+      %a(href="https://www.gov.za/Coronavirus") South African Government COVID-19 Website
