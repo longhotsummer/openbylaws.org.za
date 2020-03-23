@@ -175,6 +175,8 @@ class IndigoDocument < IndigoComponent
       'by-law' => 'by-law',
       'p' => 'proclamation',
       'reg' => 'regulation',
+      'gn' => 'government notice',
+      'genn' => 'general notice',
       nil => 'act',
     }[subtype] or subtype
   end

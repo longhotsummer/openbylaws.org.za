@@ -108,5 +108,8 @@ end
 # za for covid-19
 za = ActHelpers.regions['za']
 eng = LANGUAGES['eng']
-proxy "/za/eng/index.html", "/templates/za.html", locals: {region: za, language: eng}, ignore: true
+proxy "/covid19/index.html", "/templates/covid19.html", locals: {region: za, language: eng}, ignore: true
 za.bylaws.each { |bylaw| pages_for_act(bylaw) }
+
+# old covid19 resources
+redirect "/za/eng/index.html", to: "/covid19/"

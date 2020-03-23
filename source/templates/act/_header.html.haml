@@ -1,6 +1,9 @@
 %ol.list-inline.breadcrumbs.region
   %li
-    %a(href="/#{act.place_code}/#{act.language}/")&= regions[act.locality || act.country].name
+    - if act.place_code == 'za'
+      %a(href="/covid19/") South Africa COVID-19
+    - else
+      %a(href="/#{act.place_code}/#{act.language}/")&= regions[act.locality || act.country].name
 
 %h1
   %a{href: act_url(act)}&= act.title
