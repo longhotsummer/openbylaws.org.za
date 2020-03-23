@@ -112,4 +112,4 @@ proxy "/covid19/index.html", "/templates/covid19.html", locals: {region: za, lan
 za.bylaws.each { |bylaw| pages_for_act(bylaw) }
 
 # old covid19 resources
-redirect "/za/eng/index.html", to: "/covid19/"
+redirect "za/eng/index.html", to: "/covid19/"
