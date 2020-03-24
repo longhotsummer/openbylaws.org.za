@@ -59,6 +59,12 @@
     "logo": "/img/municipalities/wc012-logo.png",
     "bylaws-url": "http://www.cederbergmun.gov.za/resource-category/policies-and-laws"
   },
+  "wc041": {
+    "code": "wc041",
+    "name": "Kannaland",
+    "logo": "/img/municipalities/wc041-logo.png",
+    "bylaws-url": "https://www.kannaland.gov.za/resource-category/policies-and-laws"
+  },
   "za": {
     "code": "za",
     "name": "South Africa",
