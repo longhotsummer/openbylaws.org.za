@@ -19,7 +19,7 @@
           %h5 Municipalities
 
           %ul
-            - regions.values.sort_by { |r| r.name }.each do |region|
+            - regions.values.reject { |r| r.special }.sort_by { |r| r.name }.each do |region|
               %li
                 %a{href: region.microsite ? "https://#{region.bucket}" : "/za-#{region.code}/eng/"}&= region.name
 
