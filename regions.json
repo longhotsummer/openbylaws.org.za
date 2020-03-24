@@ -53,6 +53,12 @@
     "logo": "/img/municipalities/wc013-logo.png",
     "bylaws-url": "https://www.bergmun.org.za/resource-category/policies-and-laws"
   },
+  "wc012": {
+    "code": "wc012",
+    "name": "Cederberg",
+    "logo": "/img/municipalities/wc012-logo.png",
+    "bylaws-url": "http://www.cederbergmun.gov.za/resource-category/policies-and-laws"
+  },
   "za": {
     "code": "za",
     "name": "South Africa",
