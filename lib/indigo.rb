@@ -171,15 +171,7 @@ class IndigoDocument < IndigoComponent
   end
 
   def subtype_name
-    {
-      'by-law' => 'by-law',
-      'p' => 'proclamation',
-      'reg' => 'regulation',
-      'gn' => 'government notice',
-      'genn' => 'general notice',
-      'mo' => 'ministerial order',
-      nil => 'act',
-    }[subtype] or subtype
+    self.type_name or subtype
   end
 
   def attachments
