@@ -34,6 +34,9 @@ layout: layout
       .mb-5
         = partial 'templates/act/covid19_notice'
 
+        %div
+          Visit #{link_to 'sacoronavirus.co.za', 'https://www.sacoronavirus.co.za'} for more COVID-19 information.
+
       - regions.values.reject { |r| r.microsite or r.special }.sort_by { |r| r.name }.each_slice(3) do |chunk|
         .row
           - for region in chunk
