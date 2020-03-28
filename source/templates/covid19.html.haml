@@ -24,7 +24,7 @@
           %tr
             %td
               %a{href: act_url(bylaw)}&= bylaw.title
-            %td&= bylaw.year
+            %td.text-nowrap&= bylaw.publication_date
 
     - repealed = region.bylaws.for_listing(language.code3).select { |b| b.repealed? }
     - if not repealed.empty?
@@ -40,8 +40,8 @@
             %tr
               %td
                 %a{href: act_url(bylaw)}&= bylaw.title
-              %td&= bylaw.year
-              %td&= bylaw.repeal.date.year
+              %td.text-nowrap&= bylaw.publication_date
+              %td.text-nowrap&= bylaw.repeal.date
 
   .col-md-3.resources
     %h3 More resources
