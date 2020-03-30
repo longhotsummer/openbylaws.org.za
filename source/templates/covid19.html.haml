@@ -8,42 +8,45 @@
   %h1
     South Africa COVID-19 Regulations
 
-.row
-  .col-md-9
-    .alert.alert-warning
-      Some municipal functions such as public transport, restaurant hours and liquor sales are impacted by the recent national COVID-19 regulations listed below.
+.alert.alert-warning
+  Some municipal functions such as public transport, restaurant hours and liquor sales are impacted by the recent national COVID-19 regulations listed below.
 
-    %table.table.table-sm.table-hover
-      %thead.thead-light
+%p
+  For more information and resources on COVID-19, please visit #{link_to 'sacoronavirus.co.za', 'https://sacoronavirus.co.za/'}.
+
+%table.table.table-sm.table-hover
+  %thead.thead-light
+    %tr
+      %th Title
+      %th Published
+      %th Updated
+  %tbody
+    - for group in region.bylaws.for_listing(language.code3).reject(&:repealed).group_by {|b| b.parent_work.title }.sort
+      %tr
+        %th.pt-3(colspan=3)
+          &= group[0]
+      - for bylaw in group[1].sort_by(&:title)
         %tr
-          %th Title
-          %th First Published
-      %tbody
-        - for bylaw in region.bylaws.for_listing(language.code3).sort_by(&:title)
-          - next if bylaw.repealed?
-          %tr
-            %td
-              %a{href: act_url(bylaw)}&= bylaw.title
-            %td.text-nowrap&= bylaw.publication_date
+          %td.pl-3
+            %a{href: act_url(bylaw)}&= bylaw.title
+          %td.text-nowrap&= bylaw.publication_date
+          %td.text-nowrap
+            - if bylaw.expression_date != bylaw.publication_date
+              &= bylaw.expression_date
 
-    - repealed = region.bylaws.for_listing(language.code3).select { |b| b.repealed? }
-    - if not repealed.empty?
-      %h4.mt-4 Repealed
-      %table.table.table-sm.table-hover
-        %thead.thead-light
-          %tr
-            %th Title
-            %th First Published
-            %th Repealed
-        %tbody
-          - for bylaw in repealed
-            %tr
-              %td
-                %a{href: act_url(bylaw)}&= bylaw.title
-              %td.text-nowrap&= bylaw.publication_date
-              %td.text-nowrap&= bylaw.repeal.date
-
-  .col-md-3.resources
-    %h3 More resources
-    %p
-      %a(href="https://sacoronavirus.co.za/") South African Government COVID-19 Website
+- repealed = region.bylaws.for_listing(language.code3).select { |b| b.repealed? }
+- if not repealed.empty?
+  %h4.mt-4 Repealed
+  %table.table.table-sm.table-hover
+    %thead.thead-light
+      %tr
+        %th Title
+        %th Published
+        %th Repealed
+    %tbody
+      - for bylaw in repealed
+        %tr
+          %td
+            %a{href: act_url(bylaw)}&= bylaw.title
+          %td.text-nowrap&= bylaw.publication_date
+          %td.text-nowrap&= bylaw.repeal.date
