@@ -149,3 +149,10 @@
     }
   }
 }
+
+table.sticky-thead {
+  thead th {
+    position: sticky;
+    top: -1px;
+  }
+}
