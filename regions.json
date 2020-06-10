@@ -65,6 +65,12 @@
     "logo": "/img/municipalities/wc041-logo.png",
     "bylaws-url": "https://www.kannaland.gov.za/resource-category/policies-and-laws"
   },
+  "wc015": {
+    "code": "wc015",
+    "name": "Swartland",
+    "logo": "/img/municipalities/wc015-logo.png",
+    "bylaws-url": "http://www.swartland.org.za/pages/english/documents/by-laws.php"
+  },
   "za": {
     "code": "za",
     "name": "South Africa",
